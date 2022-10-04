@@ -1,4 +1,5 @@
 import * as NextImage from "next/image";
+import '../src/styles/globals.css'
 
 // deoptimize Next.js's default Image component to use next/image
 const OriginalNextImage = NextImage.default;
