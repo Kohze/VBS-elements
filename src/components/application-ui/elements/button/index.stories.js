@@ -21,15 +21,39 @@ Primary.args = {
   variant: 'primary',
   children: 'VBSButton',
 }
-export const Secondary = Template.bind({})
-Secondary.args = {
-  size: 'md',
-  variant: 'secondary',
-  children: 'VBSButton',
-}
 export const White = Template.bind({})
 White.args = {
   size: 'md',
   variant: 'white',
+  children: 'VBSButton',
+}
+export const WithLeadingIcon = Template.bind({})
+WithLeadingIcon.args = {
+  size: 'md',
+  variant: 'withLeadingIcon',
+  children: 'VBSButton',
+}
+export const WithTrailingIcon = Template.bind({})
+WithTrailingIcon.args = {
+  size: 'md',
+  variant: 'withTrailingIcon',
+  children: 'VBSButton',
+}
+export const Rounded = Template.bind({})
+Rounded.args = {
+  size: 'md',
+  variant: 'rounded',
+  children: 'VBSButton',
+}
+export const CircularIcon = Template.bind({})
+CircularIcon.args = {
+  size: 'md',
+  variant: 'circularIcon',
+  children: 'VBSButton',
+}
+export const FullWidth = Template.bind({})
+FullWidth.args = {
+  size: 'md',
+  variant: 'fullWidth',
   children: 'VBSButton',
 }

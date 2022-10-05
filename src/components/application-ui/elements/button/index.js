@@ -10,13 +10,13 @@ const sizes = {
 }
 
 const variants = {
-  primary: 'bg-indigo-600',
-  secondary: 'bg-indigo-200 text-indigo-700',
+  primary: '',
   white: 'bg-white text-gray-700 border border-gray-300',
-  withLeadingIcon: 'bg-indigo-600',
-  withTrailingIcon: 'bg-indigo-600',
-  rounded: 'bg-indigo-600 rounded-full',
-  circular: 'bg-indigo-600 rounded-full',
+  withLeadingIcon: '',
+  withTrailingIcon: '',
+  rounded: 'rounded-full',
+  circularIcon: 'rounded-full',
+  fullWidth: 'w-full justify-center',
 }
 
 const VBSButton = ({
@@ -28,7 +28,7 @@ const VBSButton = ({
   children,
 }) => {
   const mainStyle =
-    'inline-flex text-white items-center rounded border border-transparent font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+    'inline-flex text-white bg-indigo-600 items-center rounded border border-transparent font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
 
   return (
     <button
@@ -47,6 +47,8 @@ VBSButton.defaultProps = {
   size: 'md',
   variant: 'primary',
   children: 'VBSButton',
+  backgroundColor: null,
+  color: null,
 }
 
 VBSButton.propTypes = {
