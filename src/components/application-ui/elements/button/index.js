@@ -12,11 +12,8 @@ const sizes = {
 const variants = {
   primary: '',
   white: 'bg-white text-gray-700 border border-gray-300',
-  withLeadingIcon: '',
-  withTrailingIcon: '',
   rounded: 'rounded-full',
-  circularIcon: 'rounded-full',
-  fullWidth: 'w-full justify-center',
+  'full-width': 'w-full justify-center',
 }
 
 const VBSButton = ({
@@ -25,6 +22,8 @@ const VBSButton = ({
   className,
   backgroundColor,
   color,
+  iconName,
+  iconPosition,
   children,
 }) => {
   const mainStyle =
@@ -38,7 +37,13 @@ const VBSButton = ({
         color,
       }}
     >
+      {iconName && iconPosition === 'left' && (
+        <span className="mr-2">{icon}</span>
+      )}
       {children}
+      {iconName && iconPosition === 'right' && (
+        <span className="ml-2">{icon}</span>
+      )}
     </button>
   )
 }
@@ -58,6 +63,8 @@ VBSButton.propTypes = {
   children: PropTypes.node,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
+  icon: PropTypes.node,
+  iconPosition: PropTypes.oneOf(['left', 'right']),
 }
 
 export default VBSButton

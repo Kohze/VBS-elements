@@ -11,6 +11,7 @@
     "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.11",
     "clsx": "^1.2.1",
     "next": "12.3.1",
     "react": "18.2.0",
