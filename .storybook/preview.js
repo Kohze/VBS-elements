@@ -1,7 +1,7 @@
 import * as NextImage from 'next/image'
-import '../src/styles/globals.css'
-import tailwindColors from './colors.json'
+import '@/styles/globals.css'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
+import tailwindColors from '@/constants/colors.json'
 
 // deoptimize Next.js's default Image component to use next/image
 const OriginalNextImage = NextImage.default
@@ -22,7 +22,7 @@ export const parameters = {
   colorPicker: {
     palettes: [
       {
-        name: 'Your first palette name',
+        name: 'Tailwind Colors',
         palette: tailwindColors,
       },
     ],

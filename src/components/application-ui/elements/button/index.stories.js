@@ -1,3 +1,4 @@
+import heroIconsNames from '../../../../assets/icons/hero-icons/names'
 import VBSButton from '.'
 
 export default {
@@ -6,6 +7,12 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
     color: { control: 'color' },
+    iconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
   },
   parameters: {
     colorPicker: {
@@ -19,23 +26,31 @@ export const Primary = Template.bind({})
 Primary.args = {
   size: 'md',
   variant: 'primary',
-  children: 'VBSButton',
+  text: 'VBSButton',
 }
 export const White = Template.bind({})
 White.args = {
   size: 'md',
   variant: 'white',
-  children: 'VBSButton',
+  text: 'VBSButton',
 }
 export const Rounded = Template.bind({})
 Rounded.args = {
   size: 'md',
   variant: 'rounded',
-  children: 'VBSButton',
+  text: 'VBSButton',
 }
 export const FullWidth = Template.bind({})
 FullWidth.args = {
   size: 'md',
   variant: 'full-width',
-  children: 'VBSButton',
+  text: 'VBSButton',
+}
+export const WithOnlyIcon = Template.bind({})
+WithOnlyIcon.args = {
+  size: 'md',
+  variant: 'rounded',
+  iconName: 'ArrowLeftIcon',
+  iconPosition: 'only',
+  children: null,
 }

@@ -1,5 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import PropTypes from 'prop-types'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
+import VBSIcon from '../icons'
 
 const sizes = {
   xs: 'text-xs px-2.5 py-1.5 ',
@@ -12,7 +14,7 @@ const sizes = {
 const variants = {
   primary: '',
   white: 'bg-white text-gray-700 border border-gray-300',
-  rounded: 'rounded-full',
+  rounded: `rounded-full`,
   'full-width': 'w-full justify-center',
 }
 
@@ -24,26 +26,70 @@ const VBSButton = ({
   color,
   iconName,
   iconPosition,
+  iconType,
+  text,
   children,
 }) => {
+  const isChildrenOrText = text || children
   const mainStyle =
     'inline-flex text-white bg-indigo-600 items-center rounded border border-transparent font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
 
+  const paddingsForIconOnly = `${
+    variant === 'rounded' && size === 'xs' && iconPosition === 'only' && 'p-1'
+  } ${
+    variant === 'rounded' && size === 'sm' && iconPosition === 'only' && 'p-1.5'
+  } ${
+    variant === 'rounded' && size === 'md' && iconPosition === 'only' && 'p-2'
+  } ${
+    variant === 'rounded' && size === 'lg' && iconPosition === 'only' && 'p-2.5'
+  } ${
+    variant === 'rounded' && size === 'xl' && iconPosition === 'only' && 'p-3'
+  }`
+
+  const renderChildren = () => {
+    if (iconName) {
+      if (iconPosition === 'left') {
+        return (
+          <>
+            <span className={isChildrenOrText ? 'mr-2' : ''}>
+              <VBSIcon iconName={iconName} />
+            </span>
+            {text || children}
+          </>
+        )
+      }
+      if (iconPosition === 'right') {
+        return (
+          <>
+            {text || children}
+            <span className={isChildrenOrText ? 'ml-2' : ''}>
+              <VBSIcon iconName={iconName} iconType={iconType} />
+            </span>
+          </>
+        )
+      }
+      if (iconPosition === 'only') {
+        return <VBSIcon iconName={iconName} iconType={iconType} />
+      }
+    }
+    return text || children
+  }
+
   return (
     <button
-      className={twMerge(mainStyle, sizes[size], variants[variant], className)}
+      className={twMerge(
+        mainStyle,
+        sizes[size],
+        variants[variant],
+        paddingsForIconOnly,
+        className,
+      )}
       style={{
         backgroundColor,
         color,
       }}
     >
-      {iconName && iconPosition === 'left' && (
-        <span className="mr-2">{icon}</span>
-      )}
-      {children}
-      {iconName && iconPosition === 'right' && (
-        <span className="ml-2">{icon}</span>
-      )}
+      {renderChildren()}
     </button>
   )
 }
@@ -51,20 +97,21 @@ const VBSButton = ({
 VBSButton.defaultProps = {
   size: 'md',
   variant: 'primary',
-  children: 'VBSButton',
-  backgroundColor: null,
-  color: null,
+  text: '',
+  iconType: 'solid',
 }
 
 VBSButton.propTypes = {
   size: PropTypes.oneOf(Object.keys(sizes)),
   variant: PropTypes.oneOf(Object.keys(variants)),
   className: PropTypes.string,
+  text: PropTypes.string,
   children: PropTypes.node,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
-  icon: PropTypes.node,
-  iconPosition: PropTypes.oneOf(['left', 'right']),
+  iconName: PropTypes.oneOf(heroIconsNames),
+  iconPosition: PropTypes.oneOf(['left', 'right', 'only']),
+  iconType: PropTypes.oneOf(['solid', 'outline']),
 }
 
 export default VBSButton

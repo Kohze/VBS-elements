@@ -2,7 +2,7 @@ import heroIconsNames from './names'
 import { lookup as outlineLookup } from './outline'
 import { lookup as solidLookup } from './solid'
 
-export const lookupHeroIcon = (iconName, variant = 'outline') => {
+export const lookupHeroIcon = (iconName, variant = 'solid') => {
   if (!heroIconsNames.includes(iconName)) {
     throw new Error(`Icon name ${iconName} not found`)
   }
