@@ -110,6 +110,10 @@ VBSAvatar.propTypes = {
     in real component
   */
   className: PropTypes.string,
+  /**
+   you can use backgroundColor to set background color
+   or you can use className with tailwind colors like 'bg-red-500'
+  */
   backgroundColor: PropTypes.string,
   withNotification: PropTypes.bool,
   notificationColor: PropTypes.string,

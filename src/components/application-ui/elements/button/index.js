@@ -55,7 +55,7 @@ const VBSButton = ({
         return (
           <>
             <span className={isChildrenOrText ? 'mr-2' : ''}>
-              <VBSIcon iconName={iconName} />
+              <VBSIcon iconName={iconName} iconType={iconType} />
             </span>
             {text || children}
           </>
@@ -125,7 +125,6 @@ const VBSButton = ({
 VBSButton.defaultProps = {
   size: 'md',
   variant: 'primary',
-  text: '',
   iconType: 'solid',
   iconPosition: 'left',
 }

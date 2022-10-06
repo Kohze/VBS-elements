@@ -1,7 +1,7 @@
-import VBSAvatar from '@/components/application-ui/elements/avatars/avatar'
+import VBSAvatar from '@/components/application-ui/elements/avatar'
 
 export default {
-  title: 'VBS Components/Application UI/Elements/Avatars/Avatar',
+  title: 'VBS Components/Application UI/Elements/Avatar',
   component: VBSAvatar,
 }
 

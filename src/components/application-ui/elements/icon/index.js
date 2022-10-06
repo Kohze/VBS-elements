@@ -15,7 +15,6 @@ const VBSIcon = ({
   return (
     <div>
       <Icon
-        iconType={iconType}
         style={{ backgroundColor, color, width, height }}
         className={className}
         {...props}
@@ -32,7 +31,7 @@ VBSIcon.defaultProps = {
 
 VBSIcon.propTypes = {
   iconName: PropTypes.string,
-  iconType: PropTypes.string,
+  iconType: PropTypes.oneOf(['solid', 'outline']),
   className: PropTypes.string,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,

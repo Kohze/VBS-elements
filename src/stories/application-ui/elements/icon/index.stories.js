@@ -12,6 +12,11 @@ export default {
       },
     },
   },
+  parameters: {
+    colorPicker: {
+      applyColorTo: ['backgroundColor', 'color'],
+    },
+  },
 }
 
 const Template = (args) => <VBSIcon {...args} />

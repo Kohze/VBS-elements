@@ -22,10 +22,10 @@ export default {
 }
 
 const Template = (args) => <VBSButton {...args} />
-export const Default = Template.bind({})
-Default.args = {
+export const Primary = Template.bind({})
+Primary.args = {
   size: 'md',
-  variant: 'primary',
+  variant: 'default',
   text: 'VBSButton',
 }
 export const White = Template.bind({})
@@ -45,6 +45,15 @@ FullWidth.args = {
   size: 'md',
   variant: 'full-width',
   text: 'VBSButton',
+}
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  size: 'md',
+  variant: 'default',
+  text: 'VBSButton',
+  iconName: 'ArrowLeftIcon',
+  iconPosition: 'left',
+  iconType: 'solid',
 }
 export const WithOnlyIcon = Template.bind({})
 WithOnlyIcon.args = {
