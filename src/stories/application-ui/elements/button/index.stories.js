@@ -1,5 +1,5 @@
-import heroIconsNames from '../../../../assets/icons/hero-icons/names'
-import VBSButton from '.'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
+import VBSButton from '@/components/application-ui/elements/button'
 
 export default {
   title: 'VBS Components/Application UI/Elemets/Button',
@@ -50,7 +50,7 @@ export const WithOnlyIcon = Template.bind({})
 WithOnlyIcon.args = {
   size: 'md',
   variant: 'rounded',
-  iconName: 'ArrowLeftIcon',
+  iconName: 'PlusIcon',
   iconPosition: 'only',
   children: null,
 }

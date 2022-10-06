@@ -2,7 +2,7 @@ import { twMerge } from 'tailwind-merge'
 import PropTypes from 'prop-types'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 import NextLink from 'next/link'
-import VBSIcon from '../icons'
+import VBSIcon from '../icon'
 
 const sizes = {
   xs: 'text-xs px-2.5 py-1.5 ',
