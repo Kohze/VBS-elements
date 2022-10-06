@@ -22,8 +22,8 @@ export default {
 }
 
 const Template = (args) => <VBSButton {...args} />
-export const Primary = Template.bind({})
-Primary.args = {
+export const Default = Template.bind({})
+Default.args = {
   size: 'md',
   variant: 'primary',
   text: 'VBSButton',
