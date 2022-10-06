@@ -1,6 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import PropTypes from 'prop-types'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
+import NextLink from 'next/link'
 import VBSIcon from '../icons'
 
 const sizes = {
@@ -28,7 +29,9 @@ const VBSButton = ({
   iconPosition,
   iconType,
   text,
+  href,
   children,
+  ...props
 }) => {
   const isChildrenOrText = text || children
   const mainStyle =
@@ -75,23 +78,48 @@ const VBSButton = ({
     return text || children
   }
 
-  return (
-    <button
-      className={twMerge(
-        mainStyle,
-        sizes[size],
-        variants[variant],
-        paddingsForIconOnly,
-        className,
-      )}
-      style={{
-        backgroundColor,
-        color,
-      }}
-    >
-      {renderChildren()}
-    </button>
-  )
+  const renderButton = () => {
+    if (href) {
+      return (
+        <NextLink href={href}>
+          <a
+            className={twMerge(
+              mainStyle,
+              sizes[size],
+              variants[variant],
+              paddingsForIconOnly,
+              className,
+            )}
+            style={{ backgroundColor, color }}
+            {...props}
+          >
+            {renderChildren()}
+          </a>
+        </NextLink>
+      )
+    }
+
+    return (
+      <button
+        className={twMerge(
+          mainStyle,
+          sizes[size],
+          variants[variant],
+          paddingsForIconOnly,
+          className,
+        )}
+        style={{
+          backgroundColor,
+          color,
+        }}
+        {...props}
+      >
+        {renderChildren()}
+      </button>
+    )
+  }
+
+  return renderButton()
 }
 
 VBSButton.defaultProps = {
@@ -99,6 +127,7 @@ VBSButton.defaultProps = {
   variant: 'primary',
   text: '',
   iconType: 'solid',
+  iconPosition: 'left',
 }
 
 VBSButton.propTypes = {
@@ -112,6 +141,7 @@ VBSButton.propTypes = {
   iconName: PropTypes.oneOf(heroIconsNames),
   iconPosition: PropTypes.oneOf(['left', 'right', 'only']),
   iconType: PropTypes.oneOf(['solid', 'outline']),
+  href: PropTypes.string,
 }
 
 export default VBSButton

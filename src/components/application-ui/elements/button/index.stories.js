@@ -54,3 +54,11 @@ WithOnlyIcon.args = {
   iconPosition: 'only',
   children: null,
 }
+export const linkButton = Template.bind({})
+linkButton.args = {
+  size: 'md',
+  variant: 'rounded',
+  text: 'Go to Home Page',
+  children: null,
+  href: '/',
+}
