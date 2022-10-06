@@ -17,8 +17,6 @@ const variants = {
   circular: 'rounded-full',
 }
 
-const kinds = ['default', 'placeholderAvatar', 'nameAvatar']
-
 const notificationPositions = {
   topRight: 'top-0 right-0',
   topLeft: 'top-0 left-0',
@@ -28,13 +26,13 @@ const notificationPositions = {
 
 const VBSAvatar = ({
   size,
-  src,
+  imageSrc,
   variant,
-  kind,
   personName,
   className,
   backgroundColor,
   withNotification,
+  withInfo,
   notificationColor,
   notificationPosition,
   notificationClassName,
@@ -46,7 +44,7 @@ const VBSAvatar = ({
     size === 'xl' && 'h-3.5 w-3.5'
   }`
 
-  if (src) {
+  if (imageSrc) {
     return (
       <div className="relative inline-flex">
         <div
@@ -58,7 +56,7 @@ const VBSAvatar = ({
           )}
         >
           <Image
-            src={src}
+            src={imageSrc}
             className="inline-block"
             layout="fill"
             objectFit="cover"
@@ -94,31 +92,50 @@ const VBSAvatar = ({
     )
   }
 
-  if (kind === 'placeholderAvatar') {
+  if (!imageSrc && personName) {
     return (
-      <span className="inline-block w-8 h-8 overflow-hidden bg-gray-100 rounded-full">
-        <svg
-          className="w-full h-full text-gray-300"
-          fill="currentColor"
-          viewBox="0 0 24 24"
+      <span
+        className={twMerge(
+          'inline-flex items-center justify-center  bg-gray-500 rounded-full',
+          sizes[size],
+          variants[variant],
+          className,
+        )}
+      >
+        <span
+          className={twMerge(
+            'font-medium leading-none text-white',
+            size === 'xs' && 'text-xs',
+            size === 'sm' && 'text-sm',
+            size === 'md' && 'text-base',
+            size === 'lg' && 'text-lg',
+            size === 'xl' && 'text-xl',
+          )}
         >
-          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      </span>
-    )
-  }
-
-  if (kind === 'nameAvatar' && personName) {
-    return (
-      <span className="inline-flex items-center justify-center w-10 h-10 bg-gray-500 rounded-full">
-        <span className="font-medium leading-none text-white">
           {getFirstCharsOfName(personName)}
         </span>
       </span>
     )
   }
 
-  return null
+  return (
+    <span
+      className={twMerge(
+        'inline-block  overflow-hidden bg-gray-100 rounded-full',
+        sizes[size],
+        variants[variant],
+        className,
+      )}
+    >
+      <svg
+        className="w-full h-full text-gray-300"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    </span>
+  )
 }
 
 VBSAvatar.defaultProps = {
@@ -139,16 +156,11 @@ VBSAvatar.propTypes = {
   size: PropTypes.oneOf(Object.keys(sizes)),
   variant: PropTypes.oneOf(Object.keys(variants)),
   /**
-   * if you want to use an image as avatar, you can use src prop
-   * if you want to use a placeholder avatar, you can use kind prop without src
-   * if you want to use a name avatar, you can use kind prop and personName prop
+   * if you want to use an image as avatar, you can use imageSrc prop
+   * if you dont give imageSrc prop, avatar will be generated from personName
+   * if you dont give imageSrc and personName, avatar will be generated from initials
    */
-  kind: PropTypes.oneOf(kinds),
-  /**
-   * if you want to use an image as avatar, you can use src prop
-   * if you want to use a placeholder avatar or name avatar, you can use kind prop without src
-   */
-  src: PropTypes.string,
+  imageSrc: PropTypes.string,
   /**
    tailwind classes might not work here but you can use
     in real component
@@ -160,8 +172,9 @@ VBSAvatar.propTypes = {
   */
   backgroundColor: PropTypes.string,
   withNotification: PropTypes.bool,
-  notificationColor: PropTypes.string,
+  withInfo: PropTypes.bool,
   notificationPosition: PropTypes.oneOf(Object.keys(notificationPositions)),
+  notificationColor: PropTypes.string,
   notificationClassName: PropTypes.string,
   personName: PropTypes.string,
 }
