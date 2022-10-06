@@ -2,7 +2,7 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
 import VBSButton from '@/components/application-ui/elements/button'
 
 export default {
-  title: 'VBS Components/Application UI/Elemets/Button',
+  title: 'VBS Components/Application UI/Elements/Button',
   component: VBSButton,
   argTypes: {
     backgroundColor: { control: 'color' },

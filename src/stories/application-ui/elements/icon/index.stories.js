@@ -2,7 +2,7 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
 import VBSIcon from '@/components/application-ui/elements/icon'
 
 export default {
-  title: 'VBS Components/Application UI/Elemets/Icon',
+  title: 'VBS Components/Application UI/Elements/Icon',
   component: VBSIcon,
   argTypes: {
     iconName: {

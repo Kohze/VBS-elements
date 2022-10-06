@@ -36,8 +36,8 @@ VBSIcon.propTypes = {
   className: PropTypes.string,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
-  width: PropTypes.string,
-  height: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
 }
 
 export default VBSIcon
