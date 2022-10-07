@@ -161,7 +161,7 @@ VBSButton.propTypes = {
   children: PropTypes.node,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
-  iconName: PropTypes.string.isRequired,
+  iconName: PropTypes.string,
   iconPosition: PropTypes.oneOf(['left', 'right', 'only']),
   iconType: PropTypes.oneOf(['solid', 'outline']),
   href: PropTypes.string,

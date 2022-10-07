@@ -36,14 +36,14 @@ Default.args = {
 }
 
 export const Variants = (args) => (
-  <div className="flex gap-4">
+  <div style={{ display: 'flex', gap: '1rem' }}>
     <VBSButton {...args} text="Default" />
     <VBSButton {...args} text="Outline" variant="outline" />
   </div>
 )
 
 export const Sizes = (args) => (
-  <div className="flex gap-4 items-end">
+  <div style={{ display: 'flex', alignItems: 'end', gap: '1rem' }}>
     <VBSButton {...args} text="XSmall" size="xs" />
     <VBSButton {...args} text="Small" size="sm" />
     <VBSButton {...args} text="Medium" size="md" />
@@ -63,7 +63,7 @@ export const FullWidth = (args) => (
 export const WithIcon = (args) => <VBSButton {...args} iconName="cloud" />
 
 export const WithIconAndText = (args) => (
-  <div className="flex gap-4">
+  <div style={{ display: 'flex', gap: '1rem' }}>
     <VBSButton {...args} text="With Icon and Text" iconName="cloud" />
     <VBSButton
       {...args}
@@ -102,9 +102,7 @@ import VBSIcon from '@/components/application-ui/elements/icon'
 ## Variants
 
 <Canvas>
-  <Story name="Variants" class>
-    {Variants.bind({})}
-  </Story>
+  <Story name="Variants">{Variants.bind({})}</Story>
 </Canvas>
 
 ## Sizes
