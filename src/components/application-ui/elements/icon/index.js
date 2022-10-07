@@ -11,6 +11,12 @@ const VBSIcon = ({
   className,
   ...props
 }) => {
+  console.log(iconName, 'iconName')
+
+  if (!iconName) {
+    return null
+  }
+
   const Icon = lookupHeroIcon(iconName, iconType)
   return (
     <div>
@@ -24,13 +30,12 @@ const VBSIcon = ({
 }
 
 VBSIcon.defaultProps = {
-  iconName: '',
   iconType: 'solid',
   className: 'flex h-5 w-5',
 }
 
 VBSIcon.propTypes = {
-  iconName: PropTypes.string,
+  iconName: PropTypes.string.isRequired,
   iconType: PropTypes.oneOf(['solid', 'outline']),
   className: PropTypes.string,
   backgroundColor: PropTypes.string,

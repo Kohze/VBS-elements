@@ -1,0 +1,72 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSIcon from '@/components/application-ui/elements/icon'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
+
+<Meta
+  title="Application UI/Elements/Icon"
+  component={VBSIcon}
+  argTypes={{
+    iconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => <VBSIcon {...args} />
+
+# Icon
+
+Icon component for displaying icons. The icon component is a wrapper for the [Hero Icons](https://heroicons.com/) library.
+
+## Import
+
+```js
+import VBSIcon from '@/components/application-ui/elements/icon'
+```
+
+## Usage
+
+To use the icon component, simply pass the `iconName` as a prop. The `iconName` prop is the name of the icon you want to display. The icon name is the same as the icon name in the [Hero Icons](https://heroicons.com/) library.
+
+## Sample
+
+<Canvas>
+  <Story
+    name="Sample"
+    args={{
+      iconName: 'BugAntIcon',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Outline
+
+The icon component supports outline icons. To use an outline icon, pass the `iconType` prop with the value `outline`.
+
+<Canvas>
+  <Story
+    name="Outline"
+    args={{
+      iconName: 'BugAntIcon',
+      iconType: 'outline',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSIcon} />
