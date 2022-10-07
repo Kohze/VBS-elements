@@ -1,11 +1,16 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
 import VBSAvatarStack from '@/components/application-ui/elements/avatar-stack'
 
-export default {
-  title: 'VBS Components/Application UI/Elements/Avatar Stack',
-  component: VBSAvatarStack,
-}
+<Meta title="Application UI/Elements/Avatar Stack" component={VBSAvatarStack} />
 
-const Template = (args) => <VBSAvatarStack {...args} />
+export const Template = (args) => <VBSAvatarStack {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -37,3 +42,29 @@ Default.args = {
     },
   ],
 }
+
+# Avatar Stack
+
+The Avatar Stack component is used to display a list of avatars in a stack.
+
+## Import
+
+```js
+import VBSAvatarStack from '@/components/application-ui/elements/avatar-stack'
+```
+
+## Usage
+
+To use the Avatar Stack component, simply import the component and pass array of items to the `items` prop with `name` and `imageSrc` properties.
+
+## Demo
+
+<Canvas>
+  <Story name="Default" args={Default.args}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Referance
+
+<ArgsTable of={VBSAvatarStack} />

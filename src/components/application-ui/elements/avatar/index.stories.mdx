@@ -1,0 +1,154 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSAvatar from '@/components/application-ui/elements/avatar'
+
+<Meta title="Application UI/Elements/Avatar" component={VBSAvatar} />
+
+export const Template = (args) => <VBSAvatar {...args} />
+
+export const Sizes = (args) => (
+  <div className="flex items-end gap-4">
+    <VBSAvatar
+      size="xs"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+    <VBSAvatar
+      size="sm"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+    <VBSAvatar
+      size="md"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+    <VBSAvatar
+      size="lg"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+    <VBSAvatar
+      size="xl"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+  </div>
+)
+
+export const Variants = (args) => (
+  <div className="flex gap-4">
+    <VBSAvatar
+      size="md"
+      variant="circular"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+    <VBSAvatar
+      size="md"
+      variant="rounded"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+    <VBSAvatar
+      size="md"
+      variant="square"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+  </div>
+)
+
+export const Kinds = (args) => (
+  <div className="flex gap-4">
+    <VBSAvatar
+      size="md"
+      kind="default"
+      imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      {...args}
+    />
+    <VBSAvatar size="md" personName="John Doe" {...args} />
+    <VBSAvatar size="md" {...args} />
+  </div>
+)
+
+export const WithNotification = (args) => (
+  <VBSAvatar
+    size="md"
+    variant="circular"
+    withNotification
+    notificationPosition="bottomRight"
+    imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+    {...args}
+  />
+)
+
+# Avatar
+
+Avatar is a component that displays a user's profile picture.
+
+## Import
+
+```js
+import VBSAvatar from '@/components/application-ui/elements/avatar'
+```
+
+## Usage
+
+Avatar component takes a `imageSrc` prop which is the url of the image to be displayed.
+
+## Demo
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      imageSrc:
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Sizes
+
+Avatar component takes a `size` prop which is the size of the avatar. The size prop can be one of the following: `xs` `sm`, `md`, `lg`, `xl`. If no size is provided, the default size is `md`.
+
+<Canvas>
+  <Story name="Sizes">{Sizes.bind({})}</Story>
+</Canvas>
+
+## Variants
+
+Avatar component takes a `variant` prop which is the shape of the avatar. The variant prop can be one of the following: `circular`, `rounded`, `square`. If no variant is provided, the default variant is `circular`.
+
+<Canvas>
+  <Story name="Variants">{Variants.bind({})}</Story>
+</Canvas>
+
+## Kinds
+
+There are 3 kinds of avatar. If user provides an image, the avatar will be user image. If user doesnt provide an image, the avatar will be the first letter of the name. If both image and name are not provided, the avatar will be a placeholder avatar.
+
+<Canvas>
+  <Story name="Kinds">{Kinds.bind({})}</Story>
+</Canvas>
+
+## With Notification
+
+Avatar component takes a `withNotification` prop which is a boolean value. If true, a notification dot will be displayed on the avatar. The `notificationPosition` prop can be one of the following: `topLeft`, `topRight`, `bottomLeft`, `bottomRight`. If no notificationPosition is provided, the default notificationPosition is `topRight`. There is also a `notificationColor` prop which is the color of the notification dot.
+
+<Canvas>
+  <Story name="With Notification">{WithNotification.bind({})}</Story>
+</Canvas>
+
+## Referance
+
+<ArgsTable of={VBSAvatar} />

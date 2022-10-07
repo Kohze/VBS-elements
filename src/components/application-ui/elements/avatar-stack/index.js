@@ -6,14 +6,7 @@ const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 const variants = ['square', 'rounded', 'circular']
 const kinds = ['default', 'placeholderAvatar', 'nameAvatar']
 
-const VBSAvatarStack = ({
-  items,
-  size,
-  variant,
-  kind,
-  className,
-  ...props
-}) => {
+const VBSAvatarStack = ({ items, size, variant, className, ...props }) => {
   return (
     <div
       className={twMerge('flex -space-x-1 overflow-hidden isolate', className)}
@@ -24,7 +17,6 @@ const VBSAvatarStack = ({
             <VBSAvatar
               size={size}
               variant={variant}
-              kind={kind}
               className="ring-2 ring-white"
               imageSrc={item.imageSrc}
               personName={item.name}
@@ -44,8 +36,8 @@ VBSAvatarStack.defaultProps = {
 VBSAvatarStack.propTypes = {
   size: PropTypes.oneOf(sizes),
   variant: PropTypes.oneOf(variants),
-  kind: PropTypes.oneOf(kinds),
   backgroundColor: PropTypes.string,
+  className: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       imageSrc: PropTypes.string,
