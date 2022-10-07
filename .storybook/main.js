@@ -9,6 +9,15 @@ module.exports = {
     '@storybook/addon-a11y',
     'storybook-color-picker',
     {
+      name: '@storybook/addon-docs',
+      options: {
+        configureJSX: true,
+        babelOptions: {},
+        sourceLoaderOptions: null,
+        transcludeMarkdown: true,
+      },
+    },
+    {
       name: '@storybook/addon-postcss',
       options: {
         cssLoaderOptions: {
@@ -16,26 +25,6 @@ module.exports = {
         },
         postcssLoaderOptions: {
           implementation: require('postcss'),
-        },
-      },
-    },
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: false,
-        },
-      },
-    },
-    {
-      name: '@storybook/addon-storysource',
-      options: {
-        rule: {
-          // test: [/\.stories\.jsx?$/], This is default
-          include: [path.resolve(__dirname, '../src')], // You can specify directories
-        },
-        loaderOptions: {
-          prettierConfig: { printWidth: 80, singleQuote: false },
         },
       },
     },

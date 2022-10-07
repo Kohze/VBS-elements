@@ -5,7 +5,7 @@ import NextLink from 'next/link'
 import VBSIcon from '../icon'
 
 const sizes = {
-  xs: 'text-xs px-2.5 py-1.5 ',
+  xs: 'text-xs px-2.5 py-1',
   sm: 'text-sm px-3 py-2',
   md: 'text-sm px-4 py-2',
   lg: 'text-base px-4 py-2',
@@ -13,15 +13,22 @@ const sizes = {
 }
 
 const variants = {
-  primary: '',
-  white: 'bg-white text-gray-700 border border-gray-300',
-  rounded: `rounded-full`,
-  'full-width': 'w-full justify-center',
+  default: '',
+  outline: 'bg-white text-gray-700 border border-gray-300',
+}
+
+const kinds = {
+  square: 'rounded-none',
+  rounded: 'rounded-md',
+  circular: 'rounded-full',
 }
 
 const VBSButton = ({
   size,
   variant,
+  kind,
+  disabled,
+  fullWidth,
   className,
   backgroundColor,
   color,
@@ -35,22 +42,30 @@ const VBSButton = ({
 }) => {
   const isChildrenOrText = text || children
   const mainStyle =
-    'inline-flex text-white bg-indigo-600 items-center rounded border border-transparent font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+    'inline-flex text-white bg-indigo-600 items-center border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
 
-  const paddingsForIconOnly = `${
-    variant === 'rounded' && size === 'xs' && iconPosition === 'only' && 'p-1'
-  } ${
-    variant === 'rounded' && size === 'sm' && iconPosition === 'only' && 'p-1.5'
-  } ${
-    variant === 'rounded' && size === 'md' && iconPosition === 'only' && 'p-2'
-  } ${
-    variant === 'rounded' && size === 'lg' && iconPosition === 'only' && 'p-2.5'
-  } ${
-    variant === 'rounded' && size === 'xl' && iconPosition === 'only' && 'p-3'
-  }`
+  const paddingForIconOnly = () => {
+    if (size === 'xs') {
+      return 'p-1'
+    }
+    if (size === 'sm') {
+      return 'p-2'
+    }
+    if (size === 'md') {
+      return 'p-3'
+    }
+    if (size === 'lg') {
+      return 'p-4'
+    }
+    if (size === 'xl') {
+      return 'p-5'
+    }
+
+    return ''
+  }
 
   const renderChildren = () => {
-    if (iconName) {
+    if (!!iconName) {
       if (iconPosition === 'left') {
         return (
           <>
@@ -87,7 +102,10 @@ const VBSButton = ({
               mainStyle,
               sizes[size],
               variants[variant],
-              paddingsForIconOnly,
+              kinds[kind],
+              fullWidth && 'w-full justify-center',
+              iconPosition === 'only' ? paddingForIconOnly() : '',
+              disabled && 'opacity-50 pointer-events-none touch-none',
               className,
             )}
             style={{ backgroundColor, color }}
@@ -105,13 +123,17 @@ const VBSButton = ({
           mainStyle,
           sizes[size],
           variants[variant],
-          paddingsForIconOnly,
+          kinds[kind],
+          fullWidth && 'w-full justify-center',
+          iconPosition === 'only' ? paddingForIconOnly() : '',
+          disabled && 'opacity-50 pointer-events-none touch-none',
           className,
         )}
         style={{
           backgroundColor,
           color,
         }}
+        disabled={disabled}
         {...props}
       >
         {renderChildren()}
@@ -124,16 +146,19 @@ const VBSButton = ({
 
 VBSButton.defaultProps = {
   size: 'md',
-  variant: 'primary',
-  iconType: 'solid',
+  variant: 'default',
+  fullWidth: false,
   iconPosition: 'left',
 }
 
 VBSButton.propTypes = {
   size: PropTypes.oneOf(Object.keys(sizes)),
   variant: PropTypes.oneOf(Object.keys(variants)),
+  kind: PropTypes.oneOf(Object.keys(kinds)),
+  fullWidth: PropTypes.bool,
   className: PropTypes.string,
   text: PropTypes.string,
+  disabled: PropTypes.bool,
   children: PropTypes.node,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,

@@ -1,0 +1,136 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSButton from '@/components/application-ui/elements/button'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
+
+<Meta
+  title="Application UI/Elements/Button"
+  component={VBSButton}
+  argTypes={{
+    backgroundColor: { control: 'color' },
+    color: { control: 'color' },
+    iconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+  }}
+  parameters={{
+    colorPicker: {
+      applyColorTo: ['backgroundColor', 'color'],
+    },
+  }}
+/>
+
+export const Template = (args) => <VBSButton {...args} />
+export const Default = Template.bind({})
+Default.args = {
+  text: 'Default Button',
+}
+
+export const Variants = (args) => (
+  <div className="flex gap-4">
+    <VBSButton {...args} text="Default" />
+    <VBSButton {...args} text="Outline" variant="outline" />
+  </div>
+)
+
+export const Sizes = (args) => (
+  <div className="flex gap-4 items-end">
+    <VBSButton {...args} text="XSmall" size="xs" />
+    <VBSButton {...args} text="Small" size="sm" />
+    <VBSButton {...args} text="Medium" size="md" />
+    <VBSButton {...args} text="Large" size="lg" />
+    <VBSButton {...args} text="XLarge" size="xl" />
+  </div>
+)
+
+export const Disabled = (args) => (
+  <VBSButton {...args} text="Disabled" disabled />
+)
+
+export const FullWidth = (args) => (
+  <VBSButton {...args} text="Full Width" fullWidth />
+)
+
+export const WithIcon = (args) => <VBSButton {...args} iconName="CloudIcon" />
+
+export const WithIconAndText = (args) => (
+  <div className="flex gap-4">
+    <VBSButton {...args} text="With Icon and Text" iconName="CloudIcon" />
+    <VBSButton
+      {...args}
+      text="With Icon and Text"
+      iconName="CloudIcon"
+      iconPosition="right"
+    />
+  </div>
+)
+
+# Button
+
+Buttons allow users to take actions, and make choices with a single tap.
+
+## Usage
+
+- A button should contain at least one text, icon or both.
+- Button texts are limited to one line.
+- Buttons can be used to trigger an action, or to navigate to a new page with href attribute.
+- For button colors, `backgroundColor` and `color` props or tailwind classes can be used.
+- For button sizes, `size` prop or tailwind classes can be used.
+- All button styles can be customized with tailwind classes.
+
+## Default
+
+<Canvas>
+  <Story name="Default">{Default}</Story>
+</Canvas>
+
+## Variants
+
+<Canvas>
+  <Story name="Variants" class>
+    {Variants.bind({})}
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="Sizes">{Sizes.bind({})}</Story>
+</Canvas>
+
+## Disabled
+
+<Canvas>
+  <Story name="Disabled">{Disabled.bind({})}</Story>
+</Canvas>
+
+## Full Width
+
+<Canvas>
+  <Story name="Full Width">{FullWidth.bind({})}</Story>
+</Canvas>
+
+## With Icon
+
+<Canvas>
+  <Story name="With Icon">{WithIcon.bind({})}</Story>
+</Canvas>
+
+## With Icon and Text
+
+<Canvas>
+  <Story name="With Icon and Text">{WithIconAndText.bind({})}</Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSButton} />
