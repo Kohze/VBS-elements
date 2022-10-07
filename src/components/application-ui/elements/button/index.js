@@ -1,6 +1,5 @@
 import { twMerge } from 'tailwind-merge'
 import PropTypes from 'prop-types'
-import heroIconsNames from '@/assets/icons/hero-icons/names'
 import NextLink from 'next/link'
 import VBSIcon from '../icon'
 
@@ -162,7 +161,7 @@ VBSButton.propTypes = {
   children: PropTypes.node,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
-  iconName: PropTypes.oneOf(heroIconsNames),
+  iconName: PropTypes.string.isRequired,
   iconPosition: PropTypes.oneOf(['left', 'right', 'only']),
   iconType: PropTypes.oneOf(['solid', 'outline']),
   href: PropTypes.string,
