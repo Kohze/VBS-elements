@@ -42,34 +42,33 @@ export const Sizes = (args) => (
   </div>
 )
 
-export const Variants = (args) => (
+export const Kinds = (args) => (
   <div className="flex-row-gaps">
     <VBSAvatar
       size="md"
-      variant="circular"
+      kind="circular"
       imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
       {...args}
     />
     <VBSAvatar
       size="md"
-      variant="rounded"
+      kind="rounded"
       imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
       {...args}
     />
     <VBSAvatar
       size="md"
-      variant="square"
+      kind="square"
       imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
       {...args}
     />
   </div>
 )
 
-export const Kinds = (args) => (
+export const Variants = (args) => (
   <div className="flex-row-gaps">
     <VBSAvatar
       size="md"
-      kind="default"
       imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
       {...args}
     />
@@ -81,7 +80,7 @@ export const Kinds = (args) => (
 export const WithNotification = (args) => (
   <VBSAvatar
     size="md"
-    variant="circular"
+    kind="circular"
     withNotification
     notificationPosition="bottomRight"
     imageSrc="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -125,20 +124,20 @@ Avatar component takes a `size` prop which is the size of the avatar. The size p
   <Story name="Sizes">{Sizes.bind({})}</Story>
 </Canvas>
 
-## Variants
-
-Avatar component takes a `variant` prop which is the shape of the avatar. The variant prop can be one of the following: `circular`, `rounded`, `square`. If no variant is provided, the default variant is `circular`.
-
-<Canvas>
-  <Story name="Variants">{Variants.bind({})}</Story>
-</Canvas>
-
 ## Kinds
 
-There are 3 kinds of avatar. If user provides an image, the avatar will be user image. If user doesnt provide an image, the avatar will be the first letter of the name. If both image and name are not provided, the avatar will be a placeholder avatar.
+Avatar component takes a `kind` prop which is the shape of the avatar. The kind prop can be one of the following: `circular`, `rounded`, `square`. If no variant is provided, the default kind is `circular`.
 
 <Canvas>
   <Story name="Kinds">{Kinds.bind({})}</Story>
+</Canvas>
+
+## Variants
+
+There are 3 variants of avatar. If user provides an image, the avatar will be user image. If user doesnt provide an image, the avatar will be the first letter of the name. If both image and name are not provided, the avatar will be a placeholder avatar.
+
+<Canvas>
+  <Story name="Variants">{Variants.bind({})}</Story>
 </Canvas>
 
 ## With Notification

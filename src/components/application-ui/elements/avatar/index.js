@@ -11,7 +11,7 @@ const sizes = {
   xl: 'h-16 w-16',
 }
 
-const variants = {
+const kinds = {
   square: 'rounded-none',
   rounded: 'rounded-md',
   circular: 'rounded-full',
@@ -27,7 +27,7 @@ const notificationPositions = {
 const VBSAvatar = ({
   size,
   imageSrc,
-  variant,
+  kind,
   personName,
   className,
   backgroundColor,
@@ -51,7 +51,7 @@ const VBSAvatar = ({
           className={twMerge(
             'relative overflow-hidden inline-block',
             sizes[size],
-            variants[variant],
+            kinds[kind],
             className,
           )}
         >
@@ -72,16 +72,16 @@ const VBSAvatar = ({
               notificationSizes,
               notificationPositions[notificationPosition],
               notificationClassName,
-              (variant === 'rounded' || variant === 'square') &&
+              (kind === 'rounded' || kind === 'square') &&
                 notificationPosition === 'topLeft' &&
                 '-translate-y-1/2 -translate-x-1/2 transform',
-              (variant === 'rounded' || variant === 'square') &&
+              (kind === 'rounded' || kind === 'square') &&
                 notificationPosition === 'topRight' &&
                 '-translate-y-1/2 translate-x-1/2 transform',
-              (variant === 'rounded' || variant === 'square') &&
+              (kind === 'rounded' || kind === 'square') &&
                 notificationPosition === 'bottomLeft' &&
                 'translate-y-1/2 -translate-x-1/2 transform',
-              (variant === 'rounded' || variant === 'square') &&
+              (kind === 'rounded' || kind === 'square') &&
                 notificationPosition === 'bottomRight' &&
                 'translate-y-1/2 translate-x-1/2 transform',
             )}
@@ -98,7 +98,7 @@ const VBSAvatar = ({
         className={twMerge(
           'inline-flex items-center justify-center  bg-gray-500 rounded-full',
           sizes[size],
-          variants[variant],
+          kinds[kind],
           className,
         )}
       >
@@ -123,7 +123,7 @@ const VBSAvatar = ({
       className={twMerge(
         'inline-block  overflow-hidden bg-gray-100 rounded-full',
         sizes[size],
-        variants[variant],
+        kinds[kind],
         className,
       )}
     >
@@ -140,8 +140,7 @@ const VBSAvatar = ({
 
 VBSAvatar.defaultProps = {
   size: 'md',
-  variant: 'rounded',
-  kind: 'default',
+  kind: 'circular',
   backgroundColor: 'transparent',
   withNotification: false,
   notificationPosition: 'topRight',
@@ -149,27 +148,10 @@ VBSAvatar.defaultProps = {
 }
 
 VBSAvatar.propTypes = {
-  /**
-   if those not enough, you can change avatar size by using
-   tailwind classes like 'h-20 w-20'
-  */
   size: PropTypes.oneOf(Object.keys(sizes)),
-  variant: PropTypes.oneOf(Object.keys(variants)),
-  /**
-   * if you want to use an image as avatar, you can use imageSrc prop
-   * if you dont give imageSrc prop, avatar will be generated from personName
-   * if you dont give imageSrc and personName, avatar will be generated from initials
-   */
+  kind: PropTypes.oneOf(Object.keys(kinds)),
   imageSrc: PropTypes.string,
-  /**
-   tailwind classes might not work here but you can use
-    in real component
-  */
   className: PropTypes.string,
-  /**
-   you can use backgroundColor to set background color
-   or you can use className with tailwind colors like 'bg-red-500'
-  */
   backgroundColor: PropTypes.string,
   withNotification: PropTypes.bool,
   withInfo: PropTypes.bool,

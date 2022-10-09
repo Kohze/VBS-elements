@@ -21,6 +21,7 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
         options: heroIconsNames,
       },
     },
+    onClick: { action: 'clicked' },
   }}
   parameters={{
     colorPicker: {
@@ -80,6 +81,10 @@ export const WithIconAndText = (args) => (
       iconPosition="right"
     />
   </div>
+)
+
+export const FuncButton = (args) => (
+  <VBSButton {...args} text="Click Me" onClick={() => alert('clicked !')} />
 )
 
 # Button
@@ -153,6 +158,14 @@ You can add an icon to a button with `iconName` prop. You can change the icon po
 
 <Canvas>
   <Story name="With Icon and Text">{WithIconAndText.bind({})}</Story>
+</Canvas>
+
+## Function Button
+
+You can add a function to a button with `@click` event.
+
+<Canvas>
+  <Story name="Function Button">{FuncButton.bind({})}</Story>
 </Canvas>
 
 ## Reference
