@@ -1,0 +1,82 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSBadge from '@/components/application-ui/elements/badge'
+
+<Meta title="Application UI/Elements/Badge" component={VBSBadge} />
+
+export const Template = (args) => <VBSBadge {...args} />
+
+export const Default = () => <VBSBadge text="Badge" />
+
+export const Variants = () => (
+  <div className="flex-row-gaps">
+    <VBSBadge text="Primary" />
+    <VBSBadge text="Secondary" variant="secondary" />
+    <VBSBadge text="Success" variant="success" />
+    <VBSBadge text="Danger" variant="danger" />
+    <VBSBadge text="Warning" variant="warning" />
+    <VBSBadge text="Info" variant="info" />
+    <VBSBadge text="Outline" variant="outline" />
+    <VBSBadge text="Light" variant="light" />
+    <VBSBadge text="Dark" variant="dark" />
+  </div>
+)
+
+export const Kinds = () => (
+  <div className="flex-row-gaps">
+    <VBSBadge text="Square" kind="square" />
+    <VBSBadge text="Rounded" kind="rounded" />
+    <VBSBadge text="Circular" kind="circular" />
+  </div>
+)
+
+export const Sizes = () => (
+  <div className="flex-row-gaps-items-end">
+    <VBSBadge text="Small" size="sm" />
+    <VBSBadge text="Normal" />
+  </div>
+)
+
+# Badge
+
+Badges are used to highlight important information.
+
+## Default
+
+<Canvas>
+  <Story name="Default">{Default.bind({})}</Story>
+</Canvas>
+
+## Variants
+
+Variants are used to highlight the importance of the badge. The default variant is `primary`. The other variants are `secondary`, `success`, `danger`, `warning`, `info`, `outline`, `light`, and `dark`.
+
+<Canvas>
+  <Story name="Variants">{Variants.bind({})}</Story>
+</Canvas>
+
+## Kinds
+
+Kinds are used to change the shape of the badge. The default kind is `rounded`. The other kinds are `square` and `circular`.
+
+<Canvas>
+  <Story name="Kinds">{Kinds.bind({})}</Story>
+</Canvas>
+
+## Sizes
+
+Sizes are used to change the size of the badge. The default size is `normal`. The other size is `small`.
+
+<Canvas>
+  <Story name="Sizes">{Sizes.bind({})}</Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSBadge} />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 import VBSIcon from '../icon'
 
-const sizes = {
+export const sizes = {
   xs: 'text-xs px-2.5 py-1',
   sm: 'text-sm px-3 py-2',
   md: 'text-sm px-4 py-2',
@@ -11,12 +11,20 @@ const sizes = {
   xl: 'text-base px-6 py-3',
 }
 
-const variants = {
-  default: '',
-  outline: 'bg-white text-gray-700 border border-gray-300',
+export const variants = {
+  primary: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
+  secondary: 'bg-gray-600 hover:bg-gray-700 focus:ring-gray-500',
+  success: 'bg-green-700 hover:bg-green-700 focus:ring-green-500',
+  danger: 'bg-red-600 hover:bg-red-700 focus:ring-red-500',
+  warning: 'text-black bg-yellow-400 hover:bg-yellow-700 focus:ring-yellow-500',
+  info: 'bg-blue-800 hover:bg-blue-700 focus:ring-blue-700',
+  light: 'text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-gray-100',
+  outline:
+    'text-gray-600 bg-white border border-gray-600 hover:bg-gray-50 focus:ring-gray-500',
+  dark: 'bg-gray-800 hover:bg-gray-900 focus:ring-gray-700',
 }
 
-const kinds = {
+export const kinds = {
   square: 'rounded-none',
   rounded: 'rounded-md',
   circular: 'rounded-full',
@@ -41,7 +49,7 @@ const VBSButton = ({
 }) => {
   const isChildrenOrText = text || children
   const mainStyle =
-    'inline-flex text-white bg-indigo-600 items-center border border-transparent rounded-md font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+    'inline-flex text-white items-center border border-transparent font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2'
 
   const paddingForIconOnly = () => {
     if (size === 'xs') {
@@ -145,7 +153,8 @@ const VBSButton = ({
 
 VBSButton.defaultProps = {
   size: 'md',
-  variant: 'default',
+  variant: 'primary',
+  kind: 'rounded',
   fullWidth: false,
   iconPosition: 'left',
 }

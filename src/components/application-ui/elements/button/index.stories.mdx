@@ -36,14 +36,22 @@ Default.args = {
 }
 
 export const Variants = (args) => (
-  <div style={{ display: 'flex', gap: '1rem' }}>
-    <VBSButton {...args} text="Default" />
+  <div class="flex-row-gaps">
+    <VBSButton {...args} text="Primary" variant="primary" />
+    <VBSButton {...args} text="Secondary" variant="secondary" />
+    <VBSButton {...args} text="Tertiary" variant="tertiary" />
+    <VBSButton {...args} text="Danger" variant="danger" />
+    <VBSButton {...args} text="Success" variant="success" />
+    <VBSButton {...args} text="Warning" variant="warning" />
+    <VBSButton {...args} text="Info" variant="info" />
     <VBSButton {...args} text="Outline" variant="outline" />
+    <VBSButton {...args} text="Light" variant="light" />
+    <VBSButton {...args} text="Dark" variant="dark" />
   </div>
 )
 
 export const Sizes = (args) => (
-  <div style={{ display: 'flex', alignItems: 'end', gap: '1rem' }}>
+  <div className="flex-row-gaps-items-end">
     <VBSButton {...args} text="XSmall" size="xs" />
     <VBSButton {...args} text="Small" size="sm" />
     <VBSButton {...args} text="Medium" size="md" />
@@ -63,7 +71,7 @@ export const FullWidth = (args) => (
 export const WithIcon = (args) => <VBSButton {...args} iconName="cloud" />
 
 export const WithIconAndText = (args) => (
-  <div style={{ display: 'flex', gap: '1rem' }}>
+  <div className="flex-row-gaps">
     <VBSButton {...args} text="With Icon and Text" iconName="cloud" />
     <VBSButton
       {...args}

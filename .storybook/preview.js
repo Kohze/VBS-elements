@@ -1,5 +1,5 @@
 import * as NextImage from 'next/image'
-import '@/styles/globals.css'
+import './styles.css'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import tailwindColors from '@/constants/colors.json'
 
@@ -30,13 +30,6 @@ export const parameters = {
   },
   viewport: {
     viewports: INITIAL_VIEWPORTS,
-  },
-  docs: {
-    transformSource: (source) =>
-      source
-        .replace(/<!--\?lit\$[0-9]+\$-->|<!--\??-->/g, '')
-        // Clean empty boolean attribute values
-        .replace(/=\"\"/g, ''),
   },
   options: {
     storySort: {
