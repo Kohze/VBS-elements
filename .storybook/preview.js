@@ -14,7 +14,6 @@ Object.defineProperty(NextImage, 'default', {
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   viewMode: 'docs',
-  layout: 'centered',
   controls: {
     matchers: {
       color: /(background|color)$/i,
