@@ -1,4 +1,4 @@
-import React from 'react'
+import { css } from '@emotion/css'
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
 
@@ -26,7 +26,6 @@ const kinds = {
 }
 
 const VBSBadge = ({
-  children,
   text,
   variant,
   size,
@@ -40,6 +39,12 @@ const VBSBadge = ({
 }) => {
   const mainStyle =
     'inline-flex items-center px-2.5 py-0.5 text-xs font-medium leading-4'
+
+  const additonalStyles = css`
+    background-color: ${backgroundColor};
+    color: ${color};
+  `
+
   return (
     <span
       className={twMerge(
@@ -50,8 +55,9 @@ const VBSBadge = ({
         className,
         removeButton && size === 'sm' && 'pr-0',
         removeButton && size === 'normal' && 'pr-1',
+        additonalStyles,
       )}
-      style={{ backgroundColor, color }}
+      style={{ ...props.style }}
     >
       {notification && (
         <svg
@@ -62,7 +68,7 @@ const VBSBadge = ({
           <circle cx={4} cy={4} r={3} />
         </svg>
       )}
-      {text || children}
+      {text}
 
       {removeButton && (
         <button
@@ -96,7 +102,6 @@ VBSBadge.defaultProps = {
 }
 
 VBSBadge.propTypes = {
-  children: PropTypes.node,
   text: PropTypes.string,
   variant: PropTypes.oneOf(Object.keys(variants)),
   size: PropTypes.oneOf(Object.keys(sizes)),
@@ -105,7 +110,6 @@ VBSBadge.propTypes = {
   color: PropTypes.string,
   className: PropTypes.string,
   notification: PropTypes.bool,
-  notificationColor: PropTypes.string,
   removeButton: PropTypes.bool,
 }
 

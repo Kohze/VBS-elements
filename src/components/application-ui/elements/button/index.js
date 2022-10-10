@@ -1,3 +1,4 @@
+import { css } from '@emotion/css'
 import { twMerge } from 'tailwind-merge'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
@@ -12,16 +13,15 @@ export const sizes = {
 }
 
 export const variants = {
-  primary: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
-  secondary: 'bg-gray-600 hover:bg-gray-700 focus:ring-gray-500',
-  success: 'bg-green-700 hover:bg-green-700 focus:ring-green-500',
-  danger: 'bg-red-600 hover:bg-red-700 focus:ring-red-500',
-  warning: 'text-black bg-yellow-400 hover:bg-yellow-700 focus:ring-yellow-500',
-  info: 'bg-blue-800 hover:bg-blue-700 focus:ring-blue-700',
-  light: 'text-gray-900 bg-gray-100 hover:bg-gray-200 focus:ring-gray-100',
-  outline:
-    'text-gray-600 bg-white border border-gray-600 hover:bg-gray-50 focus:ring-gray-500',
-  dark: 'bg-gray-800 hover:bg-gray-900 focus:ring-gray-700',
+  primary: 'bg-blue-600 focus:ring-blue-500',
+  secondary: 'bg-gray-600 focus:ring-gray-500',
+  success: 'bg-green-700 focus:ring-green-500',
+  danger: 'bg-red-600 focus:ring-red-500',
+  warning: 'text-black bg-yellow-400 focus:ring-yellow-500',
+  info: 'bg-blue-800 focus:ring-blue-700',
+  light: 'text-gray-900 bg-gray-100 focus:ring-gray-100',
+  outline: 'text-gray-600 bg-white border border-gray-600 focus:ring-gray-500',
+  dark: 'bg-gray-800 focus:ring-gray-700',
 }
 
 export const kinds = {
@@ -71,6 +71,15 @@ const VBSButton = ({
     return ''
   }
 
+  const additonalStyles = css`
+    ${iconPosition === 'only' && paddingForIconOnly()}
+    background-color: ${backgroundColor};
+    color: ${color};
+    &:focus {
+      box-shadow: 0 0px 0px 2px white, 0 0px 0px 4px ${backgroundColor};
+    }
+  `
+
   const renderChildren = () => {
     if (!!iconName) {
       if (iconPosition === 'left') {
@@ -111,11 +120,11 @@ const VBSButton = ({
               variants[variant],
               kinds[kind],
               fullWidth && 'w-full justify-center',
-              iconPosition === 'only' ? paddingForIconOnly() : '',
               disabled && 'opacity-50 pointer-events-none touch-none',
+              additonalStyles,
               className,
             )}
-            style={{ backgroundColor, color }}
+            style={{ ...props.style }}
             {...props}
           >
             {renderChildren()}
@@ -132,13 +141,12 @@ const VBSButton = ({
           variants[variant],
           kinds[kind],
           fullWidth && 'w-full justify-center',
-          iconPosition === 'only' ? paddingForIconOnly() : '',
           disabled && 'opacity-50 pointer-events-none touch-none',
+          additonalStyles,
           className,
         )}
         style={{
-          backgroundColor,
-          color,
+          ...props.style,
         }}
         disabled={disabled}
         {...props}

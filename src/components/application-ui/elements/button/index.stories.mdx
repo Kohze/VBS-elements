@@ -37,7 +37,6 @@ export const Variants = (args) => (
   <div className="flex gap-2">
     <VBSButton {...args} text="Primary" variant="primary" />
     <VBSButton {...args} text="Secondary" variant="secondary" />
-    <VBSButton {...args} text="Tertiary" variant="tertiary" />
     <VBSButton {...args} text="Danger" variant="danger" />
     <VBSButton {...args} text="Success" variant="success" />
     <VBSButton {...args} text="Warning" variant="warning" />
@@ -82,6 +81,10 @@ export const WithIconAndText = (args) => (
 
 export const FuncButton = (args) => (
   <VBSButton {...args} text="Click Me" onClick={() => alert('clicked !')} />
+)
+
+export const LinkButton = (args) => (
+  <VBSButton {...args} text="Link Button" href="/" />
 )
 
 # Button
@@ -163,6 +166,14 @@ Button can have events like `onClick`, `onMouseEnter`, `onMouseLeave`, `onSubmit
 
 <Canvas>
   <Story name="Function Button">{FuncButton.bind({})}</Story>
+</Canvas>
+
+## Link Button
+
+Button can be a link with `href` prop.
+
+<Canvas>
+  <Story name="Link Button">{LinkButton.bind({})}</Story>
 </Canvas>
 
 ## Reference
