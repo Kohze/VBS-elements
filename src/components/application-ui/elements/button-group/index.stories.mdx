@@ -1,0 +1,51 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSButtonGroup from '@/components/application-ui/elements/button-group'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
+
+<Meta
+  title="Application UI/Elements/ButtonGroup"
+  component={VBSButtonGroup}
+  argTypes={{
+    groupElements: {
+      control: 'object',
+    },
+  }}
+  parameters={{
+    colorPicker: {
+      applyColorTo: ['backgroundColor', 'color'],
+    },
+  }}
+/>
+
+export const Template = (args) => <VBSButtonGroup {...args} />
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      groupElements: [
+        {
+          text: 'Button 1',
+          iconName: 'academic-cap',
+        },
+        {
+          text: 'Button 2',
+          iconName: 'adjustments-vertical',
+        },
+        {
+          text: 'Button 3',
+          iconName: 'arrow-up-tray',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
