@@ -13,15 +13,12 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
   title="Application UI/Elements/Button"
   component={VBSButton}
   argTypes={{
-    backgroundColor: { control: 'color' },
-    color: { control: 'color' },
     iconName: {
       control: {
         type: 'select',
         options: heroIconsNames,
       },
     },
-    onClick: { action: 'clicked' },
   }}
   parameters={{
     colorPicker: {
@@ -130,7 +127,7 @@ There are five sizes: `xs`, `sm`, `md`, `lg` and `xl`. You can change the size w
 
 ## Disabled
 
-You can disable a button with `disabled` prop.
+Button can be disabled with `disabled` prop.
 
 <Canvas>
   <Story name="Disabled">{Disabled.bind({})}</Story>
@@ -138,7 +135,7 @@ You can disable a button with `disabled` prop.
 
 ## Full Width
 
-You can make a button full width with `fullWidth` prop.
+Button can be full width with `fullWidth` prop.
 
 <Canvas>
   <Story name="Full Width">{FullWidth.bind({})}</Story>
@@ -146,7 +143,7 @@ You can make a button full width with `fullWidth` prop.
 
 ## With Icon
 
-You can add an icon to a button with `iconName` prop.
+Button can have an icon with `iconName` prop. Check [Hero Icons](https://heroicons.com/) for icon names.
 
 <Canvas>
   <Story name="With Icon">{WithIcon.bind({})}</Story>
@@ -154,7 +151,7 @@ You can add an icon to a button with `iconName` prop.
 
 ## With Icon and Text
 
-You can add an icon to a button with `iconName` prop. You can change the icon position with `iconPosition` prop.
+Button can have an icon and text with `iconName` prop. Icon position can be changed with `iconPosition` prop. Default icon position is `left`. Check [Hero Icons](https://heroicons.com/) for icon names.
 
 <Canvas>
   <Story name="With Icon and Text">{WithIconAndText.bind({})}</Story>
@@ -162,7 +159,7 @@ You can add an icon to a button with `iconName` prop. You can change the icon po
 
 ## Function Button
 
-You can add a function to a button with `@click` event.
+Button can have events like `onClick`, `onMouseEnter`, `onMouseLeave`, `onSubmit` etc.
 
 <Canvas>
   <Story name="Function Button">{FuncButton.bind({})}</Story>

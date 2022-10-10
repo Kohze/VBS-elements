@@ -68,6 +68,7 @@ const VBSBadge = ({
         <button
           type="button"
           className="ml-0.5 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full text-indigo-400 hover:bg-indigo-200 hover:text-indigo-500 focus:bg-indigo-500 focus:text-white focus:outline-none"
+          onClick={onRemove}
         >
           <span className="sr-only">Remove button</span>
           <svg
@@ -101,13 +102,11 @@ VBSBadge.propTypes = {
   size: PropTypes.oneOf(Object.keys(sizes)),
   kind: PropTypes.oneOf(Object.keys(kinds)),
   backgroundColor: PropTypes.string,
-  textColor: PropTypes.string,
   color: PropTypes.string,
   className: PropTypes.string,
   notification: PropTypes.bool,
   notificationColor: PropTypes.string,
   removeButton: PropTypes.bool,
-  onRemove: PropTypes.func,
 }
 
 export default VBSBadge

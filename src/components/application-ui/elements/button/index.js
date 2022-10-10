@@ -45,7 +45,6 @@ const VBSButton = ({
   text,
   href,
   children,
-  onClick,
   ...props
 }) => {
   const isChildrenOrText = text || children
@@ -142,7 +141,6 @@ const VBSButton = ({
           color,
         }}
         disabled={disabled}
-        onClick={onClick}
         {...props}
       >
         {renderChildren()}
@@ -177,7 +175,6 @@ VBSButton.propTypes = {
   iconPosition: PropTypes.oneOf(['left', 'right', 'only']),
   iconType: PropTypes.oneOf(['solid', 'outline']),
   href: PropTypes.string,
-  onClick: PropTypes.func,
 }
 
 export default VBSButton

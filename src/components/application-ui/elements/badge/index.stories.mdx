@@ -67,6 +67,12 @@ export const WithRemoveButton = (args) => (
 
 Badges are used to highlight important information.
 
+## Import
+
+```js
+import VBSBadge from '@/components/application-ui/elements/badge'
+```
+
 ## Default
 
 <Canvas>
@@ -99,7 +105,7 @@ Sizes are used to change the size of the badge. The default size is `normal`. Th
 
 ## With Notification
 
-Badges can have a notification dot.
+Badges can have a notification dot with `notification` prop.
 
 <Canvas>
   <Story name="With Notification">{WithNotification.bind({})}</Story>
@@ -107,7 +113,7 @@ Badges can have a notification dot.
 
 ## With Remove Button
 
-Badges can have a remove button with a callback function.
+Badges can have a remove button with a callback function with `removeButton` and `onRemove` props.
 
 <Canvas>
   <Story name="With Remove Button">{WithRemoveButton.bind({})}</Story>
