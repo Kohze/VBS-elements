@@ -37,7 +37,7 @@ Default.args = {
 }
 
 export const Variants = (args) => (
-  <div class="flex-row-gaps">
+  <div className="flex gap-2">
     <VBSButton {...args} text="Primary" variant="primary" />
     <VBSButton {...args} text="Secondary" variant="secondary" />
     <VBSButton {...args} text="Tertiary" variant="tertiary" />
@@ -52,7 +52,7 @@ export const Variants = (args) => (
 )
 
 export const Sizes = (args) => (
-  <div className="flex-row-gaps-items-end">
+  <div className="flex gap-2 items-end">
     <VBSButton {...args} text="XSmall" size="xs" />
     <VBSButton {...args} text="Small" size="sm" />
     <VBSButton {...args} text="Medium" size="md" />
@@ -72,7 +72,7 @@ export const FullWidth = (args) => (
 export const WithIcon = (args) => <VBSButton {...args} iconName="cloud" />
 
 export const WithIconAndText = (args) => (
-  <div className="flex-row-gaps">
+  <div className="flex gap-2">
     <VBSButton {...args} text="With Icon and Text" iconName="cloud" />
     <VBSButton
       {...args}

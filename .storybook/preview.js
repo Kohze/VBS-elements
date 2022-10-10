@@ -1,5 +1,5 @@
+import '@/styles/globals.css'
 import * as NextImage from 'next/image'
-import './styles.css'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import tailwindColors from '@/constants/colors.json'
 

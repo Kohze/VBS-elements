@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 
 const sizes = {
   sm: 'text-xs px-2.5 py-0.5',
-  normal: 'text-sm px-3 py-1',
+  normal: 'text-sm px-3 py-0.5',
 }
 
 const variants = {
@@ -32,7 +32,10 @@ const VBSBadge = ({
   size,
   kind,
   color,
+  notification,
   backgroundColor,
+  removeButton,
+  onRemove,
   className,
 }) => {
   const mainStyle =
@@ -45,10 +48,42 @@ const VBSBadge = ({
         sizes[size],
         kinds[kind],
         className,
+        removeButton && size === 'sm' && 'pr-0',
+        removeButton && size === 'normal' && 'pr-1',
       )}
       style={{ backgroundColor, color }}
     >
+      {notification && (
+        <svg
+          className="-ml-0.5 mr-1.5 h-2 w-2"
+          fill="currentColor"
+          viewBox="0 0 8 8"
+        >
+          <circle cx={4} cy={4} r={3} />
+        </svg>
+      )}
       {text || children}
+
+      {removeButton && (
+        <button
+          type="button"
+          className="ml-0.5 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full text-indigo-400 hover:bg-indigo-200 hover:text-indigo-500 focus:bg-indigo-500 focus:text-white focus:outline-none"
+        >
+          <span className="sr-only">Remove button</span>
+          <svg
+            className="w-2 h-2"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 8 8"
+          >
+            <path
+              strokeLinecap="round"
+              strokeWidth="1.5"
+              d="M1 1l6 6m0-6L1 7"
+            />
+          </svg>
+        </button>
+      )}
     </span>
   )
 }
@@ -69,6 +104,10 @@ VBSBadge.propTypes = {
   textColor: PropTypes.string,
   color: PropTypes.string,
   className: PropTypes.string,
+  notification: PropTypes.bool,
+  notificationColor: PropTypes.string,
+  removeButton: PropTypes.bool,
+  onRemove: PropTypes.func,
 }
 
 export default VBSBadge
