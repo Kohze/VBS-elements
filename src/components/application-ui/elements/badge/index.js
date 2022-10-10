@@ -36,6 +36,7 @@ const VBSBadge = ({
   removeButton,
   onRemove,
   className,
+  ...props
 }) => {
   const mainStyle =
     'inline-flex items-center px-2.5 py-0.5 text-xs font-medium leading-4'

@@ -26,6 +26,20 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
 
 export const Template = (args) => <VBSButtonGroup {...args} />
 
+## Button Group
+
+Button groups are used to group buttons together.
+
+## Import
+
+```js
+import VBSButtonGroup from '@/components/application-ui/elements/button-group'
+```
+
+## Basic
+
+Basic group of buttons. The `groupElements` prop is an array of objects with the following properties: `text` and `iconName` (optional). Almost every property of the `VBSButton` component can be used in the `VBSButtonGroup` array. Check the reference below.
+
 <Canvas>
   <Story
     name="Default"
@@ -49,3 +63,7 @@ export const Template = (args) => <VBSButtonGroup {...args} />
     {Template.bind({})}
   </Story>
 </Canvas>
+
+## Reference
+
+<ArgsTable of={VBSButtonGroup} />

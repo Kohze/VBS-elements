@@ -31,6 +31,7 @@ const VBSAvatar = ({
   personName,
   className,
   backgroundColor,
+  color,
   withNotification,
   withInfo,
   notificationColor,
@@ -61,7 +62,7 @@ const VBSAvatar = ({
             layout="fill"
             objectFit="cover"
             alt={props.alt}
-            style={{ backgroundColor }}
+            style={{ backgroundColor, ...props.style }}
             {...props}
           />
         </div>
@@ -101,6 +102,7 @@ const VBSAvatar = ({
           kinds[kind],
           className,
         )}
+        style={{ backgroundColor, ...props.style }}
       >
         <span
           className={twMerge(
@@ -111,6 +113,7 @@ const VBSAvatar = ({
             size === 'lg' && 'text-lg',
             size === 'xl' && 'text-xl',
           )}
+          style={{ color }}
         >
           {getFirstCharsOfName(personName)}
         </span>
@@ -126,12 +129,9 @@ const VBSAvatar = ({
         kinds[kind],
         className,
       )}
+      style={{ backgroundColor, color, ...props.style }}
     >
-      <svg
-        className="w-full h-full text-gray-300"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
+      <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
         <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
       </svg>
     </span>
@@ -145,6 +145,8 @@ VBSAvatar.defaultProps = {
   withNotification: false,
   notificationPosition: 'topRight',
   notificationColor: 'lightgreen',
+  backgroundColor: '#647598',
+  color: '#eeeeee',
 }
 
 VBSAvatar.propTypes = {
@@ -153,6 +155,7 @@ VBSAvatar.propTypes = {
   imageSrc: PropTypes.string,
   className: PropTypes.string,
   backgroundColor: PropTypes.string,
+  color: PropTypes.string,
   withNotification: PropTypes.bool,
   withInfo: PropTypes.bool,
   notificationPosition: PropTypes.oneOf(Object.keys(notificationPositions)),

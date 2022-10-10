@@ -124,6 +124,7 @@ const VBSButton = ({
               additonalStyles,
               className,
             )}
+            disabled={disabled}
             style={{ ...props.style }}
             {...props}
           >

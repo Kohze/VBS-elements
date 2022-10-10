@@ -1,3 +1,4 @@
+import { css } from '@emotion/css'
 import { twMerge } from 'tailwind-merge'
 import VBSButton from '../button'
 import PropTypes from 'prop-types'
@@ -24,9 +25,22 @@ const VBSButtonGroup = ({
   size,
   variant,
   kind,
+  disabled,
+  className,
+  buttonClassName,
+  backgroundColor,
+  color,
+  ...props
 }) => {
+  const additionalStyles = css`
+    background-color: ${backgroundColor};
+    color: ${color};
+  `
+
   return (
-    <span className="inline-flex rounded-md shadow-sm isolate">
+    <span
+      className={twMerge('inline-flex rounded-md shadow-sm isolate', className)}
+    >
       {groupElements
         ? groupElements?.map((element, index) => (
             <VBSButton
@@ -57,7 +71,12 @@ const VBSButtonGroup = ({
                   kind === 'square' &&
                   'rounded-l-none rounded-r-none',
                 index > 0 && index < groupElements.length - 1 && 'rounded-none',
+                buttonClassName,
+                additionalStyles,
               )}
+              disabled={disabled}
+              style={{ ...props.style }}
+              {...props}
             />
           ))
         : null}
@@ -85,6 +104,11 @@ VBSButtonGroup.propTypes = {
   size: PropTypes.oneOf(sizes),
   variant: PropTypes.oneOf(variants),
   kind: PropTypes.oneOf(kinds),
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  buttonClassName: PropTypes.string,
+  backgroundColor: PropTypes.string,
+  color: PropTypes.string,
 }
 
 export default VBSButtonGroup

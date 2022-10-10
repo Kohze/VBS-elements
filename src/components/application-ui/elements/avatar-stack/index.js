@@ -19,6 +19,7 @@ const VBSAvatarStack = ({ items, size, kind, className, ...props }) => {
               className="ring-2 ring-white"
               imageSrc={item.imageSrc}
               personName={item.name}
+              style={{ ...props.style }}
               {...props}
             />
           </div>
