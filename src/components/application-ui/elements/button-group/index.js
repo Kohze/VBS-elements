@@ -52,6 +52,7 @@ const VBSButtonGroup = ({
               size={size}
               variant={variant}
               className={twMerge(
+                'focus:focus:ring-offset-0 focus:ring-1',
                 index === 0 &&
                   kind === 'rounded' &&
                   'rounded-l-md rounded-r-none',
@@ -100,7 +101,7 @@ VBSButtonGroup.propTypes = {
       iconName: PropTypes.string,
     }),
   ),
-  iconPosition: PropTypes.oneOf(['left', 'right']),
+  iconPosition: PropTypes.oneOf(['left', 'right', 'only']),
   size: PropTypes.oneOf(sizes),
   variant: PropTypes.oneOf(variants),
   kind: PropTypes.oneOf(kinds),

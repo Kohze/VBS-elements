@@ -75,9 +75,11 @@ const VBSButton = ({
     ${iconPosition === 'only' && paddingForIconOnly()}
     background-color: ${backgroundColor};
     color: ${color};
-    &:focus {
+    ${backgroundColor &&
+    `&:focus {
       box-shadow: 0 0px 0px 2px white, 0 0px 0px 4px ${backgroundColor};
     }
+    `}
   `
 
   const renderChildren = () => {

@@ -42,21 +42,45 @@ Basic group of buttons. The `groupElements` prop is an array of objects with the
 
 <Canvas>
   <Story
-    name="Default"
+    name="Basic"
     args={{
       groupElements: [
-        {
-          text: 'Button 1',
-          iconName: 'academic-cap',
-        },
-        {
-          text: 'Button 2',
-          iconName: 'adjustments-vertical',
-        },
-        {
-          text: 'Button 3',
-          iconName: 'arrow-up-tray',
-        },
+        { text: 'Button 1' },
+        { text: 'Button 2' },
+        { text: 'Button 3' },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Icon
+
+<Canvas>
+  <Story
+    name="With Icon"
+    args={{
+      groupElements: [
+        { text: 'Button 1', iconName: 'academic-cap' },
+        { text: 'Button 2', iconName: 'adjustments-vertical' },
+        { text: 'Button 3', iconName: 'arrow-up-tray' },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Only Icon
+
+<Canvas>
+  <Story
+    name="With Only Icon"
+    args={{
+      groupElements: [
+        { iconName: 'chevron-left' },
+        { iconName: 'chevron-right' },
       ],
     }}
   >
