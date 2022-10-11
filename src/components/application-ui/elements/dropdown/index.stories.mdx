@@ -8,24 +8,24 @@ import {
 } from '@storybook/addon-docs'
 import VBSDropdown from '@/components/application-ui/elements/dropdown'
 
-<Meta
-  title="Application UI/Elements/Dropdown"
-  component={VBSDropdown}
-  decorators={[
-    (Story) => (
-      <div
-        style={{ minHeight: '480px' }}
-        className="bg-slate-100 flex justify-center"
-      >
-        <Story />
-      </div>
-    ),
-  ]}
-/>
+<Meta title="Application UI/Elements/Dropdown" component={VBSDropdown} />
 
-export const Template = (args) => <VBSDropdown {...args} />
+export const Template = (args) => (
+  <div
+    style={{ minHeight: '280px' }}
+    className="bg-slate-100 flex justify-center"
+  >
+    <VBSDropdown {...args} />
+  </div>
+)
+
+# Dropdown
+
+Dropdowns are used to display a list of options that can be selected by the user.
 
 ## Default
+
+Dropdowns need to have `elements` props containing an array of objects with `text` and `iconName` (optional) properties.
 
 <Canvas>
   <Story
@@ -39,6 +39,8 @@ export const Template = (args) => <VBSDropdown {...args} />
 </Canvas>
 
 ## With Icon
+
+Dropdowns can also contain icons. The icon can be placed on the left or right side of the text with the `iconPosition` prop. Use the `iconName` property to specify the icon. Icons names can be found in the [Heroicons](https://heroicons.com/) library.
 
 <Canvas>
   <Story
@@ -57,6 +59,8 @@ export const Template = (args) => <VBSDropdown {...args} />
 
 ## Grouped Elements
 
+Dropdowns can also contain grouped elements. The `groupElements` prop is used to group elements together. The `groupElements` prop is an array including the number of arrays of objects that will be grouped together. Each object must have a `text` and `iconName` (optional) property.
+
 <Canvas>
   <Story
     name="Grouped Elements"
@@ -68,8 +72,8 @@ export const Template = (args) => <VBSDropdown {...args} />
           { text: 'Link 3', iconName: 'arrow-up-tray' },
         ],
         [
-          { text: 'Link 1', iconName: 'academic-cap' },
-          { text: 'Link 2', iconName: 'adjustments-vertical' },
+          { text: 'Link 1', iconName: 'arrow-trending-down' },
+          { text: 'Link 2', iconName: 'arrows-right-left' },
         ],
       ],
     }}
@@ -81,3 +85,4 @@ export const Template = (args) => <VBSDropdown {...args} />
 ## Reference
 
 <ArgsTable of={VBSDropdown} />
+```

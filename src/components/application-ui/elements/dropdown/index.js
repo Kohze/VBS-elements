@@ -23,183 +23,55 @@ const VBSDropdown = ({
   iconType,
 }) => {
   const renderElements = (els) => {
-    return (
-      <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        {els.map((el, index) => {
-          return (
-            <Menu.Item key={index}>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={twMerge(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'group flex items-center px-4 py-2 text-sm',
-                  )}
-                >
-                  {iconPosition === 'left' && (
-                    <>
-                      <VBSIcon
-                        iconName={el.iconName}
-                        iconType={iconType}
-                        className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                        aria-hidden="true"
-                      />
-                      {el.text}
-                    </>
-                  )}
-
-                  {iconPosition === 'right' && (
-                    <>
-                      <span className="w-full">{el.text}</span>
-                      <VBSIcon
-                        iconName={el.iconName}
-                        iconType={iconType}
-                        className="w-5 h-5 ml-3 text-gray-400 group-hover:text-gray-500"
-                        aria-hidden="true"
-                      />
-                    </>
-                  )}
-                </a>
+    return els.map((el, index) => {
+      return (
+        <Menu.Item key={index}>
+          {({ active }) => (
+            <a
+              href="#"
+              className={twMerge(
+                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                'group flex items-center px-4 py-2 text-sm',
               )}
-            </Menu.Item>
-          )
-        })}
-      </Menu.Items>
-    )
+            >
+              {iconPosition === 'left' && (
+                <>
+                  <VBSIcon
+                    iconName={el.iconName}
+                    iconType={iconType}
+                    className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  {el.text}
+                </>
+              )}
+
+              {iconPosition === 'right' && (
+                <>
+                  <span className="w-full">{el.text}</span>
+                  <VBSIcon
+                    iconName={el.iconName}
+                    iconType={iconType}
+                    className="w-5 h-5 ml-3 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                </>
+              )}
+            </a>
+          )}
+        </Menu.Item>
+      )
+    })
   }
 
   const renderGroupElements = () => {
-    return (
-      <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <div className="py-1">
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                href="#"
-                className={twMerge(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'group flex items-center px-4 py-2 text-sm',
-                )}
-              >
-                <PencilSquareIcon
-                  className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                  aria-hidden="true"
-                />
-                Edit
-              </a>
-            )}
-          </Menu.Item>
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                href="#"
-                className={twMerge(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'group flex items-center px-4 py-2 text-sm',
-                )}
-              >
-                <DocumentDuplicateIcon
-                  className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                  aria-hidden="true"
-                />
-                Duplicate
-              </a>
-            )}
-          </Menu.Item>
+    return groupElements.map((elements, index) => {
+      return (
+        <div key={index} className="px-1 py-1">
+          {renderElements(elements)}
         </div>
-        <div className="py-1">
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                href="#"
-                className={twMerge(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'group flex items-center px-4 py-2 text-sm',
-                )}
-              >
-                <ArchiveBoxIcon
-                  className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                  aria-hidden="true"
-                />
-                Archive
-              </a>
-            )}
-          </Menu.Item>
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                href="#"
-                className={twMerge(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'group flex items-center px-4 py-2 text-sm',
-                )}
-              >
-                <ArrowRightCircleIcon
-                  className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                  aria-hidden="true"
-                />
-                Move
-              </a>
-            )}
-          </Menu.Item>
-        </div>
-        <div className="py-1">
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                href="#"
-                className={twMerge(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'group flex items-center px-4 py-2 text-sm',
-                )}
-              >
-                <UserPlusIcon
-                  className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                  aria-hidden="true"
-                />
-                Share
-              </a>
-            )}
-          </Menu.Item>
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                href="#"
-                className={twMerge(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'group flex items-center px-4 py-2 text-sm',
-                )}
-              >
-                <HeartIcon
-                  className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                  aria-hidden="true"
-                />
-                Add to favorites
-              </a>
-            )}
-          </Menu.Item>
-        </div>
-        <div className="py-1">
-          <Menu.Item>
-            {({ active }) => (
-              <a
-                href="#"
-                className={twMerge(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'group flex items-center px-4 py-2 text-sm',
-                )}
-              >
-                <TrashIcon
-                  className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                  aria-hidden="true"
-                />
-                Delete
-              </a>
-            )}
-          </Menu.Item>
-        </div>
-      </Menu.Items>
-    )
+      )
+    })
   }
 
   return (
@@ -220,11 +92,18 @@ const VBSDropdown = ({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        {elements
-          ? renderElements(elements)
-          : groupElements
-          ? renderGroupElements()
-          : null}
+        <Menu.Items
+          className={twMerge(
+            'absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
+            groupElements ? 'divide-y divide-gray-100' : '',
+          )}
+        >
+          {elements
+            ? renderElements(elements)
+            : groupElements
+            ? renderGroupElements()
+            : null}
+        </Menu.Items>
       </Transition>
     </Menu>
   )
@@ -251,7 +130,7 @@ VBSDropdown.propTypes = {
    * `groupElements` creates a group of elements that are separated by a divider.
    */
   groupElements: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
-  header: PropTypes.string,
+  header: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['left', 'right']),
 }
 
