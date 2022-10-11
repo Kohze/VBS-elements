@@ -13,7 +13,7 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
   title="Application UI/Elements/ButtonGroup"
   component={VBSButtonGroup}
   argTypes={{
-    groupElements: {
+    elements: {
       control: 'object',
     },
   }}
@@ -38,13 +38,13 @@ import VBSButtonGroup from '@/components/application-ui/elements/button-group'
 
 ## Basic
 
-Basic group of buttons. The `groupElements` prop is an array of objects with the following properties: `text` and `iconName` (optional). Almost every property of the `VBSButton` component can be used in the `VBSButtonGroup` array. Check the reference below.
+Basic group of buttons. The `elements` prop is an array of objects with the following properties: `text` and `iconName` (optional). Almost every property of the `VBSButton` component can be used in the `VBSButtonGroup` array. Check the reference below.
 
 <Canvas>
   <Story
     name="Basic"
     args={{
-      groupElements: [
+      elements: [
         { text: 'Button 1' },
         { text: 'Button 2' },
         { text: 'Button 3' },
@@ -61,7 +61,7 @@ Basic group of buttons. The `groupElements` prop is an array of objects with the
   <Story
     name="With Icon"
     args={{
-      groupElements: [
+      elements: [
         { text: 'Button 1', iconName: 'academic-cap' },
         { text: 'Button 2', iconName: 'adjustments-vertical' },
         { text: 'Button 3', iconName: 'arrow-up-tray' },
@@ -78,10 +78,7 @@ Basic group of buttons. The `groupElements` prop is an array of objects with the
   <Story
     name="With Only Icon"
     args={{
-      groupElements: [
-        { iconName: 'chevron-left' },
-        { iconName: 'chevron-right' },
-      ],
+      elements: [{ iconName: 'chevron-left' }, { iconName: 'chevron-right' }],
     }}
   >
     {Template.bind({})}

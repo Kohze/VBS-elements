@@ -19,7 +19,7 @@ export const variants = [
 export const kinds = ['square', 'rounded', 'circular']
 
 const VBSButtonGroup = ({
-  groupElements,
+  elements,
   iconPosition,
   iconType,
   size,
@@ -41,8 +41,8 @@ const VBSButtonGroup = ({
     <span
       className={twMerge('inline-flex rounded-md shadow-sm isolate', className)}
     >
-      {groupElements
-        ? groupElements?.map((element, index) => (
+      {elements
+        ? elements?.map((element, index) => (
             <VBSButton
               key={index}
               text={element.text}
@@ -62,16 +62,16 @@ const VBSButtonGroup = ({
                 index === 0 &&
                   kind === 'square' &&
                   'rounded-l-none rounded-r-none',
-                index === groupElements.length - 1 &&
+                index === elements.length - 1 &&
                   kind === 'rounded' &&
                   'rounded-l-none rounded-r-md',
-                index === groupElements.length - 1 &&
+                index === elements.length - 1 &&
                   kind === 'circular' &&
                   'rounded-l-none rounded-r-full',
-                index === groupElements.length - 1 &&
+                index === elements.length - 1 &&
                   kind === 'square' &&
                   'rounded-l-none rounded-r-none',
-                index > 0 && index < groupElements.length - 1 && 'rounded-none',
+                index > 0 && index < elements.length - 1 && 'rounded-none',
                 buttonClassName,
                 additionalStyles,
               )}
@@ -86,7 +86,7 @@ const VBSButtonGroup = ({
 }
 
 VBSButtonGroup.defaultProps = {
-  groupElements: [],
+  elements: [],
   iconPosition: 'left',
   iconType: 'solid',
   size: 'md',
@@ -95,7 +95,7 @@ VBSButtonGroup.defaultProps = {
 }
 
 VBSButtonGroup.propTypes = {
-  groupElements: PropTypes.arrayOf(
+  elements: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
       iconName: PropTypes.string,

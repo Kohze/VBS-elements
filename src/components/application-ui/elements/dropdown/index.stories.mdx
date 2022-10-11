@@ -1,0 +1,83 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSDropdown from '@/components/application-ui/elements/dropdown'
+
+<Meta
+  title="Application UI/Elements/Dropdown"
+  component={VBSDropdown}
+  decorators={[
+    (Story) => (
+      <div
+        style={{ minHeight: '480px' }}
+        className="bg-slate-100 flex justify-center"
+      >
+        <Story />
+      </div>
+    ),
+  ]}
+/>
+
+export const Template = (args) => <VBSDropdown {...args} />
+
+## Default
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      elements: [{ text: 'Link 1' }, { text: 'Link 2' }, { text: 'Link 3' }],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Icon
+
+<Canvas>
+  <Story
+    name="With Icon"
+    args={{
+      elements: [
+        { text: 'Link 1', iconName: 'academic-cap' },
+        { text: 'Link 2', iconName: 'adjustments-vertical' },
+        { text: 'Link 3', iconName: 'arrow-up-tray' },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Grouped Elements
+
+<Canvas>
+  <Story
+    name="Grouped Elements"
+    args={{
+      groupElements: [
+        [
+          { text: 'Link 1', iconName: 'academic-cap' },
+          { text: 'Link 2', iconName: 'adjustments-vertical' },
+          { text: 'Link 3', iconName: 'arrow-up-tray' },
+        ],
+        [
+          { text: 'Link 1', iconName: 'academic-cap' },
+          { text: 'Link 2', iconName: 'adjustments-vertical' },
+        ],
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSDropdown} />
