@@ -1,63 +1,63 @@
 import PropTypes from 'prop-types'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import {
-  ArchiveBoxIcon,
-  ArrowRightCircleIcon,
-  ChevronDownIcon,
-  DocumentDuplicateIcon,
-  HeartIcon,
-  PencilSquareIcon,
-  TrashIcon,
-  UserPlusIcon,
-} from '@heroicons/react/20/solid'
 import NextLink from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import VBSIcon from '../icon'
+import VBSButton from '../button'
 
 const VBSDropdown = ({
   elements,
   groupElements,
-  header,
+  kind,
   iconPosition,
   iconType,
+  buttonText,
+  buttonSize,
+  buttonIconName,
+  buttonIconPosition,
+  buttonIconType,
+  buttonVariant,
+  buttonKind,
+  buttonClassName,
 }) => {
   const renderElements = (els) => {
     return els.map((el, index) => {
       return (
         <Menu.Item key={index}>
           {({ active }) => (
-            <a
-              href="#"
-              className={twMerge(
-                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                'group flex items-center px-4 py-2 text-sm',
-              )}
-            >
-              {iconPosition === 'left' && (
-                <>
-                  <VBSIcon
-                    iconName={el.iconName}
-                    iconType={iconType}
-                    className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                  {el.text}
-                </>
-              )}
+            <NextLink href={el.href || '#'}>
+              <a
+                className={twMerge(
+                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                  'group flex items-center px-4 py-2 text-sm',
+                )}
+              >
+                {iconPosition === 'left' && (
+                  <>
+                    <VBSIcon
+                      iconName={el.iconName}
+                      iconType={iconType}
+                      className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                    {el.text}
+                  </>
+                )}
 
-              {iconPosition === 'right' && (
-                <>
-                  <span className="w-full">{el.text}</span>
-                  <VBSIcon
-                    iconName={el.iconName}
-                    iconType={iconType}
-                    className="w-5 h-5 ml-3 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                </>
-              )}
-            </a>
+                {iconPosition === 'right' && (
+                  <>
+                    <span className="w-full">{el.text}</span>
+                    <VBSIcon
+                      iconName={el.iconName}
+                      iconType={iconType}
+                      className="w-5 h-5 ml-3 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                  </>
+                )}
+              </a>
+            </NextLink>
           )}
         </Menu.Item>
       )
@@ -77,10 +77,34 @@ const VBSDropdown = ({
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-          Options
-          <ChevronDownIcon className="w-5 h-5 ml-2 -mr-1" aria-hidden="true" />
-        </Menu.Button>
+        {kind === 'normal' && (
+          <Menu.Button
+            as={VBSButton}
+            className="ml-2"
+            variant={buttonVariant}
+            text={buttonText}
+            iconName={buttonIconName || 'chevron-down'}
+            iconPosition={buttonIconPosition}
+            iconType={buttonIconType}
+            kind={buttonKind}
+            size={buttonSize}
+            fullWidth
+          />
+        )}
+
+        {kind === 'minimal' && (
+          <Menu.Button
+            as={VBSButton}
+            variant={buttonVariant}
+            kind="circular"
+            iconName={'ellipsis-vertical' || buttonIconName}
+            iconPosition="only"
+            iconType={buttonIconType}
+            size={buttonSize}
+            className={buttonClassName}
+            fullWidth
+          />
+        )}
       </div>
 
       <Transition
@@ -112,6 +136,11 @@ const VBSDropdown = ({
 VBSDropdown.defaultProps = {
   iconPosition: 'left',
   iconType: 'solid',
+  kind: 'normal',
+  buttonIconPosition: 'right',
+  buttonIconType: 'solid',
+  buttonVariant: 'outline',
+  buttonKind: 'rounded',
 }
 
 VBSDropdown.propTypes = {
@@ -132,6 +161,26 @@ VBSDropdown.propTypes = {
   groupElements: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
   header: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['left', 'right']),
+  iconType: PropTypes.oneOf(['solid', 'outline']),
+  kind: PropTypes.oneOf(['normal', 'minimal']),
+  buttonText: PropTypes.string,
+  buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  buttonIconName: PropTypes.string,
+  buttonIconPosition: PropTypes.oneOf(['left', 'right', 'only']),
+  buttonIconType: PropTypes.oneOf(['solid', 'outline']),
+  buttonVariant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'outline',
+    'dark',
+  ]),
+  buttonKind: PropTypes.oneOf(['circular', 'normal', 'rounded']),
+  buttonClassName: PropTypes.string,
 }
 
 export default VBSDropdown

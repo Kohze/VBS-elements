@@ -7,8 +7,20 @@ import {
   Source,
 } from '@storybook/addon-docs'
 import VBSDropdown from '@/components/application-ui/elements/dropdown'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
 
-<Meta title="Application UI/Elements/Dropdown" component={VBSDropdown} />
+<Meta
+  title="Application UI/Elements/Dropdown"
+  component={VBSDropdown}
+  argTypes={{
+    buttonIconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+  }}
+/>
 
 export const Template = (args) => (
   <div
@@ -25,13 +37,14 @@ Dropdowns are used to display a list of options that can be selected by the user
 
 ## Default
 
-Dropdowns need to have `elements` props containing an array of objects with `text` and `iconName` (optional) properties.
+Dropdowns need to have `elements` props containing an array of objects with `href`, `text` and `iconName` (optional) properties.
 
 <Canvas>
   <Story
     name="Default"
     args={{
       elements: [{ text: 'Link 1' }, { text: 'Link 2' }, { text: 'Link 3' }],
+      buttonText: 'Dropdown',
     }}
   >
     {Template.bind({})}
@@ -51,6 +64,7 @@ Dropdowns can also contain icons. The icon can be placed on the left or right si
         { text: 'Link 2', iconName: 'adjustments-vertical' },
         { text: 'Link 3', iconName: 'arrow-up-tray' },
       ],
+      buttonText: 'Dropdown',
     }}
   >
     {Template.bind({})}
@@ -76,6 +90,7 @@ Dropdowns can also contain grouped elements. The `groupElements` prop is used to
           { text: 'Link 2', iconName: 'arrows-right-left' },
         ],
       ],
+      buttonText: 'Dropdown',
     }}
   >
     {Template.bind({})}
@@ -85,4 +100,3 @@ Dropdowns can also contain grouped elements. The `groupElements` prop is used to
 ## Reference
 
 <ArgsTable of={VBSDropdown} />
-```

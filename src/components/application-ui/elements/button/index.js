@@ -72,7 +72,6 @@ const VBSButton = ({
   }
 
   const additonalStyles = css`
-    ${iconPosition === 'only' && paddingForIconOnly()}
     background-color: ${backgroundColor};
     color: ${color};
     ${backgroundColor &&
@@ -123,6 +122,7 @@ const VBSButton = ({
               kinds[kind],
               fullWidth && 'w-full justify-center',
               disabled && 'opacity-50 pointer-events-none touch-none',
+              iconPosition === 'only' && paddingForIconOnly(),
               additonalStyles,
               className,
             )}
@@ -145,6 +145,7 @@ const VBSButton = ({
           kinds[kind],
           fullWidth && 'w-full justify-center',
           disabled && 'opacity-50 pointer-events-none touch-none',
+          iconPosition === 'only' && paddingForIconOnly(),
           additonalStyles,
           className,
         )}
