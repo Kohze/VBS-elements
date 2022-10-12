@@ -53,16 +53,16 @@ Dropdowns need to have `elements` props containing an array of objects with `hre
 
 ## With Icon
 
-Dropdowns can also contain icons. The icon can be placed on the left or right side of the text with the `iconPosition` prop. Use the `iconName` property to specify the icon. Icons names can be found in the [Heroicons](https://heroicons.com/) library.
+Dropdowns can also contain icons. The icon can be placed on the left or right side of the text with the `listIconPosition` prop. Use the `iconName` property to specify the icon. Icons names can be found in the [Heroicons](https://heroicons.com/) library.
 
 <Canvas>
   <Story
     name="With Icon"
     args={{
       elements: [
-        { text: 'Link 1', iconName: 'academic-cap' },
-        { text: 'Link 2', iconName: 'adjustments-vertical' },
-        { text: 'Link 3', iconName: 'arrow-up-tray' },
+        { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+        { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+        { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
       ],
       buttonText: 'Dropdown',
     }}
@@ -81,13 +81,13 @@ Dropdowns can also contain grouped elements. The `groupElements` prop is used to
     args={{
       groupElements: [
         [
-          { text: 'Link 1', iconName: 'academic-cap' },
-          { text: 'Link 2', iconName: 'adjustments-vertical' },
-          { text: 'Link 3', iconName: 'arrow-up-tray' },
+          { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+          { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+          { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
         ],
         [
-          { text: 'Link 1', iconName: 'arrow-trending-down' },
-          { text: 'Link 2', iconName: 'arrows-right-left' },
+          { text: 'Link 1', iconName: 'arrow-trending-down', href: '#' },
+          { text: 'Link 2', iconName: 'arrows-right-left', href: '#' },
         ],
       ],
       buttonText: 'Dropdown',
@@ -97,6 +97,28 @@ Dropdowns can also contain grouped elements. The `groupElements` prop is used to
   </Story>
 </Canvas>
 
+## Minimal
+
+Minimal dropdowns are have a transparent background and a borderless button. Button icon can change with the `buttonIconName` prop, check the other props in the Reference section.
+
+<Canvas>
+  <Story
+    name="Minimal"
+    args={{
+      elements: [
+        { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+        { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+        { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+      ],
+      buttonText: 'Dropdown',
+      buttonVariant: 'light',
+      minimal: true,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Reference
 
-<ArgsTable of={VBSDropdown} />
+<ArgsTable of={VBSDropdown} id="args-table" />

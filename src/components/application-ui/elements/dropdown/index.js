@@ -9,9 +9,9 @@ import VBSButton from '../button'
 const VBSDropdown = ({
   elements,
   groupElements,
-  kind,
-  iconPosition,
-  iconType,
+  minimal,
+  listIconPosition,
+  listIconType,
   buttonText,
   buttonSize,
   buttonIconName,
@@ -33,11 +33,11 @@ const VBSDropdown = ({
                   'group flex items-center px-4 py-2 text-sm',
                 )}
               >
-                {iconPosition === 'left' && (
+                {listIconPosition === 'left' && (
                   <>
                     <VBSIcon
                       iconName={el.iconName}
-                      iconType={iconType}
+                      iconType={listIconType}
                       className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
@@ -45,12 +45,12 @@ const VBSDropdown = ({
                   </>
                 )}
 
-                {iconPosition === 'right' && (
+                {listIconPosition === 'right' && (
                   <>
                     <span className="w-full">{el.text}</span>
                     <VBSIcon
                       iconName={el.iconName}
-                      iconType={iconType}
+                      iconType={listIconType}
                       className="w-5 h-5 ml-3 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
@@ -77,7 +77,19 @@ const VBSDropdown = ({
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        {kind === 'normal' && (
+        {minimal ? (
+          <Menu.Button
+            as={VBSButton}
+            variant={buttonVariant}
+            kind="circular"
+            iconName={'ellipsis-vertical' || buttonIconName}
+            iconPosition="only"
+            iconType={buttonIconType}
+            size={buttonSize}
+            className={buttonClassName}
+            fullWidth
+          />
+        ) : (
           <Menu.Button
             as={VBSButton}
             className="ml-2"
@@ -88,20 +100,6 @@ const VBSDropdown = ({
             iconType={buttonIconType}
             kind={buttonKind}
             size={buttonSize}
-            fullWidth
-          />
-        )}
-
-        {kind === 'minimal' && (
-          <Menu.Button
-            as={VBSButton}
-            variant={buttonVariant}
-            kind="circular"
-            iconName={'ellipsis-vertical' || buttonIconName}
-            iconPosition="only"
-            iconType={buttonIconType}
-            size={buttonSize}
-            className={buttonClassName}
             fullWidth
           />
         )}
@@ -134,8 +132,8 @@ const VBSDropdown = ({
 }
 
 VBSDropdown.defaultProps = {
-  iconPosition: 'left',
-  iconType: 'solid',
+  listIconPosition: 'left',
+  listIconType: 'solid',
   kind: 'normal',
   buttonIconPosition: 'right',
   buttonIconType: 'solid',
@@ -160,9 +158,9 @@ VBSDropdown.propTypes = {
    */
   groupElements: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
   header: PropTypes.bool,
-  iconPosition: PropTypes.oneOf(['left', 'right']),
-  iconType: PropTypes.oneOf(['solid', 'outline']),
-  kind: PropTypes.oneOf(['normal', 'minimal']),
+  listIconPosition: PropTypes.oneOf(['left', 'right']),
+  listIconType: PropTypes.oneOf(['solid', 'outline']),
+  minimal: PropTypes.bool,
   buttonText: PropTypes.string,
   buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   buttonIconName: PropTypes.string,
