@@ -35,6 +35,7 @@ export const parameters = {
     storySort: {
       method: 'alphabetical',
       locales: 'en-US',
+      order: ['Introduction', 'Application UI', 'Pages'],
     },
   },
 }
