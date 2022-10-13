@@ -31,6 +31,21 @@ export const Template = (args) => (
   </div>
 )
 
+export const Variants = (args) => (
+  <div style={{ minHeight: '240px' }}>
+    <div style={{ maxWidth: '440px' }} className="flex gap-2 flex-wrap mx-auto">
+      <VBSDropdown {...args} />
+      <VBSDropdown {...args} variant="secondary" />
+      <VBSDropdown {...args} variant="success" />
+      <VBSDropdown {...args} variant="danger" />
+      <VBSDropdown {...args} variant="warning" />
+      <VBSDropdown {...args} variant="info" />
+      <VBSDropdown {...args} variant="light" />
+      <VBSDropdown {...args} variant="dark" />
+    </div>
+  </div>
+)
+
 # Dropdown
 
 Dropdowns are used to display a list of options that can be selected by the user.
@@ -111,11 +126,31 @@ Minimal dropdowns are have a transparent background and a borderless button. But
         { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
       ],
       buttonText: 'Dropdown',
-      buttonVariant: 'light',
+      variant: 'light',
       minimal: true,
     }}
   >
     {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Variants
+
+Dropdowns can have different ready-to-use variants. The `variant` prop can be used to change the dropdown variant. Check the other props in the Reference section.
+
+<Canvas>
+  <Story
+    name="Variants"
+    args={{
+      elements: [
+        { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+        { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+        { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+      ],
+      buttonText: 'Dropdown',
+    }}
+  >
+    {Variants.bind({})}
   </Story>
 </Canvas>
 

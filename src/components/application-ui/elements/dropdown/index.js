@@ -6,18 +6,39 @@ import { twMerge } from 'tailwind-merge'
 import VBSIcon from '../icon'
 import VBSButton from '../button'
 
+export const variants = {
+  primary: 'bg-blue-600 text-white hover:bg-blue-700',
+  secondary: 'bg-gray-600 text-white hover:bg-gray-700',
+  success: 'bg-green-700 text-white hover:bg-green-800',
+  danger: 'bg-red-600 text-white hover:bg-red-700',
+  warning: 'text-black bg-yellow-300 hover:bg-yellow-400',
+  info: 'bg-blue-800 text-white hover:bg-blue-900',
+  light: 'text-gray-900 bg-gray-100 hover:bg-gray-200',
+  outline: 'text-gray-600 bg-white hover:bg-gray-50',
+  dark: 'bg-gray-800 text-white hover:bg-gray-900',
+}
+
+export const menuKinds = {
+  square: 'rounded-none',
+  rounded: 'rounded-md overflow-hidden',
+}
+
 const VBSDropdown = ({
   elements,
   groupElements,
   minimal,
+  variant,
   listIconPosition,
   listIconType,
+  listItemClassName,
+  menuKind,
+  menuClassName,
+  iconClassName,
   buttonText,
   buttonSize,
   buttonIconName,
   buttonIconPosition,
   buttonIconType,
-  buttonVariant,
   buttonKind,
   buttonClassName,
 }) => {
@@ -29,8 +50,11 @@ const VBSDropdown = ({
             <NextLink href={el.href || '#'}>
               <a
                 className={twMerge(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                   'group flex items-center px-4 py-2 text-sm',
+                  variants[variant],
+                  active ? 'bg-gray-100 text-gray-900' : '',
+                  variant === 'light' && 'bg-white',
+                  listItemClassName,
                 )}
               >
                 {listIconPosition === 'left' && (
@@ -38,7 +62,12 @@ const VBSDropdown = ({
                     <VBSIcon
                       iconName={el.iconName}
                       iconType={listIconType}
-                      className="w-5 h-5 mr-3 text-gray-400 group-hover:text-gray-500"
+                      className={twMerge(
+                        'w-5 h-5 mr-3',
+                        variants[variant],
+                        variant === 'light' && 'bg-white',
+                        iconClassName,
+                      )}
                       aria-hidden="true"
                     />
                     {el.text}
@@ -51,7 +80,11 @@ const VBSDropdown = ({
                     <VBSIcon
                       iconName={el.iconName}
                       iconType={listIconType}
-                      className="w-5 h-5 ml-3 text-gray-400 group-hover:text-gray-500"
+                      className={twMerge(
+                        'w-5 h-5 ml-3',
+                        variants[variant],
+                        iconClassName,
+                      )}
                       aria-hidden="true"
                     />
                   </>
@@ -80,20 +113,22 @@ const VBSDropdown = ({
         {minimal ? (
           <Menu.Button
             as={VBSButton}
-            variant={buttonVariant}
+            variant={variant}
             kind="circular"
-            iconName={'ellipsis-vertical' || buttonIconName}
+            iconName={buttonIconName || 'ellipsis-vertical'}
             iconPosition="only"
             iconType={buttonIconType}
             size={buttonSize}
-            className={buttonClassName}
+            className={twMerge(
+              buttonClassName,
+              variant === 'outline' ? 'text-gray-600 border-gray-400' : '',
+            )}
             fullWidth
           />
         ) : (
           <Menu.Button
             as={VBSButton}
-            className="ml-2"
-            variant={buttonVariant}
+            variant={variant}
             text={buttonText}
             iconName={buttonIconName || 'chevron-down'}
             iconPosition={buttonIconPosition}
@@ -101,6 +136,10 @@ const VBSDropdown = ({
             kind={buttonKind}
             size={buttonSize}
             fullWidth
+            className={twMerge(
+              variant === 'outline' ? 'text-gray-600 border-gray-400' : '',
+              buttonClassName,
+            )}
           />
         )}
       </div>
@@ -118,6 +157,8 @@ const VBSDropdown = ({
           className={twMerge(
             'absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
             groupElements ? 'divide-y divide-gray-100' : '',
+            menuKinds[menuKind],
+            menuClassName,
           )}
         >
           {elements
@@ -137,8 +178,9 @@ VBSDropdown.defaultProps = {
   kind: 'normal',
   buttonIconPosition: 'right',
   buttonIconType: 'solid',
-  buttonVariant: 'outline',
   buttonKind: 'rounded',
+  variant: 'outline',
+  menuKind: 'square',
 }
 
 VBSDropdown.propTypes = {
@@ -157,16 +199,10 @@ VBSDropdown.propTypes = {
    * `groupElements` creates a group of elements that are separated by a divider.
    */
   groupElements: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
-  header: PropTypes.bool,
   listIconPosition: PropTypes.oneOf(['left', 'right']),
   listIconType: PropTypes.oneOf(['solid', 'outline']),
   minimal: PropTypes.bool,
-  buttonText: PropTypes.string,
-  buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
-  buttonIconName: PropTypes.string,
-  buttonIconPosition: PropTypes.oneOf(['left', 'right', 'only']),
-  buttonIconType: PropTypes.oneOf(['solid', 'outline']),
-  buttonVariant: PropTypes.oneOf([
+  variant: PropTypes.oneOf([
     'primary',
     'secondary',
     'success',
@@ -177,8 +213,17 @@ VBSDropdown.propTypes = {
     'outline',
     'dark',
   ]),
+  buttonText: PropTypes.string,
+  buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  buttonIconName: PropTypes.string,
+  buttonIconPosition: PropTypes.oneOf(['left', 'right', 'only']),
+  buttonIconType: PropTypes.oneOf(['solid', 'outline']),
   buttonKind: PropTypes.oneOf(['circular', 'normal', 'rounded']),
   buttonClassName: PropTypes.string,
+  listItemClassName: PropTypes.string,
+  menuKind: PropTypes.oneOf(['square', 'rounded']),
+  iconClassName: PropTypes.string,
+  menuClassName: PropTypes.string,
 }
 
 export default VBSDropdown
