@@ -17,25 +17,27 @@ const VBSMediaObject = ({
   imageLink,
   mediaPosition,
   title,
+  titleClassName,
+  descriptionClassName,
   description,
   variant,
   className,
   imageClassName,
 }) => {
   const boolImageLink = !!imageLink
-  const responsive =
+  const boolResponsive =
     variant === 'basic-responsive' || variant === 'wide-responsive'
   return (
     <div
       className={twMerge(
-        responsive ? 'sm:flex' : 'flex',
+        boolResponsive ? 'sm:flex' : 'flex',
         mediaPosition === 'right' && 'flex-row-reverse',
         className,
       )}
     >
       <div
         className={twMerge(
-          responsive && 'mb-4 sm:mb-0',
+          boolResponsive && 'mb-4 sm:mb-0',
           variant === 'wide-responsive' && 'ml-0 mr-0',
           variant === 'wide-responsive' && variant === 'right' && 'sm:ml-4',
           variant === 'wide-responsive' && variant === 'left' && 'sm:mr-4',
@@ -68,8 +70,10 @@ const VBSMediaObject = ({
         )}
       </div>
       <div>
-        <h4 className="text-lg font-bold">{title}</h4>
-        <p className="mt-1">{description}</p>
+        <h4 className={twMerge('text-lg font-bold', titleClassName)}>
+          {title}
+        </h4>
+        <p className={twMerge('mt-1', descriptionClassName)}>{description}</p>
       </div>
     </div>
   )
