@@ -38,7 +38,6 @@ const VBSIcon = ({
 }
 
 VBSIcon.defaultProps = {
-  iconName: '',
   iconType: 'solid',
   className: 'flex',
   size: 'md',
@@ -47,7 +46,7 @@ VBSIcon.defaultProps = {
 VBSIcon.propTypes = {
   iconName: PropTypes.string,
   iconType: PropTypes.oneOf(['solid', 'outline']),
-  size: PropTypes.oneOf(sizes),
+  size: PropTypes.oneOf(Object.keys(sizes)),
   className: PropTypes.string,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,

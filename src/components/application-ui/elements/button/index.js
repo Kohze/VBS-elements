@@ -87,7 +87,7 @@ const VBSButton = ({
         return (
           <>
             <span className={isChildrenOrText ? 'mr-2' : ''}>
-              <VBSIcon iconName={iconName} iconType={iconType} />
+              <VBSIcon iconName={iconName} iconType={iconType} size={size} />
             </span>
             {text || children}
           </>
@@ -98,13 +98,13 @@ const VBSButton = ({
           <>
             {text || children}
             <span className={isChildrenOrText ? 'ml-2' : ''}>
-              <VBSIcon iconName={iconName} iconType={iconType} />
+              <VBSIcon iconName={iconName} iconType={iconType} size={size} />
             </span>
           </>
         )
       }
       if (iconPosition === 'only') {
-        return <VBSIcon iconName={iconName} iconType={iconType} />
+        return <VBSIcon iconName={iconName} iconType={iconType} size={size} />
       }
     }
     return text || children

@@ -7,19 +7,156 @@ import {
   Source,
 } from '@storybook/addon-docs'
 import VBSDivider from '@/components/application-ui/layout/divider'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
 
-<Meta title="Components/Layout/Divider" component={VBSDivider} />
+<Meta
+  title="Application UI/Layout/Divider"
+  component={VBSDivider}
+  argTypes={{
+    iconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+    buttonIconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+  }}
+/>
 
 export const Template = (args) => (
-  <div class="py-10">
+  <div className="py-10">
     <VBSDivider {...args} />
   </div>
 )
 
+export const Positions = (args) => (
+  <div>
+    <div className="py-10">
+      <VBSDivider
+        position="left"
+        variant="with-icon"
+        iconName="plus"
+        {...args}
+      />
+    </div>
+    <div className="py-10">
+      <VBSDivider variant="with-icon" iconName="plus" {...args} />
+    </div>
+    <div className="py-10">
+      <VBSDivider
+        position="right"
+        variant="with-icon"
+        iconName="plus"
+        {...args}
+      />
+    </div>
+  </div>
+)
+
 # Divider
+
+The divider component is used to separate content.
 
 ## Default
 
 <Canvas>
   <Story name="Default">{Template.bind({})}</Story>
 </Canvas>
+
+## With Label
+
+Use the `variant` prop as "with-label" and the `label` prop to set the label text.
+
+<Canvas>
+  <Story
+    name="With Label"
+    args={{
+      variant: 'with-label',
+      label: 'Label',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Icon
+
+Use the `variant` prop as "with-icon" and the `iconName` prop to set the icon.
+
+<Canvas>
+  <Story
+    name="With Icon"
+    args={{
+      variant: 'with-icon',
+      iconName: 'plus',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Title
+
+Use the `variant` prop as "with-title" and the `title` prop to set the title.
+
+<Canvas>
+  <Story
+    name="With Title"
+    args={{
+      variant: 'with-title',
+      title: 'Title',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Button
+
+Use the `variant` prop as "with-button" and the `buttonText` prop to set the button text.
+
+<Canvas>
+  <Story
+    name="With Button"
+    args={{
+      variant: 'with-button',
+      buttonText: 'Button',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Title and Button
+
+Use the `variant` prop as "with-title-and-button" and the `title` and `buttonText` props to set the title and button text.
+
+<Canvas>
+  <Story
+    name="With Title and Button"
+    args={{
+      variant: 'with-title-and-button',
+      title: 'Title',
+      buttonText: 'Button',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Positions
+
+Use the `position` prop to set the position of the divider. The default position is `center`.
+
+<Canvas>
+  <Story name="Positions">{Positions.bind({})}</Story>
+</Canvas>
+
+## Referance
+
+<ArgsTable of={VBSDivider} />

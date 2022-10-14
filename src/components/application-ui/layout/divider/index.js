@@ -1,15 +1,23 @@
+import heroIconsNames from '@/assets/icons/hero-icons/names'
 import PropTypes from 'prop-types'
+import { twMerge } from 'tailwind-merge'
 import VBSButton from '../../elements/button'
 import VBSIcon from '../../elements/icon'
+import { css } from '@emotion/css'
 
 const variants = [
   'simple',
   'with-label',
   'with-icon',
-  'with-button',
   'with-title',
+  'with-button',
+  'with-title-and-button',
 ]
-const positions = ['left', 'right', 'center']
+const positions = {
+  left: 'justify-start',
+  center: 'justify-center',
+  right: 'justify-end',
+}
 
 const VBSDivider = ({
   variant,
@@ -19,6 +27,7 @@ const VBSDivider = ({
   iconName,
   iconSize,
   iconColor,
+  iconClassName,
   buttonText,
   buttonSize,
   buttonIconName,
@@ -27,27 +36,59 @@ const VBSDivider = ({
   buttonKind,
   title,
   className,
-  color,
-  ...props
+  dividerColor,
+  titleClassName,
+  onClickButton,
 }) => {
+  const additionalIconStyles = css`
+    color: ${iconColor};
+  `
+  const additionalDividerStyles = css`
+    border-color: ${dividerColor};
+  `
+
   const getVariant = () => {
     switch (variant) {
       case 'simple':
         return null
       case 'with-label':
         return (
-          <span className="px-2 text-sm text-gray-500 bg-white">{label}</span>
+          <span
+            className={twMerge(
+              'px-2 text-sm text-gray-500 bg-white',
+              labelClassName,
+            )}
+          >
+            {label}
+          </span>
         )
       case 'with-icon':
         return (
-          <span className="px-2 text-gray-500 bg-white">
+          <span
+            className={twMerge(
+              'px-2 text-gray-500 bg-white',
+              additionalIconStyles,
+              iconClassName,
+            )}
+          >
             <VBSIcon
               aria-hidden="true"
               iconName={iconName}
+              size={iconSize}
               width={iconSize?.width}
               height={iconSize?.height}
-              color={iconColor}
             />
+          </span>
+        )
+      case 'with-title':
+        return (
+          <span
+            className={twMerge(
+              'px-3 text-lg font-medium text-gray-900 bg-white',
+              titleClassName,
+            )}
+          >
+            {title}
           </span>
         )
       case 'with-button':
@@ -60,7 +101,31 @@ const VBSDivider = ({
             iconName={buttonIconName}
             iconPosition={buttonIconPosition}
             className={buttonClassName}
+            onClick={onClickButton}
           />
+        )
+      case 'with-title-and-button':
+        return (
+          <>
+            <span
+              className={twMerge(
+                'px-3 text-lg font-medium text-gray-900 bg-white',
+                titleClassName,
+              )}
+            >
+              {title}
+            </span>
+            <VBSButton
+              size={buttonSize}
+              variant="outline"
+              kind={buttonKind}
+              text={buttonText}
+              iconName={buttonIconName}
+              iconPosition={buttonIconPosition}
+              className={buttonClassName}
+              onClick={onClickButton}
+            />
+          </>
         )
     }
   }
@@ -68,9 +133,23 @@ const VBSDivider = ({
   return (
     <div className="relative">
       <div className="absolute inset-0 flex items-center" aria-hidden="true">
-        <div className="w-full border-t border-gray-300" />
+        <div
+          className={twMerge(
+            'w-full border-t border-gray-300',
+            additionalDividerStyles,
+            className,
+          )}
+        ></div>
       </div>
-      <div className="relative flex justify-center">{getVariant()}</div>
+      <div
+        className={twMerge(
+          'relative flex',
+          positions[position],
+          variant === 'with-title-and-button' && 'justify-between',
+        )}
+      >
+        {getVariant()}
+      </div>
     </div>
   )
 }
@@ -78,41 +157,36 @@ const VBSDivider = ({
 VBSDivider.defaultProps = {
   variant: 'simple',
   position: 'center',
-  label: 'or',
   iconName: 'plus',
-  iconSize: {
-    width: 16,
-    height: 16,
-  },
+  iconSize: 'sm',
   iconColor: 'gray-500',
-  buttonText: 'Button text',
-  buttonSize: 'sm',
+  buttonSize: 'xs',
   buttonIconName: 'hashtag',
   buttonIconPosition: 'left',
-  buttonKind: 'primary',
-  title: 'Title',
-  color: 'gray-300',
+  buttonKind: 'circular',
+  color: '#efefef',
 }
 
 VBSDivider.propTypes = {
   variant: PropTypes.oneOf(variants),
-  position: PropTypes.oneOf(positions),
+  position: PropTypes.oneOf(Object.keys(positions)),
   label: PropTypes.string,
-  iconName: PropTypes.string,
-  iconSize: PropTypes.shape({
-    width: PropTypes.number,
-    height: PropTypes.number,
-  }),
+  iconName: PropTypes.oneOf(heroIconsNames),
+  iconSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   iconColor: PropTypes.string,
   buttonText: PropTypes.string,
   buttonSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   buttonKind: PropTypes.oneOf(['square', 'rounded', 'circular']),
-  buttonIconName: PropTypes.string,
+  buttonIconName: PropTypes.oneOf(heroIconsNames),
   buttonIconPosition: PropTypes.oneOf(['left', 'right']),
   buttonClassName: PropTypes.string,
   title: PropTypes.string,
   className: PropTypes.string,
-  color: PropTypes.string,
+  dividerColor: PropTypes.string,
+  labelClassName: PropTypes.string,
+  iconClassName: PropTypes.string,
+  titleClassName: PropTypes.string,
+  onClickButton: PropTypes.func,
 }
 
 export default VBSDivider
