@@ -1,0 +1,114 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSMediaObject from '@/components/application-ui/layout/media-object'
+
+<Meta title="Application UI/Layout/Media Object" component={VBSMediaObject} />
+
+export const exampleTexts = {
+  title: 'Media Object Title',
+  description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue.',
+  image: 'https://picsum.photos/200/300',
+}
+
+export const Template = (args) => {
+  return (
+    <div className="max-w-2xl mx-auto">
+      <VBSMediaObject
+        {...args}
+        title={exampleTexts.title}
+        description={exampleTexts.description}
+      />
+    </div>
+  )
+}
+
+# Media Object
+
+The media object is a flexible layout that can be used to display a variety of content. It is composed of a media object container, a media object section, and a media object image.
+
+## Basic
+
+<Canvas>
+  <Story name="Simple">{Template.bind({})}</Story>
+</Canvas>
+
+## With Image
+
+<Canvas>
+  <Story name="With Image" args={{ imageLink: exampleTexts.image }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Centered
+
+<Canvas>
+  <Story name="Centered" args={{ variant: 'centered' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Bottom
+
+<Canvas>
+  <Story name="Bottom" args={{ variant: 'bottom' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Right Image
+
+<Canvas>
+  <Story name="Right Image" args={{ mediaPosition: 'right' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Right Image Centered
+
+<Canvas>
+  <Story
+    name="Right Image Centered"
+    args={{ mediaPosition: 'right', variant: 'centered' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Right Image Bottom
+
+<Canvas>
+  <Story
+    name="Right Image Bottom"
+    args={{ mediaPosition: 'right', variant: 'bottom' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Basic Responsive
+
+<Canvas>
+  <Story name="Responsive" args={{ variant: 'basic-responsive' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Wide Responsive
+
+<Canvas>
+  <Story name="Wide Responsive" args={{ variant: 'wide-responsive' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSMediaObject} />
