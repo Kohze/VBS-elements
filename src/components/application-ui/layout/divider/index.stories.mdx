@@ -1,0 +1,25 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSDivider from '@/components/application-ui/layout/divider'
+
+<Meta title="Components/Layout/Divider" component={VBSDivider} />
+
+export const Template = (args) => (
+  <div class="py-10">
+    <VBSDivider {...args} />
+  </div>
+)
+
+# Divider
+
+## Default
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>

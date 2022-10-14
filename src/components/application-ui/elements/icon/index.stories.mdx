@@ -22,7 +22,17 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
   }}
 />
 
-export const Template = (args) => <VBSIcon {...args} />
+export const Template = (args) => <VBSIcon {...args} iconName="bug-ant" />
+
+export const Sizes = (args) => (
+  <div className="flex flex-col space-y-4">
+    <VBSIcon {...args} iconName="bug-ant" size="xs" />
+    <VBSIcon {...args} iconName="bug-ant" size="sm" />
+    <VBSIcon {...args} iconName="bug-ant" size="md" />
+    <VBSIcon {...args} iconName="bug-ant" size="lg" />
+    <VBSIcon {...args} iconName="bug-ant" size="xl" />
+  </div>
+)
 
 # Icon
 
@@ -41,14 +51,7 @@ To use the icon component, simply pass the `iconName` as a prop. The `iconName` 
 ## Sample
 
 <Canvas>
-  <Story
-    name="Sample"
-    args={{
-      iconName: 'bug-ant',
-    }}
-  >
-    {Template.bind({})}
-  </Story>
+  <Story name="Sample">{Template.bind({})}</Story>
 </Canvas>
 
 ## Outline
@@ -59,12 +62,19 @@ The icon component supports outline icons. To use an outline icon, pass the `ico
   <Story
     name="Outline"
     args={{
-      iconName: 'bug-ant',
       iconType: 'outline',
     }}
   >
     {Template.bind({})}
   </Story>
+</Canvas>
+
+## Sizes
+
+The icon component supports different sizes. To use a different size, pass the `size` prop with the value `xs`, `sm`, `md`, `lg`, or `xl`.
+
+<Canvas>
+  <Story name="Sizes">{Sizes.bind({})}</Story>
 </Canvas>
 
 ## Reference
