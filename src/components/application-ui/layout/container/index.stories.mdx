@@ -1,0 +1,129 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSContainer from '@/components/application-ui/layout/container'
+import viewportAddon from '@/assets/storybook/viewport-addon.png'
+
+<Meta title="Application UI/Layout/Container" component={VBSContainer} />
+
+export const InlineSVG = () => (
+  <svg
+    class="w-full h-64 text-gray-200 bg-white border-2 border-gray-300 border-dashed"
+    preserveAspectRatio="none"
+    stroke="currentColor"
+    fill="none"
+    viewBox="0 0 200 200"
+    aria-hidden="true"
+  >
+    <path
+      vector-effect="non-scaling-stroke"
+      stroke-width="2"
+      d="M0 0l200 200M0 200L200 0"
+    ></path>
+  </svg>
+)
+
+export const FullWidth = (args) => (
+  <VBSContainer {...args} className="bg-pink-100" variant="full-width">
+    <InlineSVG />
+  </VBSContainer>
+)
+
+export const Padded = (args) => (
+  <VBSContainer {...args} className="bg-pink-100">
+    <InlineSVG />
+  </VBSContainer>
+)
+
+export const PaddedFullMobile = (args) => (
+  <VBSContainer {...args} className="bg-pink-100" variant="padded-full-mobile">
+    <InlineSVG />
+  </VBSContainer>
+)
+
+export const BreakpointPadded = (args) => (
+  <VBSContainer {...args} className="bg-pink-100" variant="breakpoint-padded">
+    <InlineSVG />
+  </VBSContainer>
+)
+
+export const Narrow = (args) => (
+  <VBSContainer {...args} className="bg-pink-100" variant="narrow-padded">
+    <InlineSVG />
+  </VBSContainer>
+)
+
+# Container
+
+The container component is a wrapper for the content of the page. It is used to center the content and to set the maximum width of the content.
+
+Default container is full width with padding.
+
+For interact with the component, you can use the controls and see the results with viewport addon. You can see the viewport addon in the panel. Indicated in screenshot below.
+
+<p>
+  <img src={viewportAddon} alt="Viewport addon" />
+</p>
+
+## Import
+
+```js
+import VBSContainer from '@/components/application-ui/layout/container'
+```
+
+## Note
+
+```text
+There is InlineSVG component inside VBSContainer component for demo purpose. It is not part of the component.
+```
+
+## Full Width
+
+Full-width on mobile, constrained with padded content above.
+
+<Canvas>
+  <Story name="Full Width Container">{FullWidth.bind({})}</Story>
+</Canvas>
+
+## Padded
+
+Constrained with padded content.
+
+<Canvas>
+  <Story name="Padded Container">{Padded.bind({})}</Story>
+</Canvas>
+
+## Padded Full Mobile
+
+Full-width on mobile, constrained to breakpoint with padded content above mobile
+
+<Canvas>
+  <Story name="Padded Full Mobile Container">{PaddedFullMobile.bind({})}</Story>
+</Canvas>
+
+## Breakpoint Padded
+
+Constrained to breakpoint with padded content
+
+<Canvas>
+  <Story name="Breakpoint Padded Container">{BreakpointPadded.bind({})}</Story>
+</Canvas>
+
+## Narrow Padded
+
+Narrow constrained with padded content.
+
+There are few narrow variants of the container component. For changing the width of the container, you can use the `narrowSize` prop. Default value is `3xl`. You can use `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`, `7xl`, `full`.
+
+<Canvas>
+  <Story name="Narrow Container">{Narrow.bind({})}</Story>
+</Canvas>
+
+## Referance
+
+<ArgsTable of={VBSContainer} />

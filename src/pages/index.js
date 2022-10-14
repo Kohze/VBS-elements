@@ -1,6 +1,15 @@
 import VBSBadge from '@/components/application-ui/elements/badge'
 import VBSDropdown from '@/components/application-ui/elements/dropdown'
+import VBSListContainer, {
+  VBSListContainerItem,
+} from '@/components/application-ui/layout/list-container'
 import Head from 'next/head'
+
+const items = [
+  { id: 1, name: 'Item 1' },
+  { id: 2, name: 'Item 2' },
+  { id: 3, name: 'Item 3' },
+]
 
 export default function Home() {
   return (
@@ -11,7 +20,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <VBSDropdown />
+      <VBSListContainer variant="simple" items={items}>
+        {items.map((item) => (
+          <VBSListContainerItem key={item.id} item={item}>
+            <div className="flex items-center">
+              <div className="flex-shrink-0 w-10 h-10">{item.id}</div>
+              <div className="ml-4">
+                <div className="text-sm font-medium text-gray-900">
+                  {item.name}
+                </div>
+                <div className="text-sm text-gray-500">{item.name}</div>
+              </div>
+            </div>
+          </VBSListContainerItem>
+        ))}
+      </VBSListContainer>
     </div>
   )
 }

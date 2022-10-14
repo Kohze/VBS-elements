@@ -1,0 +1,148 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSListContainer, {
+  VBSListContainerItem,
+} from '@/components/application-ui/layout/list-container'
+import viewportAddon from '@/assets/storybook/viewport-addon.png'
+
+<Meta
+  title="Application UI/Layout/List Container"
+  component={VBSListContainer}
+/>
+
+export const itemsExample = [
+  {
+    id: 1,
+    title: 'Item 1',
+  },
+  {
+    id: 2,
+    title: 'Item 2',
+  },
+  {
+    id: 3,
+    title: 'Item 3',
+  },
+]
+
+export const Template = (args) => (
+  <div class="py-8 bg-gray-100">
+    <div className="mx-auto max-w-2xl sm:px-6">
+      <VBSListContainer {...args}>
+        {itemsExample.map((item) => (
+          <VBSListContainerItem key={item.id}>
+            <div>{item.title}</div>
+          </VBSListContainerItem>
+        ))}
+      </VBSListContainer>
+    </div>
+  </div>
+)
+
+# List Container
+
+The list container is a container that can be used to display a list of items.
+
+For interact with the component, you can use the controls and see the results with viewport addon. You can see the viewport addon in the panel. Indicated in screenshot below.
+
+<p>
+  <img src={viewportAddon} alt="Viewport addon" />
+</p>
+
+## Import
+
+To use the list container, you should import `VBSListContainer` and also `VBSListContainerItem` if you want to use the default item.
+
+```js
+import VBSListContainer, {
+  VBSListContainerItem,
+} from '@/components/application-ui/layout/list-container'
+```
+
+## Variants
+
+List Container has 7 variants: `simple`, `card-with-divider`, `card-with-divider-full`, `separated-cards`, `separated-cards-full`, `flat-with-divider` and `simple-with-divider-full`
+
+## Simple
+
+Simple with dividers
+
+<Canvas>
+  <Story name="Simple">{Template.bind({})}</Story>
+</Canvas>
+
+## Card With Divider
+
+Card with dividers
+
+<Canvas>
+  <Story name="Card With Divider" args={{ variant: 'card-with-divider' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Card With Divider Full
+
+Card with dividers, full-width on mobile
+
+<Canvas>
+  <Story
+    name="Card With Divider Full"
+    args={{ variant: 'card-with-divider-full' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Separated Cards
+
+Separate cards
+
+<Canvas>
+  <Story name="Separated Cards" args={{ variant: 'separated-cards' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Separated Cards Full
+
+Separate cards, full-width on mobile
+
+<Canvas>
+  <Story name="Separated Cards Full" args={{ variant: 'separated-cards-full' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Flat With Divider
+
+Flat card with dividers
+
+<Canvas>
+  <Story name="Flat With Divider" args={{ variant: 'flat-with-divider' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Simple With Divider Full
+
+Simple with dividers, full-width on mobile
+
+<Canvas>
+  <Story
+    name="Simple With Divider Full"
+    args={{ variant: 'simple-with-divider-full' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSListContainer} />
