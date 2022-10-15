@@ -2,6 +2,8 @@ import 'tailwindcss/tailwind.css'
 import * as NextImage from 'next/image'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import tailwindColors from '@/constants/colors.json'
+import prettier from 'prettier/standalone'
+import prettierBabel from 'prettier/parser-babel'
 
 const customViewports = {
   tabletSmall: {
@@ -64,5 +66,12 @@ export const parameters = {
       locales: 'en-US',
       order: ['Introduction', 'Application UI', 'Pages'],
     },
+  },
+  docs: {
+    transformSource: (input) =>
+      prettier.format(input, {
+        parser: 'babel',
+        plugins: [prettierBabel],
+      }),
   },
 }
