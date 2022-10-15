@@ -159,12 +159,10 @@ VBSDivider.defaultProps = {
   position: 'center',
   iconName: 'plus',
   iconSize: 'sm',
-  iconColor: 'gray-500',
   buttonSize: 'xs',
-  buttonIconName: 'hashtag',
+  buttonIconName: 'plus',
   buttonIconPosition: 'left',
   buttonKind: 'circular',
-  color: '#efefef',
 }
 
 VBSDivider.propTypes = {

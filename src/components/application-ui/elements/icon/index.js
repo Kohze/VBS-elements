@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
 
 const sizes = {
-  xs: 'w-4 h-4',
-  sm: 'w-5 h-5',
-  md: 'w-6 h-6',
-  lg: 'w-8 h-8',
-  xl: 'w-10 h-10',
+  xs: 'w-3 h-3',
+  sm: 'w-3.5 h-3.5',
+  md: 'w-4 h-4',
+  lg: 'w-5 h-5',
+  xl: 'w-6 h-6',
 }
 
 const VBSIcon = ({
