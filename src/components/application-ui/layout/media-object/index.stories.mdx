@@ -21,9 +21,9 @@ export const Template = (args) => {
   return (
     <div className="max-w-2xl mx-auto">
       <VBSMediaObject
-        {...args}
         title={exampleTexts.title}
         description={exampleTexts.description}
+        {...args}
       />
     </div>
   )
@@ -32,6 +32,12 @@ export const Template = (args) => {
 # Media Object
 
 The media object is a flexible layout that can be used to display a variety of content. It is composed of a media object container, a media object section, and a media object image.
+
+## Import
+
+```js
+import VBSMediaObject from '@/components/application-ui/layout/media-object'
+```
 
 ## Basic
 

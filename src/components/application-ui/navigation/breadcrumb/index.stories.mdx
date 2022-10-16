@@ -1,0 +1,93 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSBreadcrumb from '@/components/application-ui/navigation/breadcrumb'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
+
+export const pagesExample = [
+  { name: 'Projects', href: '#', current: false },
+  { name: 'Project Nero', href: '#', current: false },
+  { name: 'Settings', href: '#', current: true },
+]
+
+<Meta
+  title="Application UI/Navigation/Breadcrumb"
+  component={VBSBreadcrumb}
+  argTypes={{
+    homeIconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+    dividerIconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => (
+  <VBSBreadcrumb pages={pagesExample} {...args} />
+)
+
+# Breadcrumb
+
+Breadcrumb is a navigation component that shows the current page’s location within a navigational hierarchy.
+
+Breadcrumbs needs to have a list of `pages` to display. Each page is an object with the following properties: `name`, `href` and `current`. The `current` property is used to indicate the current page.
+
+Home icon and divider icon can be customized by passing the `homeIconName` and `dividerIconName` props. Check the referance for all props.
+
+## Import
+
+```js
+import VBSBreadcrumb from '@/components/application-ui/navigation/breadcrumb'
+```
+
+## Simple
+
+<Canvas>
+  <Story name="Simple">{Template.bind({})}</Story>
+</Canvas>
+
+## Simple with custom icons
+
+<Canvas>
+  <Story
+    name="Simple with custom icons"
+    args={{ homeIconName: 'home', dividerIconName: 'minus-small' }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Bar Collapsed
+
+<Canvas>
+  <Story name="Bar Collapsed" args={{ variant: 'bar' }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Bar Collapsed full width
+
+<Canvas>
+  <Story
+    name="Bar Collapsed full width"
+    args={{ variant: 'bar', fullWidth: true }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSBreadcrumb} />

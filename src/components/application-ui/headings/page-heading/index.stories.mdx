@@ -25,7 +25,7 @@ export const Template = (args) => <VBSPageHeading {...args} />
 
 export const Simple = (args) => (
   <VBSPageHeading
-    title="Page Heading"
+    title="Frontend Developer"
     actionButtons={(props) => (
       <>
         <VBSButton text="Edit" size="md" variant="outline" />
@@ -38,7 +38,7 @@ export const Simple = (args) => (
 
 export const SimpleDark = (args) => (
   <VBSPageHeading
-    title="Page Heading"
+    title="Frontend Developer"
     theme="dark"
     actionButtons={(props) => (
       <>
@@ -55,6 +55,12 @@ export const SimpleDark = (args) => (
 The page heading is used to display the title of a page.
 
 Some parts of the page heading are optional, such as the action buttons. To add some part of as node, you can use the `render props` pattern.
+
+## Import
+
+```js
+import VBSPageHeading from '@/components/application-ui/headings/page-heading'
+```
 
 ## Simple
 

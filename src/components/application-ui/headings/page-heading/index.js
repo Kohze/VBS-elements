@@ -32,7 +32,13 @@ const VBSPageHeading = ({
     switch (variant) {
       case 'simple':
         return (
-          <>
+          <div
+            className={twMerge(
+              'md:flex md:items-center md:justify-between p-8',
+              themes[theme].bg,
+              className,
+            )}
+          >
             <div className="flex-1 min-w-0">
               <h2
                 className={twMerge(
@@ -54,22 +60,13 @@ const VBSPageHeading = ({
                 {actionButtons({ theme })}
               </div>
             )}
-          </>
+          </div>
         )
+      case 'simple-with-breadcrumbs':
     }
   }
 
-  return (
-    <div
-      className={twMerge(
-        'md:flex md:items-center md:justify-between p-8',
-        themes[theme].bg,
-        className,
-      )}
-    >
-      {getVariant()}
-    </div>
-  )
+  return getVariant()
 }
 
 VBSPageHeading.defaultProps = {
