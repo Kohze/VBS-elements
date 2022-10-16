@@ -10,9 +10,11 @@ import VBSBadge from '@/components/application-ui/elements/badge'
 
 <Meta title="Application UI/Elements/Badge" component={VBSBadge} />
 
-export const Template = (args) => <VBSBadge text="Badge" {...args} />
+export const Template = ({ onRemove, ...args }) => (
+  <VBSBadge text="Badge" {...args} />
+)
 
-export const Variants = (args) => (
+export const Variants = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-center">
     <VBSBadge text="Primary" {...args} />
     <VBSBadge text="Secondary" variant="secondary" {...args} />
@@ -26,7 +28,7 @@ export const Variants = (args) => (
   </div>
 )
 
-export const Kinds = (args) => (
+export const Kinds = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-center">
     <VBSBadge text="Square" kind="square" {...args} />
     <VBSBadge text="Rounded" kind="rounded" {...args} />
@@ -34,14 +36,14 @@ export const Kinds = (args) => (
   </div>
 )
 
-export const Sizes = (args) => (
+export const Sizes = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-end">
     <VBSBadge text="Small" size="sm" {...args} />
     <VBSBadge text="Normal" {...args} />
   </div>
 )
 
-export const WithNotification = (args) => (
+export const WithNotification = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-end">
     <VBSBadge text="Badge" notification size="sm" {...args} />
     <VBSBadge text="Badge" notification {...args} />
