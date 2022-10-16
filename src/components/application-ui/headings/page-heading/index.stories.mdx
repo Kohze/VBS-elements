@@ -25,7 +25,21 @@ export const Template = (args) => <VBSPageHeading {...args} />
 
 export const Simple = (args) => (
   <VBSPageHeading
-    title="Page Title"
+    title="Page Heading"
+    actionButtons={(props) => (
+      <>
+        <VBSButton text="Edit" size="md" variant="outline" />
+        <VBSButton text="Publish" size="md" variant="dark" />
+      </>
+    )}
+    {...args}
+  />
+)
+
+export const SimpleDark = (args) => (
+  <VBSPageHeading
+    title="Page Heading"
+    theme="dark"
     actionButtons={(props) => (
       <>
         <VBSButton text="Edit" size="md" variant="outline" />
@@ -45,5 +59,15 @@ Some parts of the page heading are optional, such as the action buttons. To add 
 ## Simple
 
 <Canvas>
-  <Story name="Default">{Simple.bind({})}</Story>
+  <Story name="Simple">{Simple.bind({})}</Story>
 </Canvas>
+
+## Simple Dark
+
+<Canvas>
+  <Story name="Simple Dark">{SimpleDark.bind({})}</Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSPageHeading} />

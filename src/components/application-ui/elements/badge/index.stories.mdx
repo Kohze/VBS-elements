@@ -12,54 +12,46 @@ import VBSBadge from '@/components/application-ui/elements/badge'
 
 export const Template = (args) => <VBSBadge text="Badge" {...args} />
 
-export const Default = Template.bind({})
-
 export const Variants = (args) => (
   <div className="flex gap-2 items-center">
-    <VBSBadge {...args} text="Primary" />
-    <VBSBadge {...args} text="Secondary" variant="secondary" />
-    <VBSBadge {...args} text="Success" variant="success" />
-    <VBSBadge {...args} text="Danger" variant="danger" />
-    <VBSBadge {...args} text="Warning" variant="warning" />
-    <VBSBadge {...args} text="Info" variant="info" />
-    <VBSBadge {...args} text="Outline" variant="outline" />
-    <VBSBadge {...args} text="Light" variant="light" />
-    <VBSBadge {...args} text="Dark" variant="dark" />
+    <VBSBadge text="Primary" {...args} />
+    <VBSBadge text="Secondary" variant="secondary" {...args} />
+    <VBSBadge text="Success" variant="success" {...args} />
+    <VBSBadge text="Danger" variant="danger" {...args} />
+    <VBSBadge text="Warning" variant="warning" {...args} />
+    <VBSBadge text="Info" variant="info" {...args} />
+    <VBSBadge text="Outline" variant="outline" {...args} />
+    <VBSBadge text="Light" variant="light" {...args} />
+    <VBSBadge text="Dark" variant="dark" {...args} />
   </div>
 )
 
 export const Kinds = (args) => (
   <div className="flex gap-2 items-center">
-    <VBSBadge {...args} text="Square" kind="square" />
-    <VBSBadge {...args} text="Rounded" kind="rounded" />
-    <VBSBadge {...args} text="Circular" kind="circular" />
+    <VBSBadge text="Square" kind="square" {...args} />
+    <VBSBadge text="Rounded" kind="rounded" {...args} />
+    <VBSBadge text="Circular" kind="circular" {...args} />
   </div>
 )
 
 export const Sizes = (args) => (
   <div className="flex gap-2 items-end">
-    <VBSBadge {...args} text="Small" size="sm" />
-    <VBSBadge {...args} text="Normal" />
+    <VBSBadge text="Small" size="sm" {...args} />
+    <VBSBadge text="Normal" {...args} />
   </div>
 )
 
 export const WithNotification = (args) => (
   <div className="flex gap-2 items-end">
-    <VBSBadge {...args} text="Badge" notification size="sm" />
-    <VBSBadge {...args} text="Badge" notification />
+    <VBSBadge text="Badge" notification size="sm" {...args} />
+    <VBSBadge text="Badge" notification {...args} />
   </div>
 )
 
 export const WithRemoveButton = (args) => (
   <div className="flex gap-2 items-end">
-    <VBSBadge
-      {...args}
-      text="Badge"
-      size="sm"
-      removeButton
-      onRemove={() => {}}
-    />
-    <VBSBadge {...args} text="Badge" removeButton onRemove={() => {}} />
+    <VBSBadge text="Badge" size="sm" withRemove {...args} />
+    <VBSBadge text="Badge" withRemove {...args} />
   </div>
 )
 
@@ -76,7 +68,7 @@ import VBSBadge from '@/components/application-ui/elements/badge'
 ## Default
 
 <Canvas>
-  <Story name="Default">{Default.bind({})}</Story>
+  <Story name="Default">{Template.bind({})}</Story>
 </Canvas>
 
 ## Variants
