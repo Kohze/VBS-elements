@@ -9,6 +9,8 @@ const sizes = {
   md: 'h-10 w-10',
   lg: 'h-12 w-12',
   xl: 'h-16 w-16',
+  '2xl': 'h-20 w-20',
+  '3xl': 'h-24 w-24',
 }
 
 const kinds = {
@@ -63,6 +65,7 @@ const VBSAvatar = ({
             objectFit="cover"
             alt={props.alt}
             style={{ backgroundColor, ...props.style }}
+            priority
             {...props}
           />
         </div>

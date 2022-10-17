@@ -115,6 +115,53 @@ export const WithBreadcrumbsAndMetaList = (args) => (
   />
 )
 
+export const WithAvatar = (args) => (
+  <VBSPageHeading
+    variant="with-avatar"
+    user={{
+      name: 'Rebecca Nicholas',
+      role: 'Product Designer',
+      imageSrc:
+        'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      link: '#',
+    }}
+    description="Applied for the job on 12/12/2020"
+    avatarSize="xl"
+    actionButtons={(props) => (
+      <>
+        <VBSButton text="Disqualify" size="md" variant="outline" />
+        <VBSButton
+          text="Advance to offer"
+          size="md"
+          className="bg-indigo-600"
+        />
+      </>
+    )}
+    {...args}
+  />
+)
+
+export const CardView = (args) => (
+  <VBSPageHeading
+    variant="card"
+    user={{
+      name: 'Rebecca Nicholas',
+      role: 'Product Designer',
+      imageSrc:
+        'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      link: '#',
+    }}
+    cardList={[
+      { label: 'Vacation days left', value: 12 },
+      { label: 'Sick days left', value: 4 },
+      { label: 'Personal days left', value: 2 },
+    ]}
+    avatarKind="circular"
+    avatarSize="3xl"
+    {...args}
+  />
+)
+
 # Page Heading
 
 The page heading is used to display the title of a page.
@@ -129,6 +176,8 @@ import VBSPageHeading from '@/components/application-ui/headings/page-heading'
 
 ## Simple
 
+Simple page heading with title and action buttons.
+
 <Canvas>
   <Story name="Simple">{Simple.bind({})}</Story>
 </Canvas>
@@ -141,11 +190,15 @@ import VBSPageHeading from '@/components/application-ui/headings/page-heading'
 
 ## With Breadcrumbs
 
+Heading with breadcrumbs need `breadcrumbs` prop. The `current` prop is used to indicate the current page.
+
 <Canvas>
   <Story name="With Breadcrumbs">{WithBreadcrumbs.bind({})}</Story>
 </Canvas>
 
 ## With Meta List
+
+Heading with meta list need `metas` prop. The `metas` prop is an array of object with `name` and `iconName` properties.
 
 <Canvas>
   <Story name="With Meta List">{WithMetaList.bind({})}</Story>
@@ -153,10 +206,28 @@ import VBSPageHeading from '@/components/application-ui/headings/page-heading'
 
 ## With Breadcrumbs and Meta List
 
+This is a combination of the previous two examples.
+
 <Canvas>
   <Story name="With Breadcrumbs and Meta List">
     {WithBreadcrumbsAndMetaList.bind({})}
   </Story>
+</Canvas>
+
+## With Avatar
+
+Heading with avatar need `user` prop. The `user` prop is an object with `name`, `role`, `imageSrc` and `link` properties. The `avatarSize` prop is used to set the size of the avatar, `description` prop is used to set the description of the user. There are also `avatarKind` and `avatarVariant` props to set the kind and variant of the avatar.
+
+<Canvas>
+  <Story name="With Avatar">{WithAvatar.bind({})}</Story>
+</Canvas>
+
+## Card View
+
+Heading with card view need `user` and `cardList` props. The `user` prop is an object with `name`, `role`, `imageSrc` and `link` properties. The `cardList` prop is an array of object with `label` and `value` properties.
+
+<Canvas>
+  <Story name="Card View">{CardView.bind({})}</Story>
 </Canvas>
 
 ## Reference
