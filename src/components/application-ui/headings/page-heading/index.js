@@ -2,9 +2,9 @@ import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
 import VBSMetaList from '../../lists/meta-list'
 import VBSBreadcrumb from '../../navigation/breadcrumb'
-import { css } from '@emotion/css'
 import VBSUserHeaderCard from '../../cards/user-header-card'
 import VBSAvatar from '../../elements/avatar'
+import Image from 'next/image'
 
 const variants = ['simple', 'banner', 'card']
 
@@ -24,11 +24,13 @@ const VBSPageHeading = ({
   breadcrumbs,
   metas,
   user,
+  description,
   cardList,
   cardTopText,
   avatarKind,
   avatarSize,
-  description,
+  avatarPosition,
+  bannerHeight,
 }) => {
   const renderSimple = () => (
     <div
@@ -100,7 +102,66 @@ const VBSPageHeading = ({
     )
   }
 
-  const renderBanner = () => {}
+  const renderBanner = () => {
+    return (
+      <div>
+        <div
+          className="relative z-0 w-full h-32 overflow-hidden rounded-lg group bg-gradient-to-tr opacity-80 from-gray-600 to-gray-300 lg:h-60"
+          style={{ height: bannerHeight }}
+        >
+          <Image
+            src={user?.backgroundImage}
+            alt={user?.name}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className="z-20 max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+          <div
+            className={twMerge(
+              'z-20 -mt-12 sm:-mt-16 items-end sm:space-x-5',
+              avatarPosition === 'right' &&
+                'flex sm:flex-row-reverse flex-col ',
+              avatarPosition === 'left' && 'sm:flex',
+            )}
+          >
+            <VBSAvatar
+              imageSrc={user.imageSrc}
+              className="w-16 h-16 border-4 border-white sm:h-32 sm:w-32"
+            />
+            <div
+              className={twMerge(
+                'mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1',
+                avatarPosition === 'right' &&
+                  'sm:justify-start w-full text-end',
+              )}
+            >
+              <div className="flex-1 min-w-0 mt-6 sm:hidden md:block">
+                <h1 className="text-2xl font-bold text-gray-900 truncate">
+                  {user.name}
+                </h1>
+              </div>
+              {actionButtons && (
+                <div className="flex flex-col mt-6 space-y-3 justify-stretch sm:flex-row sm:space-y-0 sm:space-x-4">
+                  {actionButtons()}
+                </div>
+              )}
+            </div>
+          </div>
+          <div
+            className={twMerge(
+              'flex-1 hidden min-w-0 mt-6 sm:block md:hidden',
+              avatarPosition === 'right' && 'text-end',
+            )}
+          >
+            <h1 className="text-2xl font-bold text-gray-900 truncate">
+              {user.name}
+            </h1>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   const getVariant = () => {
     switch (variant) {
@@ -141,7 +202,7 @@ VBSPageHeading.defaultProps = {
   user: {},
   cardTopText: '',
   avatarKind: 'circular',
-  avatarSize: 'lg',
+  avatarPosition: 'left',
 }
 
 VBSPageHeading.propTypes = {
@@ -175,6 +236,7 @@ VBSPageHeading.propTypes = {
     role: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
   }),
+  description: PropTypes.string,
   cardList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -184,7 +246,8 @@ VBSPageHeading.propTypes = {
   cardTopText: PropTypes.string,
   avatarKind: PropTypes.oneOf(['circular', 'rounded', 'square']),
   avatarSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl']),
-  description: PropTypes.string,
+  avatarPosition: PropTypes.oneOf(['left', 'right']),
+  bannerHeight: PropTypes.number,
 }
 
 export default VBSPageHeading

@@ -11,6 +11,7 @@ const sizes = {
   xl: 'h-16 w-16',
   '2xl': 'h-20 w-20',
   '3xl': 'h-24 w-24',
+  '4xl': 'h-32 w-32',
 }
 
 const kinds = {
