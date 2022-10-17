@@ -1,0 +1,65 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSUserHeaderCard from '@/components/application-ui/cards/user-header-card'
+
+<Meta
+  title="Application UI/Cards/User Header Card"
+  component={VBSUserHeaderCard}
+/>
+
+export const Template = (args) => (
+  <VBSUserHeaderCard
+    user={{
+      name: 'Mary Jane',
+      role: 'Designer',
+      imageSrc:
+        'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80',
+      link: '#',
+    }}
+    {...args}
+  />
+)
+
+export const WithInfoList = (args) => (
+  <VBSUserHeaderCard
+    user={{
+      name: 'Mary Jane',
+      role: 'Designer',
+      imageSrc:
+        'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80',
+      link: '#',
+    }}
+    cardList={[
+      { label: 'Vacation days left', value: 12 },
+      { label: 'Sick days left', value: 4 },
+      { label: 'Personal days left', value: 2 },
+    ]}
+    {...args}
+  />
+)
+
+# User Header Card
+
+The User Header Card is a card that displays the user's avatar, name, and title.
+
+## Default
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+## With Info List
+
+<Canvas>
+  <Story name="With Info List">{WithInfoList.bind({})}</Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSUserHeaderCard} />
