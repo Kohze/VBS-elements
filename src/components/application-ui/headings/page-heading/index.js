@@ -9,8 +9,8 @@ import Image from 'next/image'
 const variants = ['simple', 'banner', 'card']
 
 const themes = {
-  light: { bg: 'bg-white', title: 'text-gray-900' },
-  dark: { bg: 'bg-gray-800', title: 'text-white' },
+  light: { bg: 'bg-white', title: 'text-gray-900', current: 'text-gray-500' },
+  dark: { bg: 'bg-gray-800', title: 'text-white', current: 'text-gray-500' },
 }
 
 const VBSPageHeading = ({
@@ -37,7 +37,6 @@ const VBSPageHeading = ({
       className={twMerge(
         'md:flex md:items-center md:justify-between p-4',
         (breadcrumbs.length > 0 || metas.length > 0) && 'p-0',
-        themes[theme].bg,
         className,
       )}
     >
@@ -167,10 +166,13 @@ const VBSPageHeading = ({
     switch (variant) {
       case 'simple':
         return (
-          <div>
+          <div className={twMerge(themes[theme].bg)}>
             {breadcrumbs.length > 0 && (
               <div className="mb-2">
-                <VBSBreadcrumb pages={breadcrumbs} />
+                <VBSBreadcrumb
+                  pages={breadcrumbs}
+                  currentClassName={themes[theme].current}
+                />
               </div>
             )}
             {renderSimple()}

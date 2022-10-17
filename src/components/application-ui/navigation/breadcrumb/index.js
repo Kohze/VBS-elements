@@ -37,7 +37,7 @@ const VBSBreadcrumb = ({
       <ol
         role="list"
         className={twMerge(
-          'flex items-center space-x-4 bg-white',
+          'flex items-center space-x-4',
           variants[variant].ol,
           fullWidth && 'w-full',
           listClassName,
