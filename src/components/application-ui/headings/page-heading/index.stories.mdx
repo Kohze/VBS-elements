@@ -50,6 +50,71 @@ export const SimpleDark = (args) => (
   />
 )
 
+export const WithBreadcrumbs = (args) => (
+  <VBSPageHeading
+    title="Frontend Developer"
+    breadcrumbs={[
+      { name: 'Jobs', href: '/jobs', current: false },
+      {
+        name: 'Frontend Developer',
+        href: '/jobs/frontend-developer',
+        current: true,
+      },
+    ]}
+    actionButtons={(props) => (
+      <>
+        <VBSButton text="Edit" size="md" variant="outline" />
+        <VBSButton text="Publish" size="md" variant="dark" />
+      </>
+    )}
+    {...args}
+  />
+)
+
+export const WithMetaList = (args) => (
+  <VBSPageHeading
+    title="Frontend Developer"
+    metas={[
+      { name: 'Full-time', iconName: 'briefcase' },
+      { name: 'Remote', iconName: 'map-pin' },
+      { name: 'Part-time', iconName: 'clock' },
+    ]}
+    actionButtons={(props) => (
+      <>
+        <VBSButton text="Edit" size="md" variant="outline" />
+        <VBSButton text="Publish" size="md" variant="dark" />
+      </>
+    )}
+    {...args}
+  />
+)
+
+export const WithBreadcrumbsAndMetaList = (args) => (
+  <VBSPageHeading
+    title="Frontend Developer"
+    breadcrumbs={[
+      { name: 'Jobs', href: '/jobs', current: false },
+      {
+        name: 'Frontend Developer',
+        href: '/jobs/frontend-developer',
+        current: true,
+      },
+    ]}
+    metas={[
+      { name: 'Full-time', iconName: 'briefcase' },
+      { name: 'Remote', iconName: 'map-pin' },
+      { name: 'Part-time', iconName: 'clock' },
+    ]}
+    actionButtons={(props) => (
+      <>
+        <VBSButton text="Edit" size="md" variant="outline" />
+        <VBSButton text="Publish" size="md" variant="dark" />
+      </>
+    )}
+    {...args}
+  />
+)
+
 # Page Heading
 
 The page heading is used to display the title of a page.
@@ -72,6 +137,26 @@ import VBSPageHeading from '@/components/application-ui/headings/page-heading'
 
 <Canvas>
   <Story name="Simple Dark">{SimpleDark.bind({})}</Story>
+</Canvas>
+
+## With Breadcrumbs
+
+<Canvas>
+  <Story name="With Breadcrumbs">{WithBreadcrumbs.bind({})}</Story>
+</Canvas>
+
+## With Meta List
+
+<Canvas>
+  <Story name="With Meta List">{WithMetaList.bind({})}</Story>
+</Canvas>
+
+## With Breadcrumbs and Meta List
+
+<Canvas>
+  <Story name="With Breadcrumbs and Meta List">
+    {WithBreadcrumbsAndMetaList.bind({})}
+  </Story>
 </Canvas>
 
 ## Reference

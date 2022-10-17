@@ -1,0 +1,43 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSMetaList from '@/components/application-ui/lists/meta-list'
+
+export const listItems = [
+  { name: 'Full-time', iconName: 'briefcase' },
+  { name: 'Remote', iconName: 'map-pin' },
+  { name: 'Part-time', iconName: 'clock' },
+]
+
+<Meta
+  title="Application UI/Lists/Meta List"
+  component={VBSMetaList}
+  args={{ items: listItems }}
+/>
+
+export const Template = (args) => <VBSMetaList {...args} />
+
+# Meta List
+
+The meta list is a simple to list items with an icon and a title. It is used to display information about a user or a product.
+
+## Import
+
+```js
+import VBSMetaList from '@/components/application-ui/lists/meta-list'
+```
+
+## Usage
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSMetaList} />

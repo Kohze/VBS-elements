@@ -1,16 +1,9 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
+import VBSMetaList from '../../lists/meta-list'
+import VBSBreadcrumb from '../../navigation/breadcrumb'
 
-const variants = [
-  'simple',
-  'simple-with-breadcrumbs',
-  'with-meta',
-  'with-banner',
-  'with-avatar',
-  'with-avatar-and-stats',
-  'with-meta-and-breadcrumbs',
-  'card-with-avatar',
-]
+const variants = ['simple', 'banner', 'card']
 
 const themes = {
   light: { bg: 'bg-white', title: 'text-gray-900' },
@@ -26,43 +19,60 @@ const VBSPageHeading = ({
   actionButtons,
   actionsClassName,
   className,
-  ...props
+  breadcrumbs,
+  metas,
 }) => {
+  const renderSimple = () => (
+    <div
+      className={twMerge(
+        'md:flex md:items-center md:justify-between p-4',
+        (breadcrumbs || metas) && 'p-0',
+        themes[theme].bg,
+        className,
+      )}
+    >
+      <div className="flex-1 min-w-0">
+        <h2
+          className={twMerge(
+            'text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight',
+            themes[theme].title,
+            titleClassName,
+          )}
+        >
+          {title}
+        </h2>
+      </div>
+      {actionButtons && (
+        <div
+          className={twMerge(
+            'flex gap-4 mt-4 md:mt-0 md:ml-4',
+            actionsClassName,
+          )}
+        >
+          {actionButtons({ theme })}
+        </div>
+      )}
+    </div>
+  )
+
   const getVariant = () => {
     switch (variant) {
       case 'simple':
         return (
-          <div
-            className={twMerge(
-              'md:flex md:items-center md:justify-between p-8',
-              themes[theme].bg,
-              className,
+          <div>
+            {breadcrumbs && (
+              <div className="mb-2">
+                <VBSBreadcrumb pages={breadcrumbs} />
+              </div>
             )}
-          >
-            <div className="flex-1 min-w-0">
-              <h2
-                className={twMerge(
-                  'text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight',
-                  themes[theme].title,
-                  titleClassName,
-                )}
-              >
-                {title}
-              </h2>
-            </div>
-            {actionButtons && (
-              <div
-                className={twMerge(
-                  'flex gap-4 mt-4 md:mt-0 md:ml-4',
-                  actionsClassName,
-                )}
-              >
-                {actionButtons({ theme })}
+            {renderSimple()}
+            {metas && (
+              <div className="mt-1">
+                <VBSMetaList items={metas} />
               </div>
             )}
           </div>
         )
-      case 'simple-with-breadcrumbs':
     }
   }
 
@@ -86,6 +96,14 @@ VBSPageHeading.propTypes = {
    */
   actionButtons: PropTypes.func,
   actionButtonsClassName: PropTypes.string,
+  className: PropTypes.string,
+  breadcrumbs: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      href: PropTypes.string,
+      current: PropTypes.bool,
+    }),
+  ),
 }
 
 export default VBSPageHeading

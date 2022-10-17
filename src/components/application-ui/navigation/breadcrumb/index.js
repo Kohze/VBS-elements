@@ -82,9 +82,9 @@ const VBSBreadcrumb = ({
               <NextLink href={page.href}>
                 <a
                   className={twMerge(
-                    'ml-4 text-sm font-medium text-gray-500 hover:text-gray-600',
+                    'ml-4 text-sm font-medium text-gray-400 hover:text-gray-600',
                     linkClassName,
-                    page.current ? currentClassName : '',
+                    page.current && currentClassName,
                   )}
                   style={{ color: page.current ? currentColor : linkColor }}
                   aria-current={page.current ? 'page' : undefined}
@@ -102,7 +102,7 @@ const VBSBreadcrumb = ({
 
 VBSBreadcrumb.defaultProps = {
   variant: 'simple',
-  currentClassName: 'text-blue-800 pointer-events-none',
+  currentClassName: 'text-gray-800 pointer-events-none font-medium',
   homeIconName: 'home',
   dividerIconName: 'chevron-right',
 }
