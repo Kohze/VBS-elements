@@ -31,13 +31,13 @@ const VBSPageHeading = ({
   avatarSize,
   avatarPosition,
   bannerHeight,
+  bannerClassName,
 }) => {
   const renderSimple = () => (
     <div
       className={twMerge(
         'md:flex md:items-center md:justify-between p-4',
         (breadcrumbs.length > 0 || metas.length > 0) && 'p-0',
-        className,
       )}
     >
       <div className="flex-1 min-w-0">
@@ -72,13 +72,21 @@ const VBSPageHeading = ({
         cardTopText={cardTopText}
         avatarKind={avatarKind}
         avatarSize={avatarSize}
+        className={className}
+        titleClassName={titleClassName}
       />
     )
   }
 
   const renderWithAvatar = () => {
     return (
-      <div className="md:flex md:items-center md:justify-between md:space-x-5">
+      <div
+        className={twMerge(
+          'md:flex md:items-center md:justify-between md:space-x-5',
+          themes[theme].bg,
+          className,
+        )}
+      >
         <div className="flex items-start space-x-5">
           <VBSAvatar
             imageSrc={user.imageSrc}
@@ -86,7 +94,15 @@ const VBSPageHeading = ({
             kind={avatarKind}
           />
           <div className="pt-1.5">
-            <h1 className="text-2xl font-bold text-gray-900">{user.name}</h1>
+            <h1
+              className={twMerge(
+                'text-2xl font-bold text-gray-900',
+                themes[theme].title,
+                titleClassName,
+              )}
+            >
+              {user.name}
+            </h1>
             <p className="text-sm font-medium text-gray-500">
               {description || user.role}
             </p>
@@ -105,7 +121,10 @@ const VBSPageHeading = ({
     return (
       <div>
         <div
-          className="relative z-0 w-full h-32 overflow-hidden rounded-lg group bg-gradient-to-tr opacity-80 from-gray-600 to-gray-300 lg:h-60"
+          className={twMerge(
+            'relative z-0 w-full h-32 overflow-hidden rounded-lg group bg-gradient-to-tr opacity-80 from-gray-600 to-gray-300 lg:h-60',
+            bannerClassName,
+          )}
           style={{ height: bannerHeight }}
         >
           <Image
@@ -166,7 +185,7 @@ const VBSPageHeading = ({
     switch (variant) {
       case 'simple':
         return (
-          <div className={twMerge(themes[theme].bg)}>
+          <div className={twMerge(themes[theme].bg, className)}>
             {breadcrumbs.length > 0 && (
               <div className="mb-2">
                 <VBSBreadcrumb
@@ -250,6 +269,7 @@ VBSPageHeading.propTypes = {
   avatarSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl']),
   avatarPosition: PropTypes.oneOf(['left', 'right']),
   bannerHeight: PropTypes.number,
+  bannerClassName: PropTypes.string,
 }
 
 export default VBSPageHeading

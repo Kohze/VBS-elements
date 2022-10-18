@@ -10,6 +10,7 @@ const VBSUserHeaderCard = ({
   cardTopText,
   avatarKind,
   avatarSize,
+  titleClassName,
   className,
 }) => {
   const listStyles = css`
@@ -37,7 +38,12 @@ const VBSUserHeaderCard = ({
             />
             <div className="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
               <p className="text-sm font-medium text-gray-600">{cardTopText}</p>
-              <p className="text-xl font-bold text-gray-900 sm:text-2xl">
+              <p
+                className={twMerge(
+                  'text-xl font-bold text-gray-900 sm:text-2xl',
+                  titleClassName,
+                )}
+              >
                 {user?.name}
               </p>
               <p className="text-sm font-medium text-gray-600">{user?.role}</p>
@@ -98,6 +104,7 @@ VBSUserHeaderCard.propTypes = {
   cardTopText: PropTypes.string,
   avatarKind: PropTypes.oneOf(['circular', 'rounded', 'square']),
   avatarSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl']),
+  titleClassName: PropTypes.string,
 }
 
 export default VBSUserHeaderCard
