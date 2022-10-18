@@ -8,6 +8,7 @@ import {
 } from '@storybook/addon-docs'
 import VBSSectionHeading from '@/components/application-ui/headings/section-heading'
 import VBSButton from '@/components/application-ui/elements/button'
+import VBSTab from '@/components/application-ui/navigation/tab'
 
 <Meta
   title="Application UI/Headings/Section Heading"
@@ -50,6 +51,22 @@ export const WithLabel = (args) => (
   <VBSSectionHeading title="Section Heading" label="in Engineering" {...args} />
 )
 
+export const WithTabs = () => (
+  <VBSSectionHeading
+    title="Section Heading"
+    renderTabs={() => (
+      <VBSTab
+        tabs={[
+          { name: 'My Account', href: '#', current: true },
+          { name: 'Company', href: '#', current: false },
+          { name: 'Team Members', href: '#', current: false },
+          { name: 'Billing', href: '#', current: false },
+        ]}
+      />
+    )}
+  />
+)
+
 ## Section Heading
 
 The section heading is used to separate content into sections.
@@ -76,4 +93,10 @@ The section heading is used to separate content into sections.
 
 <Canvas>
   <Story name="With Label">{WithLabel.bind({})}</Story>
+</Canvas>
+
+## With Tabs
+
+<Canvas>
+  <Story name="With Tabs">{WithTabs.bind({})}</Story>
 </Canvas>

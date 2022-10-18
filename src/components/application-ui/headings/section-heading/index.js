@@ -9,6 +9,7 @@ const VBSSectionHeading = ({
   label,
   labelClassName,
   actionButtons,
+  renderTabs,
 }) => {
   return (
     <div
@@ -46,6 +47,7 @@ const VBSSectionHeading = ({
             {description}
           </p>
         )}
+        {renderTabs && renderTabs()}
       </div>
       {!!actionButtons && <div className="flex gap-2">{actionButtons()}</div>}
     </div>

@@ -87,6 +87,13 @@ const VBSTab = ({
                     kind === 'bar' && i === tabs.length - 1 && 'rounded-r-lg',
                   )}
                   aria-current={tab.current ? 'page' : undefined}
+                  style={{
+                    backgroundColor: tab.current
+                      ? currentBackgroundColor
+                      : tabItemBackgroundColor,
+                    color: tab.current ? currentTextColor : tabItemTextColor,
+                    borderColor: tabItemBorderColor,
+                  }}
                 >
                   {iconPosition === 'left' && (
                     <VBSIcon iconName={tab.iconName} />
