@@ -1,0 +1,79 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSSectionHeading from '@/components/application-ui/headings/section-heading'
+import VBSButton from '@/components/application-ui/elements/button'
+
+<Meta
+  title="Application UI/Headings/Section Heading"
+  component={VBSSectionHeading}
+  parameters={{
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  }}
+/>
+
+export const Simple = (args) => (
+  <VBSSectionHeading title="Section Heading" {...args} />
+)
+
+export const WithDescription = (args) => (
+  <VBSSectionHeading
+    title="Section Heading"
+    description="Checkout and Payments Team"
+    {...args}
+  />
+)
+
+export const WithActionButtons = (args) => (
+  <VBSSectionHeading
+    title="Heading"
+    actionButtons={(props) => (
+      <>
+        <VBSButton text="Create" size="md" variant="outline" />
+        <VBSButton text="Share" size="md" className="bg-indigo-600" />
+      </>
+    )}
+    {...args}
+  />
+)
+
+export const WithLabel = (args) => (
+  <VBSSectionHeading title="Section Heading" label="in Engineering" {...args} />
+)
+
+## Section Heading
+
+The section heading is used to separate content into sections.
+
+## Simple
+
+<Canvas>
+  <Story name="Simple">{Simple.bind({})}</Story>
+</Canvas>
+
+## With Description
+
+<Canvas>
+  <Story name="With Description">{WithDescription.bind({})}</Story>
+</Canvas>
+
+## With Action Buttons
+
+<Canvas>
+  <Story name="With Action Buttons">{WithActionButtons.bind({})}</Story>
+</Canvas>
+
+## With Label
+
+<Canvas>
+  <Story name="With Label">{WithLabel.bind({})}</Story>
+</Canvas>
