@@ -87,6 +87,72 @@ export const CustomTabItemStyles = (args) => (
   />
 )
 
+export const FullWidth = (args) => (
+  <VBSTab
+    tabs={[
+      { name: 'My Account', href: '#', current: false, iconName: 'user' },
+      {
+        name: 'Company',
+        href: '#',
+        current: false,
+        iconName: 'computer-desktop',
+      },
+      { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+    ]}
+    fullWidth
+    {...args}
+  />
+)
+
+export const BarKind = (args) => (
+  <VBSTab
+    tabs={[
+      { name: 'My Account', href: '#', current: true, iconName: 'user' },
+      {
+        name: 'Company',
+        href: '#',
+        current: false,
+        iconName: 'computer-desktop',
+      },
+      { name: 'Team Members', href: '#', current: false, iconName: 'users' },
+      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+    ]}
+    kind="bar"
+    {...args}
+  />
+)
+
+export const WithTabCount = (args) => (
+  <VBSTab
+    tabs={[
+      {
+        name: 'My Account',
+        href: '#',
+        current: true,
+        iconName: 'user',
+        count: 2,
+      },
+      {
+        name: 'Company',
+        href: '#',
+        current: false,
+        iconName: 'computer-desktop',
+        count: 3,
+      },
+      { name: 'Team Members', href: '#', current: false, iconName: 'users' },
+      {
+        name: 'Billing',
+        href: '#',
+        current: false,
+        iconName: 'credit-card',
+        count: 14,
+      },
+    ]}
+    {...args}
+  />
+)
+
 # Tab
 
 Tabs are used to organize content into different sections. They are useful when you have a lot of content and need to organize it into different sections.
@@ -99,7 +165,9 @@ Tabs are used to organize content into different sections. They are useful when 
 
 ## With Icon
 
-Tabs can also have icons. The icon can be placed on the left or right side of the tab name. Check the icon names in the [Heroicons](https://heroicons.com/) library.
+Tabs can also have icons. `iconName` is the name of the icon. `iconPosition` is the position of the icon. It can be `left` or `right`.
+
+Check the icon names in the [Heroicons](https://heroicons.com/) library.
 
 <Canvas>
   <Story name="With Icon">{WithIcon.bind({})}</Story>
@@ -107,7 +175,7 @@ Tabs can also have icons. The icon can be placed on the left or right side of th
 
 ## With Pills
 
-Tabs can also be used as pills. Pills are used to indicate the current page.
+Tabs can also be styled as pills. `variant` can be `default` or `pills`.
 
 <Canvas>
   <Story name="With Pills">{WithPills.bind({})}</Story>
@@ -115,10 +183,34 @@ Tabs can also be used as pills. Pills are used to indicate the current page.
 
 ## Custom Tab Item Styles
 
-You can also customize the styles of the tab item.
+You can also customize the styles of the tab items. `tabItemClassName` is the class name of the tab item. `currentClassName` is the class name of the current tab item.
 
 <Canvas>
   <Story name="Custom Tab Item Styles">{CustomTabItemStyles.bind({})}</Story>
+</Canvas>
+
+## Full Width
+
+Tabs can also be full width. Simply pass `fullWidth` prop.
+
+<Canvas>
+  <Story name="Full Width">{FullWidth.bind({})}</Story>
+</Canvas>
+
+## Bar Kind
+
+Tabs can also be styled as a bar. To do this, pass `kind="bar"`.
+
+<Canvas>
+  <Story name="Bar Kind">{BarKind.bind({})}</Story>
+</Canvas>
+
+## With Tab Count
+
+Tabs can also have a count. `count` is the number of the count.
+
+<Canvas>
+  <Story name="With Tab Count">{WithTabCount.bind({})}</Story>
 </Canvas>
 
 ## Reference

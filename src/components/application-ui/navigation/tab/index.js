@@ -15,17 +15,31 @@ const variants = {
   pills: {
     tab: 'text-gray-500 hover:text-gray-700',
     tabMain: 'px-3 py-2 font-medium text-sm rounded-md',
-    current: 'bg-gray-100 text-gray-700',
+    current: 'bg-indigo-100 text-indigo-700',
     wrapper: '',
   },
 }
 
+const kinds = ['normal', 'bar']
+
 const VBSTab = ({
   variant,
+  kind,
   tabs,
   shallowLink,
   tabItemClassName,
   currentClassName,
+  currentBackgroundColor,
+  currentTextColor,
+  tabItemBackgroundColor,
+  tabItemTextColor,
+  tabItemBorderColor,
+  tabCountClassName,
+  tabCountCurrentClassName,
+  tabCountBackgroundColor,
+  tabCountTextColor,
+  tabCountCurrentBackgroundColor,
+  tabCountCurrentTextColor,
   iconPosition,
   fullWidth,
 }) => {
@@ -49,8 +63,15 @@ const VBSTab = ({
       </div>
       <div className="hidden sm:block">
         <div className={twMerge(variants[variant].wrapper)}>
-          <nav className="flex -mb-px space-x-8" aria-label="Tabs">
-            {tabs.map((tab) => (
+          <nav
+            className={twMerge(
+              'flex -mb-px space-x-8',
+              (fullWidth || kind === 'bar') && 'w-full',
+              kind === 'bar' && 'isolate rounded-lg shadow w-full',
+            )}
+            aria-label="Tabs"
+          >
+            {tabs.map((tab, i) => (
               <NextLink href={tab.href} key={uuidv4()} shallow={shallowLink}>
                 <a
                   key={tab.name}
@@ -61,6 +82,9 @@ const VBSTab = ({
                       ? currentClassName || variants[variant].current
                       : tabItemClassName || variants[variant].tab,
                     tab.iconName && 'flex items-center space-x-1',
+                    (fullWidth || kind === 'bar') && 'w-full justify-center',
+                    kind === 'bar' && i === 0 && 'rounded-l-lg',
+                    kind === 'bar' && i === tabs.length - 1 && 'rounded-r-lg',
                   )}
                   aria-current={tab.current ? 'page' : undefined}
                 >
@@ -71,6 +95,28 @@ const VBSTab = ({
                   {iconPosition === 'right' && (
                     <VBSIcon iconName={tab.iconName} />
                   )}
+
+                  {tab.count ? (
+                    <span
+                      className={twMerge(
+                        tab.current
+                          ? tabCountCurrentClassName ||
+                              'bg-indigo-100 text-indigo-600'
+                          : tabCountClassName || 'bg-gray-100 text-gray-900',
+                        'hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block',
+                      )}
+                      style={{
+                        backgroundColor: tab.current
+                          ? tabCountCurrentBackgroundColor
+                          : tabCountBackgroundColor,
+                        color: tab.current
+                          ? tabCountCurrentTextColor
+                          : tabCountTextColor,
+                      }}
+                    >
+                      {tab.count}
+                    </span>
+                  ) : null}
                 </a>
               </NextLink>
             ))}
@@ -105,7 +151,19 @@ VBSTab.propTypes = {
   currentClassName: PropTypes.string,
   iconPosition: PropTypes.oneOf(['left', 'right']),
   fullWidth: PropTypes.bool,
-  variant: PropTypes.oneOf(['default', 'pills']),
+  variant: PropTypes.oneOf(Object.keys(variants)),
+  kind: PropTypes.oneOf(kinds),
+  tabCountClassName: PropTypes.string,
+  tabCountCurrentClassName: PropTypes.string,
+  tabCountBackgroundColor: PropTypes.string,
+  tabCountTextColor: PropTypes.string,
+  tabCountCurrentBackgroundColor: PropTypes.string,
+  tabCountCurrentTextColor: PropTypes.string,
+  tabItemBackgroundColor: PropTypes.string,
+  tabItemTextColor: PropTypes.string,
+  tabItemBorderColor: PropTypes.string,
+  currentBackgroundColor: PropTypes.string,
+  currentTextColor: PropTypes.string,
 }
 
 export default VBSTab
