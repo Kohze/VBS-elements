@@ -44,7 +44,7 @@ VBSIcon.defaultProps = {
 }
 
 VBSIcon.propTypes = {
-  iconName: PropTypes.string,
+  iconName: PropTypes.string.isRequired,
   iconType: PropTypes.oneOf(['solid', 'outline']),
   size: PropTypes.oneOf(Object.keys(sizes)),
   className: PropTypes.string,

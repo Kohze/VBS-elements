@@ -1,0 +1,126 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSTab from '@/components/application-ui/navigation/tab'
+
+<Meta
+  title="Application UI/Navigation/Tab"
+  component={VBSTab}
+  parameters={{
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  }}
+/>
+
+export const Default = (args) => (
+  <VBSTab
+    tabs={[
+      { name: 'My Account', href: '#', current: false },
+      { name: 'Company', href: '#', current: false },
+      { name: 'Team Members', href: '#', current: true },
+      { name: 'Billing', href: '#', current: false },
+    ]}
+    {...args}
+  />
+)
+
+export const WithIcon = (args) => (
+  <VBSTab
+    tabs={[
+      { name: 'My Account', href: '#', current: false, iconName: 'user' },
+      {
+        name: 'Company',
+        href: '#',
+        current: false,
+        iconName: 'computer-desktop',
+      },
+      { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+    ]}
+    {...args}
+  />
+)
+
+export const WithPills = (args) => (
+  <VBSTab
+    tabs={[
+      { name: 'My Account', href: '#', current: false, iconName: 'user' },
+      {
+        name: 'Company',
+        href: '#',
+        current: false,
+        iconName: 'computer-desktop',
+      },
+      { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+    ]}
+    variant="pills"
+    {...args}
+  />
+)
+
+export const CustomTabItemStyles = (args) => (
+  <VBSTab
+    tabs={[
+      { name: 'My Account', href: '#', current: false, iconName: 'user' },
+      {
+        name: 'Company',
+        href: '#',
+        current: false,
+        iconName: 'computer-desktop',
+      },
+      { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+    ]}
+    variant="pills"
+    tabItemClassName="bg-white text-gray-900 rounded-full border border-gray-200"
+    currentClassName="bg-indigo-600 text-white rounded-full"
+    {...args}
+  />
+)
+
+# Tab
+
+Tabs are used to organize content into different sections. They are useful when you have a lot of content and need to organize it into different sections.
+
+## Default
+
+<Canvas>
+  <Story name="Default">{Default.bind({})}</Story>
+</Canvas>
+
+## With Icon
+
+Tabs can also have icons. The icon can be placed on the left or right side of the tab name. Check the icon names in the [Heroicons](https://heroicons.com/) library.
+
+<Canvas>
+  <Story name="With Icon">{WithIcon.bind({})}</Story>
+</Canvas>
+
+## With Pills
+
+Tabs can also be used as pills. Pills are used to indicate the current page.
+
+<Canvas>
+  <Story name="With Pills">{WithPills.bind({})}</Story>
+</Canvas>
+
+## Custom Tab Item Styles
+
+You can also customize the styles of the tab item.
+
+<Canvas>
+  <Story name="Custom Tab Item Styles">{CustomTabItemStyles.bind({})}</Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSTab} />

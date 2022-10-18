@@ -26,7 +26,12 @@ const VBSSectionHeading = ({
         >
           {title}
           {label && (
-            <span className="mt-1 ml-2 text-sm font-light text-gray-500 truncate">
+            <span
+              className={twMerge(
+                'mt-1 ml-2 text-sm font-light text-gray-500 truncate',
+                labelClassName,
+              )}
+            >
               {label}
             </span>
           )}
@@ -52,6 +57,8 @@ VBSSectionHeading.propTypes = {
   titleClassName: PropTypes.string,
   description: PropTypes.string,
   descriptionClassName: PropTypes.string,
+  label: PropTypes.string,
+  labelClassName: PropTypes.string,
   actionButtons: PropTypes.func,
 }
 
