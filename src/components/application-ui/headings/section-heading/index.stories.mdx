@@ -9,6 +9,7 @@ import {
 import VBSSectionHeading from '@/components/application-ui/headings/section-heading'
 import VBSButton from '@/components/application-ui/elements/button'
 import VBSTab from '@/components/application-ui/navigation/tab'
+import VBSDropdown from '@/components/application-ui/elements/dropdown'
 
 <Meta
   title="Application UI/Headings/Section Heading"
@@ -67,6 +68,19 @@ export const WithTabs = () => (
   />
 )
 
+export const WithDropdown = (args) => (
+  <VBSSectionHeading
+    title="Section Heading"
+    renderDropdown={() => (
+      <VBSDropdown
+        minimal
+        elements={[{ text: 'Link 1' }, { text: 'Link 2' }, { text: 'Link 3' }]}
+      />
+    )}
+    {...args}
+  />
+)
+
 ## Section Heading
 
 The section heading is used to separate content into sections.
@@ -99,4 +113,10 @@ The section heading is used to separate content into sections.
 
 <Canvas>
   <Story name="With Tabs">{WithTabs.bind({})}</Story>
+</Canvas>
+
+## With Dropdown
+
+<Canvas>
+  <Story name="With Dropdown">{WithDropdown.bind({})}</Story>
 </Canvas>

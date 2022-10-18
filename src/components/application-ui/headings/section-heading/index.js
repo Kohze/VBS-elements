@@ -10,12 +10,14 @@ const VBSSectionHeading = ({
   labelClassName,
   actionButtons,
   renderTabs,
+  renderDropdown,
 }) => {
   return (
     <div
       className={twMerge(
         'pb-5 border-b border-gray-200',
-        actionButtons && 'sm:flex sm:justify-between sm:items-center',
+        (actionButtons || renderDropdown) &&
+          'sm:flex sm:justify-between sm:items-center',
       )}
     >
       <div>
@@ -50,6 +52,7 @@ const VBSSectionHeading = ({
         {renderTabs && renderTabs()}
       </div>
       {!!actionButtons && <div className="flex gap-2">{actionButtons()}</div>}
+      {!!renderDropdown && renderDropdown()}
     </div>
   )
 }
