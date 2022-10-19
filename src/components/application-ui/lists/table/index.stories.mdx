@@ -9,49 +9,331 @@ import {
 import VBSTable from '@/components/application-ui/lists/table'
 import VBSButton from '@/components/application-ui/elements/button'
 
-<Meta title="Application UI/Lists/Table" component={VBSTable} />
-
-export const Simple = (args) => <VBSTable {...args} />
+<Meta
+  title="Application UI/Lists/Table"
+  component={VBSTable}
+  parameters={{
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  }}
+/>
 
 # Table
 
+Table component for displaying data in a tabular format.
+
 ## Simple
 
+Table component needs to be passed an array of objects as the `tableItems` prop. Each object in the array represents a row in the table. Each object's keys represent the column headers and the values represent the data in that column.
+
 <Canvas>
-  <Story
-    name="Simple"
-    args={{
-      title: 'Table Title',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      tableItems: [
-        {
-          name: 'Lindsay Walton',
-          title: 'Front-end Developer',
-          email: 'lindsay.walton@example.com',
-          role: 'Member',
-        },
-        {
-          name: 'Courtney Henry',
-          title: 'Back-end Developer',
-          email: 'courtney@example.com',
-          role: 'Owner',
-        },
-        {
-          name: 'Tom Cook',
-          title: 'UX Designer',
-          email: 'tom@example.com',
-          role: 'Admin',
-        },
-      ],
-      renderTableItemActionButtons: (item) => (
-        <>
-          <a href="#" className="text-indigo-600 hover:text-indigo-900">
-            Edit
-          </a>
-        </>
-      ),
-    }}
-  >
-    {Simple.bind({})}
+  <Story name="Simple">
+    {(args) => (
+      <div className="bg-gray-100 py-10">
+        <VBSTable
+          title="Table Title"
+          description="A list of all the users in your account including their name, title, email and role."
+          tableItems={[
+            {
+              name: 'Lindsay Walton',
+              title: 'Front-end Developer',
+              email: 'lindsay.walton@example.com',
+              role: 'Member',
+            },
+            {
+              name: 'Courtney Henry',
+              title: 'Back-end Developer',
+              email: 'courtney@example.com',
+              role: 'Owner',
+            },
+            {
+              name: 'Tom Cook',
+              title: 'UX Designer',
+              email: 'tom@example.com',
+              role: 'Admin',
+            },
+          ]}
+          {...args}
+        />
+      </div>
+    )}
   </Story>
 </Canvas>
+
+## With Table Actions
+
+Table actions slot prepered for buttons that are displayed in the table header but you can render any component you want in the table actions slot. They are used to perform actions on the table's data such as adding a new item or deleting all items. `renderTableActions` is a render function that returns the component you want to render in the table actions slot.
+
+<Canvas>
+  <Story name="With Table Actions">
+    {(args) => (
+      <div className="bg-gray-100 py-10">
+        <VBSTable
+          title="Table Title"
+          description="A list of all the users in your account including their name, title, email and role."
+          tableItems={[
+            {
+              name: 'Lindsay Walton',
+              title: 'Front-end Developer',
+              email: 'lindsay.walton@example.com',
+              role: 'Member',
+            },
+            {
+              name: 'Courtney Henry',
+              title: 'Back-end Developer',
+              email: 'courtney@example.com',
+              role: 'Owner',
+            },
+            {
+              name: 'Tom Cook',
+              title: 'UX Designer',
+              email: 'tom@example.com',
+              role: 'Admin',
+            },
+          ]}
+          renderTableActions={(prop) => (
+            <div className="flex gap-2">
+              <VBSButton text="Add" />
+              <VBSButton text="Delete" variant="outline" />
+            </div>
+          )}
+          {...args}
+        />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## With Table Item Actions
+
+Using the `renderTableItemActions` prop, you can pass a function that returns a component to be rendered in the last column of the table. This component will be rendered for each row in the table.
+
+<Canvas>
+  <Story name="With Table Item Actions">
+    {(args) => (
+      <div className="bg-gray-100 py-10">
+        <VBSTable
+          title="Table Title"
+          description="A list of all the users in your account including their name, title, email and role."
+          tableItems={[
+            {
+              name: 'Lindsay Walton',
+              title: 'Front-end Developer',
+              email: 'lindsay.walton@example.com',
+              role: 'Member',
+            },
+            {
+              name: 'Courtney Henry',
+              title: 'Back-end Developer',
+              email: 'courtney@example.com',
+              role: 'Owner',
+            },
+            {
+              name: 'Tom Cook',
+              title: 'UX Designer',
+              email: 'tom@example.com',
+              role: 'Admin',
+            },
+          ]}
+          renderTableItemActions={(prop) => (
+            <a href="#" className="text-indigo-600">
+              Edit
+            </a>
+          )}
+          {...args}
+        />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## Full Width
+
+Full width tables will stretch to fill the width of their container. To use a full width table, pass `fullWidth` as a prop.
+
+<Canvas>
+  <Story name="Full Width">
+    {(args) => (
+      <div className="bg-gray-100 py-10">
+        <VBSTable
+          fullWidth
+          title="Table Title"
+          description="A list of all the users in your account including their name, title, email and role."
+          tableItems={[
+            {
+              name: 'Lindsay Walton',
+              title: 'Front-end Developer',
+              email: 'lindsay.walton@example.com',
+              role: 'Member',
+            },
+            {
+              name: 'Courtney Henry',
+              title: 'Back-end Developer',
+              email: 'courtney@example.com',
+              role: 'Owner',
+            },
+            {
+              name: 'Tom Cook',
+              title: 'UX Designer',
+              email: 'tom@example.com',
+              role: 'Admin',
+            },
+          ]}
+          renderTableItemActions={(prop) => (
+            <a href="#" className="text-indigo-600">
+              Edit
+            </a>
+          )}
+          {...args}
+        />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## With Striped Rows
+
+Striped rows will alternate the background color of each row. To use striped rows, pass `striped` as a prop.
+
+<Canvas>
+  <Story name="With Striped Rows">
+    {(args) => (
+      <div className="bg-gray-100 py-10">
+        <VBSTable
+          striped
+          title="Table Title"
+          description="A list of all the users in your account including their name, title, email and role."
+          tableItems={[
+            {
+              name: 'Lindsay Walton',
+              title: 'Front-end Developer',
+              email: 'lindsay.walton@example.com',
+              role: 'Member',
+            },
+            {
+              name: 'Courtney Henry',
+              title: 'Back-end Developer',
+              email: 'courtney@example.com',
+              role: 'Owner',
+            },
+            {
+              name: 'Tom Cook',
+              title: 'UX Designer',
+              email: 'tom@example.com',
+              role: 'Admin',
+            },
+          ]}
+          renderTableItemActions={(prop) => (
+            <a href="#" className="text-indigo-600">
+              Edit
+            </a>
+          )}
+          {...args}
+        />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## Stacked on Mobile
+
+Stacked tables will stack the columns on mobile devices. To use stacked tables, pass array of column numbers to `stackedColumns` prop. Stacked columns will be stacked in the first column of the table. As the example, if you pass `[3, 4]` to `stackedColumns` prop, the third and fourth columns will be stacked in the first column on mobile devices.
+
+<Canvas>
+  <Story name="Stacked on Mobile">
+    {(args) => (
+      <div className="bg-gray-100 py-10">
+        <VBSTable
+          stackedColumns={[3, 4]}
+          title="Table Title"
+          description="A list of all the users in your account including their name, title, email and role."
+          tableItems={[
+            {
+              name: 'Lindsay Walton',
+              title: 'Front-end Developer',
+              email: 'lindsay.walton@example.com',
+              role: 'Member',
+            },
+            {
+              name: 'Courtney Henry',
+              title: 'Back-end Developer',
+              email: 'courtney@example.com',
+              role: 'Owner',
+            },
+            {
+              name: 'Tom Cook',
+              title: 'UX Designer',
+              email: 'tom@example.com',
+              role: 'Admin',
+            },
+          ]}
+          {...args}
+        />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## With Sticky Header
+
+<Canvas>
+  <Story name="With Sticky Header">
+    {(args) => (
+      <div className="max-h-[300px] overflow-y-auto bg-gray-100">
+        <div className="py-10">
+          <VBSTable
+            stickyHeader
+            title="Table Title"
+            description="A list of all the users in your account including their name, title, email and role."
+            tableItems={[
+              {
+                name: 'Lindsay Walton',
+                title: 'Front-end Developer',
+                email: 'lindsay.walton@example.com',
+                role: 'Member',
+              },
+              {
+                name: 'Courtney Henry',
+                title: 'Back-end Developer',
+                email: 'courtney@example.com',
+                role: 'Owner',
+              },
+              {
+                name: 'Tom Cook',
+                title: 'UX Designer',
+                email: 'tom@example.com',
+                role: 'Admin',
+              },
+              {
+                name: 'Maria Walton',
+                title: 'Front-end Developer',
+                email: 'maria@example.com',
+                role: 'Member',
+              },
+              {
+                name: 'Beck Dyer',
+                title: 'Back-end Developer',
+                email: 'beck@example.com',
+                role: 'Owner',
+              },
+              {
+                name: 'Adam Henry',
+                title: 'Back-end Developer',
+                email: 'adam@example.com',
+                role: 'Owner',
+              },
+            ]}
+            {...args}
+          />
+        </div>
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSTable} />
