@@ -1,0 +1,57 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSTable from '@/components/application-ui/lists/table'
+import VBSButton from '@/components/application-ui/elements/button'
+
+<Meta title="Application UI/Lists/Table" component={VBSTable} />
+
+export const Simple = (args) => <VBSTable {...args} />
+
+# Table
+
+## Simple
+
+<Canvas>
+  <Story
+    name="Simple"
+    args={{
+      title: 'Table Title',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      tableItems: [
+        {
+          name: 'Lindsay Walton',
+          title: 'Front-end Developer',
+          email: 'lindsay.walton@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Courtney Henry',
+          title: 'Back-end Developer',
+          email: 'courtney@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          email: 'tom@example.com',
+          role: 'Admin',
+        },
+      ],
+      renderTableItemActionButtons: (item) => (
+        <>
+          <a href="#" className="text-indigo-600 hover:text-indigo-900">
+            Edit
+          </a>
+        </>
+      ),
+    }}
+  >
+    {Simple.bind({})}
+  </Story>
+</Canvas>
