@@ -53,7 +53,7 @@ VBSContainer.defaultProps = {
 
 VBSContainer.propTypes = {
   variant: PropTypes.oneOf(Object.keys(variants)),
-  children: PropTypes.node,
+  children: PropTypes.node.isRequired,
   className: PropTypes.string,
   narrowSize: PropTypes.oneOf(Object.keys(narrowSizes)),
 }

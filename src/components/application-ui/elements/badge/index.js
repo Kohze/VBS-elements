@@ -103,7 +103,7 @@ VBSBadge.defaultProps = {
 }
 
 VBSBadge.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(Object.keys(variants)),
   size: PropTypes.oneOf(Object.keys(sizes)),
   kind: PropTypes.oneOf(Object.keys(kinds)),

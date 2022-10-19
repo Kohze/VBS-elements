@@ -229,7 +229,7 @@ VBSPageHeading.defaultProps = {
 VBSPageHeading.propTypes = {
   variant: PropTypes.oneOf(variants),
   theme: PropTypes.oneOf(Object.keys(themes)),
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   titleClassName: PropTypes.string,
   /**
     actionButtons is a render prop for to use to render the action buttons

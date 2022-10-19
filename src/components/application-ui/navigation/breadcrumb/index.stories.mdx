@@ -9,12 +9,6 @@ import {
 import VBSBreadcrumb from '@/components/application-ui/navigation/breadcrumb'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 
-export const pagesExample = [
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Project Nero', href: '#', current: false },
-  { name: 'Settings', href: '#', current: true },
-]
-
 <Meta
   title="Application UI/Navigation/Breadcrumb"
   component={VBSBreadcrumb}
@@ -32,10 +26,24 @@ export const pagesExample = [
       },
     },
   }}
+  parameters={{
+    docs: {
+      source: {
+        type: 'code',
+      },
+    },
+  }}
 />
 
 export const Template = (args) => (
-  <VBSBreadcrumb pages={pagesExample} {...args} />
+  <VBSBreadcrumb
+    pages={[
+      { name: 'Projects', href: '#', current: false },
+      { name: 'Project Nero', href: '#', current: false },
+      { name: 'Settings', href: '#', current: true },
+    ]}
+    {...args}
+  />
 )
 
 # Breadcrumb

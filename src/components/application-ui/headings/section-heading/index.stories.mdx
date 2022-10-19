@@ -69,16 +69,22 @@ export const WithTabs = () => (
 )
 
 export const WithDropdown = (args) => (
-  <VBSSectionHeading
-    title="Section Heading"
-    renderDropdown={() => (
-      <VBSDropdown
-        minimal
-        elements={[{ text: 'Link 1' }, { text: 'Link 2' }, { text: 'Link 3' }]}
-      />
-    )}
-    {...args}
-  />
+  <div className="h-56">
+    <VBSSectionHeading
+      title="Section Heading"
+      renderDropdown={() => (
+        <VBSDropdown
+          minimal
+          elements={[
+            { text: 'Link 1' },
+            { text: 'Link 2' },
+            { text: 'Link 3' },
+          ]}
+        />
+      )}
+      {...args}
+    />
+  </div>
 )
 
 ## Section Heading
@@ -132,3 +138,7 @@ Section heading with a title and a dropdown. To add a dropdown, pass a render fu
 <Canvas>
   <Story name="With Dropdown">{WithDropdown.bind({})}</Story>
 </Canvas>
+
+## Reference
+
+<ArgsTable of={VBSSectionHeading} />

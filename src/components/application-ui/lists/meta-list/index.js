@@ -35,7 +35,7 @@ VBSMetaList.propTypes = {
       icon: PropTypes.elementType,
       name: PropTypes.string,
     }),
-  ),
+  ).isRequired,
 }
 
 export default VBSMetaList

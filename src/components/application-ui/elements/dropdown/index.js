@@ -28,9 +28,9 @@ const VBSDropdown = ({
   groupElements,
   minimal,
   variant,
-  listIconPosition,
-  listIconType,
-  listItemClassName,
+  menuItemIconPosition,
+  menuItemIconType,
+  menuItemClassName,
   menuKind,
   menuClassName,
   iconClassName,
@@ -54,14 +54,14 @@ const VBSDropdown = ({
                   variants[variant],
                   active ? 'bg-gray-100 text-gray-900' : '',
                   variant === 'light' && 'bg-white',
-                  listItemClassName,
+                  menuItemClassName,
                 )}
               >
-                {listIconPosition === 'left' && (
+                {menuItemIconPosition === 'left' && (
                   <>
                     <VBSIcon
                       iconName={el.iconName}
-                      iconType={listIconType}
+                      iconType={menuItemIconType}
                       className={twMerge(
                         'w-5 h-5 mr-3',
                         variants[variant],
@@ -74,12 +74,12 @@ const VBSDropdown = ({
                   </>
                 )}
 
-                {listIconPosition === 'right' && (
+                {menuItemIconPosition === 'right' && (
                   <>
                     <span className="w-full">{el.text}</span>
                     <VBSIcon
                       iconName={el.iconName}
-                      iconType={listIconType}
+                      iconType={menuItemIconType}
                       className={twMerge(
                         'w-5 h-5 ml-3',
                         variants[variant],
@@ -173,8 +173,8 @@ const VBSDropdown = ({
 }
 
 VBSDropdown.defaultProps = {
-  listIconPosition: 'left',
-  listIconType: 'solid',
+  menuItemIconPosition: 'left',
+  menuItemIconType: 'solid',
   kind: 'normal',
   buttonIconPosition: 'right',
   buttonIconType: 'solid',
@@ -199,8 +199,8 @@ VBSDropdown.propTypes = {
    * `groupElements` creates a group of elements that are separated by a divider.
    */
   groupElements: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
-  listIconPosition: PropTypes.oneOf(['left', 'right']),
-  listIconType: PropTypes.oneOf(['solid', 'outline']),
+  menuItemIconPosition: PropTypes.oneOf(['left', 'right']),
+  menuItemIconType: PropTypes.oneOf(['solid', 'outline']),
   minimal: PropTypes.bool,
   variant: PropTypes.oneOf([
     'primary',
@@ -220,7 +220,7 @@ VBSDropdown.propTypes = {
   buttonIconType: PropTypes.oneOf(['solid', 'outline']),
   buttonKind: PropTypes.oneOf(['circular', 'normal', 'rounded']),
   buttonClassName: PropTypes.string,
-  listItemClassName: PropTypes.string,
+  menuItemClassName: PropTypes.string,
   menuKind: PropTypes.oneOf(['square', 'rounded']),
   iconClassName: PropTypes.string,
   menuClassName: PropTypes.string,
