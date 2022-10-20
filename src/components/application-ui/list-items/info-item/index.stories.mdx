@@ -1,0 +1,116 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSInfoItem from '@/components/application-ui/list-items/info-item'
+
+<Meta title="Application UI/List Items/Info Item" component={VBSInfoItem} />
+
+export const Template = (args) => <VBSInfoItem {...args} />
+
+# Info Item
+
+Info Item is a component that displays information in a list.
+
+## Simple
+
+There are props to display the title and other values like avatar, description. Title can be a name or a label. To list sub information, use the `metaList` prop. The `metaList` prop is an array of objects with `name` and `iconName` properties. You can list single or multiple items in the `metaList` prop.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: 'John Taylor',
+      metaList: [
+        {
+          name: 'john@example.com',
+          iconName: 'envelope',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Avatar
+
+Displaying an avatar is optional. You can use the `withAvatar` prop to display an avatar. If you dont give `imageSrc`, it will display placeholder image. Check Avatar component for more details [here](/docs/application-ui-elements-avatar--default-story).
+
+<Canvas>
+  <Story
+    name="With Avatar"
+    args={{
+      title: 'Calvin Hawkins',
+      withAvatar: true,
+      metaList: [
+        {
+          name: 'calvin.hawkins@example.com',
+          iconName: 'envelope',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Custom Icon Color and Position
+
+You can use the `iconColor` and `iconPosition` props to customize the icon color and position.
+
+<Canvas>
+  <Story
+    name="With Custom Icon Color and Position"
+    args={{
+      title: 'Applied on Jan 1, 2020',
+      metaList: [
+        {
+          name: 'Completed',
+          iconName: 'check-circle',
+        },
+      ],
+      iconColor: '#00B87C',
+      iconPosition: 'right',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Meta List Multiple Items
+
+You can list multiple items in the `metaList` prop.
+
+<Canvas>
+  <Story
+    name="With Meta List Multiple Items"
+    args={{
+      title: 'Applied on Jan 1, 2020',
+      metaList: [
+        {
+          name: 'Completed',
+          iconName: 'check-circle',
+        },
+        {
+          name: 'Jan 1, 2020',
+          iconName: 'calendar',
+        },
+        {
+          name: 'Remote',
+          iconName: 'globe-alt',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={VBSInfoItem} />
