@@ -111,6 +111,51 @@ You can list multiple items in the `metaList` prop.
   </Story>
 </Canvas>
 
+## With Actions
+
+You can use the `actions` prop to display actions. The `actions` prop is an array of objects with `VBSButton` props. Check VBSButton component for more details [here](/docs/application-ui-elements-button--default-story).
+
+<Canvas>
+  <Story
+    name="With Actions"
+    args={{
+      title: 'Calvin Hawkins',
+      withAvatar: true,
+      metaList: [
+        {
+          name: 'calvin.hawkins@example.com',
+          iconName: 'envelope',
+        },
+      ],
+      actions: [
+        {
+          iconName: 'pencil',
+          text: 'Edit',
+          onClick: () => alert('Edit'),
+          size: 'xs',
+          variant: 'outline',
+        },
+        {
+          iconName: 'trash',
+          text: 'Delete',
+          onClick: () => alert('Delete'),
+          size: 'xs',
+          variant: 'outline',
+        },
+        {
+          iconName: 'eye',
+          text: 'View',
+          href: 'https://www.google.com',
+          size: 'xs',
+          variant: 'outline',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Reference
 
 <ArgsTable of={VBSInfoItem} />
