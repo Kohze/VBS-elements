@@ -27,7 +27,7 @@ Table component for displaying data in a tabular format.
 
 ## Simple
 
-Table component needs to be passed an array of objects as the `tableItems` prop. Each object in the array represents a row in the table. Each object's keys represent the column headers and the values represent the data in that column.
+Table component needs to be passed an array of objects as the `tableItems` prop. Each object in the array represents a row in the table. Each object's keys represent the column headers and the values represent the data in that column. Each objects keys must be same. (Note: no matter key names, just should have the same keys)
 
 <Canvas>
   <Story name="Simple">
@@ -279,6 +279,8 @@ Stacked tables will stack the columns on mobile devices. To use stacked tables, 
 
 ## With Sticky Header
 
+Sticky header will make the header of the table sticky. To use sticky header, pass `stickyHeader` as a prop.
+
 <Canvas>
   <Story name="With Sticky Header">
     {(args) => (
@@ -325,6 +327,63 @@ Stacked tables will stack the columns on mobile devices. To use stacked tables, 
                 email: 'adam@example.com',
                 role: 'Owner',
               },
+            ]}
+            {...args}
+          />
+        </div>
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## Grouped Table
+
+Grouped table will group the table items by the given key. Instead of `tableItems` prop, you should pass `groupedTableItems` prop to use grouped table. `groupedTableItems` prop should be an array of objects. Each object should have `name` and `tableItems` properties. `name` property should be the title of the group. `tableItems` property should be an array of table items. Each table item should be an object and should have the same keys as the `tableItems` prop. (Note: no matter key names, just should have the same keys)
+
+<Canvas>
+  <Story name="Grouped Table">
+    {(args) => (
+      <div className="bg-gray-100">
+        <div className="py-10">
+          <VBSTable
+            title="Table Title"
+            description="A list of all the users in your account including their name, title, email and role."
+            groupedTableItems={[
+              {
+                name: 'Edinburgh',
+                tableItems: [
+                  {
+                    name: 'Lindsay Walton',
+                    title: 'Front-end Developer',
+                    email: 'lindsay.walton@example.com',
+                    role: 'Member',
+                  },
+                  {
+                    name: 'Courtney Henry',
+                    title: 'Designer',
+                    email: 'courtney.henry@example.com',
+                    role: 'Admin',
+                  },
+                ],
+              },
+              {
+                name: 'London',
+                tableItems: [
+                  {
+                    name: 'Jenette Caldwell',
+                    title: 'Director, Human Resources',
+                    email: 'janette@example.com',
+                    role: 'Owner',
+                  },
+                  {
+                    name: 'Darryl Day',
+                    title: 'Designer',
+                    email: 'darryl@example.com',
+                    role: 'Admin',
+                  },
+                ],
+              },
+              // More items...
             ]}
             {...args}
           />

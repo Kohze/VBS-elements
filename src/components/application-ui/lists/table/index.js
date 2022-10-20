@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,10 +12,83 @@ const VBSTable = ({
   stickyHeader,
   verticalLines,
   uppercasedHeading,
+  groupedTableItems,
   tableItems,
   renderTableActions,
   renderTableItemActions,
 }) => {
+  const isGrouped = !!groupedTableItems?.length
+  const headings = isGrouped
+    ? Object.keys(groupedTableItems[0].tableItems[0])
+    : Object.keys(tableItems[0])
+
+  const renderTableBody = (items) => {
+    return items.map((item, i) => {
+      const values = Object.values(item)
+      return (
+        <tr
+          key={uuidv4()}
+          className={twMerge(
+            verticalLines && 'divide-x divide-gray-200',
+            striped && i % 2 === 0 && 'bg-gray-50',
+          )}
+        >
+          {values.map((value, i) => {
+            const isStacked = stackedColumns && stackedColumns.includes(i + 1)
+            return (
+              <td
+                key={uuidv4()}
+                className={twMerge(
+                  'px-3 py-4 text-sm text-gray-500 whitespace-nowrap',
+                  isStacked && 'hidden md:table-cell',
+                  stickyHeader && 'border-b border-gray-200',
+                )}
+              >
+                {value}
+                <dl className="font-normal lg:hidden">
+                  {i === 0 &&
+                    Object.keys(item).map((_, i) => {
+                      const isStacked =
+                        stackedColumns && stackedColumns.includes(i + 1)
+                      return isStacked ? (
+                        <dd key={uuidv4()}>
+                          <span className="text-sm text-gray-500">
+                            {values[i]}
+                          </span>
+                        </dd>
+                      ) : null
+                    })}
+                </dl>
+              </td>
+            )
+          })}
+          {renderTableItemActions && (
+            <td className="px-3 py-4 text-sm font-medium text-right whitespace-nowrap">
+              {renderTableItemActions(item)}
+            </td>
+          )}
+        </tr>
+      )
+    })
+  }
+
+  const renderGroupedTableBody = () => {
+    return groupedTableItems.map((group, i) => (
+      <Fragment key={uuidv4()}>
+        <tr className="border-t border-gray-200">
+          <th
+            colSpan={headings.length + 1}
+            scope="colgroup"
+            className="px-4 py-2 text-sm font-semibold text-left text-gray-900 bg-gray-50 sm:px-6"
+          >
+            {group.name}
+          </th>
+        </tr>
+        {renderTableBody(group.tableItems)}
+      </Fragment>
+    ))
+  }
+
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -56,7 +130,7 @@ const VBSTable = ({
                       verticalLines && 'divide-x divide-gray-200',
                     )}
                   >
-                    {Object.keys(tableItems[0]).map((key, i) => {
+                    {headings?.map((key, i) => {
                       const isStacked =
                         stackedColumns && stackedColumns.includes(i + 1)
 
@@ -87,55 +161,9 @@ const VBSTable = ({
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {tableItems.map((item, i) => {
-                    const values = Object.values(item)
-                    return (
-                      <tr
-                        key={uuidv4()}
-                        className={twMerge(
-                          verticalLines && 'divide-x divide-gray-200',
-                          striped && i % 2 === 0 && 'bg-gray-50',
-                        )}
-                      >
-                        {values.map((value, i) => {
-                          const isStacked =
-                            stackedColumns && stackedColumns.includes(i + 1)
-                          return (
-                            <td
-                              key={uuidv4()}
-                              className={twMerge(
-                                'px-3 py-4 text-sm text-gray-500 whitespace-nowrap',
-                                isStacked && 'hidden md:table-cell',
-                                stickyHeader && 'border-b border-gray-200',
-                              )}
-                            >
-                              {value}
-                              <dl className="font-normal lg:hidden">
-                                {i === 0 &&
-                                  Object.keys(item).map((_, i) => {
-                                    const isStacked =
-                                      stackedColumns &&
-                                      stackedColumns.includes(i + 1)
-                                    return isStacked ? (
-                                      <dd key={uuidv4()}>
-                                        <span className="text-sm text-gray-500">
-                                          {values[i]}
-                                        </span>
-                                      </dd>
-                                    ) : null
-                                  })}
-                              </dl>
-                            </td>
-                          )
-                        })}
-                        {renderTableItemActions && (
-                          <td className="px-3 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            {renderTableItemActions(item)}
-                          </td>
-                        )}
-                      </tr>
-                    )
-                  })}
+                  {isGrouped
+                    ? renderGroupedTableBody()
+                    : renderTableBody(tableItems)}
                 </tbody>
               </table>
             </div>
@@ -164,7 +192,16 @@ VBSTable.propTypes = {
    * each object should have the same keys
    * and the keys should be the same as the table header
    */
-  tableItems: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  tableItems: PropTypes.arrayOf(PropTypes.object.isRequired),
+  grouped: PropTypes.bool,
+  /**
+   * groupTableItems an array of objects but its different from tableItems
+   * groupTableItems contains tableItems as an array of objects and group name
+   * each object should have the same keys
+   * and the keys should be the same as the table header
+   * if you will use grouped table you should use groupTableItems instead of tableItems
+   */
+  groupedTableItems: PropTypes.arrayOf(PropTypes.object.isRequired),
   /**
    * render props for table item action buttons
    */
