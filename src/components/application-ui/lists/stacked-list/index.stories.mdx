@@ -1,0 +1,104 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import VBSStackedList from '@/components/application-ui/lists/stacked-list'
+
+<Meta title="Application UI/Lists/Stacked List" component={VBSStackedList} />
+
+export const TemplateNarrow = (args) => (
+  <div className="w-1/2 mx-auto">
+    <VBSStackedList {...args} />
+  </div>
+)
+
+export const Template = (args) => <VBSStackedList {...args} />
+
+## Stacked List
+
+Stacked list is a list of items that are stacked on top of each other. It is used to display a list of items that are related to each other.
+
+## Import
+
+```js
+import VBSStackedList from '@/components/application-ui/lists/stacked-list'
+```
+
+## Simple
+
+Simple stacked list uses `VBSInfoItem` as default item component. `items` prop is required. `items` prop is an array of objects with same keys with `VBSInfoItem` props to create list items. Check `VBSInfoItem` documentation for props information [here](/docs/application-ui-list-items-info-item--default-story)
+
+<Canvas>
+  <Story
+    name="Simple"
+    args={{
+      items: [
+        {
+          title: 'Item 1',
+          withAvatar: true,
+          description: 'calvin.hawkins@example.com',
+          avatarSize: 'sm',
+        },
+        {
+          title: 'Item 2',
+          withAvatar: true,
+          description: 'kristen.ramos@example.com',
+          avatarSize: 'sm',
+          imageSrc:
+            'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        },
+        {
+          title: 'Item 3',
+          withAvatar: true,
+          description: 'ted@example.com',
+          avatarSize: 'sm',
+        },
+      ],
+    }}
+  >
+    {TemplateNarrow.bind({})}
+  </Story>
+</Canvas>
+
+## With Link
+
+Add `href` property inside `items` object to make the item clickable. `href` property is a string that will be used as `href` attribute of `a` tag.
+
+<Canvas>
+  <Story
+    name="Two Columns"
+    args={{
+      items: [
+        {
+          title: 'Item 1',
+          withAvatar: true,
+          description: 'calvin.hawkins@example.com',
+          avatarSize: 'sm',
+          href: '#',
+        },
+        {
+          title: 'Item 2',
+          withAvatar: true,
+          description: 'kristen.ramos@example.com',
+          avatarSize: 'sm',
+          imageSrc:
+            'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          href: '#',
+        },
+        {
+          title: 'Item 3',
+          withAvatar: true,
+          description: 'ted@example.com',
+          avatarSize: 'sm',
+          href: '#',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

@@ -12,6 +12,7 @@ const VBSInfoItem = ({
   avatarPosition,
   avatarSize,
   title,
+  description,
   metaList,
   actions,
   iconColor,
@@ -24,7 +25,7 @@ const VBSInfoItem = ({
   avatarClassName,
 }) => {
   return (
-    <li className={twMerge('flex py-4', className)} key={uuidv4()}>
+    <li className={twMerge('flex py-4', className)}>
       <div className="flex-1">
         <div
           className={twMerge(
@@ -38,7 +39,7 @@ const VBSInfoItem = ({
         >
           <span
             className={twMerge(
-              'flex-shrink-0',
+              'flex-shrink-0 inline-flex',
               avatarPosition === 'left' && 'mr-3',
               avatarPosition === 'right' && 'ml-3',
               avatarPosition === 'top' && 'mb-3',
@@ -57,6 +58,9 @@ const VBSInfoItem = ({
             >
               {title}
             </p>
+            {description && (
+              <p className="text-sm text-gray-500">{description}</p>
+            )}
             <VBSMetaList
               items={metaList}
               iconColor={iconColor}
@@ -90,6 +94,7 @@ VBSInfoItem.defaultProps = {
 VBSInfoItem.propTypes = {
   imageSrc: PropTypes.string,
   title: PropTypes.string.isRequired,
+  description: PropTypes.string || PropTypes.node,
   metaList: PropTypes.arrayOf(
     PropTypes.shape({
       iconName: PropTypes.elementType,
