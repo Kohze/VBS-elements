@@ -10,22 +10,30 @@ const VBSInfoItem = ({
   imageSrc,
   withAvatar,
   avatarPosition,
+  avatarSize,
   title,
   metaList,
   actions,
   iconColor,
   iconPosition,
+  className,
+  infoClassName,
+  titleClassName,
+  metaListClassName,
+  actionsClassName,
+  avatarClassName,
 }) => {
   return (
-    <li className="flex py-4" key={uuidv4()}>
+    <li className={twMerge('flex py-4', className)} key={uuidv4()}>
       <div className="flex-1">
         <div
           className={twMerge(
-            'inline-flex',
+            'inline-flex items-center',
             avatarPosition === 'left' && 'flex-row',
             avatarPosition === 'right' && 'flex-row-reverse',
             avatarPosition === 'top' && 'flex-col items-center',
             avatarPosition === 'bottom' && 'flex-col-reverse items-center',
+            infoClassName,
           )}
         >
           <span
@@ -35,22 +43,31 @@ const VBSInfoItem = ({
               avatarPosition === 'right' && 'ml-3',
               avatarPosition === 'top' && 'mb-3',
               avatarPosition === 'bottom' && 'mt-3',
+              avatarClassName,
             )}
           >
-            {withAvatar && <VBSAvatar imageSrc={imageSrc} size="lg" />}
+            {withAvatar && <VBSAvatar imageSrc={imageSrc} size={avatarSize} />}
           </span>
           <div className="flex flex-col justify-center flex-1">
-            <p className="text-sm font-medium text-gray-900">{title}</p>
+            <p
+              className={twMerge(
+                'text-sm font-medium text-gray-900',
+                titleClassName,
+              )}
+            >
+              {title}
+            </p>
             <VBSMetaList
               items={metaList}
               iconColor={iconColor}
               iconPosition={iconPosition}
+              className={metaListClassName}
             />
           </div>
         </div>
       </div>
       {!!actions && (
-        <div className="flex items-center gap-2">
+        <div className={twMerge('flex items-center gap-2', actionsClassName)}>
           {actions.map((action) => (
             <div key={uuidv4()}>
               <VBSButton {...action} />
@@ -67,6 +84,7 @@ VBSInfoItem.defaultProps = {
   metaList: [],
   iconPosition: 'left',
   avatarPosition: 'left',
+  avatarSize: 'lg',
 }
 
 VBSInfoItem.propTypes = {
@@ -80,6 +98,7 @@ VBSInfoItem.propTypes = {
   ).isRequired,
   withAvatar: PropTypes.bool,
   avatarPosition: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+  avatarSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   iconColor: PropTypes.string,
   iconPosition: PropTypes.oneOf(['left', 'right']),
   actions: PropTypes.arrayOf(

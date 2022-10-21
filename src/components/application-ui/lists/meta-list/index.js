@@ -3,9 +3,14 @@ import VBSIcon from '../../elements/icon'
 import { v4 as uuidv4 } from 'uuid'
 import { twMerge } from 'tailwind-merge'
 
-const VBSMetaList = ({ items, iconColor, iconPosition }) => {
+const VBSMetaList = ({ items, iconColor, iconPosition, className }) => {
   return (
-    <div className="flex flex-col mt-1 sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+    <div
+      className={twMerge(
+        'flex flex-col mt-1 sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6',
+        className,
+      )}
+    >
       {items.map((item) => (
         <div
           key={uuidv4()}
