@@ -41,6 +41,8 @@ There are props to display the title and other values like avatar, description. 
 
 Displaying an avatar is optional. You can use the `withAvatar` prop to display an avatar. If you dont give `imageSrc`, it will display placeholder image. Check Avatar component for more details [here](/docs/application-ui-elements-avatar--default-story).
 
+There is also `avatarPosition` prop to display the avatar on the left, right, top or bottom of the title. The default value is `left`.
+
 <Canvas>
   <Story
     name="With Avatar"
@@ -49,13 +51,22 @@ Displaying an avatar is optional. You can use the `withAvatar` prop to display a
       withAvatar: true,
       metaList: [
         {
-          name: 'calvin.hawkins@example.com',
+          name: 'john@example.com',
           iconName: 'envelope',
         },
       ],
     }}
   >
-    {Template.bind({})}
+    {(args) => (
+      <>
+        <VBSInfoItem {...args} />
+        <VBSInfoItem
+          {...args}
+          avatarPosition="right"
+          imageSrc="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        />
+      </>
+    )}
   </Story>
 </Canvas>
 
@@ -144,7 +155,7 @@ You can use the `actions` prop to display actions. The `actions` prop is an arra
         },
         {
           iconName: 'eye',
-          text: 'View',
+          text: 'Link',
           href: 'https://www.google.com',
           size: 'xs',
           variant: 'outline',
