@@ -3,7 +3,7 @@ import VBSIcon from '../../elements/icon'
 import { v4 as uuidv4 } from 'uuid'
 import { twMerge } from 'tailwind-merge'
 
-const VBSMetaList = ({ items, iconColor, iconPosition, className }) => {
+const VBSMetaList = ({ items, className }) => {
   return (
     <div
       className={twMerge(
@@ -16,16 +16,16 @@ const VBSMetaList = ({ items, iconColor, iconPosition, className }) => {
           key={uuidv4()}
           className={twMerge(
             'flex items-center mt-2 text-sm text-gray-400',
-            iconPosition === 'left' ? 'flex-row' : 'flex-row-reverse',
+            item.iconPosition === 'left' ? 'flex-row' : 'flex-row-reverse',
           )}
         >
           <VBSIcon
             iconName={item.iconName}
             className={twMerge(
               'flex-shrink-0',
-              iconPosition === 'left' ? 'mr-1.5' : 'ml-1.5',
+              item.iconPosition === 'left' ? 'mr-1.5' : 'ml-1.5',
             )}
-            color={iconColor}
+            color={item.iconColor}
           />
           {item.name}
         </div>
@@ -36,7 +36,6 @@ const VBSMetaList = ({ items, iconColor, iconPosition, className }) => {
 
 VBSMetaList.defaultProps = {
   items: [],
-  iconPosition: 'left',
 }
 
 VBSMetaList.propTypes = {
@@ -44,10 +43,10 @@ VBSMetaList.propTypes = {
     PropTypes.shape({
       iconName: PropTypes.elementType,
       name: PropTypes.string,
+      iconColor: PropTypes.string,
+      iconPosition: PropTypes.oneOf(['left', 'right']),
     }),
   ).isRequired,
-  iconColor: PropTypes.string,
-  iconPosition: PropTypes.oneOf(['left', 'right']),
 }
 
 export default VBSMetaList

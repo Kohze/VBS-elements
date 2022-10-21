@@ -64,13 +64,15 @@ Simple stacked list uses `VBSInfoItem` as default item component. `items` prop i
   </Story>
 </Canvas>
 
-## With Link
+## Link Item
 
 Add `href` property inside `items` object to make the item clickable. `href` property is a string that will be used as `href` attribute of `a` tag.
 
+Also with `iconName` prop, you can add an icon to the item. `iconName` prop is a string that will be used as `iconName` prop of `VBSIcon` component. Check `VBSIcon` documentation for props information [here](/docs/application-ui-elements-icon--sample)
+
 <Canvas>
   <Story
-    name="Two Columns"
+    name="Link Item"
     args={{
       items: [
         {
@@ -97,6 +99,77 @@ Add `href` property inside `items` object to make the item clickable. `href` pro
           href: '#',
         },
       ],
+      iconName: 'chevron-right',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Two Columns
+
+To make the list two columns, add `additionalInfo` property inside `items` object. `additionalInfo` property is a string that will be used as `additionalInfo` prop of `VBSInfoItem` component. Check `VBSInfoItem` documentation for props information [here](/docs/application-ui-list-items-info-item--default-story)
+
+<Canvas>
+  <Story
+    name="Two Columns"
+    args={{
+      items: [
+        {
+          title: 'Item 1',
+          withAvatar: true,
+          description: 'calvin.hawkins@example.com',
+          avatarSize: 'sm',
+          href: '#',
+          additionalInfo: {
+            title: 'Status',
+            metaList: [
+              {
+                name: 'Active',
+                iconName: 'check-circle',
+                iconColor: '#48bb78',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Item 2',
+          withAvatar: true,
+          description: 'kristen.ramos@example.com',
+          avatarSize: 'sm',
+          imageSrc:
+            'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+          href: '#',
+          additionalInfo: {
+            title: 'Status',
+            metaList: [
+              {
+                name: 'Active',
+                iconName: 'check-circle',
+                iconColor: '#48bb78',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Item 3',
+          withAvatar: true,
+          description: 'ted@example.com',
+          avatarSize: 'sm',
+          href: '#',
+          additionalInfo: {
+            title: 'Status',
+            metaList: [
+              {
+                name: 'Inactive',
+                iconName: 'x-circle',
+                iconColor: '#e53e3e',
+              },
+            ],
+          },
+        },
+      ],
+      iconName: 'chevron-right',
     }}
   >
     {Template.bind({})}
