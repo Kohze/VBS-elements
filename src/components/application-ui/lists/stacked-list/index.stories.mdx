@@ -16,6 +16,12 @@ export const TemplateNarrow = (args) => (
   </div>
 )
 
+export const TemplateShort = (args) => (
+  <div className="w-1/2 mx-auto h-56">
+    <VBSStackedList {...args} />
+  </div>
+)
+
 export const Template = (args) => <VBSStackedList {...args} />
 
 ## Stacked List
@@ -279,5 +285,96 @@ To make the list with avatar stack, add `avatarStack` property to object inside 
     }}
   >
     {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Grouped Items
+
+To make the list with grouped items, use `groupedItems` property. If you use `groupedItems` property, `items` property will be ignored. `groupedItems` property is an array of objects with `title` and `items` properties. `title` property is the title of the group. `items` property is an array of objects with same keys with `items` property to create list item.
+
+<Canvas>
+  <Story
+    name="With Grouped Items"
+    args={{
+      groupedItems: [
+        {
+          title: 'Group 1',
+          items: [
+            {
+              title: 'Item 1',
+              withAvatar: true,
+              description: 'calvin.hawkins@example.com',
+              avatarSize: 'sm',
+            },
+            {
+              title: 'Item 2',
+              withAvatar: true,
+              description: 'kristen.ramos@example.com',
+              avatarSize: 'sm',
+              imageSrc:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+            {
+              title: 'Item 3',
+              withAvatar: true,
+              description: 'ted@example.com',
+              avatarSize: 'sm',
+            },
+          ],
+        },
+        {
+          title: 'Group 2',
+          items: [
+            {
+              title: 'Item 4',
+              withAvatar: true,
+              description: 'calvin.hawkins@example.com',
+              avatarSize: 'sm',
+              imageSrc:
+                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+            {
+              title: 'Item 5',
+              withAvatar: true,
+              description: 'kristen.ramos@example.com',
+              avatarSize: 'sm',
+              imageSrc:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+            {
+              title: 'Item 6',
+              withAvatar: true,
+              description: 'ted@example.com',
+              avatarSize: 'sm',
+              imageSrc:
+                'https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+          ],
+        },
+        {
+          title: 'Group 3',
+          items: [
+            {
+              title: 'Item 7',
+              withAvatar: true,
+              description: 'calvin.hawkins@example.com',
+              avatarSize: 'sm',
+              imageSrc:
+                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+            {
+              title: 'Item 8',
+              withAvatar: true,
+              description: 'kristen.ramos@example.com',
+              avatarSize: 'sm',
+              imageSrc:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+          ],
+        },
+      ],
+    }}
+  >
+    {TemplateShort.bind({})}
   </Story>
 </Canvas>
