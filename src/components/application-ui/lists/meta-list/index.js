@@ -16,14 +16,14 @@ const VBSMetaList = ({ items, className }) => {
           key={uuidv4()}
           className={twMerge(
             'flex items-center mt-2 text-sm text-gray-400',
-            item.iconPosition === 'left' ? 'flex-row' : 'flex-row-reverse',
+            item.iconPosition === 'right' ? 'flex-row-reverse' : 'flex-row',
           )}
         >
           <VBSIcon
             iconName={item.iconName}
             className={twMerge(
               'flex-shrink-0',
-              item.iconPosition === 'left' ? 'mr-1.5' : 'ml-1.5',
+              item.iconPosition === 'right' ? 'ml-2' : 'mr-2',
             )}
             color={item.iconColor}
           />
@@ -32,10 +32,6 @@ const VBSMetaList = ({ items, className }) => {
       ))}
     </div>
   )
-}
-
-VBSMetaList.defaultProps = {
-  items: [],
 }
 
 VBSMetaList.propTypes = {

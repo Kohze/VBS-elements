@@ -255,7 +255,7 @@ Heading with avatar need `user` prop. The `user` prop is an object with `name`, 
 
 ## Card View
 
-Heading with card view need `user` and `cardList` props. The `user` prop is an object with `name`, `role`, `imageSrc` and `link` properties. The `cardList` prop is an array of object with `label` and `value` properties.
+Heading with card view need `user` and `cardList` props. The `user` prop is an object with `name`, `role`, `imageSrc` and `link` properties. The `cardList` prop is an array of object with `label` and `value` properties. Variant prop should be set to `card`.
 
 <Canvas>
   <Story name="Card View">{CardView.bind({})}</Story>
@@ -263,7 +263,7 @@ Heading with card view need `user` and `cardList` props. The `user` prop is an o
 
 ## With Banner
 
-Heading with banner need `banner` prop. The `banner` prop is an object with `title`, `description` and `variant` properties.
+Heading with banner need `variant` and `user` prop. The `user` prop is an object must `name`, `imageSrc` and `backgroundImage` properties. Variant prop should be set to `banner`.
 
 <Canvas>
   <Story name="With Banner">{WithBanner.bind({})}</Story>

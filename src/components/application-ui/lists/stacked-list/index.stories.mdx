@@ -175,3 +175,109 @@ To make the list two columns, add `additionalInfo` property inside `items` objec
     {Template.bind({})}
   </Story>
 </Canvas>
+
+## With Label
+
+To add label to the list, add `label` key to object in `items` array.
+
+<Canvas>
+  <Story
+    name="With Label"
+    args={{
+      items: [
+        {
+          title: 'Frontend Developer',
+          href: '#',
+          label: 'in progress',
+          description: 'Closing on 12/12/2020',
+        },
+        {
+          title: 'Backend Developer',
+          href: '#',
+          label: 'in progress',
+          description: 'Closing on 12/12/2020',
+        },
+        {
+          title: 'Software Engineer',
+          href: '#',
+          label: 'in progress',
+          description: 'Closing on 12/12/2020',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Avatar Stack
+
+To make the list with avatar stack, add `avatarStack` property to object inside `items` array. `avatarStack` property is an array of objects with same keys with `VBSAvatarStack` props to create avatar stack. Check `VBSAvatarStack` documentation for props information [here](/docs/application-ui-elements-avatar-stack--default-story)
+
+<Canvas>
+  <Story
+    name="With Avatar Stack"
+    args={{
+      items: [
+        {
+          title: 'Frontend Developer',
+          href: '#',
+          label: 'in progress',
+          description: 'Closing on 12/12/2020',
+          avatarStack: [
+            {
+              name: '',
+            },
+            {
+              name: 'Ted Hawkins',
+              imageSrc:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+            {
+              name: 'Kristen Ramos',
+              imageSrc:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+          ],
+        },
+        {
+          title: 'Backend Developer',
+          href: '#',
+          label: 'in progress',
+          description: 'Closing on 12/12/2020',
+          avatarStack: [
+            {
+              name: 'Kristen Ramos',
+              imageSrc:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+            {
+              name: 'Ted Hawkins',
+              imageSrc:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+          ],
+        },
+        {
+          title: 'Software Engineer',
+          href: '#',
+          label: 'in progress',
+          description: 'Closing on 12/12/2020',
+          avatarStack: [
+            { name: 'John Doe' },
+            {
+              name: 'Ted Hawkins',
+              imageSrc:
+                'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            },
+            { name: 'Kristen Ramos' },
+            { name: 'Mary Jane' },
+          ],
+        },
+      ],
+      iconName: 'chevron-right',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

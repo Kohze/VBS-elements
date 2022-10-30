@@ -12,6 +12,7 @@ const VBSInfoItem = ({
   avatarPosition,
   avatarSize,
   title,
+  label,
   description,
   metaList,
   actions,
@@ -56,7 +57,10 @@ const VBSInfoItem = ({
                 titleClassName,
               )}
             >
-              {title}
+              {title}{' '}
+              <span className="ml-1 text-xs font-light text-gray-500">
+                {label}
+              </span>
             </p>
             {description && (
               <p className="text-sm text-gray-500">{description}</p>

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
+import { twMerge } from 'tailwind-merge'
 import { v4 as uuidv4 } from 'uuid'
+import VBSAvatarStack from '../../elements/avatar-stack'
 import VBSIcon from '../../elements/icon'
 import VBSInfoItem from '../../list-items/info-item'
 
 const VBSStackedList = ({ items, iconName }) => {
-  console.log(items)
   return (
     <ul role="list" className="divide-y divide-gray-200">
       {items.map((item) => {
@@ -14,18 +15,33 @@ const VBSStackedList = ({ items, iconName }) => {
             className="flex items-center justify-between px-4 hover:bg-gray-50"
             key={uuidv4()}
           >
-            <div className="flex-1 min-w-0 md:grid md:grid-cols-2 md:gap-4">
+            <div
+              className={twMerge(
+                'flex-1 min-w-0 ',
+                item.additionalInfo && 'md:grid md:grid-cols-2 md:gap-4',
+                item.avatarStack && 'flex justify-between items-center gap-4',
+              )}
+            >
               <VBSInfoItem {...item} />
-              <span className="hidden md:block">
-                {item.additionalInfo && (
+              {item.additionalInfo && (
+                <span className="hidden md:block">
                   <VBSInfoItem {...item.additionalInfo} />
-                )}
-              </span>
+                </span>
+              )}
+              {item.avatarStack && (
+                <span className="hidden mr-4 md:block">
+                  <VBSAvatarStack
+                    items={item.avatarStack}
+                    className="flex-shrink-0"
+                    size="xs"
+                  />
+                </span>
+              )}
             </div>
             <VBSIcon iconName={iconName} />
           </a>
         ) : (
-          <VBSInfoItem {...item} />
+          <VBSInfoItem {...item} key={uuidv4()} />
         )
       })}
     </ul>
