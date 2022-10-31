@@ -48,6 +48,12 @@
     "storybook-color-picker": "^3.0.2",
     "tailwindcss": "^3.1.8"
   },
+  "overrides": {
+    "@mdx-js/react": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
+  },
   "msw": {
     "workerDirectory": "public"
   }
