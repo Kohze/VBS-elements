@@ -6,12 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSTable from '@/components/application-ui/lists/table'
-import VBSButton from '@/components/application-ui/elements/button'
+import Table from '@/components/application-ui/lists/table'
+import Button from '@/components/application-ui/elements/button'
 
 <Meta
   title="Application UI/Lists/Table"
-  component={VBSTable}
+  component={Table}
   parameters={{
     docs: {
       source: {
@@ -33,7 +33,7 @@ Table component needs to be passed an array of objects as the `tableItems` prop.
   <Story name="Simple">
     {(args) => (
       <div className="bg-gray-100 py-10">
-        <VBSTable
+        <Table
           title="Table Title"
           description="A list of all the users in your account including their name, title, email and role."
           tableItems={[
@@ -71,7 +71,7 @@ Table actions slot prepered for buttons that are displayed in the table header b
   <Story name="With Table Actions">
     {(args) => (
       <div className="bg-gray-100 py-10">
-        <VBSTable
+        <Table
           title="Table Title"
           description="A list of all the users in your account including their name, title, email and role."
           tableItems={[
@@ -96,8 +96,8 @@ Table actions slot prepered for buttons that are displayed in the table header b
           ]}
           renderTableActions={(prop) => (
             <div className="flex gap-2">
-              <VBSButton text="Add" />
-              <VBSButton text="Delete" variant="outline" />
+              <Button text="Add" />
+              <Button text="Delete" variant="outline" />
             </div>
           )}
           {...args}
@@ -115,7 +115,7 @@ Using the `renderTableItemActions` prop, you can pass a function that returns a 
   <Story name="With Table Item Actions">
     {(args) => (
       <div className="bg-gray-100 py-10">
-        <VBSTable
+        <Table
           title="Table Title"
           description="A list of all the users in your account including their name, title, email and role."
           tableItems={[
@@ -158,7 +158,7 @@ Full width tables will stretch to fill the width of their container. To use a fu
   <Story name="Full Width">
     {(args) => (
       <div className="bg-gray-100 py-10">
-        <VBSTable
+        <Table
           fullWidth
           title="Table Title"
           description="A list of all the users in your account including their name, title, email and role."
@@ -202,7 +202,7 @@ Striped rows will alternate the background color of each row. To use striped row
   <Story name="With Striped Rows">
     {(args) => (
       <div className="bg-gray-100 py-10">
-        <VBSTable
+        <Table
           striped
           title="Table Title"
           description="A list of all the users in your account including their name, title, email and role."
@@ -246,7 +246,7 @@ Stacked tables will stack the columns on mobile devices. To use stacked tables, 
   <Story name="Stacked on Mobile">
     {(args) => (
       <div className="bg-gray-100 py-10">
-        <VBSTable
+        <Table
           stackedColumns={[3, 4]}
           title="Table Title"
           description="A list of all the users in your account including their name, title, email and role."
@@ -286,7 +286,7 @@ Sticky header will make the header of the table sticky. To use sticky header, pa
     {(args) => (
       <div className="max-h-[300px] overflow-y-auto bg-gray-100">
         <div className="py-10">
-          <VBSTable
+          <Table
             stickyHeader
             title="Table Title"
             description="A list of all the users in your account including their name, title, email and role."
@@ -345,7 +345,7 @@ Grouped table will group the table items by the given key. Instead of `tableItem
     {(args) => (
       <div className="bg-gray-100">
         <div className="py-10">
-          <VBSTable
+          <Table
             title="Table Title"
             description="A list of all the users in your account including their name, title, email and role."
             groupedTableItems={[
@@ -395,4 +395,4 @@ Grouped table will group the table items by the given key. Instead of `tableItem
 
 ## Reference
 
-<ArgsTable of={VBSTable} />
+<ArgsTable of={Table} />

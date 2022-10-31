@@ -2,7 +2,7 @@ import { css } from '@emotion/css'
 import { twMerge } from 'tailwind-merge'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
-import VBSIcon from '../icon'
+import Icon from '../icon'
 
 export const sizes = {
   xs: 'text-xs px-2.5 py-1',
@@ -30,7 +30,7 @@ export const kinds = {
   circular: 'rounded-full',
 }
 
-const VBSButton = ({
+const Button = ({
   size,
   variant,
   kind,
@@ -87,7 +87,7 @@ const VBSButton = ({
         return (
           <>
             <span className={isChildrenOrText ? 'mr-2' : ''}>
-              <VBSIcon iconName={iconName} iconType={iconType} size={size} />
+              <Icon iconName={iconName} iconType={iconType} size={size} />
             </span>
             {text || children}
           </>
@@ -98,13 +98,13 @@ const VBSButton = ({
           <>
             {text || children}
             <span className={isChildrenOrText ? 'ml-2' : ''}>
-              <VBSIcon iconName={iconName} iconType={iconType} size={size} />
+              <Icon iconName={iconName} iconType={iconType} size={size} />
             </span>
           </>
         )
       }
       if (iconPosition === 'only') {
-        return <VBSIcon iconName={iconName} iconType={iconType} size={size} />
+        return <Icon iconName={iconName} iconType={iconType} size={size} />
       }
     }
     return text || children
@@ -163,7 +163,7 @@ const VBSButton = ({
   return renderButton()
 }
 
-VBSButton.defaultProps = {
+Button.defaultProps = {
   size: 'md',
   variant: 'primary',
   kind: 'rounded',
@@ -172,7 +172,7 @@ VBSButton.defaultProps = {
   iconType: 'solid',
 }
 
-VBSButton.propTypes = {
+Button.propTypes = {
   size: PropTypes.oneOf(Object.keys(sizes)),
   variant: PropTypes.oneOf(Object.keys(variants)),
   kind: PropTypes.oneOf(Object.keys(kinds)),
@@ -189,4 +189,4 @@ VBSButton.propTypes = {
   href: PropTypes.string,
 }
 
-export default VBSButton
+export default Button

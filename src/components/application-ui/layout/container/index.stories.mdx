@@ -6,10 +6,10 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSContainer from '@/components/application-ui/layout/container'
+import Container from '@/components/application-ui/layout/container'
 import viewportAddon from '@/assets/storybook/viewport-addon.png'
 
-<Meta title="Application UI/Layout/Container" component={VBSContainer} />
+<Meta title="Application UI/Layout/Container" component={Container} />
 
 export const InlineSVG = () => (
   <svg
@@ -29,33 +29,33 @@ export const InlineSVG = () => (
 )
 
 export const FullWidth = (args) => (
-  <VBSContainer {...args} className="bg-pink-100" variant="full-width">
+  <Container {...args} className="bg-pink-100" variant="full-width">
     <InlineSVG />
-  </VBSContainer>
+  </Container>
 )
 
 export const Padded = (args) => (
-  <VBSContainer {...args} className="bg-pink-100">
+  <Container {...args} className="bg-pink-100">
     <InlineSVG />
-  </VBSContainer>
+  </Container>
 )
 
 export const PaddedFullMobile = (args) => (
-  <VBSContainer {...args} className="bg-pink-100" variant="padded-full-mobile">
+  <Container {...args} className="bg-pink-100" variant="padded-full-mobile">
     <InlineSVG />
-  </VBSContainer>
+  </Container>
 )
 
 export const BreakpointPadded = (args) => (
-  <VBSContainer {...args} className="bg-pink-100" variant="breakpoint-padded">
+  <Container {...args} className="bg-pink-100" variant="breakpoint-padded">
     <InlineSVG />
-  </VBSContainer>
+  </Container>
 )
 
 export const Narrow = (args) => (
-  <VBSContainer {...args} className="bg-pink-100" variant="narrow-padded">
+  <Container {...args} className="bg-pink-100" variant="narrow-padded">
     <InlineSVG />
-  </VBSContainer>
+  </Container>
 )
 
 # Container
@@ -73,13 +73,13 @@ For interact with the component, you can use the controls and see the results wi
 ## Import
 
 ```js
-import VBSContainer from '@/components/application-ui/layout/container'
+import Container from '@/components/application-ui/layout/container'
 ```
 
 ## Note
 
 ```text
-There is InlineSVG component inside VBSContainer component for demo purpose. It is not part of the component.
+There is InlineSVG component inside Container component for demo purpose. It is not part of the component.
 ```
 
 ## Full Width
@@ -126,4 +126,4 @@ There are few narrow variants of the container component. For changing the width
 
 ## Referance
 
-<ArgsTable of={VBSContainer} />
+<ArgsTable of={Container} />

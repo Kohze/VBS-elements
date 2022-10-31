@@ -6,7 +6,7 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSMetaList from '@/components/application-ui/lists/meta-list'
+import MetaList from '@/components/application-ui/lists/meta-list'
 
 export const listItems = [
   { name: 'Full-time', iconName: 'briefcase' },
@@ -16,11 +16,11 @@ export const listItems = [
 
 <Meta
   title="Application UI/Lists/Meta List"
-  component={VBSMetaList}
+  component={MetaList}
   args={{ items: listItems }}
 />
 
-export const Template = (args) => <VBSMetaList {...args} />
+export const Template = (args) => <MetaList {...args} />
 
 # Meta List
 
@@ -29,7 +29,7 @@ The meta list is a simple to list items with an icon and a title. It is used to 
 ## Import
 
 ```js
-import VBSMetaList from '@/components/application-ui/lists/meta-list'
+import MetaList from '@/components/application-ui/lists/meta-list'
 ```
 
 ## Usage
@@ -40,4 +40,4 @@ import VBSMetaList from '@/components/application-ui/lists/meta-list'
 
 ## Reference
 
-<ArgsTable of={VBSMetaList} />
+<ArgsTable of={MetaList} />

@@ -6,15 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSListContainer, {
-  VBSListContainerItem,
+import ListContainer, {
+  ListContainerItem,
 } from '@/components/application-ui/layout/list-container'
 import viewportAddon from '@/assets/storybook/viewport-addon.png'
 
-<Meta
-  title="Application UI/Layout/List Container"
-  component={VBSListContainer}
-/>
+<Meta title="Application UI/Layout/List Container" component={ListContainer} />
 
 export const itemsExample = [
   {
@@ -34,13 +31,13 @@ export const itemsExample = [
 export const Template = (args) => (
   <div className="py-8 bg-gray-100">
     <div className="mx-auto max-w-2xl sm:px-6">
-      <VBSListContainer {...args}>
+      <ListContainer {...args}>
         {itemsExample.map((item) => (
-          <VBSListContainerItem key={item.id}>
+          <ListContainerItem key={item.id}>
             <div>{item.title}</div>
-          </VBSListContainerItem>
+          </ListContainerItem>
         ))}
-      </VBSListContainer>
+      </ListContainer>
     </div>
   </div>
 )
@@ -57,11 +54,11 @@ For interact with the component, you can use the controls and see the results wi
 
 ## Import
 
-To use the list container, you should import `VBSListContainer` and also `VBSListContainerItem` if you want to use the default item.
+To use the list container, you should import `ListContainer` and also `ListContainerItem` if you want to use the default item.
 
 ```js
-import VBSListContainer, {
-  VBSListContainerItem,
+import ListContainer, {
+  ListContainerItem,
 } from '@/components/application-ui/layout/list-container'
 ```
 
@@ -145,4 +142,4 @@ Simple with dividers, full-width on mobile
 
 ## Reference
 
-<ArgsTable of={VBSListContainer} />
+<ArgsTable of={ListContainer} />

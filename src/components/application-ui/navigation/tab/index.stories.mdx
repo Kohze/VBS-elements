@@ -6,11 +6,11 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSTab from '@/components/application-ui/navigation/tab'
+import Tab from '@/components/application-ui/navigation/tab'
 
 <Meta
   title="Application UI/Navigation/Tab"
-  component={VBSTab}
+  component={Tab}
   parameters={{
     docs: {
       source: {
@@ -21,7 +21,7 @@ import VBSTab from '@/components/application-ui/navigation/tab'
 />
 
 export const Default = (args) => (
-  <VBSTab
+  <Tab
     tabs={[
       { name: 'My Account', href: '#', current: false },
       { name: 'Company', href: '#', current: false },
@@ -33,7 +33,7 @@ export const Default = (args) => (
 )
 
 export const WithIcon = (args) => (
-  <VBSTab
+  <Tab
     tabs={[
       { name: 'My Account', href: '#', current: false, iconName: 'user' },
       {
@@ -50,7 +50,7 @@ export const WithIcon = (args) => (
 )
 
 export const WithPills = (args) => (
-  <VBSTab
+  <Tab
     tabs={[
       { name: 'My Account', href: '#', current: false, iconName: 'user' },
       {
@@ -68,7 +68,7 @@ export const WithPills = (args) => (
 )
 
 export const CustomTabItemStyles = (args) => (
-  <VBSTab
+  <Tab
     tabs={[
       { name: 'My Account', href: '#', current: false, iconName: 'user' },
       {
@@ -88,7 +88,7 @@ export const CustomTabItemStyles = (args) => (
 )
 
 export const FullWidth = (args) => (
-  <VBSTab
+  <Tab
     tabs={[
       { name: 'My Account', href: '#', current: false, iconName: 'user' },
       {
@@ -106,7 +106,7 @@ export const FullWidth = (args) => (
 )
 
 export const BarKind = (args) => (
-  <VBSTab
+  <Tab
     tabs={[
       { name: 'My Account', href: '#', current: true, iconName: 'user' },
       {
@@ -124,7 +124,7 @@ export const BarKind = (args) => (
 )
 
 export const WithTabCount = (args) => (
-  <VBSTab
+  <Tab
     tabs={[
       {
         name: 'My Account',
@@ -215,4 +215,4 @@ Tabs can also have a count. `count` is the number of the count.
 
 ## Reference
 
-<ArgsTable of={VBSTab} />
+<ArgsTable of={Tab} />

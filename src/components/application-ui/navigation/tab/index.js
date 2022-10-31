@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 import { v4 as uuidv4 } from 'uuid'
 import { twMerge } from 'tailwind-merge'
-import VBSIcon from '../../elements/icon'
+import Icon from '../../elements/icon'
 
 const variants = {
   default: {
@@ -22,7 +22,7 @@ const variants = {
 
 const kinds = ['normal', 'bar']
 
-const VBSTab = ({
+const Tab = ({
   variant,
   kind,
   tabs,
@@ -95,13 +95,9 @@ const VBSTab = ({
                     borderColor: tabItemBorderColor,
                   }}
                 >
-                  {iconPosition === 'left' && (
-                    <VBSIcon iconName={tab.iconName} />
-                  )}
+                  {iconPosition === 'left' && <Icon iconName={tab.iconName} />}
                   <span>{tab.name}</span>
-                  {iconPosition === 'right' && (
-                    <VBSIcon iconName={tab.iconName} />
-                  )}
+                  {iconPosition === 'right' && <Icon iconName={tab.iconName} />}
 
                   {tab.count ? (
                     <span
@@ -134,14 +130,14 @@ const VBSTab = ({
   )
 }
 
-VBSTab.defaultProps = {
+Tab.defaultProps = {
   shallowLink: false,
   iconPosition: 'left',
   fullWidth: false,
   variant: 'default',
 }
 
-VBSTab.propTypes = {
+Tab.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -173,4 +169,4 @@ VBSTab.propTypes = {
   currentTextColor: PropTypes.string,
 }
 
-export default VBSTab
+export default Tab

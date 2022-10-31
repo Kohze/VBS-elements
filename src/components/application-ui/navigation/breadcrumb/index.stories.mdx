@@ -6,12 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSBreadcrumb from '@/components/application-ui/navigation/breadcrumb'
+import Breadcrumb from '@/components/application-ui/navigation/breadcrumb'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 
 <Meta
   title="Application UI/Navigation/Breadcrumb"
-  component={VBSBreadcrumb}
+  component={Breadcrumb}
   argTypes={{
     homeIconName: {
       control: {
@@ -36,7 +36,7 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
 />
 
 export const Simple = (args) => (
-  <VBSBreadcrumb
+  <Breadcrumb
     pages={[
       { name: 'Projects', href: '#', current: false },
       { name: 'Project Nero', href: '#', current: false },
@@ -47,7 +47,7 @@ export const Simple = (args) => (
 )
 
 export const SimpleWithCustomIcons = (args) => (
-  <VBSBreadcrumb
+  <Breadcrumb
     homeIconName="home-modern"
     dividerIconName="minus-small"
     pages={[
@@ -60,7 +60,7 @@ export const SimpleWithCustomIcons = (args) => (
 )
 
 export const BarCollapsed = (args) => (
-  <VBSBreadcrumb
+  <Breadcrumb
     variant="bar"
     pages={[
       { name: 'Projects', href: '#', current: false },
@@ -72,7 +72,7 @@ export const BarCollapsed = (args) => (
 )
 
 export const BarCollapsedFullWidth = (args) => (
-  <VBSBreadcrumb
+  <Breadcrumb
     variant="bar"
     fullWidth
     pages={[
@@ -93,7 +93,7 @@ Breadcrumbs needs to have a list of `pages` to display. Each page is an object w
 ## Import
 
 ```js
-import VBSBreadcrumb from '@/components/application-ui/navigation/breadcrumb'
+import Breadcrumb from '@/components/application-ui/navigation/breadcrumb'
 ```
 
 ## Simple
@@ -132,4 +132,4 @@ Collapsed bar variant can be set to full width by passing the `fullWidth` prop.
 
 ## Reference
 
-<ArgsTable of={VBSBreadcrumb} />
+<ArgsTable of={Breadcrumb} />

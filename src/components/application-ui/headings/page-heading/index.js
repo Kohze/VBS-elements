@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import VBSMetaList from '../../lists/meta-list'
-import VBSBreadcrumb from '../../navigation/breadcrumb'
-import VBSUserHeaderCard from '../../cards/user-header-card'
-import VBSAvatar from '../../elements/avatar'
+import MetaList from '../../lists/meta-list'
+import Breadcrumb from '../../navigation/breadcrumb'
+import UserHeaderCard from '../../cards/user-header-card'
+import Avatar from '../../elements/avatar'
 import Image from 'next/image'
 
 const variants = ['simple', 'banner', 'card']
@@ -13,7 +13,7 @@ const themes = {
   dark: { bg: 'bg-gray-800', title: 'text-white', current: 'text-gray-500' },
 }
 
-const VBSPageHeading = ({
+const PageHeading = ({
   variant,
   theme,
   title,
@@ -66,7 +66,7 @@ const VBSPageHeading = ({
 
   const renderCard = () => {
     return (
-      <VBSUserHeaderCard
+      <UserHeaderCard
         user={user}
         cardList={cardList}
         cardTopText={cardTopText}
@@ -88,7 +88,7 @@ const VBSPageHeading = ({
         )}
       >
         <div className="flex items-start space-x-5">
-          <VBSAvatar
+          <Avatar
             imageSrc={user.imageSrc}
             size={avatarSize}
             kind={avatarKind}
@@ -143,7 +143,7 @@ const VBSPageHeading = ({
               avatarPosition === 'left' && 'sm:flex',
             )}
           >
-            <VBSAvatar
+            <Avatar
               imageSrc={user.imageSrc}
               className="w-16 h-16 border-4 border-white sm:h-32 sm:w-32"
             />
@@ -188,7 +188,7 @@ const VBSPageHeading = ({
           <div className={twMerge(themes[theme].bg, className)}>
             {breadcrumbs.length > 0 && (
               <div className="mb-2">
-                <VBSBreadcrumb
+                <Breadcrumb
                   pages={breadcrumbs}
                   currentClassName={themes[theme].current}
                 />
@@ -197,7 +197,7 @@ const VBSPageHeading = ({
             {renderSimple()}
             {metas.length > 0 && (
               <div className="mt-1">
-                <VBSMetaList items={metas} />
+                <MetaList items={metas} />
               </div>
             )}
           </div>
@@ -214,7 +214,7 @@ const VBSPageHeading = ({
   return getVariant()
 }
 
-VBSPageHeading.defaultProps = {
+PageHeading.defaultProps = {
   variant: 'simple',
   theme: 'light',
   metas: [],
@@ -226,7 +226,7 @@ VBSPageHeading.defaultProps = {
   avatarPosition: 'left',
 }
 
-VBSPageHeading.propTypes = {
+PageHeading.propTypes = {
   variant: PropTypes.oneOf(variants),
   theme: PropTypes.oneOf(Object.keys(themes)),
   title: PropTypes.string.isRequired,
@@ -272,4 +272,4 @@ VBSPageHeading.propTypes = {
   bannerClassName: PropTypes.string,
 }
 
-export default VBSPageHeading
+export default PageHeading

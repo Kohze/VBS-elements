@@ -6,12 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSDropdown from '@/components/application-ui/elements/dropdown'
+import Dropdown from '@/components/application-ui/elements/dropdown'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 
 <Meta
   title="Application UI/Elements/Dropdown"
-  component={VBSDropdown}
+  component={Dropdown}
   argTypes={{
     buttonIconName: {
       control: {
@@ -27,21 +27,21 @@ export const Template = (args) => (
     style={{ minHeight: '280px' }}
     className="bg-slate-100 flex justify-center"
   >
-    <VBSDropdown {...args} />
+    <Dropdown {...args} />
   </div>
 )
 
 export const Variants = (args) => (
   <div style={{ minHeight: '240px' }}>
     <div style={{ maxWidth: '440px' }} className="flex gap-2 flex-wrap mx-auto">
-      <VBSDropdown {...args} />
-      <VBSDropdown {...args} variant="secondary" />
-      <VBSDropdown {...args} variant="success" />
-      <VBSDropdown {...args} variant="danger" />
-      <VBSDropdown {...args} variant="warning" />
-      <VBSDropdown {...args} variant="info" />
-      <VBSDropdown {...args} variant="light" />
-      <VBSDropdown {...args} variant="dark" />
+      <Dropdown {...args} />
+      <Dropdown {...args} variant="secondary" />
+      <Dropdown {...args} variant="success" />
+      <Dropdown {...args} variant="danger" />
+      <Dropdown {...args} variant="warning" />
+      <Dropdown {...args} variant="info" />
+      <Dropdown {...args} variant="light" />
+      <Dropdown {...args} variant="dark" />
     </div>
   </div>
 )
@@ -53,7 +53,7 @@ Dropdowns are used to display a list of options that can be selected by the user
 ## Import
 
 ```js
-import VBSDropdown from '@/components/application-ui/elements/dropdown'
+import Dropdown from '@/components/application-ui/elements/dropdown'
 ```
 
 ## Default
@@ -162,4 +162,4 @@ Dropdowns can have different ready-to-use variants. The `variant` prop can be us
 
 ## Reference
 
-<ArgsTable of={VBSDropdown} id="args-table" />
+<ArgsTable of={Dropdown} id="args-table" />

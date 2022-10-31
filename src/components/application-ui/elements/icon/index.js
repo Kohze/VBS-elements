@@ -10,7 +10,7 @@ const sizes = {
   xl: 'w-6 h-6',
 }
 
-const VBSIcon = ({
+const Icon = ({
   iconName,
   iconType,
   backgroundColor,
@@ -37,13 +37,13 @@ const VBSIcon = ({
   )
 }
 
-VBSIcon.defaultProps = {
+Icon.defaultProps = {
   iconType: 'solid',
   className: 'flex',
   size: 'md',
 }
 
-VBSIcon.propTypes = {
+Icon.propTypes = {
   iconName: PropTypes.string.isRequired,
   iconType: PropTypes.oneOf(['solid', 'outline']),
   size: PropTypes.oneOf(Object.keys(sizes)),
@@ -54,4 +54,4 @@ VBSIcon.propTypes = {
   height: PropTypes.number,
 }
 
-export default VBSIcon
+export default Icon

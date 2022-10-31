@@ -25,7 +25,7 @@ const kinds = {
   circular: 'rounded-full',
 }
 
-const VBSBadge = ({
+const Badge = ({
   text,
   variant,
   size,
@@ -96,13 +96,13 @@ const VBSBadge = ({
   )
 }
 
-VBSBadge.defaultProps = {
+Badge.defaultProps = {
   variant: 'primary',
   size: 'normal',
   kind: 'rounded',
 }
 
-VBSBadge.propTypes = {
+Badge.propTypes = {
   text: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(Object.keys(variants)),
   size: PropTypes.oneOf(Object.keys(sizes)),
@@ -115,4 +115,4 @@ VBSBadge.propTypes = {
   onRemove: PropTypes.func,
 }
 
-export default VBSBadge
+export default Badge

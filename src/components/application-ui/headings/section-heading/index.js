@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
 
-const VBSSectionHeading = ({
+const SectionHeading = ({
   title,
   titleClassName,
   description,
@@ -57,7 +57,7 @@ const VBSSectionHeading = ({
   )
 }
 
-VBSSectionHeading.propTypes = {
+SectionHeading.propTypes = {
   title: PropTypes.string.isRequired,
   titleClassName: PropTypes.string,
   description: PropTypes.string,
@@ -67,4 +67,4 @@ VBSSectionHeading.propTypes = {
   actionButtons: PropTypes.func,
 }
 
-export default VBSSectionHeading
+export default SectionHeading

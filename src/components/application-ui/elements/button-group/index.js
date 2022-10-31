@@ -1,6 +1,6 @@
 import { css } from '@emotion/css'
 import { twMerge } from 'tailwind-merge'
-import VBSButton from '../button'
+import Button from '../button'
 import PropTypes from 'prop-types'
 
 export const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
@@ -18,7 +18,7 @@ export const variants = [
 
 export const kinds = ['square', 'rounded', 'circular']
 
-const VBSButtonGroup = ({
+const ButtonGroup = ({
   elements,
   iconPosition,
   iconType,
@@ -43,7 +43,7 @@ const VBSButtonGroup = ({
     >
       {elements
         ? elements?.map((element, index) => (
-            <VBSButton
+            <Button
               key={index}
               text={element.text}
               iconName={element.iconName}
@@ -85,7 +85,7 @@ const VBSButtonGroup = ({
   )
 }
 
-VBSButtonGroup.defaultProps = {
+ButtonGroup.defaultProps = {
   elements: [],
   iconPosition: 'left',
   iconType: 'solid',
@@ -94,7 +94,7 @@ VBSButtonGroup.defaultProps = {
   kind: 'rounded',
 }
 
-VBSButtonGroup.propTypes = {
+ButtonGroup.propTypes = {
   elements: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
@@ -112,4 +112,4 @@ VBSButtonGroup.propTypes = {
   color: PropTypes.string,
 }
 
-export default VBSButtonGroup
+export default ButtonGroup

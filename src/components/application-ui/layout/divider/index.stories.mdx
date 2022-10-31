@@ -6,12 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSDivider from '@/components/application-ui/layout/divider'
+import Divider from '@/components/application-ui/layout/divider'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 
 <Meta
   title="Application UI/Layout/Divider"
-  component={VBSDivider}
+  component={Divider}
   argTypes={{
     iconName: {
       control: {
@@ -30,30 +30,20 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
 
 export const Template = (args) => (
   <div className="py-10">
-    <VBSDivider {...args} />
+    <Divider {...args} />
   </div>
 )
 
 export const Positions = (args) => (
   <div>
     <div className="py-10">
-      <VBSDivider
-        position="left"
-        variant="with-icon"
-        iconName="plus"
-        {...args}
-      />
+      <Divider position="left" variant="with-icon" iconName="plus" {...args} />
     </div>
     <div className="py-10">
-      <VBSDivider variant="with-icon" iconName="plus" {...args} />
+      <Divider variant="with-icon" iconName="plus" {...args} />
     </div>
     <div className="py-10">
-      <VBSDivider
-        position="right"
-        variant="with-icon"
-        iconName="plus"
-        {...args}
-      />
+      <Divider position="right" variant="with-icon" iconName="plus" {...args} />
     </div>
   </div>
 )
@@ -65,7 +55,7 @@ The divider component is used to separate content.
 ## Import
 
 ```js
-import VBSDivider from '@/components/application-ui/layout/divider'
+import Divider from '@/components/application-ui/layout/divider'
 ```
 
 ## Default
@@ -165,4 +155,4 @@ Use the `position` prop to set the position of the divider. The default position
 
 ## Referance
 
-<ArgsTable of={VBSDivider} />
+<ArgsTable of={Divider} />

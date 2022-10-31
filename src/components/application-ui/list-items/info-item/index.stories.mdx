@@ -6,11 +6,11 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSInfoItem from '@/components/application-ui/list-items/info-item'
+import InfoItem from '@/components/application-ui/list-items/info-item'
 
-<Meta title="Application UI/List Items/Info Item" component={VBSInfoItem} />
+<Meta title="Application UI/List Items/Info Item" component={InfoItem} />
 
-export const Template = (args) => <VBSInfoItem {...args} />
+export const Template = (args) => <InfoItem {...args} />
 
 # Info Item
 
@@ -59,8 +59,8 @@ There is also `avatarPosition` prop to display the avatar on the left, right, to
   >
     {(args) => (
       <>
-        <VBSInfoItem {...args} className="mb-6" />
-        <VBSInfoItem
+        <InfoItem {...args} className="mb-6" />
+        <InfoItem
           {...args}
           avatarPosition="right"
           imageSrc="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -124,7 +124,7 @@ You can list multiple items in the `metaList` prop with iconName and name keys.
 
 ## With Actions
 
-You can use the `actions` prop to display actions. The `actions` prop is an array of objects with `VBSButton` props. Check VBSButton component for more details [here](/docs/application-ui-elements-button--default-story).
+You can use the `actions` prop to display actions. The `actions` prop is an array of objects with `Button` props. Check Button component for more details [here](/docs/application-ui-elements-button--default-story).
 
 <Canvas>
   <Story
@@ -169,4 +169,4 @@ You can use the `actions` prop to display actions. The `actions` prop is an arra
 
 ## Reference
 
-<ArgsTable of={VBSInfoItem} />
+<ArgsTable of={InfoItem} />

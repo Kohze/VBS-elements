@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
-import VBSIcon from '../../elements/icon'
+import Icon from '../../elements/icon'
 import { v4 as uuidv4 } from 'uuid'
 import { twMerge } from 'tailwind-merge'
 
-const VBSMetaList = ({ items, className }) => {
+const MetaList = ({ items, className }) => {
   return (
     <div
       className={twMerge(
@@ -19,7 +19,7 @@ const VBSMetaList = ({ items, className }) => {
             item.iconPosition === 'right' ? 'flex-row-reverse' : 'flex-row',
           )}
         >
-          <VBSIcon
+          <Icon
             iconName={item.iconName}
             className={twMerge(
               'flex-shrink-0',
@@ -34,7 +34,7 @@ const VBSMetaList = ({ items, className }) => {
   )
 }
 
-VBSMetaList.propTypes = {
+MetaList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       iconName: PropTypes.elementType,
@@ -45,4 +45,4 @@ VBSMetaList.propTypes = {
   ).isRequired,
 }
 
-export default VBSMetaList
+export default MetaList

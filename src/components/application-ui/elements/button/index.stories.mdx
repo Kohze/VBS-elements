@@ -6,12 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSButton from '@/components/application-ui/elements/button'
+import Button from '@/components/application-ui/elements/button'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 
 <Meta
   title="Application UI/Elements/Button"
-  component={VBSButton}
+  component={Button}
   argTypes={{
     iconName: {
       control: {
@@ -27,7 +27,7 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
   }}
 />
 
-export const Template = (args) => <VBSButton {...args} />
+export const Template = (args) => <Button {...args} />
 export const Default = Template.bind({})
 Default.args = {
   text: 'Default Button',
@@ -35,42 +35,40 @@ Default.args = {
 
 export const Variants = (args) => (
   <div className="flex gap-2">
-    <VBSButton {...args} text="Primary" variant="primary" />
-    <VBSButton {...args} text="Secondary" variant="secondary" />
-    <VBSButton {...args} text="Danger" variant="danger" />
-    <VBSButton {...args} text="Success" variant="success" />
-    <VBSButton {...args} text="Warning" variant="warning" />
-    <VBSButton {...args} text="Info" variant="info" />
-    <VBSButton {...args} text="Outline" variant="outline" />
-    <VBSButton {...args} text="Light" variant="light" />
-    <VBSButton {...args} text="Dark" variant="dark" />
+    <Button {...args} text="Primary" variant="primary" />
+    <Button {...args} text="Secondary" variant="secondary" />
+    <Button {...args} text="Danger" variant="danger" />
+    <Button {...args} text="Success" variant="success" />
+    <Button {...args} text="Warning" variant="warning" />
+    <Button {...args} text="Info" variant="info" />
+    <Button {...args} text="Outline" variant="outline" />
+    <Button {...args} text="Light" variant="light" />
+    <Button {...args} text="Dark" variant="dark" />
   </div>
 )
 
 export const Sizes = (args) => (
   <div className="flex gap-2 items-end">
-    <VBSButton {...args} text="XSmall" size="xs" />
-    <VBSButton {...args} text="Small" size="sm" />
-    <VBSButton {...args} text="Medium" size="md" />
-    <VBSButton {...args} text="Large" size="lg" />
-    <VBSButton {...args} text="XLarge" size="xl" />
+    <Button {...args} text="XSmall" size="xs" />
+    <Button {...args} text="Small" size="sm" />
+    <Button {...args} text="Medium" size="md" />
+    <Button {...args} text="Large" size="lg" />
+    <Button {...args} text="XLarge" size="xl" />
   </div>
 )
 
-export const Disabled = (args) => (
-  <VBSButton {...args} text="Disabled" disabled />
-)
+export const Disabled = (args) => <Button {...args} text="Disabled" disabled />
 
 export const FullWidth = (args) => (
-  <VBSButton {...args} text="Full Width" fullWidth />
+  <Button {...args} text="Full Width" fullWidth />
 )
 
-export const WithIcon = (args) => <VBSButton {...args} iconName="cloud" />
+export const WithIcon = (args) => <Button {...args} iconName="cloud" />
 
 export const WithIconAndText = (args) => (
   <div className="flex gap-2">
-    <VBSButton {...args} text="With Icon and Text" iconName="cloud" />
-    <VBSButton
+    <Button {...args} text="With Icon and Text" iconName="cloud" />
+    <Button
       {...args}
       text="With Icon and Text"
       iconName="cloud"
@@ -80,11 +78,11 @@ export const WithIconAndText = (args) => (
 )
 
 export const FuncButton = (args) => (
-  <VBSButton {...args} text="Click Me" onClick={() => alert('clicked !')} />
+  <Button {...args} text="Click Me" onClick={() => alert('clicked !')} />
 )
 
 export const LinkButton = (args) => (
-  <VBSButton {...args} text="Link Button" href="/" />
+  <Button {...args} text="Link Button" href="/" />
 )
 
 # Button
@@ -94,7 +92,7 @@ Buttons allow users to take actions, and make choices with a single tap.
 ## Import
 
 ```js
-import VBSIcon from '@/components/application-ui/elements/icon'
+import Icon from '@/components/application-ui/elements/icon'
 ```
 
 ## Usage
@@ -178,4 +176,4 @@ Button can be a link with `href` prop.
 
 ## Reference
 
-<ArgsTable of={VBSButton} />
+<ArgsTable of={Button} />

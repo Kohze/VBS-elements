@@ -13,7 +13,7 @@ const variants = {
   'wide-responsive': 'flex-col sm:flex-row sm:items-center',
 }
 
-const VBSMediaObject = ({
+const MediaObject = ({
   imageLink,
   mediaPosition,
   title,
@@ -79,7 +79,7 @@ const VBSMediaObject = ({
   )
 }
 
-VBSMediaObject.propTypes = {
+MediaObject.propTypes = {
   imageLink: PropTypes.string,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -87,4 +87,4 @@ VBSMediaObject.propTypes = {
   mediaPosition: PropTypes.oneOf(mediaPositions),
 }
 
-export default VBSMediaObject
+export default MediaObject

@@ -6,12 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSPageHeading from '@/components/application-ui/headings/page-heading'
-import VBSButton from '@/components/application-ui/elements/button'
+import PageHeading from '@/components/application-ui/headings/page-heading'
+import Button from '@/components/application-ui/elements/button'
 
 <Meta
   title="Application UI/Headings/Page Heading"
-  component={VBSPageHeading}
+  component={PageHeading}
   parameters={{
     docs: {
       source: {
@@ -22,12 +22,12 @@ import VBSButton from '@/components/application-ui/elements/button'
 />
 
 export const Simple = (args) => (
-  <VBSPageHeading
+  <PageHeading
     title="Frontend Developer"
     actionButtons={(props) => (
       <>
-        <VBSButton text="Edit" size="md" variant="outline" />
-        <VBSButton text="Publish" size="md" variant="dark" />
+        <Button text="Edit" size="md" variant="outline" />
+        <Button text="Publish" size="md" variant="dark" />
       </>
     )}
     {...args}
@@ -35,13 +35,13 @@ export const Simple = (args) => (
 )
 
 export const SimpleDark = (args) => (
-  <VBSPageHeading
+  <PageHeading
     title="Frontend Developer"
     theme="dark"
     actionButtons={(props) => (
       <>
-        <VBSButton text="Edit" size="md" variant="outline" />
-        <VBSButton text="Publish" size="md" variant="dark" />
+        <Button text="Edit" size="md" variant="outline" />
+        <Button text="Publish" size="md" variant="dark" />
       </>
     )}
     {...args}
@@ -49,7 +49,7 @@ export const SimpleDark = (args) => (
 )
 
 export const WithBreadcrumbs = (args) => (
-  <VBSPageHeading
+  <PageHeading
     title="Frontend Developer"
     breadcrumbs={[
       { name: 'Jobs', href: '/jobs', current: false },
@@ -61,8 +61,8 @@ export const WithBreadcrumbs = (args) => (
     ]}
     actionButtons={(props) => (
       <>
-        <VBSButton text="Edit" size="md" variant="outline" />
-        <VBSButton text="Publish" size="md" variant="dark" />
+        <Button text="Edit" size="md" variant="outline" />
+        <Button text="Publish" size="md" variant="dark" />
       </>
     )}
     {...args}
@@ -70,7 +70,7 @@ export const WithBreadcrumbs = (args) => (
 )
 
 export const WithMetaList = (args) => (
-  <VBSPageHeading
+  <PageHeading
     title="Frontend Developer"
     metas={[
       { name: 'Full-time', iconName: 'briefcase' },
@@ -79,8 +79,8 @@ export const WithMetaList = (args) => (
     ]}
     actionButtons={(props) => (
       <>
-        <VBSButton text="Edit" size="md" variant="outline" />
-        <VBSButton text="Publish" size="md" variant="dark" />
+        <Button text="Edit" size="md" variant="outline" />
+        <Button text="Publish" size="md" variant="dark" />
       </>
     )}
     {...args}
@@ -88,7 +88,7 @@ export const WithMetaList = (args) => (
 )
 
 export const WithBreadcrumbsAndMetaList = (args) => (
-  <VBSPageHeading
+  <PageHeading
     title="Frontend Developer"
     breadcrumbs={[
       { name: 'Jobs', href: '/jobs', current: false },
@@ -105,8 +105,8 @@ export const WithBreadcrumbsAndMetaList = (args) => (
     ]}
     actionButtons={(props) => (
       <>
-        <VBSButton text="Edit" size="md" variant="outline" />
-        <VBSButton text="Publish" size="md" variant="dark" />
+        <Button text="Edit" size="md" variant="outline" />
+        <Button text="Publish" size="md" variant="dark" />
       </>
     )}
     {...args}
@@ -114,7 +114,7 @@ export const WithBreadcrumbsAndMetaList = (args) => (
 )
 
 export const WithAvatar = (args) => (
-  <VBSPageHeading
+  <PageHeading
     variant="with-avatar"
     user={{
       name: 'Rebecca Nicholas',
@@ -127,12 +127,8 @@ export const WithAvatar = (args) => (
     avatarSize="xl"
     actionButtons={(props) => (
       <>
-        <VBSButton text="Disqualify" size="md" variant="outline" />
-        <VBSButton
-          text="Advance to offer"
-          size="md"
-          className="bg-indigo-600"
-        />
+        <Button text="Disqualify" size="md" variant="outline" />
+        <Button text="Advance to offer" size="md" className="bg-indigo-600" />
       </>
     )}
     {...args}
@@ -140,7 +136,7 @@ export const WithAvatar = (args) => (
 )
 
 export const CardView = (args) => (
-  <VBSPageHeading
+  <PageHeading
     variant="card"
     user={{
       name: 'Rebecca Nicholas',
@@ -161,7 +157,7 @@ export const CardView = (args) => (
 )
 
 export const WithBanner = (args) => (
-  <VBSPageHeading
+  <PageHeading
     variant="banner"
     user={{
       name: 'Ricardo Cooper',
@@ -173,14 +169,14 @@ export const WithBanner = (args) => (
     }}
     actionButtons={(props) => (
       <>
-        <VBSButton
+        <Button
           text="Message"
           size="md"
           variant="outline"
           iconName="envelope"
           onClick={() => alert('Message')}
         />
-        <VBSButton
+        <Button
           text="Call"
           size="md"
           variant="primary"
@@ -202,7 +198,7 @@ Some parts of the page heading are optional, such as the action buttons. To add 
 ## Import
 
 ```js
-import VBSPageHeading from '@/components/application-ui/headings/page-heading'
+import PageHeading from '@/components/application-ui/headings/page-heading'
 ```
 
 ## Simple
@@ -271,4 +267,4 @@ Heading with banner need `variant` and `user` prop. The `user` prop is an object
 
 ## Reference
 
-<ArgsTable of={VBSPageHeading} />
+<ArgsTable of={PageHeading} />

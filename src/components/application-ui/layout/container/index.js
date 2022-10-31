@@ -23,7 +23,7 @@ const narrowSizes = {
   full: 'max-w-full',
 }
 
-const VBSContainer = ({ variant, children, className, narrowSize }) => {
+const Container = ({ variant, children, className, narrowSize }) => {
   if (variant === 'narrow-padded') {
     return (
       <div className={twMerge(variants['narrow-padded'], className)}>
@@ -47,15 +47,15 @@ const VBSContainer = ({ variant, children, className, narrowSize }) => {
   )
 }
 
-VBSContainer.defaultProps = {
+Container.defaultProps = {
   variant: 'padded',
 }
 
-VBSContainer.propTypes = {
+Container.propTypes = {
   variant: PropTypes.oneOf(Object.keys(variants)),
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   narrowSize: PropTypes.oneOf(Object.keys(narrowSizes)),
 }
 
-export default VBSContainer
+export default Container

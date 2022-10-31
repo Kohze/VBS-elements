@@ -6,23 +6,23 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSStackedList from '@/components/application-ui/lists/stacked-list'
+import StackedList from '@/components/application-ui/lists/stacked-list'
 
-<Meta title="Application UI/Lists/Stacked List" component={VBSStackedList} />
+<Meta title="Application UI/Lists/Stacked List" component={StackedList} />
 
 export const TemplateNarrow = (args) => (
   <div className="w-1/2 mx-auto">
-    <VBSStackedList {...args} />
+    <StackedList {...args} />
   </div>
 )
 
 export const TemplateShort = (args) => (
   <div className="w-1/2 mx-auto h-56">
-    <VBSStackedList {...args} />
+    <StackedList {...args} />
   </div>
 )
 
-export const Template = (args) => <VBSStackedList {...args} />
+export const Template = (args) => <StackedList {...args} />
 
 ## Stacked List
 
@@ -31,12 +31,12 @@ Stacked list is a list of items that are stacked on top of each other. It is use
 ## Import
 
 ```js
-import VBSStackedList from '@/components/application-ui/lists/stacked-list'
+import StackedList from '@/components/application-ui/lists/stacked-list'
 ```
 
 ## Simple
 
-Simple stacked list uses `VBSInfoItem` as default item component. `items` prop is required. `items` prop is an array of objects with same keys with `VBSInfoItem` props to create list items. Check `VBSInfoItem` documentation for props information [here](/docs/application-ui-list-items-info-item--default-story)
+Simple stacked list uses `InfoItem` as default item component. `items` prop is required. `items` prop is an array of objects with same keys with `InfoItem` props to create list items. Check `InfoItem` documentation for props information [here](/docs/application-ui-list-items-info-item--default-story)
 
 <Canvas>
   <Story
@@ -74,7 +74,7 @@ Simple stacked list uses `VBSInfoItem` as default item component. `items` prop i
 
 Add `href` property inside `items` object to make the item clickable. `href` property is a string that will be used as `href` attribute of `a` tag.
 
-Also with `iconName` prop, you can add an icon to the item. `iconName` prop is a string that will be used as `iconName` prop of `VBSIcon` component. Check `VBSIcon` documentation for props information [here](/docs/application-ui-elements-icon--sample)
+Also with `iconName` prop, you can add an icon to the item. `iconName` prop is a string that will be used as `iconName` prop of `Icon` component. Check `Icon` documentation for props information [here](/docs/application-ui-elements-icon--sample)
 
 <Canvas>
   <Story
@@ -114,7 +114,7 @@ Also with `iconName` prop, you can add an icon to the item. `iconName` prop is a
 
 ## Two Columns
 
-To make the list two columns, add `additionalInfo` property inside `items` object. `additionalInfo` property is a string that will be used as `additionalInfo` prop of `VBSInfoItem` component. Check `VBSInfoItem` documentation for props information [here](/docs/application-ui-list-items-info-item--default-story)
+To make the list two columns, add `additionalInfo` property inside `items` object. `additionalInfo` property is a string that will be used as `additionalInfo` prop of `InfoItem` component. Check `InfoItem` documentation for props information [here](/docs/application-ui-list-items-info-item--default-story)
 
 <Canvas>
   <Story
@@ -218,7 +218,7 @@ To add label to the list, add `label` key to object in `items` array.
 
 ## With Avatar Stack
 
-To make the list with avatar stack, add `avatarStack` property to object inside `items` array. `avatarStack` property is an array of objects with same keys with `VBSAvatarStack` props to create avatar stack. Check `VBSAvatarStack` documentation for props information [here](/docs/application-ui-elements-avatar-stack--default-story)
+To make the list with avatar stack, add `avatarStack` property to object inside `items` array. `avatarStack` property is an array of objects with same keys with `AvatarStack` props to create avatar stack. Check `AvatarStack` documentation for props information [here](/docs/application-ui-elements-avatar-stack--default-story)
 
 <Canvas>
   <Story

@@ -6,9 +6,9 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSMediaObject from '@/components/application-ui/layout/media-object'
+import MediaObject from '@/components/application-ui/layout/media-object'
 
-<Meta title="Application UI/Layout/Media Object" component={VBSMediaObject} />
+<Meta title="Application UI/Layout/Media Object" component={MediaObject} />
 
 export const exampleTexts = {
   title: 'Media Object Title',
@@ -20,7 +20,7 @@ export const exampleTexts = {
 export const Template = (args) => {
   return (
     <div className="max-w-2xl mx-auto">
-      <VBSMediaObject
+      <MediaObject
         title={exampleTexts.title}
         description={exampleTexts.description}
         {...args}
@@ -36,7 +36,7 @@ The media object is a flexible layout that can be used to display a variety of c
 ## Import
 
 ```js
-import VBSMediaObject from '@/components/application-ui/layout/media-object'
+import MediaObject from '@/components/application-ui/layout/media-object'
 ```
 
 ## Basic
@@ -117,4 +117,4 @@ import VBSMediaObject from '@/components/application-ui/layout/media-object'
 
 ## Reference
 
-<ArgsTable of={VBSMediaObject} />
+<ArgsTable of={MediaObject} />

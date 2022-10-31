@@ -6,54 +6,54 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSBadge from '@/components/application-ui/elements/badge'
+import Badge from '@/components/application-ui/elements/badge'
 
-<Meta title="Application UI/Elements/Badge" component={VBSBadge} />
+<Meta title="Application UI/Elements/Badge" component={Badge} />
 
 export const Template = ({ onRemove, ...args }) => (
-  <VBSBadge text="Badge" {...args} />
+  <Badge text="Badge" {...args} />
 )
 
 export const Variants = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-center">
-    <VBSBadge text="Primary" {...args} />
-    <VBSBadge text="Secondary" variant="secondary" {...args} />
-    <VBSBadge text="Success" variant="success" {...args} />
-    <VBSBadge text="Danger" variant="danger" {...args} />
-    <VBSBadge text="Warning" variant="warning" {...args} />
-    <VBSBadge text="Info" variant="info" {...args} />
-    <VBSBadge text="Outline" variant="outline" {...args} />
-    <VBSBadge text="Light" variant="light" {...args} />
-    <VBSBadge text="Dark" variant="dark" {...args} />
+    <Badge text="Primary" {...args} />
+    <Badge text="Secondary" variant="secondary" {...args} />
+    <Badge text="Success" variant="success" {...args} />
+    <Badge text="Danger" variant="danger" {...args} />
+    <Badge text="Warning" variant="warning" {...args} />
+    <Badge text="Info" variant="info" {...args} />
+    <Badge text="Outline" variant="outline" {...args} />
+    <Badge text="Light" variant="light" {...args} />
+    <Badge text="Dark" variant="dark" {...args} />
   </div>
 )
 
 export const Kinds = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-center">
-    <VBSBadge text="Square" kind="square" {...args} />
-    <VBSBadge text="Rounded" kind="rounded" {...args} />
-    <VBSBadge text="Circular" kind="circular" {...args} />
+    <Badge text="Square" kind="square" {...args} />
+    <Badge text="Rounded" kind="rounded" {...args} />
+    <Badge text="Circular" kind="circular" {...args} />
   </div>
 )
 
 export const Sizes = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-end">
-    <VBSBadge text="Small" size="sm" {...args} />
-    <VBSBadge text="Normal" {...args} />
+    <Badge text="Small" size="sm" {...args} />
+    <Badge text="Normal" {...args} />
   </div>
 )
 
 export const WithNotification = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-end">
-    <VBSBadge text="Badge" notification size="sm" {...args} />
-    <VBSBadge text="Badge" notification {...args} />
+    <Badge text="Badge" notification size="sm" {...args} />
+    <Badge text="Badge" notification {...args} />
   </div>
 )
 
 export const WithRemoveButton = (args) => (
   <div className="flex gap-2 items-end">
-    <VBSBadge text="Badge" size="sm" withRemove {...args} onRemove={() => {}} />
-    <VBSBadge text="Badge" withRemove {...args} onRemove={() => {}} />
+    <Badge text="Badge" size="sm" withRemove {...args} onRemove={() => {}} />
+    <Badge text="Badge" withRemove {...args} onRemove={() => {}} />
   </div>
 )
 
@@ -64,7 +64,7 @@ Badges are used to highlight important information.
 ## Import
 
 ```js
-import VBSBadge from '@/components/application-ui/elements/badge'
+import Badge from '@/components/application-ui/elements/badge'
 ```
 
 ## Default
@@ -115,4 +115,4 @@ Badges can have a remove button with a callback function with `removeButton` and
 
 ## Reference
 
-<ArgsTable of={VBSBadge} />
+<ArgsTable of={Badge} />

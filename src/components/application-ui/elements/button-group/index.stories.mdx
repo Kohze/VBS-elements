@@ -6,12 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSButtonGroup from '@/components/application-ui/elements/button-group'
+import ButtonGroup from '@/components/application-ui/elements/button-group'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 
 <Meta
   title="Application UI/Elements/ButtonGroup"
-  component={VBSButtonGroup}
+  component={ButtonGroup}
   argTypes={{
     elements: {
       control: 'object',
@@ -24,7 +24,7 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
   }}
 />
 
-export const Template = (args) => <VBSButtonGroup {...args} />
+export const Template = (args) => <ButtonGroup {...args} />
 
 ## Button Group
 
@@ -33,12 +33,12 @@ Button groups are used to group buttons together.
 ## Import
 
 ```js
-import VBSButtonGroup from '@/components/application-ui/elements/button-group'
+import ButtonGroup from '@/components/application-ui/elements/button-group'
 ```
 
 ## Basic
 
-Basic group of buttons. The `elements` prop is an array of objects with the following properties: `text` and `iconName` (optional). Almost every property of the `VBSButton` component can be used in the `VBSButtonGroup` array. Check the reference below.
+Basic group of buttons. The `elements` prop is an array of objects with the following properties: `text` and `iconName` (optional). Almost every property of the `Button` component can be used in the `ButtonGroup` component. Check the reference below.
 
 <Canvas>
   <Story
@@ -87,4 +87,4 @@ Basic group of buttons. The `elements` prop is an array of objects with the foll
 
 ## Reference
 
-<ArgsTable of={VBSButtonGroup} />
+<ArgsTable of={ButtonGroup} />

@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
 import { v4 as uuidv4 } from 'uuid'
-import VBSAvatarStack from '../../elements/avatar-stack'
-import VBSIcon from '../../elements/icon'
-import VBSInfoItem from '../../list-items/info-item'
+import AvatarStack from '../../elements/avatar-stack'
+import Icon from '../../elements/icon'
+import InfoItem from '../../list-items/info-item'
 
-const VBSStackedList = ({ items, groupedItems, iconName }) => {
+const StackedList = ({ items, groupedItems, iconName }) => {
   const renderlinkItem = (item) => {
     return (
       <a
@@ -20,15 +20,15 @@ const VBSStackedList = ({ items, groupedItems, iconName }) => {
             item.avatarStack && 'flex justify-between items-center gap-4',
           )}
         >
-          <VBSInfoItem {...item} />
+          <InfoItem {...item} />
           {item.additionalInfo && (
             <span className="hidden md:block">
-              <VBSInfoItem {...item.additionalInfo} />
+              <InfoItem {...item.additionalInfo} />
             </span>
           )}
           {item.avatarStack && (
             <span className="hidden mr-4 md:block">
-              <VBSAvatarStack
+              <AvatarStack
                 items={item.avatarStack}
                 className="flex-shrink-0"
                 size="xs"
@@ -36,7 +36,7 @@ const VBSStackedList = ({ items, groupedItems, iconName }) => {
             </span>
           )}
         </div>
-        <VBSIcon iconName={iconName} />
+        <Icon iconName={iconName} />
       </a>
     )
   }
@@ -48,7 +48,7 @@ const VBSStackedList = ({ items, groupedItems, iconName }) => {
           return item.href ? (
             renderlinkItem(item)
           ) : (
-            <VBSInfoItem {...item} key={uuidv4()} />
+            <InfoItem {...item} key={uuidv4()} />
           )
         })}
       </ul>
@@ -73,7 +73,7 @@ const VBSStackedList = ({ items, groupedItems, iconName }) => {
   return renderUlist(items)
 }
 
-VBSStackedList.propTypes = {
+StackedList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       imageSrc: PropTypes.string,
@@ -129,4 +129,4 @@ VBSStackedList.propTypes = {
   ),
 }
 
-export default VBSStackedList
+export default StackedList

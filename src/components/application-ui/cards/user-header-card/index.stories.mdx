@@ -6,15 +6,15 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSUserHeaderCard from '@/components/application-ui/cards/user-header-card'
+import UserHeaderCard from '@/components/application-ui/cards/user-header-card'
 
 <Meta
   title="Application UI/Cards/User Header Card"
-  component={VBSUserHeaderCard}
+  component={UserHeaderCard}
 />
 
 export const Template = (args) => (
-  <VBSUserHeaderCard
+  <UserHeaderCard
     user={{
       name: 'Mary Jane',
       role: 'Designer',
@@ -27,7 +27,7 @@ export const Template = (args) => (
 )
 
 export const WithInfoList = (args) => (
-  <VBSUserHeaderCard
+  <UserHeaderCard
     user={{
       name: 'Mary Jane',
       role: 'Designer',
@@ -62,4 +62,4 @@ The User Header Card is a card that displays the user's avatar, name, and title.
 
 ## Reference
 
-<ArgsTable of={VBSUserHeaderCard} />
+<ArgsTable of={UserHeaderCard} />

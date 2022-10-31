@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import VBSIcon from '../../elements/icon'
+import Icon from '../../elements/icon'
 import NextLink from 'next/link'
 
 const variants = {
@@ -14,7 +14,7 @@ const variants = {
   },
 }
 
-const VBSBreadcrumb = ({
+const Breadcrumb = ({
   pages,
   variant,
   homeIconName,
@@ -46,7 +46,7 @@ const VBSBreadcrumb = ({
         <li className="flex">
           <div className="flex items-center">
             <a href="#" className="text-gray-300 hover:text-gray-400">
-              <VBSIcon
+              <Icon
                 iconName={homeIconName}
                 className={'flex-shrink-0 w-5 h-5'}
                 aria-hidden="true"
@@ -60,7 +60,7 @@ const VBSBreadcrumb = ({
           <li key={page.name} className="flex">
             <div className="flex items-center">
               {variant === 'simple' && (
-                <VBSIcon
+                <Icon
                   iconName={dividerIconName}
                   className="flex-shrink-0 w-5 h-5 text-gray-300"
                   aria-hidden="true"
@@ -100,14 +100,14 @@ const VBSBreadcrumb = ({
   )
 }
 
-VBSBreadcrumb.defaultProps = {
+Breadcrumb.defaultProps = {
   variant: 'simple',
   currentClassName: 'text-gray-800 pointer-events-none font-medium',
   homeIconName: 'home',
   dividerIconName: 'chevron-right',
 }
 
-VBSBreadcrumb.propTypes = {
+Breadcrumb.propTypes = {
   pages: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -129,4 +129,4 @@ VBSBreadcrumb.propTypes = {
   listClassName: PropTypes.string,
 }
 
-export default VBSBreadcrumb
+export default Breadcrumb

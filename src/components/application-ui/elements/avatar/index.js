@@ -27,7 +27,7 @@ const notificationPositions = {
   bottomLeft: 'bottom-0 left-0',
 }
 
-const VBSAvatar = ({
+const Avatar = ({
   size,
   imageSrc,
   kind,
@@ -142,7 +142,7 @@ const VBSAvatar = ({
   )
 }
 
-VBSAvatar.defaultProps = {
+Avatar.defaultProps = {
   size: 'md',
   kind: 'circular',
   backgroundColor: 'transparent',
@@ -153,7 +153,7 @@ VBSAvatar.defaultProps = {
   color: '#eeeeee',
 }
 
-VBSAvatar.propTypes = {
+Avatar.propTypes = {
   size: PropTypes.oneOf(Object.keys(sizes)),
   kind: PropTypes.oneOf(Object.keys(kinds)),
   imageSrc: PropTypes.string,
@@ -168,4 +168,4 @@ VBSAvatar.propTypes = {
   personName: PropTypes.string,
 }
 
-export default VBSAvatar
+export default Avatar

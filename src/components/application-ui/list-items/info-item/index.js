@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
-import VBSMetaList from '../../lists/meta-list'
-import VBSAvatar from '../../elements/avatar'
-import VBSButton from '../../elements/button'
+import MetaList from '../../lists/meta-list'
+import Avatar from '../../elements/avatar'
+import Button from '../../elements/button'
 import { twMerge } from 'tailwind-merge'
 
-const VBSInfoItem = ({
+const InfoItem = ({
   imageSrc,
   withAvatar,
   avatarPosition,
@@ -48,7 +48,7 @@ const VBSInfoItem = ({
               avatarClassName,
             )}
           >
-            {withAvatar && <VBSAvatar imageSrc={imageSrc} size={avatarSize} />}
+            {withAvatar && <Avatar imageSrc={imageSrc} size={avatarSize} />}
           </span>
           <div className="flex flex-col justify-center flex-1">
             <p
@@ -65,7 +65,7 @@ const VBSInfoItem = ({
             {description && (
               <p className="text-sm text-gray-500">{description}</p>
             )}
-            <VBSMetaList
+            <MetaList
               items={metaList}
               iconColor={iconColor}
               iconPosition={iconPosition}
@@ -78,7 +78,7 @@ const VBSInfoItem = ({
         <div className={twMerge('flex items-center gap-2', actionsClassName)}>
           {actions.map((action) => (
             <div key={uuidv4()}>
-              <VBSButton {...action} />
+              <Button {...action} />
             </div>
           ))}
         </div>
@@ -87,7 +87,7 @@ const VBSInfoItem = ({
   )
 }
 
-VBSInfoItem.defaultProps = {
+InfoItem.defaultProps = {
   withAvatar: false,
   metaList: [],
   iconPosition: 'left',
@@ -95,7 +95,7 @@ VBSInfoItem.defaultProps = {
   avatarSize: 'lg',
 }
 
-VBSInfoItem.propTypes = {
+InfoItem.propTypes = {
   imageSrc: PropTypes.string,
   title: PropTypes.string.isRequired,
   description: PropTypes.string || PropTypes.node,
@@ -119,4 +119,4 @@ VBSInfoItem.propTypes = {
   ),
 }
 
-export default VBSInfoItem
+export default InfoItem

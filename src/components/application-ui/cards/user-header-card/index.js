@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import { css } from '@emotion/css'
-import VBSAvatar from '../../elements/avatar'
+import Avatar from '../../elements/avatar'
 import NextLink from 'next/link'
 import { twMerge } from 'tailwind-merge'
 
-const VBSUserHeaderCard = ({
+const UserHeaderCard = ({
   user,
   cardList,
   cardTopText,
@@ -31,7 +31,7 @@ const VBSUserHeaderCard = ({
       <div className="p-6 bg-white">
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="sm:flex sm:space-x-5 sm:items-center">
-            <VBSAvatar
+            <Avatar
               imageSrc={user.imageSrc}
               size={avatarSize}
               kind={avatarKind}
@@ -80,7 +80,7 @@ const VBSUserHeaderCard = ({
   )
 }
 
-VBSUserHeaderCard.defaultProps = {
+UserHeaderCard.defaultProps = {
   cardList: [],
   cardTopText: 'Welcome back,',
   avatarKind: 'circular',
@@ -88,7 +88,7 @@ VBSUserHeaderCard.defaultProps = {
   user: {},
 }
 
-VBSUserHeaderCard.propTypes = {
+UserHeaderCard.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string,
     role: PropTypes.string,
@@ -107,4 +107,4 @@ VBSUserHeaderCard.propTypes = {
   titleClassName: PropTypes.string,
 }
 
-export default VBSUserHeaderCard
+export default UserHeaderCard

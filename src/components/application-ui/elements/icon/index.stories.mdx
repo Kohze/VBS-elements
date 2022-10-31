@@ -6,12 +6,12 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSIcon from '@/components/application-ui/elements/icon'
+import Icon from '@/components/application-ui/elements/icon'
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 
 <Meta
   title="Application UI/Elements/Icon"
-  component={VBSIcon}
+  component={Icon}
   argTypes={{
     iconName: {
       control: {
@@ -22,15 +22,15 @@ import heroIconsNames from '@/assets/icons/hero-icons/names'
   }}
 />
 
-export const Template = (args) => <VBSIcon iconName="bug-ant" {...args} />
+export const Template = (args) => <Icon iconName="bug-ant" {...args} />
 
 export const Sizes = (args) => (
   <div className="flex flex-col space-y-4">
-    <VBSIcon iconName="bug-ant" size="xs" {...args} />
-    <VBSIcon iconName="bug-ant" size="sm" {...args} />
-    <VBSIcon iconName="bug-ant" size="md" {...args} />
-    <VBSIcon iconName="bug-ant" size="lg" {...args} />
-    <VBSIcon iconName="bug-ant" size="xl" {...args} />
+    <Icon iconName="bug-ant" size="xs" {...args} />
+    <Icon iconName="bug-ant" size="sm" {...args} />
+    <Icon iconName="bug-ant" size="md" {...args} />
+    <Icon iconName="bug-ant" size="lg" {...args} />
+    <Icon iconName="bug-ant" size="xl" {...args} />
   </div>
 )
 
@@ -41,7 +41,7 @@ Icon component for displaying icons. The icon component is a wrapper for the [He
 ## Import
 
 ```js
-import VBSIcon from '@/components/application-ui/elements/icon'
+import Icon from '@/components/application-ui/elements/icon'
 ```
 
 ## Usage
@@ -79,4 +79,4 @@ The icon component supports different sizes. To use a different size, pass the `
 
 ## Reference
 
-<ArgsTable of={VBSIcon} />
+<ArgsTable of={Icon} />

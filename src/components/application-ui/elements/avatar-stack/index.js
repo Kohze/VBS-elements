@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import VBSAvatar from '../avatar'
+import Avatar from '../avatar'
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 const kinds = ['square', 'rounded', 'circular']
 
-const VBSAvatarStack = ({ items, size, kind, className, ...props }) => {
+const AvatarStack = ({ items, size, kind, className, ...props }) => {
   return (
     <div
       className={twMerge('flex -space-x-1 overflow-hidden isolate', className)}
@@ -13,7 +13,7 @@ const VBSAvatarStack = ({ items, size, kind, className, ...props }) => {
       {items.map((item, index) => {
         return (
           <div key={index} style={{ zIndex: index }}>
-            <VBSAvatar
+            <Avatar
               size={size}
               kind={kind}
               className="ring-2 ring-white"
@@ -29,11 +29,11 @@ const VBSAvatarStack = ({ items, size, kind, className, ...props }) => {
   )
 }
 
-VBSAvatarStack.defaultProps = {
+AvatarStack.defaultProps = {
   items: [],
 }
 
-VBSAvatarStack.propTypes = {
+AvatarStack.propTypes = {
   size: PropTypes.oneOf(sizes),
   kind: PropTypes.oneOf(kinds),
   backgroundColor: PropTypes.string,
@@ -46,4 +46,4 @@ VBSAvatarStack.propTypes = {
   ),
 }
 
-export default VBSAvatarStack
+export default AvatarStack

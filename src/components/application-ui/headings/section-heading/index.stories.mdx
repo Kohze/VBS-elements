@@ -6,14 +6,14 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSSectionHeading from '@/components/application-ui/headings/section-heading'
-import VBSButton from '@/components/application-ui/elements/button'
-import VBSTab from '@/components/application-ui/navigation/tab'
-import VBSDropdown from '@/components/application-ui/elements/dropdown'
+import SectionHeading from '@/components/application-ui/headings/section-heading'
+import Button from '@/components/application-ui/elements/button'
+import Tab from '@/components/application-ui/navigation/tab'
+import Dropdown from '@/components/application-ui/elements/dropdown'
 
 <Meta
   title="Application UI/Headings/Section Heading"
-  component={VBSSectionHeading}
+  component={SectionHeading}
   parameters={{
     docs: {
       source: {
@@ -24,11 +24,11 @@ import VBSDropdown from '@/components/application-ui/elements/dropdown'
 />
 
 export const Simple = (args) => (
-  <VBSSectionHeading title="Section Heading" {...args} />
+  <SectionHeading title="Section Heading" {...args} />
 )
 
 export const WithDescription = (args) => (
-  <VBSSectionHeading
+  <SectionHeading
     title="Section Heading"
     description="Checkout and Payments Team"
     {...args}
@@ -36,12 +36,12 @@ export const WithDescription = (args) => (
 )
 
 export const WithActionButtons = (args) => (
-  <VBSSectionHeading
+  <SectionHeading
     title="Heading"
     actionButtons={(props) => (
       <>
-        <VBSButton text="Create" size="md" variant="outline" />
-        <VBSButton text="Share" size="md" className="bg-indigo-600" />
+        <Button text="Create" size="md" variant="outline" />
+        <Button text="Share" size="md" className="bg-indigo-600" />
       </>
     )}
     {...args}
@@ -49,14 +49,14 @@ export const WithActionButtons = (args) => (
 )
 
 export const WithLabel = (args) => (
-  <VBSSectionHeading title="Section Heading" label="in Engineering" {...args} />
+  <SectionHeading title="Section Heading" label="in Engineering" {...args} />
 )
 
 export const WithTabs = () => (
-  <VBSSectionHeading
+  <SectionHeading
     title="Section Heading"
     renderTabs={() => (
-      <VBSTab
+      <Tab
         tabs={[
           { name: 'My Account', href: '#', current: true },
           { name: 'Company', href: '#', current: false },
@@ -70,10 +70,10 @@ export const WithTabs = () => (
 
 export const WithDropdown = (args) => (
   <div className="h-56">
-    <VBSSectionHeading
+    <SectionHeading
       title="Section Heading"
       renderDropdown={() => (
-        <VBSDropdown
+        <Dropdown
           minimal
           elements={[
             { text: 'Link 1' },
@@ -141,4 +141,4 @@ Section heading with a title and a dropdown. To add a dropdown, pass a render fu
 
 ## Reference
 
-<ArgsTable of={VBSSectionHeading} />
+<ArgsTable of={SectionHeading} />

@@ -1,8 +1,8 @@
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import VBSButton from '../../elements/button'
-import VBSIcon from '../../elements/icon'
+import Button from '../../elements/button'
+import Icon from '../../elements/icon'
 import { css } from '@emotion/css'
 
 const variants = [
@@ -19,7 +19,7 @@ const positions = {
   right: 'justify-end',
 }
 
-const VBSDivider = ({
+const Divider = ({
   variant,
   position,
   label,
@@ -71,7 +71,7 @@ const VBSDivider = ({
               iconClassName,
             )}
           >
-            <VBSIcon
+            <Icon
               aria-hidden="true"
               iconName={iconName}
               size={iconSize}
@@ -93,7 +93,7 @@ const VBSDivider = ({
         )
       case 'with-button':
         return (
-          <VBSButton
+          <Button
             size={buttonSize}
             variant="outline"
             kind={buttonKind}
@@ -115,7 +115,7 @@ const VBSDivider = ({
             >
               {title}
             </span>
-            <VBSButton
+            <Button
               size={buttonSize}
               variant="outline"
               kind={buttonKind}
@@ -154,7 +154,7 @@ const VBSDivider = ({
   )
 }
 
-VBSDivider.defaultProps = {
+Divider.defaultProps = {
   variant: 'simple',
   position: 'center',
   iconName: 'plus',
@@ -165,7 +165,7 @@ VBSDivider.defaultProps = {
   buttonKind: 'circular',
 }
 
-VBSDivider.propTypes = {
+Divider.propTypes = {
   variant: PropTypes.oneOf(variants),
   position: PropTypes.oneOf(Object.keys(positions)),
   label: PropTypes.string,
@@ -187,4 +187,4 @@ VBSDivider.propTypes = {
   onClickButton: PropTypes.func,
 }
 
-export default VBSDivider
+export default Divider

@@ -52,7 +52,7 @@ const useVariant = () => {
   return variant
 }
 
-const VBSListContainer = ({
+const ListContainer = ({
   children,
   variant,
   listClassName,
@@ -84,7 +84,7 @@ const VBSListContainer = ({
   )
 }
 
-const VBSListContainerItem = ({ children, className }) => {
+const ListContainerItem = ({ children, className }) => {
   const variant = useVariant()
   return (
     <>
@@ -96,11 +96,11 @@ const VBSListContainerItem = ({ children, className }) => {
   )
 }
 
-VBSListContainer.defaultProps = {
+ListContainer.defaultProps = {
   variant: 'simple',
 }
 
-VBSListContainer.propTypes = {
+ListContainer.propTypes = {
   variant: PropTypes.oneOf(Object.keys(variants)),
   items: PropTypes.array,
   children: PropTypes.node,
@@ -109,12 +109,12 @@ VBSListContainer.propTypes = {
   wrapperClassName: PropTypes.string,
 }
 
-VBSListContainerItem.propTypes = {
+ListContainerItem.propTypes = {
   variant: PropTypes.oneOf(Object.keys(variants)),
   item: PropTypes.object,
   children: PropTypes.node,
   itemClassName: PropTypes.string,
 }
 
-export default VBSListContainer
-export { VBSListContainerItem }
+export default ListContainer
+export { ListContainerItem }

@@ -6,22 +6,22 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import VBSEmptyCard from '@/components/application-ui/cards/empty-card'
+import EmptyCard from '@/components/application-ui/cards/empty-card'
 
-<Meta title="Application UI/Cards/Empty Card" component={VBSEmptyCard} />
+<Meta title="Application UI/Cards/Empty Card" component={EmptyCard} />
 
-export const Template = (args) => <VBSEmptyCard {...args} />
+export const Template = (args) => <EmptyCard {...args} />
 
 export const WithChildren = (args) => (
-  <VBSEmptyCard {...args}>
+  <EmptyCard {...args}>
     <div>Custom content</div>
-  </VBSEmptyCard>
+  </EmptyCard>
 )
 
 export const WithCustomClasses = (args) => (
-  <VBSEmptyCard className="bg-slate-500 text-slate-50 px-8 py-16" {...args}>
+  <EmptyCard className="bg-slate-500 text-slate-50 px-8 py-16" {...args}>
     <div>Custom content</div>
-  </VBSEmptyCard>
+  </EmptyCard>
 )
 
 # Empty Card
@@ -50,4 +50,4 @@ Use the `className` prop to add custom or tailwind classes to the card.
 
 ## Reference
 
-<ArgsTable of={VBSEmptyCard} />
+<ArgsTable of={EmptyCard} />

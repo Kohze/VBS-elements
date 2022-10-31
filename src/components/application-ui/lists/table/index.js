@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { v4 as uuidv4 } from 'uuid'
 
-const VBSTable = ({
+const Table = ({
   title,
   description,
   fullWidth,
@@ -199,7 +199,7 @@ const VBSTable = ({
   )
 }
 
-VBSTable.defaultProps = {
+Table.defaultProps = {
   tableItems: [],
   groupedTableItems: [],
   striped: false,
@@ -210,7 +210,7 @@ VBSTable.defaultProps = {
   stackedColumns: [],
 }
 
-VBSTable.propTypes = {
+Table.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   fullWidth: PropTypes.bool,
@@ -253,4 +253,4 @@ VBSTable.propTypes = {
   tdClassName: PropTypes.string,
 }
 
-export default VBSTable
+export default Table

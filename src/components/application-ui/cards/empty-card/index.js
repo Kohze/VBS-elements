@@ -24,7 +24,7 @@ const shadowSizes = {
   none: 'shadow-none',
 }
 
-const VBSEmptyCard = ({
+const EmptyCard = ({
   children,
   backgroundColor,
   color,
@@ -52,12 +52,12 @@ const VBSEmptyCard = ({
   )
 }
 
-VBSEmptyCard.defaultProps = {
+EmptyCard.defaultProps = {
   roundSize: 'md',
   shadowSize: 'normal',
 }
 
-VBSEmptyCard.propTypes = {
+EmptyCard.propTypes = {
   children: PropTypes.node.isRequired,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
@@ -66,4 +66,4 @@ VBSEmptyCard.propTypes = {
   shadowSize: PropTypes.oneOf(Object.keys(shadowSizes)),
 }
 
-export default VBSEmptyCard
+export default EmptyCard

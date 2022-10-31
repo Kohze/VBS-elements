@@ -3,8 +3,8 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import NextLink from 'next/link'
 import { twMerge } from 'tailwind-merge'
-import VBSIcon from '../icon'
-import VBSButton from '../button'
+import Icon from '../icon'
+import Button from '../button'
 
 export const variants = {
   primary: 'bg-blue-600 text-white hover:bg-blue-700',
@@ -23,7 +23,7 @@ export const menuKinds = {
   rounded: 'rounded-md overflow-hidden',
 }
 
-const VBSDropdown = ({
+const Dropdown = ({
   elements,
   groupElements,
   minimal,
@@ -59,7 +59,7 @@ const VBSDropdown = ({
               >
                 {menuItemIconPosition === 'left' && (
                   <>
-                    <VBSIcon
+                    <Icon
                       iconName={el.iconName}
                       iconType={menuItemIconType}
                       className={twMerge(
@@ -77,7 +77,7 @@ const VBSDropdown = ({
                 {menuItemIconPosition === 'right' && (
                   <>
                     <span className="w-full">{el.text}</span>
-                    <VBSIcon
+                    <Icon
                       iconName={el.iconName}
                       iconType={menuItemIconType}
                       className={twMerge(
@@ -112,7 +112,7 @@ const VBSDropdown = ({
       <div>
         {minimal ? (
           <Menu.Button
-            as={VBSButton}
+            as={Button}
             variant={variant}
             kind="circular"
             iconName={buttonIconName || 'ellipsis-vertical'}
@@ -127,7 +127,7 @@ const VBSDropdown = ({
           />
         ) : (
           <Menu.Button
-            as={VBSButton}
+            as={Button}
             variant={variant}
             text={buttonText}
             iconName={buttonIconName || 'chevron-down'}
@@ -172,7 +172,7 @@ const VBSDropdown = ({
   )
 }
 
-VBSDropdown.defaultProps = {
+Dropdown.defaultProps = {
   menuItemIconPosition: 'left',
   menuItemIconType: 'solid',
   kind: 'normal',
@@ -183,7 +183,7 @@ VBSDropdown.defaultProps = {
   menuKind: 'square',
 }
 
-VBSDropdown.propTypes = {
+Dropdown.propTypes = {
   /**
    * Elements should be an array of objects with the following properties:
    */
@@ -226,4 +226,4 @@ VBSDropdown.propTypes = {
   menuClassName: PropTypes.string,
 }
 
-export default VBSDropdown
+export default Dropdown
