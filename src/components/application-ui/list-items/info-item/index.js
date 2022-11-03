@@ -15,18 +15,14 @@ const InfoItem = ({
   label,
   description,
   metaList,
+  stamp,
   actions,
   iconColor,
   iconPosition,
-  className,
-  infoClassName,
-  titleClassName,
-  metaListClassName,
-  actionsClassName,
-  avatarClassName,
+  classNames,
 }) => {
   return (
-    <li className={twMerge('flex py-4', className)}>
+    <li className={twMerge('flex py-4', classNames?.item)}>
       <div className="flex-1">
         <div
           className={twMerge(
@@ -35,7 +31,7 @@ const InfoItem = ({
             avatarPosition === 'right' && 'flex-row-reverse',
             avatarPosition === 'top' && 'flex-col items-center',
             avatarPosition === 'bottom' && 'flex-col-reverse items-center',
-            infoClassName,
+            classNames?.info,
           )}
         >
           <span
@@ -45,7 +41,7 @@ const InfoItem = ({
               avatarPosition === 'right' && 'ml-3',
               avatarPosition === 'top' && 'mb-3',
               avatarPosition === 'bottom' && 'mt-3',
-              avatarClassName,
+              classNames?.avatar,
             )}
           >
             {withAvatar && <Avatar imageSrc={imageSrc} size={avatarSize} />}
@@ -53,29 +49,54 @@ const InfoItem = ({
           <div className="flex flex-col justify-center flex-1">
             <p
               className={twMerge(
-                'text-sm font-medium text-gray-900',
-                titleClassName,
+                'flex justify-between space-x-3 text-sm font-medium text-gray-900',
+                classNames?.title,
               )}
             >
-              {title}{' '}
-              <span className="ml-1 text-xs font-light text-gray-500">
-                {label}
+              <span>
+                {title}
+                <span className="ml-2 text-xs font-light text-gray-500">
+                  {label}
+                </span>
               </span>
+              {!!stamp && (
+                <time
+                  className={twMerge(
+                    'flex-shrink-0 text-sm text-gray-400 whitespace-nowrap',
+                    classNames?.stamp,
+                  )}
+                >
+                  {stamp}
+                </time>
+              )}
             </p>
             {description && (
-              <p className="text-sm text-gray-500">{description}</p>
+              <p
+                className={twMerge(
+                  'text-sm text-gray-500',
+                  classNames?.description,
+                )}
+              >
+                {description}
+              </p>
             )}
             <MetaList
               items={metaList}
               iconColor={iconColor}
               iconPosition={iconPosition}
-              className={metaListClassName}
+              className={classNames?.metaList}
             />
           </div>
         </div>
       </div>
+
       {!!actions && (
-        <div className={twMerge('flex items-center gap-2', actionsClassName)}>
+        <div
+          className={twMerge(
+            'flex items-center gap-2',
+            classNames?.actionsClassName,
+          )}
+        >
           {actions.map((action) => (
             <div key={uuidv4()}>
               <Button {...action} />
@@ -110,6 +131,7 @@ InfoItem.propTypes = {
   avatarSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   iconColor: PropTypes.string,
   iconPosition: PropTypes.oneOf(['left', 'right']),
+  stamp: PropTypes.string,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       text: PropTypes.string,
@@ -117,6 +139,16 @@ InfoItem.propTypes = {
       onClick: PropTypes.func,
     }),
   ),
+  classNames: PropTypes.shape({
+    item: PropTypes.string,
+    info: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    stamp: PropTypes.string,
+    metaList: PropTypes.string,
+    actions: PropTypes.string,
+    avatar: PropTypes.string,
+  }),
 }
 
 export default InfoItem

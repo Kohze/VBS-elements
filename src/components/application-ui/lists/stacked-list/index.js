@@ -116,6 +116,7 @@ StackedList.propTypes = {
           ),
           iconColor: PropTypes.string,
           iconPosition: PropTypes.oneOf(['left', 'right']),
+          stamp: PropTypes.string,
           actions: PropTypes.arrayOf(
             PropTypes.shape({
               text: PropTypes.string,
@@ -123,6 +124,16 @@ StackedList.propTypes = {
               onClick: PropTypes.func,
             }),
           ),
+          classNames: PropTypes.shape({
+            className: PropTypes.string,
+            infoClassName: PropTypes.string,
+            titleClassName: PropTypes.string,
+            descriptionClassName: PropTypes.string,
+            stampClassName: PropTypes.string,
+            metaListClassName: PropTypes.string,
+            actionsClassName: PropTypes.string,
+            avatarClassName: PropTypes.string,
+          }),
         }),
       ),
     }),
