@@ -1,0 +1,86 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import FeedItem from '@/components/application-ui/list-items/feed-item'
+
+<Meta title="Application UI/List Items/Feed Item" component={FeedItem} />
+
+export const Template = (args) => <FeedItem {...args} />
+
+# Feed Item
+
+Feed Item is a component that displays a feed item inside a feed list.
+
+## Import
+
+```js
+import FeedItem from '@/components/application-ui/list-items/feed-item'
+```
+
+## Default
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      text: 'Advanced to phone screening by',
+      person: { name: 'Bethany Blake', href: '#' },
+      time: 'Sep 22',
+      iconName: 'hand-thumb-up',
+      iconBg: '#1e40af',
+      iconColor: '#fff',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Avatar
+
+If you use `imageSrc` prop, the avatar will be displayed instead of the icon.
+
+<Canvas>
+  <Story
+    name="With Avatar"
+    args={{
+      text: 'Advanced to phone screening by',
+      person: { name: 'Bethany Blake', href: '#' },
+      time: 'Sep 22',
+      imageSrc:
+        'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Comment Variant
+
+To use the comment variant, use the `variant` prop and set it to `comment`.
+
+<Canvas>
+  <Story
+    name="Comment Variant"
+    args={{
+      variant: 'comment',
+      person: { name: 'Eduardo Benz', href: '#' },
+      imageSrc:
+        'https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
+      comment:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt nunc ipsum tempor purus vitae id. Morbi in vestibulum nec varius. Et diam cursus quis sed purus nam. ',
+      commentIconName: 'chat-alt-2',
+      time: '6d ago',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={FeedItem} />
