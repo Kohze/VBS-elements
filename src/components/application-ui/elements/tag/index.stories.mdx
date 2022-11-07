@@ -44,7 +44,7 @@ If you want to add an icon, you can use the `iconName` prop.
 
 ## Variants
 
-Variants are used to highlight the importance of the tag. The default variant is `primary`. The other variants are `secondary`, `success`, `danger`, `warning`, `info`, `outline`, `light`, and `dark`.
+Variants are used to highlight the importance of the tag. The default variant is `outline`. The other variants are `secondary`, `success`, `danger`, `warning`, `info`, `outline`, `light`, and `dark`.
 
 <Canvas>
   <Story name="Variants">
@@ -71,7 +71,7 @@ There are 3 sizes available: `sm`, `md`, and `lg`. The default size is `md`.
 <Canvas>
   <Story name="Sizes">
     {(args) => (
-      <div className="flex flex-wrap gap-2 items-end">
+      <div className="flex flex-wrap gap-2 items-center">
         <Tag text="Small" size="sm" {...args} />
         <Tag text="Medium" size="md" {...args} />
         <Tag text="Large" size="lg" {...args} />

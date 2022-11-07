@@ -1,11 +1,24 @@
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import Icon from '../../elements/icon'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 import Avatar from '../../elements/avatar'
+import { Fragment } from 'react'
+import { TagIcon } from '@heroicons/react/24/outline'
+import Tag from '../../elements/tag'
 
 const variants = ['default', 'comment', 'assignment', 'tags']
+const tagVariants = [
+  'primary',
+  'secondary',
+  'success',
+  'danger',
+  'warning',
+  'info',
+  'light',
+  'dark',
+  'outline',
+]
 
 const FeedItem = ({
   length,
@@ -18,6 +31,7 @@ const FeedItem = ({
   text,
   person,
   assigned,
+  tags,
   comment,
   time,
 }) => {
@@ -52,12 +66,12 @@ const FeedItem = ({
   )
 
   const renderComment = () => (
-    <div className="relative flex items-start space-x-3">
+    <>
       <div className="relative">
-        <img
-          className="flex items-center justify-center w-10 h-10 bg-gray-400 rounded-full ring-8 ring-white"
-          src={imageSrc}
-          alt=""
+        <Avatar
+          size="sm"
+          imageSrc={imageSrc}
+          className="w-10 h-10 bg-gray-400"
         />
 
         <span className="absolute -bottom-0.5 -right-1 rounded-tl bg-white px-0.5 py-px">
@@ -81,7 +95,7 @@ const FeedItem = ({
           <p>{comment}</p>
         </div>
       </div>
-    </div>
+    </>
   )
 
   const renderAssignment = () => (
@@ -106,7 +120,43 @@ const FeedItem = ({
           <a href={assigned.href} className="font-medium text-gray-900">
             {assigned.name}
           </a>{' '}
-          <span className="whitespace-nowrap">{date}</span>
+          <span className="whitespace-nowrap">{time}</span>
+        </div>
+      </div>
+    </>
+  )
+
+  const renderTags = () => (
+    <>
+      <div>
+        <div className="relative px-1">
+          <div className="flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full ring-8 ring-white">
+            <TagIcon className="w-5 h-5 text-gray-500" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+      <div className="flex-1 min-w-0 py-0">
+        <div className="text-sm leading-8 text-gray-500">
+          <span className="mr-0.5">
+            <a href={person.href} className="font-medium text-gray-900">
+              {person.name}
+            </a>{' '}
+            added tags
+          </span>{' '}
+          <span className="mr-0.5">
+            {tags?.map((tag) => (
+              <>
+                <Tag
+                  key={tag}
+                  text={tag.text}
+                  href={tag.href}
+                  color={tag.color}
+                  variant={tag.variant}
+                />{' '}
+              </>
+            ))}
+          </span>
+          <span className="whitespace-nowrap">{time}</span>
         </div>
       </div>
     </>
@@ -118,6 +168,8 @@ const FeedItem = ({
         return renderComment()
       case 'assignment':
         return renderAssignment()
+      case 'tags':
+        return renderTags()
       default:
         return renderDefault()
     }
@@ -132,7 +184,9 @@ const FeedItem = ({
             aria-hidden="true"
           />
         ) : null}
-        {renderItem()}
+        <div className="relative flex items-start space-x-3">
+          {renderItem()}
+        </div>
       </div>
     </li>
   )
@@ -169,6 +223,14 @@ FeedItem.propTypes = {
     href: PropTypes.string,
   }),
   comment: PropTypes.string,
+  tags: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      href: PropTypes.string,
+      color: PropTypes.string,
+      variant: PropTypes.oneOf(Object.keys(tagVariants)),
+    }),
+  ),
 }
 
 export default FeedItem

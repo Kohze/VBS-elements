@@ -101,6 +101,44 @@ Feed list takes `timeline` as a prop. `timeline` is an array of objects that con
 
 ## With Multiple Item Types
 
+We can use multiple item types in the feed list. For more information, check feed item variants [Feed Item](/docs/application-ui-list-items-feed-item--default-story).
+
+<Canvas>
+  <Story
+    name="With Multiple Item Types"
+    args={{
+      timeline: [
+        {
+          variant: 'comment',
+          person: { name: 'Eduardo Benz', href: '#' },
+          imageSrc:
+            'https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80',
+          comment:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt nunc ipsum tempor purus vitae id. Morbi in vestibulum nec varius. Et diam cursus quis sed purus nam. ',
+          time: '6d ago',
+        },
+        {
+          variant: 'assignment',
+          person: { name: 'Hilary Mahy', href: '#' },
+          assigned: { name: 'Kristin Watson', href: '#' },
+          time: '2d ago',
+        },
+        {
+          variant: 'tags',
+          person: { name: 'Hilary Mahy', href: '#' },
+          tags: [
+            { text: 'Bug', href: '#', color: '#43b581' },
+            { text: 'Design', href: '#', color: '#f6ad55' },
+          ],
+          time: '6h ago',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Referance
 
 <ArgsTable of={FeedList} />

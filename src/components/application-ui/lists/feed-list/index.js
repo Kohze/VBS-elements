@@ -22,12 +22,32 @@ const FeedList = ({ timeline }) => {
 FeedList.propTypes = {
   timeline: PropTypes.arrayOf(
     PropTypes.shape({
-      content: PropTypes.string.isRequired,
-      href: PropTypes.string,
-      time: PropTypes.string,
       iconName: PropTypes.string,
       iconBg: PropTypes.string,
       iconColor: PropTypes.string,
+      text: PropTypes.string,
+      target: PropTypes.string,
+      time: PropTypes.string,
+      variant: PropTypes.oneOf(['default', 'assignment', 'tags', 'comment']),
+      person: PropTypes.shape({
+        name: PropTypes.string,
+        href: PropTypes.string,
+      }),
+      assigned: PropTypes.shape({
+        name: PropTypes.string,
+        href: PropTypes.string,
+      }),
+      comment: PropTypes.string,
+      tags: PropTypes.arrayOf(
+        PropTypes.shape({
+          text: PropTypes.string,
+          href: PropTypes.string,
+          iconName: PropTypes.string,
+          iconColor: PropTypes.string,
+          textColor: PropTypes.string,
+          color: PropTypes.string,
+        }),
+      ),
     }),
   ),
 }

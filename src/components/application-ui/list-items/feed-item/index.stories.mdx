@@ -81,6 +81,41 @@ To use the comment variant, use the `variant` prop and set it to `comment`.
   </Story>
 </Canvas>
 
+## Assignment Variant
+
+<Canvas>
+  <Story
+    name="Assignment Variant"
+    args={{
+      variant: 'assignment',
+      person: { name: 'Hilary Mahy', href: '#' },
+      assigned: { name: 'Kristin Watson', href: '#' },
+      time: '2d ago',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Tags Variant
+
+<Canvas>
+  <Story
+    name="Tags Variant"
+    args={{
+      variant: 'tags',
+      person: { name: 'Hilary Mahy', href: '#' },
+      tags: [
+        { text: 'Bug', href: '#', color: '#f43f5e' },
+        { text: 'Accessibility', href: '#', color: '#4f46e5' },
+      ],
+      time: '6h ago',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Reference
 
 <ArgsTable of={FeedItem} />

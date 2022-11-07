@@ -80,7 +80,7 @@ const Tag = ({
         style={{ ...props.style, borderColor }}
       >
         {renderNotification()}
-        <span className={'ml-2 font-medium'} style={{ color: textColor }}>
+        <span className={'ml-1 font-medium'} style={{ color: textColor }}>
           {text}
         </span>
       </a>
@@ -89,7 +89,7 @@ const Tag = ({
 }
 
 Tag.defaultProps = {
-  variant: 'primary',
+  variant: 'outline',
   size: 'md',
   kind: 'circular',
   href: '',
