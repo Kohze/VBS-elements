@@ -1,0 +1,95 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import FeedList from '@/components/application-ui/lists/feed-list'
+
+<Meta title="Application UI/Lists/Feed List" component={FeedList} />
+
+export const Template = (args) => (
+  <FeedList
+    timeline={[
+      {
+        id: 1,
+        content: 'Applied to',
+        target: 'Front End Developer',
+        href: '#',
+        date: 'Sep 20',
+        iconName: 'user',
+        iconBg: 'bg-gray-400',
+        iconColor: '#fff',
+      },
+      {
+        id: 2,
+        content: 'Advanced to phone screening by',
+        target: 'Bethany Blake',
+        href: '#',
+        date: 'Sep 22',
+        iconName: 'hand-thumb-up',
+        iconBg: 'bg-blue-500',
+        iconColor: '#fff',
+      },
+      {
+        id: 3,
+        content: 'Completed phone screening with',
+        target: 'Martha Gardner',
+        href: '#',
+        date: 'Sep 28',
+        iconName: 'check',
+        iconBg: 'bg-green-500',
+        iconColor: '#fff',
+      },
+      {
+        id: 4,
+        content: 'Advanced to interview by',
+        target: 'Bethany Blake',
+        href: '#',
+        date: 'Sep 30',
+        iconName: 'hand-thumb-up',
+        iconBg: 'bg-blue-500',
+        iconColor: '#fff',
+      },
+      {
+        id: 5,
+        content: 'Completed interview with',
+        target: 'Katherine Snyder',
+        href: '#',
+        date: 'Oct 4',
+        iconName: 'check',
+        iconBg: 'bg-green-500',
+        iconColor: '#fff',
+      },
+    ]}
+    {...args}
+  />
+)
+
+export const Default = Template.bind({})
+
+# Feed List
+
+Feed list is a list of items that are displayed in a vertical list. It is used to display a list of feeds.
+
+## Import
+
+```js
+import FeedList from '@/components/application-ui/lists/feed-list'
+```
+
+## Default
+
+Feed list takes `timeline` as a prop. `timeline` is an array of objects that contains the following properties: `content`, `target`, `href`, `date`, `iconName`, `iconBg`, `iconColor`. Check [Heroicons](https://heroicons.com/) for the list of icon names. `iconColor` takes a hex color code. `iconBg` takes a tailwindcss color class.
+
+<Canvas>
+  <Story name="Default">
+    <Default />
+  </Story>
+</Canvas>
+
+## Referance
+
+<ArgsTable of={FeedList} />

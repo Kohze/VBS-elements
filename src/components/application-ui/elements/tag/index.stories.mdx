@@ -1,0 +1,95 @@
+import {
+  Meta,
+  Canvas,
+  ArgsTable,
+  Story,
+  Preview,
+  Source,
+} from '@storybook/addon-docs'
+import Tag from '@/components/application-ui/elements/tag'
+
+<Meta title="Application UI/Elements/Tag" component={Tag} />
+
+export const Template = (args) => <Tag {...args} />
+
+# Tag
+
+Tags are used to label or categorize content. They are used to indicate status, priority, or type.
+
+## Default
+
+Default tag icon is a circle.
+
+<Canvas>
+  <Story name="Default">
+    <Tag text="Default" />
+  </Story>
+</Canvas>
+
+## With Icon
+
+If you want to add an icon, you can use the `iconName` prop.
+
+<Canvas>
+  <Story name="With Icon">
+    <Tag text="With Icon" iconName="check" />
+  </Story>
+</Canvas>
+
+## Variants
+
+Variants are used to highlight the importance of the tag. The default variant is `primary`. The other variants are `secondary`, `success`, `danger`, `warning`, `info`, `outline`, `light`, and `dark`.
+
+<Canvas>
+  <Story name="Variants">
+    {(args) => (
+      <div className="flex flex-wrap gap-2">
+        <Tag text="Primary" variant="primary" {...args} />
+        <Tag text="Secondary" variant="secondary" {...args} />
+        <Tag text="Success" variant="success" {...args} />
+        <Tag text="Danger" variant="danger" {...args} />
+        <Tag text="Warning" variant="warning" {...args} />
+        <Tag text="Info" variant="info" {...args} />
+        <Tag text="Outline" variant="outline" {...args} />
+        <Tag text="Light" variant="light" {...args} />
+        <Tag text="Dark" variant="dark" {...args} />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## Sizes
+
+There are 3 sizes available: `sm`, `md`, and `lg`. The default size is `md`.
+
+<Canvas>
+  <Story name="Sizes">
+    {(args) => (
+      <div className="flex flex-wrap gap-2 items-end">
+        <Tag text="Small" size="sm" {...args} />
+        <Tag text="Medium" size="md" {...args} />
+        <Tag text="Large" size="lg" {...args} />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## Kinds
+
+There are 3 kinds available: `square`, `circular`, and `rounded`. The default kind is `circular`.
+
+<Canvas>
+  <Story name="Kinds">
+    {(args) => (
+      <div className="flex flex-wrap gap-2 items-end">
+        <Tag text="Circular" kind="circular" {...args} />
+        <Tag text="Rounded" kind="rounded" {...args} />
+        <Tag text="Square" kind="square" {...args} />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={Tag} />
