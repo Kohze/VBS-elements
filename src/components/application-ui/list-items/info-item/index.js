@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
-import MetaList from '../../lists/meta-list'
-import Avatar from '../../elements/avatar'
-import Button from '../../elements/button'
+import MetaList from '@/components/application-ui/lists/meta-list'
+import Avatar from '@/components/application-ui/elements/avatar'
+import Button from '@/components/application-ui/elements/button'
 import { twMerge } from 'tailwind-merge'
 
 const InfoItem = ({

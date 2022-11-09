@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
-import FeedItem from '../../list-items/feed-item'
+import FeedItem from '@/components/application-ui/list-items/feed-item'
 
 const FeedList = ({ timeline }) => {
   return (

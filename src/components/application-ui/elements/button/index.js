@@ -2,7 +2,7 @@ import { css } from '@emotion/css'
 import { twMerge } from 'tailwind-merge'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
-import Icon from '../icon'
+import { Icon } from '@/components/application-ui/elements'
 
 export const sizes = {
   xs: 'text-xs px-2.5 py-1',

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import Icon from '../../elements/icon'
+import Icon from '@/components/application-ui/elements/icon'
 import NextLink from 'next/link'
 
 const variants = {

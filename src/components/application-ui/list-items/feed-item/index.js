@@ -1,11 +1,10 @@
 import { twMerge } from 'tailwind-merge'
-import Icon from '../../elements/icon'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
-import Avatar from '../../elements/avatar'
-import { Fragment } from 'react'
 import { TagIcon } from '@heroicons/react/24/outline'
-import Tag from '../../elements/tag'
+import Icon from '@/components/application-ui/elements/icon'
+import Avatar from '@/components/application-ui/elements/avatar'
+import Tag from '@/components/application-ui/elements/tag'
 
 const variants = ['default', 'comment', 'assignment', 'tags']
 const tagVariants = [

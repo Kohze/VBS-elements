@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import { css } from '@emotion/css'
-import Avatar from '../../elements/avatar'
 import NextLink from 'next/link'
 import { twMerge } from 'tailwind-merge'
+import { Avatar } from '@/components/application-ui/elements'
 
 const UserHeaderCard = ({
   user,

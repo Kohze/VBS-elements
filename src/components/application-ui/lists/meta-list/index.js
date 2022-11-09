@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import Icon from '../../elements/icon'
+import Icon from '@/components/application-ui/elements/icon'
 import { v4 as uuidv4 } from 'uuid'
 import { twMerge } from 'tailwind-merge'
 

@@ -6,36 +6,19 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import ListContainer, {
-  ListContainerItem,
-} from '@/components/application-ui/layout/list-container'
+import { ListContainer } from '@/components/application-ui/layout'
 import viewportAddon from '@/assets/storybook/viewport-addon.png'
 
 <Meta title="Application UI/Layout/List Container" component={ListContainer} />
 
-export const itemsExample = [
-  {
-    id: 1,
-    title: 'Item 1',
-  },
-  {
-    id: 2,
-    title: 'Item 2',
-  },
-  {
-    id: 3,
-    title: 'Item 3',
-  },
-]
+export const itemsExample = [{ id: 1 }, { id: 2 }, { id: 2 }]
 
 export const Template = (args) => (
   <div className="py-8 bg-gray-100">
     <div className="mx-auto max-w-2xl sm:px-6">
       <ListContainer {...args}>
         {itemsExample.map((item) => (
-          <ListContainerItem key={item.id}>
-            <div>{item.title}</div>
-          </ListContainerItem>
+          <li key={item.id}>{item.title}</li>
         ))}
       </ListContainer>
     </div>
@@ -54,12 +37,8 @@ For interact with the component, you can use the controls and see the results wi
 
 ## Import
 
-To use the list container, you should import `ListContainer` and also `ListContainerItem` if you want to use the default item.
-
 ```js
-import ListContainer, {
-  ListContainerItem,
-} from '@/components/application-ui/layout/list-container'
+import { ListContainer } from '@/components/application-ui/layout'
 ```
 
 ## Variants
@@ -71,7 +50,19 @@ List Container has 7 variants: `simple`, `card-with-divider`, `card-with-divider
 Simple with dividers
 
 <Canvas>
-  <Story name="Simple">{Template.bind({})}</Story>
+  <Story name="Simple">
+    <div className="py-8 bg-white">
+      <div className="mx-auto max-w-2xl sm:px-6">
+        <ListContainer>
+          {itemsExample.map((item) => (
+            <li key={item.id} className="py-4">
+              <span className="block h-16 w-full rounded border-2 border-dashed border-gray-300 bg-white text-gray-200" />
+            </li>
+          ))}
+        </ListContainer>
+      </div>
+    </div>
+  </Story>
 </Canvas>
 
 ## Card With Divider
@@ -79,8 +70,18 @@ Simple with dividers
 Card with dividers
 
 <Canvas>
-  <Story name="Card With Divider" args={{ variant: 'card-with-divider' }}>
-    {Template.bind({})}
+  <Story name="Card With Divider">
+    <div className="py-8 bg-gray-100">
+      <div className="mx-auto max-w-2xl sm:px-6">
+        <ListContainer variant="card-with-divider">
+          {itemsExample.map((item) => (
+            <li key={item.id} className="px-6 py-4">
+              <span className="block h-16 w-full rounded border-2 border-dashed border-gray-300 bg-white text-gray-200" />
+            </li>
+          ))}
+        </ListContainer>
+      </div>
+    </div>
   </Story>
 </Canvas>
 
@@ -89,11 +90,18 @@ Card with dividers
 Card with dividers, full-width on mobile
 
 <Canvas>
-  <Story
-    name="Card With Divider Full"
-    args={{ variant: 'card-with-divider-full' }}
-  >
-    {Template.bind({})}
+  <Story name="Card With Divider Full">
+    <div className="py-8 bg-gray-100">
+      <div className="mx-auto max-w-2xl sm:px-6">
+        <ListContainer variant="card-with-divider-full">
+          {itemsExample.map((item) => (
+            <li key={item.id} className="px-4 py-4 sm:px-6">
+              <span className="block h-16 w-full rounded border-2 border-dashed border-gray-300 bg-white text-gray-200" />
+            </li>
+          ))}
+        </ListContainer>
+      </div>
+    </div>
   </Story>
 </Canvas>
 
@@ -102,8 +110,21 @@ Card with dividers, full-width on mobile
 Separate cards
 
 <Canvas>
-  <Story name="Separated Cards" args={{ variant: 'separated-cards' }}>
-    {Template.bind({})}
+  <Story name="Separated Cards">
+    <div className="py-8 bg-gray-100">
+      <div className="mx-auto max-w-2xl sm:px-6">
+        <ListContainer variant="separated-cards">
+          {itemsExample.map((item) => (
+            <li
+              key={item.id}
+              className="overflow-hidden rounded-md bg-white px-6 py-4 shadow"
+            >
+              <span className="block h-16 w-full rounded border-2 border-dashed border-gray-300 bg-white text-gray-200" />
+            </li>
+          ))}
+        </ListContainer>
+      </div>
+    </div>
   </Story>
 </Canvas>
 
@@ -113,7 +134,20 @@ Separate cards, full-width on mobile
 
 <Canvas>
   <Story name="Separated Cards Full" args={{ variant: 'separated-cards-full' }}>
-    {Template.bind({})}
+    <div className="py-8 bg-gray-100">
+      <div className="mx-auto max-w-2xl sm:px-6">
+        <ListContainer variant="separated-cards-full">
+          {itemsExample.map((item) => (
+            <li
+              key={item.id}
+              className="overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6"
+            >
+              <span className="block h-16 w-full rounded border-2 border-dashed border-gray-300 bg-white text-gray-200" />
+            </li>
+          ))}
+        </ListContainer>
+      </div>
+    </div>
   </Story>
 </Canvas>
 
@@ -123,7 +157,17 @@ Flat card with dividers
 
 <Canvas>
   <Story name="Flat With Divider" args={{ variant: 'flat-with-divider' }}>
-    {Template.bind({})}
+    <div className="py-8 bg-white">
+      <div className="mx-auto max-w-2xl sm:px-6">
+        <ListContainer variant="flat-with-divider">
+          {itemsExample.map((item) => (
+            <li key={item.id} className="px-6 py-4">
+              <span className="block h-16 w-full rounded border-2 border-dashed border-gray-300 bg-white text-gray-200" />
+            </li>
+          ))}
+        </ListContainer>
+      </div>
+    </div>
   </Story>
 </Canvas>
 
@@ -132,11 +176,18 @@ Flat card with dividers
 Simple with dividers, full-width on mobile
 
 <Canvas>
-  <Story
-    name="Simple With Divider Full"
-    args={{ variant: 'simple-with-divider-full' }}
-  >
-    {Template.bind({})}
+  <Story name="Simple With Divider Full">
+    <div className="py-8 bg-white">
+      <div className="mx-auto max-w-2xl sm:px-6">
+        <ListContainer variant="simple-with-divider-full">
+          {itemsExample.map((item) => (
+            <li key={item.id} className="px-4 py-4 sm:px-0">
+              <span className="block h-16 w-full rounded border-2 border-dashed border-gray-300 bg-white text-gray-200" />
+            </li>
+          ))}
+        </ListContainer>
+      </div>
+    </div>
   </Story>
 </Canvas>
 

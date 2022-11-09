@@ -1,8 +1,7 @@
 import heroIconsNames from '@/assets/icons/hero-icons/names'
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import Button from '../../elements/button'
-import Icon from '../../elements/icon'
+import { Button, Icon } from '@/components/application-ui/elements'
 import { css } from '@emotion/css'
 
 const variants = [

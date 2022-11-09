@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
 import { v4 as uuidv4 } from 'uuid'
-import AvatarStack from '../../elements/avatar-stack'
-import Icon from '../../elements/icon'
-import InfoItem from '../../list-items/info-item'
+import AvatarStack from '@/components/application-ui/elements/avatar-stack'
+import Icon from '@/components/application-ui/elements/icon'
+import InfoItem from '@/components/application-ui/list-items/info-item'
 
 const StackedList = ({ items, groupedItems, iconName }) => {
   const renderlinkItem = (item) => {
@@ -138,6 +138,7 @@ StackedList.propTypes = {
       ),
     }),
   ),
+  iconName: PropTypes.string,
 }
 
 export default StackedList

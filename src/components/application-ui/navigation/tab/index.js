@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 import { v4 as uuidv4 } from 'uuid'
 import { twMerge } from 'tailwind-merge'
-import Icon from '../../elements/icon'
+import Icon from '@/components/application-ui/elements/icon'
 
 const variants = {
   default: {

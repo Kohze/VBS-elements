@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import Avatar from '../avatar'
+import { Avatar } from '@/components/application-ui/elements'
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 const kinds = ['square', 'rounded', 'circular']

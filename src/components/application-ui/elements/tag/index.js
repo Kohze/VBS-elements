@@ -1,7 +1,7 @@
 import { css } from '@emotion/css'
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import Icon from '../icon'
+import { Icon } from '@/components/application-ui/elements'
 import NextLink from 'next/link'
 
 const sizes = {
@@ -12,7 +12,7 @@ const sizes = {
 
 const variants = {
   primary: 'bg-blue-100 text-blue-800 border-blue-300',
-  secondary: 'bg-gray-800 text-gray-100 border-gray-800',
+  secondary: 'bg-gray-600 text-gray-100 border-gray-800',
   success: 'bg-green-100 text-green-800 border-green-300',
   danger: 'bg-red-100 text-red-800 border-red-300',
   warning: 'bg-yellow-100 text-yellow-800 border-yellow-300',

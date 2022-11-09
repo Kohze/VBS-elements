@@ -1,6 +1,6 @@
 import { css } from '@emotion/css'
 import { twMerge } from 'tailwind-merge'
-import Button from '../button'
+import { Button } from '@/components/application-ui/elements'
 import PropTypes from 'prop-types'
 
 export const sizes = ['xs', 'sm', 'md', 'lg', 'xl']

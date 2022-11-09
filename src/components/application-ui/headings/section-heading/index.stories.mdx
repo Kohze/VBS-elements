@@ -6,10 +6,9 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import SectionHeading from '@/components/application-ui/headings/section-heading'
-import Button from '@/components/application-ui/elements/button'
-import Tab from '@/components/application-ui/navigation/tab'
-import Dropdown from '@/components/application-ui/elements/dropdown'
+import { SectionHeading } from '@/components/application-ui/headings'
+import { Button, Dropdown } from '@/components/application-ui/elements'
+import { Tab } from '@/components/application-ui/navigation'
 
 <Meta
   title="Application UI/Headings/Section Heading"
@@ -87,9 +86,15 @@ export const WithDropdown = (args) => (
   </div>
 )
 
-## Section Heading
+# Section Heading
 
 The section heading is used to separate content into sections.
+
+## Import
+
+```js
+import { SectionHeading } from '@/components/application-ui/headings'
+```
 
 ## Simple
 

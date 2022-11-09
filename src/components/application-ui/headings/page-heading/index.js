@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import MetaList from '../../lists/meta-list'
-import Breadcrumb from '../../navigation/breadcrumb'
-import UserHeaderCard from '../../cards/user-header-card'
-import Avatar from '../../elements/avatar'
+import { MetaList } from '@/components/application-ui/lists'
+import { Breadcrumb } from '@/components/application-ui/navigation'
+import { UserHeaderCard } from '@/components/application-ui/cards'
+import { Avatar } from '@/components/application-ui/elements'
 import Image from 'next/image'
 
 const variants = ['simple', 'banner', 'card']

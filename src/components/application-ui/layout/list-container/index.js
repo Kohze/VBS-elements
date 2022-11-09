@@ -11,45 +11,28 @@ const withWrapper = [
 const variants = {
   simple: {
     ul: 'divide-y divide-gray-200',
-    li: 'py-4',
   },
   'card-with-divider': {
     ul: 'divide-y divide-gray-200',
-    li: 'px-6 py-4',
     wrapper: 'overflow-hidden rounded-md bg-white shadow',
   },
   'card-with-divider-full': {
     ul: 'divide-y divide-gray-200',
-    li: 'px-4 py-4 sm:px-6',
     wrapper: 'overflow-hidden rounded-md bg-white shadow',
   },
   'separated-cards': {
     ul: 'space-y-3',
-    li: 'overflow-hidden rounded-md bg-white px-6 py-4 shadow',
   },
   'separated-cards-full': {
     ul: 'space-y-3',
-    li: 'overflow-hidden bg-white px-4 py-4 shadow sm:rounded-md sm:px-6',
   },
   'flat-with-divider': {
     ul: 'divide-y divide-gray-200',
-    li: 'px-6 py-4',
-    wrapper: 'overflow-hidden bg-white',
+    wrapper: 'overflow-hidden bg-white border border-gray-300 rounded-md',
   },
   'simple-with-divider-full': {
     ul: 'divide-y divide-gray-200',
-    li: 'px-4 py-4 sm:px-0',
   },
-}
-
-const VariantContext = React.createContext()
-
-const useVariant = () => {
-  const variant = React.useContext(VariantContext)
-  if (variant === undefined) {
-    throw new Error('useVariant must be used within a VariantProvider')
-  }
-  return variant
 }
 
 const ListContainer = ({
@@ -65,10 +48,7 @@ const ListContainer = ({
           role="list"
           className={twMerge(variants[variant].ul, listClassName)}
         >
-          {/* items */}
-          <VariantContext.Provider value={variant}>
-            {children}
-          </VariantContext.Provider>
+          {children}
         </ul>
       </div>
     )
@@ -76,23 +56,8 @@ const ListContainer = ({
 
   return (
     <ul role="list" className={twMerge(variants[variant].ul, listClassName)}>
-      {/* items */}
-      <VariantContext.Provider value={variant}>
-        {children}
-      </VariantContext.Provider>
+      {children}
     </ul>
-  )
-}
-
-const ListContainerItem = ({ children, className }) => {
-  const variant = useVariant()
-  return (
-    <>
-      <li className={twMerge(variants[variant].li, className)}>
-        {/* content */}
-        {children}
-      </li>
-    </>
   )
 }
 
@@ -109,12 +74,4 @@ ListContainer.propTypes = {
   wrapperClassName: PropTypes.string,
 }
 
-ListContainerItem.propTypes = {
-  variant: PropTypes.oneOf(Object.keys(variants)),
-  item: PropTypes.object,
-  children: PropTypes.node,
-  itemClassName: PropTypes.string,
-}
-
 export default ListContainer
-export { ListContainerItem }

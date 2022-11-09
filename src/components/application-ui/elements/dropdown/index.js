@@ -3,8 +3,7 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import NextLink from 'next/link'
 import { twMerge } from 'tailwind-merge'
-import Icon from '../icon'
-import Button from '../button'
+import { Button, Icon } from '@/components/application-ui/elements'
 
 export const variants = {
   primary: 'bg-blue-600 text-white hover:bg-blue-700',

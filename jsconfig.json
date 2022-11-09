@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "module": "es2015",
-    "moduleResolution": "node",
     "target": "es5",
-    "jsx": "react",
-    "sourceMap": true,
-    "lib": ["es2015", "dom"],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "@/assets/*": ["src/assets/*"],
