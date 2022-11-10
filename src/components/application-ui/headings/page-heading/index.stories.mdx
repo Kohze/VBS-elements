@@ -9,17 +9,7 @@ import {
 import { PageHeading } from '@/components/application-ui/headings'
 import { Button } from '@/components/application-ui/elements'
 
-<Meta
-  title="Application UI/Headings/Page Heading"
-  component={PageHeading}
-  parameters={{
-    docs: {
-      source: {
-        type: 'code',
-      },
-    },
-  }}
-/>
+<Meta title="Application UI/Headings/Page Heading" component={PageHeading} />
 
 export const Simple = (args) => (
   <PageHeading
@@ -206,13 +196,56 @@ import { PageHeading } from '@/components/application-ui/headings'
 Simple page heading with title and action buttons.
 
 <Canvas>
-  <Story name="Simple">{Simple.bind({})}</Story>
+  <Story
+    name="Simple"
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<PageHeading
+  title="Frontend Developer"
+  actionButtons={() => (
+    <>
+      <Button text="Edit" size="md" variant="outline" />
+      <Button text="Publish" size="md" variant="dark" />
+    </>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {Simple.bind({})}
+  </Story>
 </Canvas>
 
 ## Simple Dark
 
 <Canvas>
-  <Story name="Simple Dark">{SimpleDark.bind({})}</Story>
+  <Story
+    name="Simple Dark"
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<PageHeading
+  title="Frontend Developer"
+  actionButtons={() => (
+    <>
+      <Button text="Edit" size="md" variant="outline" />
+      <Button text="Publish" size="md" variant="dark" />
+    </>
+  )}
+  variant="dark"
+/>
+`,
+        },
+      },
+    }}
+  >
+    {SimpleDark.bind({})}
+  </Story>
 </Canvas>
 
 ## With Breadcrumbs
@@ -220,7 +253,36 @@ Simple page heading with title and action buttons.
 Heading with breadcrumbs need `breadcrumbs` prop. The `current` prop is used to indicate the current page.
 
 <Canvas>
-  <Story name="With Breadcrumbs">{WithBreadcrumbs.bind({})}</Story>
+  <Story
+    name="With Breadcrumbs"
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<PageHeading
+  title="Frontend Developer"
+  breadcrumbs={[
+    { name: 'Jobs', href: '/jobs', current: false },
+    {
+      name: 'Frontend Developer',
+      href: '/jobs/frontend-developer',
+      current: true,
+    },
+  ]}
+  actionButtons={() => (
+    <>
+      <Button text="Edit" size="md" variant="outline" />
+      <Button text="Publish" size="md" variant="dark" />
+    </>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {WithBreadcrumbs.bind({})}
+  </Story>
 </Canvas>
 
 ## With Meta List
@@ -228,7 +290,34 @@ Heading with breadcrumbs need `breadcrumbs` prop. The `current` prop is used to 
 Heading with meta list need `metas` prop. The `metas` prop is an array of object with `name` and `iconName` properties.
 
 <Canvas>
-  <Story name="With Meta List">{WithMetaList.bind({})}</Story>
+  <Story
+    name="With Meta List"
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `
+<PageHeading
+  title="Frontend Developer"
+  metas={[
+    { name: 'Full-time', iconName: 'briefcase' },
+    { name: 'Remote', iconName: 'map-pin' },
+    { name: 'Part-time', iconName: 'clock' },
+  ]}
+  actionButtons={() => (
+    <>
+      <Button text="Edit" size="md" variant="outline" />
+      <Button text="Publish" size="md" variant="dark" />
+    </>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {WithMetaList.bind({})}
+  </Story>
 </Canvas>
 
 ## With Breadcrumbs and Meta List
@@ -236,7 +325,40 @@ Heading with meta list need `metas` prop. The `metas` prop is an array of object
 This is a combination of the previous two examples.
 
 <Canvas>
-  <Story name="With Breadcrumbs and Meta List">
+  <Story
+    name="With Breadcrumbs and Meta List"
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `
+<PageHeading
+  title="Frontend Developer"
+  breadcrumbs={[
+    { name: 'Jobs', href: '/jobs', current: false },
+    {
+      name: 'Frontend Developer',
+      href: '/jobs/frontend-developer',
+      current: true,
+    },
+  ]}
+  metas={[
+    { name: 'Full-time', iconName: 'briefcase' },
+    { name: 'Remote', iconName: 'map-pin' },
+    { name: 'Part-time', iconName: 'clock' },
+  ]}
+  actionButtons={() => (
+    <>
+      <Button text="Edit" size="md" variant="outline" />
+      <Button text="Publish" size="md" variant="dark" />
+    </>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
     {WithBreadcrumbsAndMetaList.bind({})}
   </Story>
 </Canvas>
@@ -246,7 +368,38 @@ This is a combination of the previous two examples.
 Heading with avatar need `user` prop. The `user` prop is an object with `name`, `role`, `imageSrc` and `link` properties. The `avatarSize` prop is used to set the size of the avatar, `description` prop is used to set the description of the user. There are also `avatarKind` and `avatarVariant` props to set the kind and variant of the avatar.
 
 <Canvas>
-  <Story name="With Avatar">{WithAvatar.bind({})}</Story>
+  <Story
+    name="With Avatar"
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `
+<PageHeading
+  variant="with-avatar"
+  user={{
+    name: 'Rebecca Nicholas',
+    role: 'Product Designer',
+    imageSrc:
+      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    link: '#',
+  }}
+  description="Applied for the job on 12/12/2020"
+  avatarSize="xl"
+  actionButtons={() => (
+    <>
+      <Button text="Disqualify" size="md" variant="outline" />
+      <Button text="Advance to offer" size="md" className="bg-indigo-600" />
+    </>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {WithAvatar.bind({})}
+  </Story>
 </Canvas>
 
 ## Card View
@@ -262,7 +415,49 @@ Heading with card view need `user` and `cardList` props. The `user` prop is an o
 Heading with banner need `variant` and `user` prop. The `user` prop is an object must `name`, `imageSrc` and `backgroundImage` properties. Variant prop should be set to `banner`.
 
 <Canvas>
-  <Story name="With Banner">{WithBanner.bind({})}</Story>
+  <Story
+    name="With Banner"
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `
+<PageHeading
+  variant="banner"
+  user={{
+    name: 'Ricardo Cooper',
+    email: 'ricardo.cooper@example.com',
+    imageSrc:
+      'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
+    backgroundImage:
+      'https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+  }}
+  actionButtons={(props) => (
+    <>
+      <Button
+        text="Message"
+        size="md"
+        variant="outline"
+        iconName="envelope"
+        onClick={() => alert('Message')}
+      />
+      <Button
+        text="Call"
+        size="md"
+        variant="primary"
+        iconName="phone"
+        onClick={() => alert('Call')}
+      />
+    </>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {WithBanner.bind({})}
+  </Story>
 </Canvas>
 
 ## Reference
