@@ -20,11 +20,8 @@ const variants = {
   },
 }
 
-const kinds = ['normal', 'bar']
-
 const Tab = ({
   variant,
-  kind,
   tabs,
   shallowLink,
   tabItemClassName,
@@ -41,6 +38,7 @@ const Tab = ({
   tabCountCurrentBackgroundColor,
   tabCountCurrentTextColor,
   iconPosition,
+  bar,
   fullWidth,
 }) => {
   return (
@@ -66,8 +64,8 @@ const Tab = ({
           <nav
             className={twMerge(
               'flex -mb-px space-x-8',
-              (fullWidth || kind === 'bar') && 'w-full',
-              kind === 'bar' && 'isolate rounded-lg shadow w-full',
+              (fullWidth || bar) && 'w-full',
+              bar && 'isolate rounded-lg shadow w-full',
             )}
             aria-label="Tabs"
           >
@@ -82,9 +80,9 @@ const Tab = ({
                       ? currentClassName || variants[variant].current
                       : tabItemClassName || variants[variant].tab,
                     tab.iconName && 'flex items-center space-x-1',
-                    (fullWidth || kind === 'bar') && 'w-full justify-center',
-                    kind === 'bar' && i === 0 && 'rounded-l-lg',
-                    kind === 'bar' && i === tabs.length - 1 && 'rounded-r-lg',
+                    (fullWidth || bar) && 'w-full justify-center',
+                    bar && i === 0 && 'rounded-l-lg',
+                    bar && i === tabs.length - 1 && 'rounded-r-lg',
                   )}
                   aria-current={tab.current ? 'page' : undefined}
                   style={{
@@ -154,8 +152,8 @@ Tab.propTypes = {
   currentClassName: PropTypes.string,
   iconPosition: PropTypes.oneOf(['left', 'right']),
   fullWidth: PropTypes.bool,
+  bar: PropTypes.bool,
   variant: PropTypes.oneOf(Object.keys(variants)),
-  kind: PropTypes.oneOf(kinds),
   tabCountClassName: PropTypes.string,
   tabCountCurrentClassName: PropTypes.string,
   tabCountBackgroundColor: PropTypes.string,

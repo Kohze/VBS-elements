@@ -8,150 +8,9 @@ import {
 } from '@storybook/addon-docs'
 import Tab from '@/components/application-ui/navigation/tab'
 
-<Meta
-  title="Application UI/Navigation/Tab"
-  component={Tab}
-  parameters={{
-    docs: {
-      source: {
-        type: 'code',
-      },
-    },
-  }}
-/>
+<Meta title="Application UI/Navigation/Tab" component={Tab} />
 
-export const Default = (args) => (
-  <Tab
-    tabs={[
-      { name: 'My Account', href: '#', current: false },
-      { name: 'Company', href: '#', current: false },
-      { name: 'Team Members', href: '#', current: true },
-      { name: 'Billing', href: '#', current: false },
-    ]}
-    {...args}
-  />
-)
-
-export const WithIcon = (args) => (
-  <Tab
-    tabs={[
-      { name: 'My Account', href: '#', current: false, iconName: 'user' },
-      {
-        name: 'Company',
-        href: '#',
-        current: false,
-        iconName: 'computer-desktop',
-      },
-      { name: 'Team Members', href: '#', current: true, iconName: 'users' },
-      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
-    ]}
-    {...args}
-  />
-)
-
-export const WithPills = (args) => (
-  <Tab
-    tabs={[
-      { name: 'My Account', href: '#', current: false, iconName: 'user' },
-      {
-        name: 'Company',
-        href: '#',
-        current: false,
-        iconName: 'computer-desktop',
-      },
-      { name: 'Team Members', href: '#', current: true, iconName: 'users' },
-      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
-    ]}
-    variant="pills"
-    {...args}
-  />
-)
-
-export const CustomTabItemStyles = (args) => (
-  <Tab
-    tabs={[
-      { name: 'My Account', href: '#', current: false, iconName: 'user' },
-      {
-        name: 'Company',
-        href: '#',
-        current: false,
-        iconName: 'computer-desktop',
-      },
-      { name: 'Team Members', href: '#', current: true, iconName: 'users' },
-      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
-    ]}
-    variant="pills"
-    tabItemClassName="bg-white text-gray-900 rounded-full border border-gray-200"
-    currentClassName="bg-indigo-600 text-white rounded-full"
-    {...args}
-  />
-)
-
-export const FullWidth = (args) => (
-  <Tab
-    tabs={[
-      { name: 'My Account', href: '#', current: false, iconName: 'user' },
-      {
-        name: 'Company',
-        href: '#',
-        current: false,
-        iconName: 'computer-desktop',
-      },
-      { name: 'Team Members', href: '#', current: true, iconName: 'users' },
-      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
-    ]}
-    fullWidth
-    {...args}
-  />
-)
-
-export const BarKind = (args) => (
-  <Tab
-    tabs={[
-      { name: 'My Account', href: '#', current: true, iconName: 'user' },
-      {
-        name: 'Company',
-        href: '#',
-        current: false,
-        iconName: 'computer-desktop',
-      },
-      { name: 'Team Members', href: '#', current: false, iconName: 'users' },
-      { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
-    ]}
-    kind="bar"
-    {...args}
-  />
-)
-
-export const WithTabCount = (args) => (
-  <Tab
-    tabs={[
-      {
-        name: 'My Account',
-        href: '#',
-        current: true,
-        iconName: 'user',
-        count: 2,
-      },
-      {
-        name: 'Company',
-        href: '#',
-        current: false,
-        iconName: 'computer-desktop',
-        count: 3,
-      },
-      { name: 'Team Members', href: '#', current: false, iconName: 'users' },
-      {
-        name: 'Billing',
-        href: '#',
-        current: false,
-        iconName: 'credit-card',
-        count: 14,
-      },
-    ]}
-    {...args}
-  />
-)
+export const Template = (args) => <Tab {...args} />
 
 # Tab
 
@@ -160,7 +19,34 @@ Tabs are used to organize content into different sections. They are useful when 
 ## Default
 
 <Canvas>
-  <Story name="Default">{Default.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{
+      tabs: [
+        { name: 'My Account', href: '#', current: false },
+        { name: 'Company', href: '#', current: false },
+        { name: 'Team Members', href: '#', current: true },
+        { name: 'Billing', href: '#', current: false },
+      ],
+    }}
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `<Tab
+  tabs={[
+    { name: 'My Account', href: '#', current: false },
+    { name: 'Company', href: '#', current: false },
+    { name: 'Team Members', href: '#', current: true },
+    { name: 'Billing', href: '#', current: false },
+  ]}
+/>`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Icon
@@ -170,7 +56,44 @@ Tabs can also have icons. `iconName` is the name of the icon. `iconPosition` is 
 Check the icon names in the [Heroicons](https://heroicons.com/) library.
 
 <Canvas>
-  <Story name="With Icon">{WithIcon.bind({})}</Story>
+  <Story
+    name="With Icon"
+    args={{
+      tabs: [
+        { name: 'My Account', href: '#', current: false, iconName: 'user' },
+        {
+          name: 'Company',
+          href: '#',
+          current: false,
+          iconName: 'computer-desktop',
+        },
+        { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+        { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+      ],
+    }}
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `<Tab
+  tabs={[
+    { name: 'My Account', href: '#', current: false, iconName: 'user' },
+    {
+      name: 'Company',
+      href: '#',
+      current: false,
+      iconName: 'computer-desktop',
+    },
+    { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+    { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+  ]}
+/>`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Pills
@@ -178,7 +101,46 @@ Check the icon names in the [Heroicons](https://heroicons.com/) library.
 Tabs can also be styled as pills. `variant` can be `default` or `pills`.
 
 <Canvas>
-  <Story name="With Pills">{WithPills.bind({})}</Story>
+  <Story
+    name="With Pills"
+    args={{
+      tabs: [
+        { name: 'My Account', href: '#', current: false, iconName: 'user' },
+        {
+          name: 'Company',
+          href: '#',
+          current: false,
+          iconName: 'computer-desktop',
+        },
+        { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+        { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+      ],
+      variant: 'pills',
+    }}
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `<Tab
+  tabs={[
+    { name: 'My Account', href: '#', current: false, iconName: 'user' },
+    {
+      name: 'Company',
+      href: '#',
+      current: false,
+      iconName: 'computer-desktop',
+    },
+    { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+    { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+  ]}
+  variant="pills"
+/>`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Custom Tab Item Styles
@@ -186,7 +148,51 @@ Tabs can also be styled as pills. `variant` can be `default` or `pills`.
 You can also customize the styles of the tab items. `tabItemClassName` is the class name of the tab item. `currentClassName` is the class name of the current tab item.
 
 <Canvas>
-  <Story name="Custom Tab Item Styles">{CustomTabItemStyles.bind({})}</Story>
+  <Story
+    name="Custom Tab Item Styles"
+    args={{
+      tabs: [
+        { name: 'My Account', href: '#', current: false, iconName: 'user' },
+        {
+          name: 'Company',
+          href: '#',
+          current: false,
+          iconName: 'computer-desktop',
+        },
+        { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+        { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+      ],
+      variant: 'pills',
+      tabItemClassName:
+        'bg-white text-gray-900 rounded-full border border-gray-200',
+      currentClassName: 'bg-indigo-600 text-white rounded-full',
+    }}
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `<Tab
+  tabs={[
+    { name: 'My Account', href: '#', current: false, iconName: 'user' },
+    {
+      name: 'Company',
+      href: '#',
+      current: false,
+      iconName: 'computer-desktop',
+    },
+    { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+    { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+  ]}
+  variant="pills"
+  tabItemClassName="bg-white text-gray-900 rounded-full border border-gray-200"
+  currentClassName="bg-indigo-600 text-white rounded-full"
+/>`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Full Width
@@ -194,15 +200,93 @@ You can also customize the styles of the tab items. `tabItemClassName` is the cl
 Tabs can also be full width. Simply pass `fullWidth` prop.
 
 <Canvas>
-  <Story name="Full Width">{FullWidth.bind({})}</Story>
+  <Story
+    name="Full Width"
+    args={{
+      tabs: [
+        { name: 'My Account', href: '#', current: false, iconName: 'user' },
+        {
+          name: 'Company',
+          href: '#',
+          current: false,
+          iconName: 'computer-desktop',
+        },
+        { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+        { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+      ],
+      fullWidth: true,
+    }}
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `<Tab
+  tabs={[
+    { name: 'My Account', href: '#', current: false, iconName: 'user' },
+    {
+      name: 'Company',
+      href: '#',
+      current: false,
+      iconName: 'computer-desktop',
+    },
+    { name: 'Team Members', href: '#', current: true, iconName: 'users' },
+    { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+  ]}
+  fullWidth
+/>`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Bar Kind
 
-Tabs can also be styled as a bar. To do this, pass `kind="bar"`.
+Tabs can also be styled as a bar. To do this, pass `bar` prop.
 
 <Canvas>
-  <Story name="Bar Kind">{BarKind.bind({})}</Story>
+  <Story
+    name="Bar Kind"
+    args={{
+      tabs: [
+        { name: 'My Account', href: '#', current: true, iconName: 'user' },
+        {
+          name: 'Company',
+          href: '#',
+          current: false,
+          iconName: 'computer-desktop',
+        },
+        { name: 'Team Members', href: '#', current: false, iconName: 'users' },
+        { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+      ],
+      bar: true,
+    }}
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `<Tab
+  tabs={[
+    { name: 'My Account', href: '#', current: true, iconName: 'user' },
+    {
+      name: 'Company',
+      href: '#',
+      current: false,
+      iconName: 'computer-desktop',
+    },
+    { name: 'Team Members', href: '#', current: false, iconName: 'users' },
+    { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
+  ]}
+  bar
+/>`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Tab Count
@@ -210,7 +294,70 @@ Tabs can also be styled as a bar. To do this, pass `kind="bar"`.
 Tabs can also have a count. `count` is the number of the count.
 
 <Canvas>
-  <Story name="With Tab Count">{WithTabCount.bind({})}</Story>
+  <Story
+    name="With Tab Count"
+    args={{
+      tabs: [
+        {
+          name: 'My Account',
+          href: '#',
+          current: true,
+          iconName: 'user',
+          count: 2,
+        },
+        {
+          name: 'Company',
+          href: '#',
+          current: false,
+          iconName: 'computer-desktop',
+          count: 3,
+        },
+        { name: 'Team Members', href: '#', current: false, iconName: 'users' },
+        {
+          name: 'Billing',
+          href: '#',
+          current: false,
+          iconName: 'credit-card',
+          count: 14,
+        },
+      ],
+    }}
+    parameters={{
+      docs: {
+        source: {
+          type: 'code',
+          code: `<Tab
+  tabs={[
+    {
+      name: 'My Account',
+      href: '#',
+      current: true,
+      iconName: 'user',
+      count: 2,
+    },
+    {
+      name: 'Company',
+      href: '#',
+      current: false,
+      iconName: 'computer-desktop',
+      count: 3,
+    },
+    { name: 'Team Members', href: '#', current: false, iconName: 'users' },
+    {
+      name: 'Billing',
+      href: '#',
+      current: false,
+      iconName: 'credit-card',
+      count: 14,
+    },
+  ]}
+/>`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Reference
