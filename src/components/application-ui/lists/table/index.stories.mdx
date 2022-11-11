@@ -9,17 +9,21 @@ import {
 import Table from '@/components/application-ui/lists/table'
 import Button from '@/components/application-ui/elements/button'
 
-<Meta
-  title="Application UI/Lists/Table"
-  component={Table}
-  parameters={{
-    docs: {
-      source: {
-        type: 'code',
-      },
-    },
-  }}
-/>
+<Meta title="Application UI/Lists/Table" component={Table} />
+
+export const Template = (args) => (
+  <div className="bg-gray-100 py-10">
+    <Table {...args} />
+  </div>
+)
+
+export const StickyHeaderTemplate = (args) => (
+  <div className="max-h-[300px] overflow-y-auto bg-gray-100">
+    <div className="py-10">
+      <Table {...args} />
+    </div>
+  </div>
+)
 
 # Table
 
@@ -30,36 +34,35 @@ Table component for displaying data in a tabular format.
 Table component needs to be passed an array of objects as the `tableItems` prop. Each object in the array represents a row in the table. Each object's keys represent the column headers and the values represent the data in that column. Each objects keys must be same. (Note: no matter key names, just should have the same keys)
 
 <Canvas>
-  <Story name="Simple">
-    {(args) => (
-      <div className="bg-gray-100 py-10">
-        <Table
-          title="Table Title"
-          description="A list of all the users in your account including their name, title, email and role."
-          tableItems={[
-            {
-              name: 'Lindsay Walton',
-              title: 'Front-end Developer',
-              email: 'lindsay.walton@example.com',
-              role: 'Member',
-            },
-            {
-              name: 'Courtney Henry',
-              title: 'Back-end Developer',
-              email: 'courtney@example.com',
-              role: 'Owner',
-            },
-            {
-              name: 'Tom Cook',
-              title: 'UX Designer',
-              email: 'tom@example.com',
-              role: 'Admin',
-            },
-          ]}
-          {...args}
-        />
-      </div>
-    )}
+  <Story
+    name="Simple"
+    args={{
+      title: 'Table Title',
+      description:
+        'A list of all the users in your account including their name, title, email and role.',
+      tableItems: [
+        {
+          name: 'Lindsay Walton',
+          title: 'Front-end Developer',
+          email: 'lindsay.walton@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Courtney Henry',
+          title: 'Back-end Developer',
+          email: 'courtney@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          email: 'tom@example.com',
+          role: 'Admin',
+        },
+      ],
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -68,85 +71,161 @@ Table component needs to be passed an array of objects as the `tableItems` prop.
 Table actions slot prepered for buttons that are displayed in the table header but you can render any component you want in the table actions slot. They are used to perform actions on the table's data such as adding a new item or deleting all items. `renderTableActions` is a render function that returns the component you want to render in the table actions slot.
 
 <Canvas>
-  <Story name="With Table Actions">
-    {(args) => (
-      <div className="bg-gray-100 py-10">
-        <Table
-          title="Table Title"
-          description="A list of all the users in your account including their name, title, email and role."
-          tableItems={[
-            {
-              name: 'Lindsay Walton',
-              title: 'Front-end Developer',
-              email: 'lindsay.walton@example.com',
-              role: 'Member',
-            },
-            {
-              name: 'Courtney Henry',
-              title: 'Back-end Developer',
-              email: 'courtney@example.com',
-              role: 'Owner',
-            },
-            {
-              name: 'Tom Cook',
-              title: 'UX Designer',
-              email: 'tom@example.com',
-              role: 'Admin',
-            },
-          ]}
-          renderTableActions={(prop) => (
-            <div className="flex gap-2">
-              <Button text="Add" />
-              <Button text="Delete" variant="outline" />
-            </div>
-          )}
-          {...args}
-        />
-      </div>
-    )}
+  <Story
+    name="With Table Actions"
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<Table
+  title="Table Title"
+  description="A list of all the users in your account including their name, title, email and role."
+  tableItems={[
+    {
+      name: 'Lindsay Walton',
+      title: 'Front-end Developer',
+      email: 'lindsay.walton@example.com',
+      role: 'Member',
+    },
+    {
+      name: 'Courtney Henry',
+      title: 'Back-end Developer',
+      email: 'courtney@example.com',
+      role: 'Owner',
+    },
+    {
+      name: 'Tom Cook',
+      title: 'UX Designer',
+      email: 'tom@example.com',
+      role: 'Admin',
+    },
+  ]}
+  renderTableActions={() => (
+    <div className="flex gap-2">
+      <Button text="Add" />
+      <Button text="Delete" variant="outline" />
+    </div>
+  )}
+/>
+`,
+        },
+      },
+    }}
+    args={{
+      title: 'Table Title',
+      description:
+        'A list of all the users in your account including their name, title, email and role.',
+      tableItems: [
+        {
+          name: 'Lindsay Walton',
+          title: 'Front-end Developer',
+          email: 'lindsay.walton@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Courtney Henry',
+          title: 'Back-end Developer',
+          email: 'courtney@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          email: 'tom@example.com',
+          role: 'Admin',
+        },
+      ],
+      renderTableActions: () => (
+        <div className="flex gap-2">
+          <Button text="Add" />
+          <Button text="Delete" variant="outline" />
+        </div>
+      ),
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
 ## With Table Item Actions
 
-Using the `renderTableItemActions` prop, you can pass a function that returns a component to be rendered in the last column of the table. This component will be rendered for each row in the table.
+Using the `renderTableItemActions` prop, you can pass a function that returns a component to be rendered in the last column of the table. This component will be rendered for each row in the table. It takes the current row as an argument.
 
 <Canvas>
-  <Story name="With Table Item Actions">
-    {(args) => (
-      <div className="bg-gray-100 py-10">
-        <Table
-          title="Table Title"
-          description="A list of all the users in your account including their name, title, email and role."
-          tableItems={[
-            {
-              name: 'Lindsay Walton',
-              title: 'Front-end Developer',
-              email: 'lindsay.walton@example.com',
-              role: 'Member',
-            },
-            {
-              name: 'Courtney Henry',
-              title: 'Back-end Developer',
-              email: 'courtney@example.com',
-              role: 'Owner',
-            },
-            {
-              name: 'Tom Cook',
-              title: 'UX Designer',
-              email: 'tom@example.com',
-              role: 'Admin',
-            },
-          ]}
-          renderTableItemActions={(prop) => (
-            <a href="#" className="text-indigo-600">
-              Edit
-            </a>
-          )}
-          {...args}
-        />
-      </div>
-    )}
+  <Story
+    name="With Table Item Actions"
+    args={{
+      title: 'Table Title',
+      description:
+        'A list of all the users in your account including their name, title, email and role.',
+      tableItems: [
+        {
+          name: 'Lindsay Walton',
+          title: 'Front-end Developer',
+          email: 'lindsay.walton@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Courtney Henry',
+          title: 'Back-end Developer',
+          email: 'courtney@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          email: 'tom@example.com',
+          role: 'Admin',
+        },
+      ],
+      renderTableItemActions: (item) => (
+        <Button size="xs" onClick={() => alert(item.name)}>
+          Edit
+        </Button>
+      ),
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<Table
+  title="Table Title"
+  description="A list of all the users in your account including their name, title, email and role."
+  tableItems={[
+    {
+      name: 'Lindsay Walton',
+      title: 'Front-end Developer',
+      email: 'lindsay.walton@example.com',
+      role: 'Member',
+    },
+    {
+      name: 'Courtney Henry',
+      title: 'Back-end Developer',
+      email: 'courtney@example.com',
+      role: 'Owner',
+    },
+    {
+      name: 'Tom Cook',
+      title: 'UX Designer',
+      email: 'tom@example.com',
+      role: 'Admin',
+    },
+  ]}
+  renderTableItemActions={(item) => (
+    <Button
+      size="xs"
+      onClick={() => alert(item.name)}
+    >
+      Edit
+    </Button>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -155,42 +234,82 @@ Using the `renderTableItemActions` prop, you can pass a function that returns a 
 Full width tables will stretch to fill the width of their container. To use a full width table, pass `fullWidth` as a prop.
 
 <Canvas>
-  <Story name="Full Width">
-    {(args) => (
-      <div className="bg-gray-100 py-10">
-        <Table
-          fullWidth
-          title="Table Title"
-          description="A list of all the users in your account including their name, title, email and role."
-          tableItems={[
-            {
-              name: 'Lindsay Walton',
-              title: 'Front-end Developer',
-              email: 'lindsay.walton@example.com',
-              role: 'Member',
-            },
-            {
-              name: 'Courtney Henry',
-              title: 'Back-end Developer',
-              email: 'courtney@example.com',
-              role: 'Owner',
-            },
-            {
-              name: 'Tom Cook',
-              title: 'UX Designer',
-              email: 'tom@example.com',
-              role: 'Admin',
-            },
-          ]}
-          renderTableItemActions={(prop) => (
-            <a href="#" className="text-indigo-600">
-              Edit
-            </a>
-          )}
-          {...args}
-        />
-      </div>
-    )}
+  <Story
+    name="Full Width"
+    args={{
+      fullWidth: true,
+      title: 'Table Title',
+      description:
+        'A list of all the users in your account including their name, title, email and role.',
+      tableItems: [
+        {
+          name: 'Lindsay Walton',
+          title: 'Front-end Developer',
+          email: 'lindsay.walton@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Courtney Henry',
+          title: 'Back-end Developer',
+          email: 'courtney@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          email: 'tom@example.com',
+          role: 'Admin',
+        },
+      ],
+      renderTableItemActions: (item) => (
+        <Button size="xs" onClick={() => alert(item.name)}>
+          Edit
+        </Button>
+      ),
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<Table
+  fullWidth
+  title="Table Title"
+  description="A list of all the users in your account including their name, title, email and role."
+  tableItems={[
+    {
+      name: 'Lindsay Walton',
+      title: 'Front-end Developer',
+      email: 'lindsay.walton@example.com',
+      role: 'Member',
+    },
+    {
+      name: 'Courtney Henry',
+      title: 'Back-end Developer',
+      email: 'courtney@example.com',
+      role: 'Owner',
+    },
+    {
+      name: 'Tom Cook',
+      title: 'UX Designer',
+      email: 'tom@example.com',
+      role: 'Admin',
+    },
+  ]}
+  renderTableItemActions={(item) => (
+    <Button
+      size="xs"
+      onClick={() => alert(item.name)}
+    >
+      Edit
+    </Button>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -199,42 +318,118 @@ Full width tables will stretch to fill the width of their container. To use a fu
 Striped rows will alternate the background color of each row. To use striped rows, pass `striped` as a prop.
 
 <Canvas>
-  <Story name="With Striped Rows">
-    {(args) => (
-      <div className="bg-gray-100 py-10">
-        <Table
-          striped
-          title="Table Title"
-          description="A list of all the users in your account including their name, title, email and role."
-          tableItems={[
-            {
-              name: 'Lindsay Walton',
-              title: 'Front-end Developer',
-              email: 'lindsay.walton@example.com',
-              role: 'Member',
-            },
-            {
-              name: 'Courtney Henry',
-              title: 'Back-end Developer',
-              email: 'courtney@example.com',
-              role: 'Owner',
-            },
-            {
-              name: 'Tom Cook',
-              title: 'UX Designer',
-              email: 'tom@example.com',
-              role: 'Admin',
-            },
-          ]}
-          renderTableItemActions={(prop) => (
-            <a href="#" className="text-indigo-600">
-              Edit
-            </a>
-          )}
-          {...args}
-        />
-      </div>
-    )}
+  <Story
+    name="With Striped Rows"
+    args={{
+      striped: true,
+      title: 'Table Title',
+      description:
+        'A list of all the users in your account including their name, title, email and role.',
+      tableItems: [
+        {
+          name: 'Lindsay Walton',
+          title: 'Front-end Developer',
+          email: 'lindsay.walton@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Courtney Henry',
+          title: 'Back-end Developer',
+          email: 'courtney@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          email: 'tom@example.com',
+          role: 'Admin',
+        },
+        {
+          name: 'Maria Walton',
+          title: 'Front-end Developer',
+          email: 'maria@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Beck Dyer',
+          title: 'Back-end Developer',
+          email: 'beck@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Adam Henry',
+          title: 'Back-end Developer',
+          email: 'adam@example.com',
+          role: 'Owner',
+        },
+      ],
+      renderTableItemActions: (item) => (
+        <Button size="xs" onClick={() => alert(item.name)}>
+          Edit
+        </Button>
+      ),
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<Table
+  striped
+  title="Table Title"
+  description="A list of all the users in your account including their name, title, email and role."
+  tableItems={[
+    {
+      name: 'Lindsay Walton',
+      title: 'Front-end Developer',
+      email: 'lindsay.walton@example.com',
+      role: 'Member',
+    },
+    {
+      name: 'Courtney Henry',
+      title: 'Back-end Developer',
+      email: 'courtney@example.com',
+      role: 'Owner',
+    },
+    {
+      name: 'Tom Cook',
+      title: 'UX Designer',
+      email: 'tom@example.com',
+      role: 'Admin',
+    },
+    {
+      name: 'Maria Walton',
+      title: 'Front-end Developer',
+      email: 'maria@example.com',
+      role: 'Member',
+    },
+    {
+      name: 'Beck Dyer',
+      title: 'Back-end Developer',
+      email: 'beck@example.com',
+      role: 'Owner',
+    },
+    {
+      name: 'Adam Henry',
+      title: 'Back-end Developer',
+      email: 'adam@example.com',
+      role: 'Owner',
+    },
+  ]}
+  renderTableItemActions={(item) => (
+    <Button
+      size="xs"
+      onClick={() => alert(item.name)}
+    >
+      Edit
+    </Button>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -243,37 +438,77 @@ Striped rows will alternate the background color of each row. To use striped row
 Stacked tables will stack the columns on mobile devices. To use stacked tables, pass array of column numbers to `stackedColumns` prop. Stacked columns will be stacked in the first column of the table. As the example, if you pass `[3, 4]` to `stackedColumns` prop, the third and fourth columns will be stacked in the first column on mobile devices.
 
 <Canvas>
-  <Story name="Stacked on Mobile">
-    {(args) => (
-      <div className="bg-gray-100 py-10">
-        <Table
-          stackedColumns={[3, 4]}
-          title="Table Title"
-          description="A list of all the users in your account including their name, title, email and role."
-          tableItems={[
-            {
-              name: 'Lindsay Walton',
-              title: 'Front-end Developer',
-              email: 'lindsay.walton@example.com',
-              role: 'Member',
-            },
-            {
-              name: 'Courtney Henry',
-              title: 'Back-end Developer',
-              email: 'courtney@example.com',
-              role: 'Owner',
-            },
-            {
-              name: 'Tom Cook',
-              title: 'UX Designer',
-              email: 'tom@example.com',
-              role: 'Admin',
-            },
-          ]}
-          {...args}
-        />
-      </div>
-    )}
+  <Story
+    name="Stacked on Mobile"
+    args={{
+      stackedColumns: [3, 4],
+      title: 'Table Title',
+      description:
+        'A list of all the users in your account including their name, title, email and role.',
+      tableItems: [
+        {
+          name: 'Lindsay Walton',
+          title: 'Front-end Developer',
+          email: 'lindsay.walton@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Courtney Henry',
+          title: 'Back-end Developer',
+          email: 'courtney@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          email: 'tom@example.com',
+          role: 'Admin',
+        },
+      ],
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<Table
+  stackedColumns={[3, 4]}
+  title="Table Title"
+  description="A list of all the users in your account including their name, title, email and role."
+  tableItems={[
+    {
+      name: 'Lindsay Walton',
+      title: 'Front-end Developer',
+      email: 'lindsay.walton@example.com',
+      role: 'Member',
+    },
+    {
+      name: 'Courtney Henry',
+      title: 'Back-end Developer',
+      email: 'courtney@example.com',
+      role: 'Owner',
+    },
+    {
+      name: 'Tom Cook',
+      title: 'UX Designer',
+      email: 'tom@example.com',
+      role: 'Admin',
+    },
+  ]}
+  renderTableItemActions={(item) => (
+    <Button
+      size="xs"
+      onClick={() => alert(item.name)}
+    >
+      Edit
+    </Button>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -282,57 +517,54 @@ Stacked tables will stack the columns on mobile devices. To use stacked tables, 
 Sticky header will make the header of the table sticky. To use sticky header, pass `stickyHeader` as a prop.
 
 <Canvas>
-  <Story name="With Sticky Header">
-    {(args) => (
-      <div className="max-h-[300px] overflow-y-auto bg-gray-100">
-        <div className="py-10">
-          <Table
-            stickyHeader
-            title="Table Title"
-            description="A list of all the users in your account including their name, title, email and role."
-            tableItems={[
-              {
-                name: 'Lindsay Walton',
-                title: 'Front-end Developer',
-                email: 'lindsay.walton@example.com',
-                role: 'Member',
-              },
-              {
-                name: 'Courtney Henry',
-                title: 'Back-end Developer',
-                email: 'courtney@example.com',
-                role: 'Owner',
-              },
-              {
-                name: 'Tom Cook',
-                title: 'UX Designer',
-                email: 'tom@example.com',
-                role: 'Admin',
-              },
-              {
-                name: 'Maria Walton',
-                title: 'Front-end Developer',
-                email: 'maria@example.com',
-                role: 'Member',
-              },
-              {
-                name: 'Beck Dyer',
-                title: 'Back-end Developer',
-                email: 'beck@example.com',
-                role: 'Owner',
-              },
-              {
-                name: 'Adam Henry',
-                title: 'Back-end Developer',
-                email: 'adam@example.com',
-                role: 'Owner',
-              },
-            ]}
-            {...args}
-          />
-        </div>
-      </div>
-    )}
+  <Story
+    name="With Sticky Header"
+    args={{
+      stickyHeader: true,
+      title: 'Table Title',
+      description:
+        'A list of all the users in your account including their name, title, email and role.',
+      tableItems: [
+        {
+          name: 'Lindsay Walton',
+          title: 'Front-end Developer',
+          email: 'lindsay.walton@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Courtney Henry',
+          title: 'Back-end Developer',
+          email: 'courtney@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          email: 'tom@example.com',
+          role: 'Admin',
+        },
+        {
+          name: 'Maria Walton',
+          title: 'Front-end Developer',
+          email: 'maria@example.com',
+          role: 'Member',
+        },
+        {
+          name: 'Beck Dyer',
+          title: 'Back-end Developer',
+          email: 'beck@example.com',
+          role: 'Owner',
+        },
+        {
+          name: 'Adam Henry',
+          title: 'Back-end Developer',
+          email: 'adam@example.com',
+          role: 'Owner',
+        },
+      ],
+    }}
+  >
+    {StickyHeaderTemplate.bind({})}
   </Story>
 </Canvas>
 
@@ -341,55 +573,135 @@ Sticky header will make the header of the table sticky. To use sticky header, pa
 Grouped table will group the table items by the given key. Instead of `tableItems` prop, you should pass `groupedTableItems` prop to use grouped table. `groupedTableItems` prop should be an array of objects. Each object should have `name` and `tableItems` properties. `name` property should be the title of the group. `tableItems` property should be an array of table items. Each table item should be an object and should have the same keys as the `tableItems` prop. (Note: no matter key names, just should have the same keys)
 
 <Canvas>
-  <Story name="Grouped Table">
-    {(args) => (
-      <div className="bg-gray-100">
-        <div className="py-10">
+  <Story
+    name="Grouped Table"
+    args={{
+      title: 'Table Title',
+      description:
+        'A list of all the users in your account including their name, title, email and role.',
+      groupedTableItems: [
+        {
+          name: 'Edinburgh',
+          tableItems: [
+            {
+              email: 'lindsay.walton@example.com',
+              name: 'Lindsay Walton',
+              role: 'Member',
+              title: 'Front-end Developer',
+            },
+            {
+              email: 'courtney.henry@example.com',
+              name: 'Courtney Henry',
+              role: 'Admin',
+              title: 'Designer',
+            },
+            {
+              email: 'adam@example.com',
+              name: 'Adam Henry',
+              role: 'Owner',
+              title: 'Back-end Developer',
+            },
+          ],
+        },
+        {
+          name: 'London',
+          tableItems: [
+            {
+              email: 'janette@example.com',
+              name: 'Jenette Caldwell',
+              role: 'Owner',
+              title: 'Director, Human Resources',
+            },
+            {
+              email: 'darryl@example.com',
+              name: 'Darryl Day',
+              role: 'Admin',
+              title: 'Designer',
+            },
+            {
+              email: 'tom@example.com',
+              name: 'Tom Cook',
+              title: 'UX Designer',
+              role: 'Admin',
+            },
+            {
+              email: 'maria@example.com',
+              name: 'Maria Walton',
+              role: 'Member',
+              title: 'Front-end Developer',
+            },
+          ],
+        },
+      ],
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
           <Table
-            title="Table Title"
-            description="A list of all the users in your account including their name, title, email and role."
-            groupedTableItems={[
-              {
-                name: 'Edinburgh',
-                tableItems: [
-                  {
-                    name: 'Lindsay Walton',
-                    title: 'Front-end Developer',
-                    email: 'lindsay.walton@example.com',
-                    role: 'Member',
-                  },
-                  {
-                    name: 'Courtney Henry',
-                    title: 'Designer',
-                    email: 'courtney.henry@example.com',
-                    role: 'Admin',
-                  },
-                ],
-              },
-              {
-                name: 'London',
-                tableItems: [
-                  {
-                    name: 'Jenette Caldwell',
-                    title: 'Director, Human Resources',
-                    email: 'janette@example.com',
-                    role: 'Owner',
-                  },
-                  {
-                    name: 'Darryl Day',
-                    title: 'Designer',
-                    email: 'darryl@example.com',
-                    role: 'Admin',
-                  },
-                ],
-              },
-              // More items...
-            ]}
-            {...args}
-          />
-        </div>
-      </div>
-    )}
+  title="Table Title"
+  description="A list of all the users in your account including their name, title, email and role."
+  groupedTableItems={[
+    {
+      name: 'Edinburgh',
+      tableItems: [
+        {
+          email: 'lindsay.walton@example.com',
+          name: 'Lindsay Walton',
+          role: 'Member',
+          title: 'Front-end Developer',
+        },
+        {
+          email: 'courtney.henry@example.com',
+          name: 'Courtney Henry',
+          role: 'Admin',
+          title: 'Designer',
+        },
+        {
+          email: 'adam@example.com',
+          name: 'Adam Henry',
+          role: 'Owner',
+          title: 'Back-end Developer',
+        },
+      ],
+    },
+    {
+      name: 'London',
+      tableItems: [
+        {
+          email: 'janette@example.com',
+          name: 'Jenette Caldwell',
+          role: 'Owner',
+          title: 'Director, Human Resources',
+        },
+        {
+          email: 'darryl@example.com',
+          name: 'Darryl Day',
+          role: 'Admin',
+          title: 'Designer',
+        },
+        {
+          email: 'tom@example.com',
+          name: 'Tom Cook',
+          title: 'UX Designer',
+          role: 'Admin',
+        },
+        {
+          email: 'maria@example.com',
+          name: 'Maria Walton',
+          role: 'Member',
+          title: 'Front-end Developer',
+        },
+      ],
+    },
+  ]}
+  />
+`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 

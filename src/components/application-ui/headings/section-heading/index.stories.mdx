@@ -13,78 +13,9 @@ import { Tab } from '@/components/application-ui/navigation'
 <Meta
   title="Application UI/Headings/Section Heading"
   component={SectionHeading}
-  parameters={{
-    docs: {
-      source: {
-        type: 'code',
-      },
-    },
-  }}
 />
 
-export const Simple = (args) => (
-  <SectionHeading title="Section Heading" {...args} />
-)
-
-export const WithDescription = (args) => (
-  <SectionHeading
-    title="Section Heading"
-    description="Checkout and Payments Team"
-    {...args}
-  />
-)
-
-export const WithActionButtons = (args) => (
-  <SectionHeading
-    title="Heading"
-    actionButtons={(props) => (
-      <>
-        <Button text="Create" size="md" variant="outline" />
-        <Button text="Share" size="md" className="bg-indigo-600" />
-      </>
-    )}
-    {...args}
-  />
-)
-
-export const WithLabel = (args) => (
-  <SectionHeading title="Section Heading" label="in Engineering" {...args} />
-)
-
-export const WithTabs = () => (
-  <SectionHeading
-    title="Section Heading"
-    renderTabs={() => (
-      <Tab
-        tabs={[
-          { name: 'My Account', href: '#', current: true },
-          { name: 'Company', href: '#', current: false },
-          { name: 'Team Members', href: '#', current: false },
-          { name: 'Billing', href: '#', current: false },
-        ]}
-      />
-    )}
-  />
-)
-
-export const WithDropdown = (args) => (
-  <div className="h-56">
-    <SectionHeading
-      title="Section Heading"
-      renderDropdown={() => (
-        <Dropdown
-          minimal
-          elements={[
-            { text: 'Link 1' },
-            { text: 'Link 2' },
-            { text: 'Link 3' },
-          ]}
-        />
-      )}
-      {...args}
-    />
-  </div>
-)
+export const Template = (args) => <SectionHeading {...args} />
 
 # Section Heading
 
@@ -101,7 +32,14 @@ import { SectionHeading } from '@/components/application-ui/headings'
 Simple section heading with a title.
 
 <Canvas>
-  <Story name="Simple">{Simple.bind({})}</Story>
+  <Story
+    name="Simple"
+    args={{
+      title: 'Section Heading',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Description
@@ -109,7 +47,15 @@ Simple section heading with a title.
 Section heading with a title and a description.
 
 <Canvas>
-  <Story name="With Description">{WithDescription.bind({})}</Story>
+  <Story
+    name="With Description"
+    args={{
+      title: 'Section Heading',
+      description: 'Checkout and Payments Team',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Action Buttons
@@ -117,7 +63,37 @@ Section heading with a title and a description.
 Section heading with a title and action buttons. To add action buttons, pass a render function to the `actionButtons` prop.
 
 <Canvas>
-  <Story name="With Action Buttons">{WithActionButtons.bind({})}</Story>
+  <Story
+    name="With Action Buttons"
+    args={{
+      title: 'Section Heading',
+      actionButtons: (props) => (
+        <>
+          <Button text="Create" size="md" variant="outline" />
+          <Button text="Share" size="md" className="bg-indigo-600" />
+        </>
+      ),
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<SectionHeading
+  title="Section Heading"
+  actionButtons={() => (
+    <>
+      <Button text="Create" size="md" variant="outline" />
+      <Button text="Share" size="md" className="bg-indigo-600" />
+    </>
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Label
@@ -125,7 +101,15 @@ Section heading with a title and action buttons. To add action buttons, pass a r
 Section heading with a title and a label.
 
 <Canvas>
-  <Story name="With Label">{WithLabel.bind({})}</Story>
+  <Story
+    name="With Label"
+    args={{
+      title: 'Section Heading',
+      label: 'in Engineering',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Tabs
@@ -133,7 +117,45 @@ Section heading with a title and a label.
 Section heading with a title and tabs. To add tabs, pass a render function to the `renderTabs` prop. For more information on tabs, see the [Tabs](/docs/application-ui-navigation-tab--default-story) component.
 
 <Canvas>
-  <Story name="With Tabs">{WithTabs.bind({})}</Story>
+  <Story
+    name="With Tabs"
+    args={{
+      title: 'Section Heading',
+      renderTabs: () => (
+        <Tab
+          tabs={[
+            { name: 'My Account', href: '#', current: true },
+            { name: 'Company', href: '#', current: false },
+            { name: 'Team Members', href: '#', current: false },
+            { name: 'Billing', href: '#', current: false },
+          ]}
+        />
+      ),
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<SectionHeading
+  title="Section Heading"
+  renderTabs={() => (
+    <Tab
+      tabs={[
+        { name: 'My Account', href: '#', current: true },
+        { name: 'Company', href: '#', current: false },
+        { name: 'Team Members', href: '#', current: false },
+        { name: 'Billing', href: '#', current: false },
+      ]}
+    />
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Dropdown
@@ -141,7 +163,46 @@ Section heading with a title and tabs. To add tabs, pass a render function to th
 Section heading with a title and a dropdown. To add a dropdown, pass a render function to the `renderDropdown` prop. For more information on dropdowns, see the [Dropdown](/docs/application-ui-elements-dropdown--minimal) component.
 
 <Canvas>
-  <Story name="With Dropdown">{WithDropdown.bind({})}</Story>
+  <Story
+    name="With Dropdown"
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<SectionHeading
+  title="Section Heading"
+  renderDropdown={() => (
+    <Dropdown
+      minimal
+      elements={[
+        { text: 'Link 1' },
+        { text: 'Link 2' },
+        { text: 'Link 3' },
+      ]}
+    />
+  )}
+/>
+`,
+        },
+      },
+    }}
+  >
+    <div className="h-56">
+      <SectionHeading
+        title="Section Heading"
+        renderDropdown={() => (
+          <Dropdown
+            minimal
+            elements={[
+              { text: 'Link 1' },
+              { text: 'Link 2' },
+              { text: 'Link 3' },
+            ]}
+          />
+        )}
+      />
+    </div>
+  </Story>
 </Canvas>
 
 ## Reference

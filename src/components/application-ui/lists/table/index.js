@@ -38,7 +38,7 @@ const Table = ({
               key={uuidv4()}
               className={twMerge(
                 verticalLines && 'divide-x divide-gray-200',
-                striped && i % 2 === 0 && 'bg-gray-50',
+                striped && (i - 1) % 2 === 0 && 'bg-gray-50',
                 tbodyTrClassName,
               )}
             >
