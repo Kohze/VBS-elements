@@ -27,19 +27,16 @@ const Dropdown = ({
   groupElements,
   minimal,
   variant,
+  classNames,
   menuItemIconPosition,
   menuItemIconType,
-  menuItemClassName,
   menuKind,
-  menuClassName,
-  iconClassName,
   buttonText,
   buttonSize,
   buttonIconName,
   buttonIconPosition,
   buttonIconType,
   buttonKind,
-  buttonClassName,
 }) => {
   const renderElements = (els) => {
     return els.map((el, index) => {
@@ -53,7 +50,7 @@ const Dropdown = ({
                   variants[variant],
                   active ? 'bg-gray-100 text-gray-900' : '',
                   variant === 'light' && 'bg-white',
-                  menuItemClassName,
+                  classNames?.menuItem,
                 )}
               >
                 {menuItemIconPosition === 'left' && (
@@ -65,7 +62,7 @@ const Dropdown = ({
                         'w-5 h-5 mr-3',
                         variants[variant],
                         variant === 'light' && 'bg-white',
-                        iconClassName,
+                        classNames?.menuItemIcon,
                       )}
                       aria-hidden="true"
                     />
@@ -82,7 +79,7 @@ const Dropdown = ({
                       className={twMerge(
                         'w-5 h-5 ml-3',
                         variants[variant],
-                        iconClassName,
+                        classNames?.menuItemIcon,
                       )}
                       aria-hidden="true"
                     />
@@ -119,7 +116,7 @@ const Dropdown = ({
             iconType={buttonIconType}
             size={buttonSize}
             className={twMerge(
-              buttonClassName,
+              classNames?.button,
               variant === 'outline' ? 'text-gray-600 border-gray-400' : '',
             )}
             fullWidth
@@ -137,7 +134,7 @@ const Dropdown = ({
             fullWidth
             className={twMerge(
               variant === 'outline' ? 'text-gray-600 border-gray-400' : '',
-              buttonClassName,
+              classNames?.button,
             )}
           />
         )}
@@ -157,7 +154,7 @@ const Dropdown = ({
             'absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none',
             groupElements ? 'divide-y divide-gray-100' : '',
             menuKinds[menuKind],
-            menuClassName,
+            classNames?.menu,
           )}
         >
           {elements
@@ -218,11 +215,16 @@ Dropdown.propTypes = {
   buttonIconPosition: PropTypes.oneOf(['left', 'right', 'only']),
   buttonIconType: PropTypes.oneOf(['solid', 'outline']),
   buttonKind: PropTypes.oneOf(['circular', 'normal', 'rounded']),
-  buttonClassName: PropTypes.string,
-  menuItemClassName: PropTypes.string,
   menuKind: PropTypes.oneOf(['square', 'rounded']),
-  iconClassName: PropTypes.string,
-  menuClassName: PropTypes.string,
+  /**
+   * The `classNames` prop is an object that contains the classNames for the different elements.
+   */
+  classNames: PropTypes.shape({
+    button: PropTypes.string,
+    menu: PropTypes.string,
+    menuItem: PropTypes.string,
+    menuItemIcon: PropTypes.string,
+  }),
 }
 
 export default Dropdown

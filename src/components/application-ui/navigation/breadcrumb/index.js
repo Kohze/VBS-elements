@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { twMerge } from 'tailwind-merge'
-import Icon from '@/components/application-ui/elements/icon'
+import { Icon } from '@/components/application-ui/elements'
 import NextLink from 'next/link'
 
 const variants = {
@@ -19,10 +19,7 @@ const Breadcrumb = ({
   variant,
   homeIconName,
   dividerIconName,
-  navClassName,
-  listClassName,
-  currentClassName,
-  linkClassName,
+  classNames,
   linkColor,
   currentColor,
   homeIconColor,
@@ -31,7 +28,7 @@ const Breadcrumb = ({
 }) => {
   return (
     <nav
-      className={twMerge(variants[variant].nav, navClassName)}
+      className={twMerge(variants[variant].nav, classNames?.nav)}
       aria-label="Breadcrumb"
     >
       <ol
@@ -40,7 +37,7 @@ const Breadcrumb = ({
           'flex items-center space-x-4',
           variants[variant].ol,
           fullWidth && 'w-full',
-          listClassName,
+          classNames?.list,
         )}
       >
         <li className="flex">
@@ -83,8 +80,8 @@ const Breadcrumb = ({
                 <a
                   className={twMerge(
                     'ml-4 text-sm font-medium text-gray-400 hover:text-gray-600',
-                    linkClassName,
-                    page.current && currentClassName,
+                    classNames?.link,
+                    page.current && classNames?.current,
                   )}
                   style={{ color: page.current ? currentColor : linkColor }}
                   aria-current={page.current ? 'page' : undefined}
@@ -102,7 +99,9 @@ const Breadcrumb = ({
 
 Breadcrumb.defaultProps = {
   variant: 'simple',
-  currentClassName: 'text-gray-800 pointer-events-none font-medium',
+  classNames: {
+    current: 'text-gray-800 pointer-events-none font-medium',
+  },
   homeIconName: 'home',
   dividerIconName: 'chevron-right',
 }
@@ -119,14 +118,16 @@ Breadcrumb.propTypes = {
   fullWidth: PropTypes.bool,
   homeIconName: PropTypes.string,
   dividerIconName: PropTypes.string,
-  linkClassName: PropTypes.string,
   linkColor: PropTypes.string,
   currentColor: PropTypes.string,
   homeIconColor: PropTypes.string,
   dividerIconColor: PropTypes.string,
-  currentClassName: PropTypes.string,
-  navClassName: PropTypes.string,
-  listClassName: PropTypes.string,
+  classNames: PropTypes.shape({
+    nav: PropTypes.string,
+    list: PropTypes.string,
+    link: PropTypes.string,
+    current: PropTypes.string,
+  }),
 }
 
 export default Breadcrumb

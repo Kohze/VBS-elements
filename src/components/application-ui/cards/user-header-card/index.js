@@ -2,16 +2,17 @@ import PropTypes from 'prop-types'
 import { css } from '@emotion/css'
 import NextLink from 'next/link'
 import { twMerge } from 'tailwind-merge'
-import { Avatar } from '@/components/application-ui/elements'
+import { Avatar, Button } from '@/components/application-ui/elements'
 
 const UserHeaderCard = ({
   user,
   cardList,
   cardTopText,
+  buttonText,
+  buttonVariant,
   avatarKind,
   avatarSize,
-  titleClassName,
-  className,
+  classNames,
 }) => {
   const listStyles = css`
     @media (min-width: 768px) {
@@ -22,7 +23,7 @@ const UserHeaderCard = ({
     <div
       className={twMerge(
         'overflow-hidden bg-white rounded-lg shadow',
-        className,
+        classNames?.main,
       )}
     >
       <h2 className="sr-only" id="profile-overview-title">
@@ -35,13 +36,16 @@ const UserHeaderCard = ({
               imageSrc={user.imageSrc}
               size={avatarSize}
               kind={avatarKind}
+              classNames={{
+                main: classNames?.avatar,
+              }}
             />
             <div className="mt-4 text-center sm:mt-0 sm:pt-1 sm:text-left">
               <p className="text-sm font-medium text-gray-600">{cardTopText}</p>
               <p
                 className={twMerge(
                   'text-xl font-bold text-gray-900 sm:text-2xl',
-                  titleClassName,
+                  classNames?.title,
                 )}
               >
                 {user?.name}
@@ -50,11 +54,13 @@ const UserHeaderCard = ({
             </div>
           </div>
           <div className="flex justify-center mt-5 sm:mt-0">
-            <NextLink href={user?.link || '#'}>
-              <a className="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50">
-                View profile
-              </a>
-            </NextLink>
+            <Button
+              href={user?.link || '#'}
+              className={classNames?.button}
+              variant={buttonVariant}
+            >
+              {buttonText}
+            </Button>
           </div>
         </div>
       </div>
@@ -83,6 +89,8 @@ const UserHeaderCard = ({
 UserHeaderCard.defaultProps = {
   cardList: [],
   cardTopText: 'Welcome back,',
+  buttonText: 'View profile',
+  buttonVariant: 'outline',
   avatarKind: 'circular',
   avatarSize: '3xl',
   user: {},
@@ -104,7 +112,27 @@ UserHeaderCard.propTypes = {
   cardTopText: PropTypes.string,
   avatarKind: PropTypes.oneOf(['circular', 'rounded', 'square']),
   avatarSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl']),
-  titleClassName: PropTypes.string,
+  buttonVariant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'outline',
+    'dark',
+  ]),
+  buttonText: PropTypes.string,
+  /**
+   * Custom class names for the component
+   */
+  classNames: PropTypes.shape({
+    main: PropTypes.string,
+    title: PropTypes.string,
+    button: PropTypes.string,
+    avatar: PropTypes.string,
+  }),
 }
 
 export default UserHeaderCard

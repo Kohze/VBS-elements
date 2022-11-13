@@ -118,7 +118,11 @@ export const WithAvatar = (args) => (
     actionButtons={(props) => (
       <>
         <Button text="Disqualify" size="md" variant="outline" />
-        <Button text="Advance to offer" size="md" className="bg-indigo-600" />
+        <Button
+          text="Advance to offer"
+          size="md"
+          classNames={{ main: 'bg-indigo-600' }}
+        />
       </>
     )}
     {...args}
@@ -389,7 +393,7 @@ Heading with avatar need `user` prop. The `user` prop is an object with `name`, 
   actionButtons={() => (
     <>
       <Button text="Disqualify" size="md" variant="outline" />
-      <Button text="Advance to offer" size="md" className="bg-indigo-600" />
+      <Button text="Advance to offer" size="md" classNames={{ main: "bg-indigo-600" }} />
     </>
   )}
 />

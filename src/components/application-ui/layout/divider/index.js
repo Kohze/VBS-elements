@@ -22,21 +22,17 @@ const Divider = ({
   variant,
   position,
   label,
-  labelClassName,
+  classNames,
   iconName,
   iconSize,
   iconColor,
-  iconClassName,
   buttonText,
   buttonSize,
   buttonIconName,
   buttonIconPosition,
-  buttonClassName,
   buttonKind,
   title,
-  className,
   dividerColor,
-  titleClassName,
   onClickButton,
 }) => {
   const additionalIconStyles = css`
@@ -55,7 +51,7 @@ const Divider = ({
           <span
             className={twMerge(
               'px-2 text-sm text-gray-500 bg-white',
-              labelClassName,
+              classNames?.label,
             )}
           >
             {label}
@@ -67,7 +63,7 @@ const Divider = ({
             className={twMerge(
               'px-2 text-gray-500 bg-white',
               additionalIconStyles,
-              iconClassName,
+              classNames?.icon,
             )}
           >
             <Icon
@@ -84,7 +80,7 @@ const Divider = ({
           <span
             className={twMerge(
               'px-3 text-lg font-medium text-gray-900 bg-white',
-              titleClassName,
+              classNames?.title,
             )}
           >
             {title}
@@ -99,7 +95,7 @@ const Divider = ({
             text={buttonText}
             iconName={buttonIconName}
             iconPosition={buttonIconPosition}
-            className={buttonClassName}
+            className={classNames?.button}
             onClick={onClickButton}
           />
         )
@@ -109,7 +105,7 @@ const Divider = ({
             <span
               className={twMerge(
                 'px-3 text-lg font-medium text-gray-900 bg-white',
-                titleClassName,
+                classNames?.title,
               )}
             >
               {title}
@@ -121,7 +117,7 @@ const Divider = ({
               text={buttonText}
               iconName={buttonIconName}
               iconPosition={buttonIconPosition}
-              className={buttonClassName}
+              className={classNames?.button}
               onClick={onClickButton}
             />
           </>
@@ -136,7 +132,7 @@ const Divider = ({
           className={twMerge(
             'w-full border-t border-gray-300',
             additionalDividerStyles,
-            className,
+            classNames?.main,
           )}
         ></div>
       </div>
@@ -178,12 +174,17 @@ Divider.propTypes = {
   buttonIconPosition: PropTypes.oneOf(['left', 'right']),
   buttonClassName: PropTypes.string,
   title: PropTypes.string,
-  className: PropTypes.string,
-  dividerColor: PropTypes.string,
-  labelClassName: PropTypes.string,
-  iconClassName: PropTypes.string,
-  titleClassName: PropTypes.string,
   onClickButton: PropTypes.func,
+  /**
+   * The `classNames` prop is an object that contains the classNames for the different elements.
+   */
+  classNames: PropTypes.shape({
+    main: PropTypes.string,
+    label: PropTypes.string,
+    icon: PropTypes.string,
+    title: PropTypes.string,
+    button: PropTypes.string,
+  }),
 }
 
 export default Divider

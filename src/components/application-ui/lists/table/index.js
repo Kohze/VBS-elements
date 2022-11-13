@@ -16,13 +16,7 @@ const Table = ({
   tableItems,
   renderTableActions,
   renderTableItemActions,
-  tableClassName,
-  theadClassName,
-  theadTrClassName,
-  thClassName,
-  tbodyClassName,
-  tbodyTrClassName,
-  tdClassName,
+  classNames,
 }) => {
   const isGrouped = !!groupedTableItems?.length
   const headings = isGrouped
@@ -39,7 +33,7 @@ const Table = ({
               className={twMerge(
                 verticalLines && 'divide-x divide-gray-200',
                 striped && (i - 1) % 2 === 0 && 'bg-gray-50',
-                tbodyTrClassName,
+                classNames?.tr,
               )}
             >
               {values.map((value, i) => {
@@ -52,7 +46,7 @@ const Table = ({
                       'px-3 py-4 text-sm text-gray-500 whitespace-pre-line sm:whitespace-nowrap',
                       isStacked && 'hidden md:table-cell',
                       stickyHeader && 'border-b border-gray-200',
-                      tdClassName,
+                      classNames?.td,
                     )}
                   >
                     {value}
@@ -89,11 +83,14 @@ const Table = ({
     return groupedTableItems.length > 0
       ? groupedTableItems.map((group, i) => (
           <Fragment key={uuidv4()}>
-            <tr className="border-t border-gray-200">
+            <tr className={('border-t border-gray-200', classNames?.tr)}>
               <th
                 colSpan={headings.length + 1}
                 scope="colgroup"
-                className="px-4 py-2 text-sm font-semibold text-left text-gray-900 bg-gray-50 sm:px-6"
+                className={twMerge(
+                  'px-4 py-2 text-sm font-semibold text-left text-gray-900 bg-gray-50 sm:px-6',
+                  classNames?.th,
+                )}
               >
                 {group.name}
               </th>
@@ -108,8 +105,22 @@ const Table = ({
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">{title}</h1>
-          <p className="mt-2 text-sm text-gray-700">{description}</p>
+          <h1
+            className={twMerge(
+              'text-xl font-semibold text-gray-900',
+              classNames?.title,
+            )}
+          >
+            {title}
+          </h1>
+          <p
+            className={twMerge(
+              'mt-2 text-sm text-gray-700',
+              classNames?.description,
+            )}
+          >
+            {description}
+          </p>
         </div>
         {renderTableActions && (
           <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
@@ -136,15 +147,15 @@ const Table = ({
                 className={twMerge(
                   'min-w-full divide-y divide-gray-300',
                   stickyHeader && 'border-separate',
-                  tableClassName,
+                  classNames?.table,
                 )}
                 style={stickyHeader ? { borderSpacing: 0 } : null}
               >
-                <thead className={twMerge('bg-gray-50', theadClassName)}>
+                <thead className={twMerge('bg-gray-50', classNames?.thead)}>
                   <tr
                     className={twMerge(
                       verticalLines && 'divide-x divide-gray-200',
-                      theadTrClassName,
+                      classNames?.theadTr,
                     )}
                   >
                     {headings.length > 0
@@ -162,7 +173,7 @@ const Table = ({
                                 isStacked && 'hidden md:table-cell',
                                 stickyHeader &&
                                   'sticky top-0 z-10 bg-opacity-80 backdrop-blur backdrop-filter bg-gray-50 border-b border-gray-300',
-                                thClassName,
+                                classNames?.th,
                               )}
                             >
                               {key}
@@ -183,7 +194,7 @@ const Table = ({
                 <tbody
                   className={twMerge(
                     'bg-white divide-y divide-gray-200',
-                    tbodyClassName,
+                    classNames?.tbody,
                   )}
                 >
                   {isGrouped
@@ -244,13 +255,17 @@ Table.propTypes = {
    * render props for table item action buttons
    */
   renderTableItemActions: PropTypes.func,
-  tableClassName: PropTypes.string,
-  theadClassName: PropTypes.string,
-  theadTrClassName: PropTypes.string,
-  thClassName: PropTypes.string,
-  tbodyClassName: PropTypes.string,
-  tbodyTrClassName: PropTypes.string,
-  tdClassName: PropTypes.string,
+  classNames: PropTypes.shape({
+    table: PropTypes.string,
+    thead: PropTypes.string,
+    theadTr: PropTypes.string,
+    th: PropTypes.string,
+    tbody: PropTypes.string,
+    tr: PropTypes.string,
+    td: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+  }),
 }
 
 export default Table

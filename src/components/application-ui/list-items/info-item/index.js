@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { v4 as uuidv4 } from 'uuid'
-import MetaList from '@/components/application-ui/lists/meta-list'
-import Avatar from '@/components/application-ui/elements/avatar'
-import Button from '@/components/application-ui/elements/button'
+import { MetaList } from '@/components/application-ui/lists'
+import { Avatar, Button } from '@/components/application-ui/elements'
 import { twMerge } from 'tailwind-merge'
 
 const InfoItem = ({
@@ -92,10 +91,7 @@ const InfoItem = ({
 
       {!!actions && (
         <div
-          className={twMerge(
-            'flex items-center gap-2',
-            classNames?.actionsClassName,
-          )}
+          className={twMerge('flex items-center gap-2', classNames?.actions)}
         >
           {actions.map((action) => (
             <div key={uuidv4()}>
@@ -139,6 +135,9 @@ InfoItem.propTypes = {
       onClick: PropTypes.func,
     }),
   ),
+  /**
+   * The `classNames` prop is an object that contains the classNames for the different elements.
+   */
   classNames: PropTypes.shape({
     item: PropTypes.string,
     info: PropTypes.string,

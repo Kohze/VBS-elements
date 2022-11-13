@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 import { v4 as uuidv4 } from 'uuid'
 import { twMerge } from 'tailwind-merge'
-import Icon from '@/components/application-ui/elements/icon'
+import { Icon } from '@/components/application-ui/elements'
 
 const variants = {
   default: {
@@ -24,15 +24,12 @@ const Tab = ({
   variant,
   tabs,
   shallowLink,
-  tabItemClassName,
-  currentClassName,
+  classNames,
   currentBackgroundColor,
   currentTextColor,
   tabItemBackgroundColor,
   tabItemTextColor,
   tabItemBorderColor,
-  tabCountClassName,
-  tabCountCurrentClassName,
   tabCountBackgroundColor,
   tabCountTextColor,
   tabCountCurrentBackgroundColor,
@@ -77,8 +74,8 @@ const Tab = ({
                   className={twMerge(
                     variants[variant].tabMain,
                     tab.current
-                      ? currentClassName || variants[variant].current
-                      : tabItemClassName || variants[variant].tab,
+                      ? classNames?.current || variants[variant].current
+                      : classNames?.tabItem || variants[variant].tab,
                     tab.iconName && 'flex items-center space-x-1',
                     (fullWidth || bar) && 'w-full justify-center',
                     bar && i === 0 && 'rounded-l-lg',
@@ -101,9 +98,9 @@ const Tab = ({
                     <span
                       className={twMerge(
                         tab.current
-                          ? tabCountCurrentClassName ||
+                          ? classNames?.tabCountCurrent ||
                               'bg-indigo-100 text-indigo-600'
-                          : tabCountClassName || 'bg-gray-100 text-gray-900',
+                          : classNames?.tabCount || 'bg-gray-100 text-gray-900',
                         'hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block',
                       )}
                       style={{
@@ -148,14 +145,10 @@ Tab.propTypes = {
    * shallowLink: Update the path of the current page without rerunning getStaticProps,
    */
   shallowLink: PropTypes.bool,
-  tabItemClassName: PropTypes.string,
-  currentClassName: PropTypes.string,
   iconPosition: PropTypes.oneOf(['left', 'right']),
   fullWidth: PropTypes.bool,
   bar: PropTypes.bool,
   variant: PropTypes.oneOf(Object.keys(variants)),
-  tabCountClassName: PropTypes.string,
-  tabCountCurrentClassName: PropTypes.string,
   tabCountBackgroundColor: PropTypes.string,
   tabCountTextColor: PropTypes.string,
   tabCountCurrentBackgroundColor: PropTypes.string,
@@ -165,6 +158,12 @@ Tab.propTypes = {
   tabItemBorderColor: PropTypes.string,
   currentBackgroundColor: PropTypes.string,
   currentTextColor: PropTypes.string,
+  classNames: PropTypes.shape({
+    tab: PropTypes.string,
+    current: PropTypes.string,
+    tabCount: PropTypes.string,
+    tabCountCurrent: PropTypes.string,
+  }),
 }
 
 export default Tab

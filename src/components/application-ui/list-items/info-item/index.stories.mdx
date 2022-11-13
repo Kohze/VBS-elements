@@ -6,7 +6,7 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import InfoItem from '@/components/application-ui/list-items/info-item'
+import { InfoItem } from '@/components/application-ui/list-items'
 
 <Meta title="Application UI/List Items/Info Item" component={InfoItem} />
 
@@ -15,6 +15,12 @@ export const Template = (args) => <InfoItem {...args} />
 # Info Item
 
 Info Item is a component that displays information in a list.
+
+## Import
+
+```js
+import { InfoItem } from '@/components/application-ui/list-items'
+```
 
 ## Simple
 
@@ -59,7 +65,7 @@ There is also `avatarPosition` prop to display the avatar on the left, right, to
   >
     {(args) => (
       <>
-        <InfoItem {...args} className="mb-6" />
+        <InfoItem {...args} classNames={{ item: 'mb-6' }} />
         <InfoItem
           {...args}
           avatarPosition="right"

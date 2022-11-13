@@ -3,14 +3,12 @@ import { twMerge } from 'tailwind-merge'
 
 const SectionHeading = ({
   title,
-  titleClassName,
   description,
-  descriptionClassName,
   label,
-  labelClassName,
   actionButtons,
   renderTabs,
   renderDropdown,
+  classNames,
 }) => {
   return (
     <div
@@ -18,13 +16,14 @@ const SectionHeading = ({
         'pb-5 border-b border-gray-200',
         (actionButtons || renderDropdown) &&
           'sm:flex sm:justify-between sm:items-center',
+        classNames?.main,
       )}
     >
       <div>
         <h3
           className={twMerge(
             'text-lg font-medium leading-6 text-gray-900',
-            titleClassName,
+            classNames?.title,
           )}
         >
           {title}
@@ -32,7 +31,7 @@ const SectionHeading = ({
             <span
               className={twMerge(
                 'mt-1 ml-2 text-sm font-light text-gray-500 truncate',
-                labelClassName,
+                classNames?.label,
               )}
             >
               {label}
@@ -43,7 +42,7 @@ const SectionHeading = ({
           <p
             className={twMerge(
               'max-w-4xl mt-2 text-sm text-gray-500',
-              descriptionClassName,
+              classNames?.description,
             )}
           >
             {description}
@@ -59,12 +58,20 @@ const SectionHeading = ({
 
 SectionHeading.propTypes = {
   title: PropTypes.string.isRequired,
-  titleClassName: PropTypes.string,
   description: PropTypes.string,
-  descriptionClassName: PropTypes.string,
   label: PropTypes.string,
-  labelClassName: PropTypes.string,
   actionButtons: PropTypes.func,
+  renderTabs: PropTypes.func,
+  renderDropdown: PropTypes.func,
+  /**
+   * The `classNames` prop is an object that contains the classNames for the different elements.
+   */
+  classNames: PropTypes.shape({
+    main: PropTypes.string,
+    title: PropTypes.string,
+    label: PropTypes.string,
+    description: PropTypes.string,
+  }),
 }
 
 export default SectionHeading

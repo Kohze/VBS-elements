@@ -32,7 +32,7 @@ const Avatar = ({
   imageSrc,
   kind,
   personName,
-  className,
+  classNames,
   backgroundColor,
   color,
   withNotification,
@@ -56,12 +56,12 @@ const Avatar = ({
             'relative overflow-hidden inline-block',
             sizes[size],
             kinds[kind],
-            className,
+            classNames?.main,
           )}
         >
           <Image
             src={imageSrc}
-            className="inline-block"
+            className={twMerge('inline-block', classNames?.image)}
             layout="fill"
             objectFit="cover"
             alt={props.alt}
@@ -76,7 +76,7 @@ const Avatar = ({
               'absolute ring-2 ring-white rounded-full',
               notificationSizes,
               notificationPositions[notificationPosition],
-              notificationClassName,
+              classNames?.notification,
               (kind === 'rounded' || kind === 'square') &&
                 notificationPosition === 'topLeft' &&
                 '-translate-y-1/2 -translate-x-1/2 transform',
@@ -104,7 +104,7 @@ const Avatar = ({
           'inline-flex items-center justify-center  bg-gray-500 rounded-full',
           sizes[size],
           kinds[kind],
-          className,
+          classNames?.main,
         )}
         style={{ backgroundColor, ...props.style }}
       >
@@ -131,7 +131,7 @@ const Avatar = ({
         'inline-block  overflow-hidden bg-gray-100 rounded-full',
         sizes[size],
         kinds[kind],
-        className,
+        classNames?.main,
       )}
       style={{ backgroundColor, color, ...props.style }}
     >
@@ -157,15 +157,21 @@ Avatar.propTypes = {
   size: PropTypes.oneOf(Object.keys(sizes)),
   kind: PropTypes.oneOf(Object.keys(kinds)),
   imageSrc: PropTypes.string,
-  className: PropTypes.string,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
   withNotification: PropTypes.bool,
   withInfo: PropTypes.bool,
   notificationPosition: PropTypes.oneOf(Object.keys(notificationPositions)),
   notificationColor: PropTypes.string,
-  notificationClassName: PropTypes.string,
   personName: PropTypes.string,
+  /**
+   * The `classNames` prop is an object that contains the classNames for the different elements.
+   */
+  classNames: PropTypes.shape({
+    main: PropTypes.string,
+    notification: PropTypes.string,
+    image: PropTypes.string,
+  }),
 }
 
 export default Avatar

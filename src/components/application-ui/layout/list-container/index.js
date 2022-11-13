@@ -35,18 +35,13 @@ const variants = {
   },
 }
 
-const ListContainer = ({
-  children,
-  variant,
-  listClassName,
-  wrapperClassName,
-}) => {
+const ListContainer = ({ children, variant, classNames }) => {
   if (withWrapper.includes(variant)) {
     return (
-      <div className={twMerge(variants[variant].wrapper, wrapperClassName)}>
+      <div className={twMerge(variants[variant].wrapper, classNames?.wrapper)}>
         <ul
           role="list"
-          className={twMerge(variants[variant].ul, listClassName)}
+          className={twMerge(variants[variant].ul, classNames?.list)}
         >
           {children}
         </ul>
@@ -55,7 +50,7 @@ const ListContainer = ({
   }
 
   return (
-    <ul role="list" className={twMerge(variants[variant].ul, listClassName)}>
+    <ul role="list" className={twMerge(variants[variant].ul, classNames?.list)}>
       {children}
     </ul>
   )
@@ -69,9 +64,13 @@ ListContainer.propTypes = {
   variant: PropTypes.oneOf(Object.keys(variants)),
   items: PropTypes.array,
   children: PropTypes.node,
-  listClassName: PropTypes.string,
-  itemClassName: PropTypes.string,
-  wrapperClassName: PropTypes.string,
+  /**
+   * The `classNames` prop is an object that contains the classNames for the different elements.
+   */
+  classNames: PropTypes.shape({
+    wrapper: PropTypes.string,
+    list: PropTypes.string,
+  }),
 }
 
 export default ListContainer

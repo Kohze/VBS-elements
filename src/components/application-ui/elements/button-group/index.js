@@ -26,8 +26,7 @@ const ButtonGroup = ({
   variant,
   kind,
   disabled,
-  className,
-  buttonClassName,
+  classNames,
   backgroundColor,
   color,
   ...props
@@ -39,7 +38,10 @@ const ButtonGroup = ({
 
   return (
     <span
-      className={twMerge('inline-flex rounded-md shadow-sm isolate', className)}
+      className={twMerge(
+        'inline-flex rounded-md shadow-sm isolate',
+        classNames?.main,
+      )}
     >
       {elements
         ? elements?.map((element, index) => (
@@ -72,7 +74,7 @@ const ButtonGroup = ({
                   kind === 'square' &&
                   'rounded-l-none rounded-r-none',
                 index > 0 && index < elements.length - 1 && 'rounded-none',
-                buttonClassName,
+                classNames?.button,
                 additionalStyles,
               )}
               disabled={disabled}
@@ -106,8 +108,13 @@ ButtonGroup.propTypes = {
   variant: PropTypes.oneOf(variants),
   kind: PropTypes.oneOf(kinds),
   disabled: PropTypes.bool,
-  className: PropTypes.string,
-  buttonClassName: PropTypes.string,
+  /**
+   * The `classNames` prop is an object that contains the classNames for the different elements.
+   */
+  classNames: PropTypes.shape({
+    main: PropTypes.string,
+    button: PropTypes.string,
+  }),
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
 }

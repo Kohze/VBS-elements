@@ -17,10 +17,8 @@ const PageHeading = ({
   variant,
   theme,
   title,
-  titleClassName,
+  classNames,
   actionButtons,
-  actionsClassName,
-  className,
   breadcrumbs,
   metas,
   user,
@@ -31,7 +29,6 @@ const PageHeading = ({
   avatarSize,
   avatarPosition,
   bannerHeight,
-  bannerClassName,
 }) => {
   const renderSimple = () => (
     <div
@@ -45,7 +42,7 @@ const PageHeading = ({
           className={twMerge(
             'text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight',
             themes[theme].title,
-            titleClassName,
+            classNames?.title,
           )}
         >
           {title}
@@ -55,7 +52,7 @@ const PageHeading = ({
         <div
           className={twMerge(
             'flex gap-4 mt-4 md:mt-0 md:ml-4',
-            actionsClassName,
+            classNames?.actionButtons,
           )}
         >
           {actionButtons({ theme })}
@@ -72,8 +69,8 @@ const PageHeading = ({
         cardTopText={cardTopText}
         avatarKind={avatarKind}
         avatarSize={avatarSize}
-        className={className}
-        titleClassName={titleClassName}
+        className={classNames?.main}
+        titleClassName={classNames?.title}
       />
     )
   }
@@ -84,7 +81,7 @@ const PageHeading = ({
         className={twMerge(
           'md:flex md:items-center md:justify-between md:space-x-5',
           themes[theme].bg,
-          className,
+          classNames?.main,
         )}
       >
         <div className="flex items-start space-x-5">
@@ -98,7 +95,7 @@ const PageHeading = ({
               className={twMerge(
                 'text-2xl font-bold text-gray-900',
                 themes[theme].title,
-                titleClassName,
+                classNames?.title,
               )}
             >
               {user.name}
@@ -123,7 +120,7 @@ const PageHeading = ({
         <div
           className={twMerge(
             'relative z-0 w-full h-32 overflow-hidden rounded-lg group bg-gradient-to-tr opacity-80 from-gray-600 to-gray-300 lg:h-60',
-            bannerClassName,
+            classNames?.banner,
           )}
           style={{ height: bannerHeight }}
         >
@@ -145,7 +142,9 @@ const PageHeading = ({
           >
             <Avatar
               imageSrc={user.imageSrc}
-              className="w-16 h-16 border-4 border-white sm:h-32 sm:w-32"
+              classNames={{
+                main: 'w-16 h-16 border-4 border-white sm:h-32 sm:w-32',
+              }}
             />
             <div
               className={twMerge(
@@ -185,7 +184,7 @@ const PageHeading = ({
     switch (variant) {
       case 'simple':
         return (
-          <div className={twMerge(themes[theme].bg, className)}>
+          <div className={twMerge(themes[theme].bg, classNames?.main)}>
             {breadcrumbs.length > 0 && (
               <div className="mb-2">
                 <Breadcrumb
@@ -230,15 +229,22 @@ PageHeading.propTypes = {
   variant: PropTypes.oneOf(variants),
   theme: PropTypes.oneOf(Object.keys(themes)),
   title: PropTypes.string.isRequired,
-  titleClassName: PropTypes.string,
+  /**
+   * The `classNames` prop is an object that contains the classNames for the different elements.
+   */
+  classNames: PropTypes.shape({
+    main: PropTypes.string,
+    title: PropTypes.string,
+    banner: PropTypes.string,
+    actionButtons: PropTypes.string,
+    avatar: PropTypes.string,
+  }),
   /**
     actionButtons is a render prop for to use to render the action buttons
     then you can add your own logic to the buttons
     check the examples for see how to use it
    */
   actionButtons: PropTypes.func,
-  actionButtonsClassName: PropTypes.string,
-  className: PropTypes.string,
   breadcrumbs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -269,7 +275,6 @@ PageHeading.propTypes = {
   avatarSize: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl']),
   avatarPosition: PropTypes.oneOf(['left', 'right']),
   bannerHeight: PropTypes.number,
-  bannerClassName: PropTypes.string,
 }
 
 export default PageHeading

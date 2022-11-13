@@ -145,7 +145,7 @@ Tabs can also be styled as pills. `variant` can be `default` or `pills`.
 
 ## Custom Tab Item Styles
 
-You can also customize the styles of the tab items. `tabItemClassName` is the class name of the tab item. `currentClassName` is the class name of the current tab item.
+You can also customize the styles of the tab items. Use the `classNames` prop object to pass the class names. `classNames.tabItem` is the class name of the tab item. `classNames.current` is the class name of the current tab item.
 
 <Canvas>
   <Story
@@ -163,9 +163,10 @@ You can also customize the styles of the tab items. `tabItemClassName` is the cl
         { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
       ],
       variant: 'pills',
-      tabItemClassName:
-        'bg-white text-gray-900 rounded-full border border-gray-200',
-      currentClassName: 'bg-indigo-600 text-white rounded-full',
+      classNames: {
+        tabItem: 'bg-white text-gray-900 rounded-full border border-gray-200',
+        current: 'bg-indigo-600 text-white rounded-full',
+      },
     }}
     parameters={{
       docs: {
@@ -184,8 +185,10 @@ You can also customize the styles of the tab items. `tabItemClassName` is the cl
     { name: 'Billing', href: '#', current: false, iconName: 'credit-card' },
   ]}
   variant="pills"
-  tabItemClassName="bg-white text-gray-900 rounded-full border border-gray-200"
-  currentClassName="bg-indigo-600 text-white rounded-full"
+  classNames={{
+    tabItem: 'bg-white text-gray-900 rounded-full border border-gray-200',
+    current: 'bg-indigo-600 text-white rounded-full',
+  }}
 />`,
         },
       },
