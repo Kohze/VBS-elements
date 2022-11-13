@@ -10,11 +10,9 @@ import { Badge } from '@/components/application-ui/elements'
 
 <Meta title="Application UI/Elements/Badge" component={Badge} />
 
-export const Template = ({ onRemove, ...args }) => (
-  <Badge text="Badge" {...args} />
-)
+export const Template = (args) => <Badge text="Badge" {...args} />
 
-export const Variants = ({ onRemove, ...args }) => (
+export const Variants = (args) => (
   <div className="flex gap-2 items-center">
     <Badge text="Primary" {...args} />
     <Badge text="Secondary" variant="secondary" {...args} />
@@ -28,7 +26,7 @@ export const Variants = ({ onRemove, ...args }) => (
   </div>
 )
 
-export const Kinds = ({ onRemove, ...args }) => (
+export const Kinds = (args) => (
   <div className="flex gap-2 items-center">
     <Badge text="Square" kind="square" {...args} />
     <Badge text="Rounded" kind="rounded" {...args} />
@@ -36,21 +34,21 @@ export const Kinds = ({ onRemove, ...args }) => (
   </div>
 )
 
-export const Sizes = ({ onRemove, ...args }) => (
+export const Sizes = (args) => (
   <div className="flex gap-2 items-end">
     <Badge text="Small" size="sm" {...args} />
     <Badge text="Normal" {...args} />
   </div>
 )
 
-export const WithNotification = ({ onRemove, ...args }) => (
+export const WithNotification = (args) => (
   <div className="flex gap-2 items-end">
     <Badge text="Badge" notification size="sm" {...args} />
     <Badge text="Badge" notification {...args} />
   </div>
 )
 
-export const WithRemoveButton = (args) => (
+export const WithRemoveButton = ({ onRemove, ...args }) => (
   <div className="flex gap-2 items-end">
     <Badge text="Badge" size="sm" withRemove {...args} onRemove={() => {}} />
     <Badge text="Badge" withRemove {...args} onRemove={() => {}} />
@@ -110,7 +108,21 @@ Badges can have a notification dot with `notification` prop.
 Badges can have a remove button with a callback function with `removeButton` and `onRemove` props.
 
 <Canvas>
-  <Story name="With Remove Button">{WithRemoveButton.bind({})}</Story>
+  <Story
+    name="With Remove Button"
+    parameters={{
+      docs: {
+        source: {
+          code: `
+<Badge text="Badge" size="sm" withRemove onRemove={() => {}} />
+<Badge text="Badge" withRemove onRemove={() => {}} />
+          `,
+        },
+      },
+    }}
+  >
+    {WithRemoveButton.bind({})}
+  </Story>
 </Canvas>
 
 ## Reference

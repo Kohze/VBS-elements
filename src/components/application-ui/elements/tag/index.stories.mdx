@@ -7,8 +7,20 @@ import {
   Source,
 } from '@storybook/addon-docs'
 import { Tag } from '@/components/application-ui/elements'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
 
-<Meta title="Application UI/Elements/Tag" component={Tag} />
+<Meta
+  title="Application UI/Elements/Tag"
+  component={Tag}
+  argTypes={{
+    iconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+  }}
+/>
 
 export const Template = (args) => <Tag {...args} />
 
@@ -27,8 +39,13 @@ import { Tag } from '@/components/application-ui/elements'
 Default tag icon is a circle.
 
 <Canvas>
-  <Story name="Default">
-    <Tag text="Default" />
+  <Story
+    name="Default"
+    args={{
+      text: 'Default',
+    }}
+  >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
@@ -37,8 +54,8 @@ Default tag icon is a circle.
 If you want to add an icon, you can use the `iconName` prop.
 
 <Canvas>
-  <Story name="With Icon">
-    <Tag text="With Icon" iconName="check" />
+  <Story name="With Icon" args={{ text: 'With Icon', iconName: 'check' }}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 

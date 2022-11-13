@@ -18,12 +18,6 @@ export const WithChildren = (args) => (
   </EmptyCard>
 )
 
-export const WithCustomClasses = (args) => (
-  <EmptyCard className="bg-slate-500 text-slate-50 px-8 py-16" {...args}>
-    <div>Custom content</div>
-  </EmptyCard>
-)
-
 # Empty Card
 
 Empty card is a wrapper component that can be used to display a card with a title, description and so on.
@@ -51,7 +45,14 @@ import { EmptyCard } from '@/components/application-ui/cards'
 Use the `className` prop to add custom or tailwind classes to the card.
 
 <Canvas>
-  <Story name="With Custom Classes">{WithCustomClasses.bind({})}</Story>
+  <Story
+    name="With Custom Classes"
+    args={{
+      className: 'bg-slate-500 text-slate-50 px-8 py-16',
+    }}
+  >
+    {WithChildren.bind({})}
+  </Story>
 </Canvas>
 
 ## Reference

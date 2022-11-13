@@ -13,36 +13,23 @@ import { UserHeaderCard } from '@/components/application-ui/cards'
   component={UserHeaderCard}
 />
 
-export const Template = (args) => (
-  <UserHeaderCard
-    user={{
-      name: 'Mary Jane',
-      role: 'Designer',
-      imageSrc:
-        'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80',
-      link: '#',
-    }}
-    {...args}
-  />
-)
+export const user = {
+  name: 'Mary Jane',
+  role: 'Designer',
+  imageSrc:
+    'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80',
+  link: '#',
+}
 
-export const WithInfoList = (args) => (
-  <UserHeaderCard
-    user={{
-      name: 'Mary Jane',
-      role: 'Designer',
-      imageSrc:
-        'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=922&q=80',
-      link: '#',
-    }}
-    cardList={[
-      { label: 'Vacation days left', value: 12 },
-      { label: 'Sick days left', value: 4 },
-      { label: 'Personal days left', value: 2 },
-    ]}
-    {...args}
-  />
-)
+export const cardTopText = 'Welcome'
+
+export const cardList = [
+  { label: 'Vacation days left', value: 12 },
+  { label: 'Sick days left', value: 4 },
+  { label: 'Personal days left', value: 2 },
+]
+
+export const Template = (args) => <UserHeaderCard {...args} />
 
 # User Header Card
 
@@ -57,13 +44,30 @@ import { UserHeaderCard } from '@/components/application-ui/cards'
 ## Default
 
 <Canvas>
-  <Story name="Default">{Template.bind({})}</Story>
+  <Story
+    name="Default"
+    args={{
+      user,
+      cardTopText,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## With Info List
 
 <Canvas>
-  <Story name="With Info List">{WithInfoList.bind({})}</Story>
+  <Story
+    name="With Info List"
+    args={{
+      user,
+      cardTopText,
+      cardList,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
 </Canvas>
 
 ## Reference

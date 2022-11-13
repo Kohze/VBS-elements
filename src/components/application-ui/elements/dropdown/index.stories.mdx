@@ -67,6 +67,20 @@ Dropdowns need to have `elements` props containing an array of objects with `hre
       elements: [{ text: 'Link 1' }, { text: 'Link 2' }, { text: 'Link 3' }],
       buttonText: 'Dropdown',
     }}
+    parameters={{
+      docs: {
+        source: {
+          code: `<Dropdown
+  elements={[
+    { text: 'Link 1' },
+    { text: 'Link 2' },
+    { text: 'Link 3' },
+  ]}
+  buttonText="Dropdown"
+/>`,
+        },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -86,6 +100,20 @@ Dropdowns can also contain icons. The icon can be placed on the left or right si
         { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
       ],
       buttonText: 'Dropdown',
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+/>`,
+        },
+      },
     }}
   >
     {Template.bind({})}
@@ -113,6 +141,26 @@ Dropdowns can also contain grouped elements. The `groupElements` prop is used to
       ],
       buttonText: 'Dropdown',
     }}
+    parameters={{
+      docs: {
+        source: {
+          code: `<Dropdown
+  groupElements={[
+    [
+      { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+      { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+      { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+    ],
+    [
+      { text: 'Link 1', iconName: 'arrow-trending-down', href: '#' },
+      { text: 'Link 2', iconName: 'arrows-right-left', href: '#' },
+    ],
+  ]}
+  buttonText="Dropdown"
+/>`,
+        },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -135,6 +183,22 @@ Minimal dropdowns are have a transparent background and a borderless button. But
       variant: 'light',
       minimal: true,
     }}
+    parameters={{
+      docs: {
+        source: {
+          code: `<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+  variant="light"
+  minimal
+/>`,
+        },
+      },
+    }}
   >
     {Template.bind({})}
   </Story>
@@ -154,6 +218,83 @@ Dropdowns can have different ready-to-use variants. The `variant` prop can be us
         { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
       ],
       buttonText: 'Dropdown',
+    }}
+    parameters={{
+      docs: {
+        source: {
+          code: `<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+/>
+<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+  variant="secondary"
+/>
+<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+  variant="success"
+/>
+<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+  variant="danger"
+/>
+<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+  variant="warning"
+/>
+<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+  variant="info"
+/>
+<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+  variant="light"
+/>
+<Dropdown
+  elements={[
+    { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+    { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+    { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+  ]}
+  buttonText="Dropdown"
+  variant="dark"
+/>`,
+        },
+      },
     }}
   >
     {Variants.bind({})}
