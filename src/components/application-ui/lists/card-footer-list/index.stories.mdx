@@ -1,0 +1,72 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
+import { CardFooterList } from '@/components/application-ui/lists'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
+
+<Meta
+  title="Application UI/Lists/Card Footer List"
+  component={CardFooterList}
+  argTypes={{
+    list: {
+      iconName: {
+        control: {
+          type: 'select',
+          options: heroIconsNames,
+        },
+      },
+    },
+  }}
+/>
+
+export const list = [
+  { label: 'Vacation days left', value: 12 },
+  { label: 'Sick days left', value: 4 },
+  { label: 'Personal days left', value: 2 },
+]
+
+export const listWithIcon = [
+  { label: 'Vacation days left', iconName: 'arrow-down-right' },
+  { label: 'Sick days left', iconName: 'arrow-path' },
+  { label: 'Personal days left', iconName: 'bookmark' },
+]
+
+export const Template = (args) => <CardFooterList {...args} />
+
+# Card Footer List
+
+The Card Footer List component is used to display a list of items in a card footer.
+
+## Import
+
+```js
+import { CardFooterList } from '@/components/application-ui/lists'
+```
+
+## Default
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      list,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Icon
+
+<Canvas>
+  <Story
+    name="With Icon"
+    args={{
+      list: listWithIcon,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={CardFooterList} />

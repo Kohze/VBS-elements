@@ -6,8 +6,8 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import Table from '@/components/application-ui/lists/table'
-import Button from '@/components/application-ui/elements/button'
+import { Table } from '@/components/application-ui/lists'
+import { Button } from '@/components/application-ui/elements'
 
 <Meta title="Application UI/Lists/Table" component={Table} />
 
@@ -28,6 +28,12 @@ export const StickyHeaderTemplate = (args) => (
 # Table
 
 Table component for displaying data in a tabular format.
+
+## Import
+
+```js
+import { Table } from '@/components/application-ui/lists'
+```
 
 ## Simple
 

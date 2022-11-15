@@ -23,7 +23,7 @@ export const user = {
 
 export const cardTopText = 'Welcome back,'
 
-export const cardList = [
+export const footerList = [
   { label: 'Vacation days left', value: 12 },
   { label: 'Sick days left', value: 4 },
   { label: 'Personal days left', value: 2 },
@@ -55,15 +55,15 @@ import { UserHeaderCard } from '@/components/application-ui/cards'
   </Story>
 </Canvas>
 
-## With Info List
+## With Footer List
 
 <Canvas>
   <Story
-    name="With Info List"
+    name="With Footer List"
     args={{
       user,
       cardTopText,
-      cardList,
+      footerList,
     }}
   >
     {Template.bind({})}

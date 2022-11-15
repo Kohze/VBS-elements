@@ -6,7 +6,7 @@ import {
   Preview,
   Source,
 } from '@storybook/addon-docs'
-import Tab from '@/components/application-ui/navigation/tab'
+import { Tab } from '@/components/application-ui/navigation'
 
 <Meta title="Application UI/Navigation/Tab" component={Tab} />
 
@@ -15,6 +15,12 @@ export const Template = (args) => <Tab {...args} />
 # Tab
 
 Tabs are used to organize content into different sections. They are useful when you have a lot of content and need to organize it into different sections.
+
+## Import
+
+```js
+import { Tab } from '@/components/application-ui/navigation'
+```
 
 ## Default
 

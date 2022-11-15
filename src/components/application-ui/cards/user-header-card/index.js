@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types'
-import { css } from '@emotion/css'
-import NextLink from 'next/link'
 import { twMerge } from 'tailwind-merge'
 import { Avatar, Button } from '@/components/application-ui/elements'
+import { CardFooterList } from '@/components/application-ui/lists'
 
 const UserHeaderCard = ({
   user,
-  cardList,
+  footerList,
   cardTopText,
   buttonText,
   buttonVariant,
@@ -14,11 +13,6 @@ const UserHeaderCard = ({
   avatarSize,
   classNames,
 }) => {
-  const listStyles = css`
-    @media (min-width: 768px) {
-      grid-template-columns: repeat(${cardList.length}, minmax(0, 1fr));
-    }
-  `
   return (
     <div
       className={twMerge(
@@ -64,30 +58,20 @@ const UserHeaderCard = ({
           </div>
         </div>
       </div>
-      {cardList.length > 0 && (
-        <div
-          className={twMerge(
-            'grid grid-cols-1 border-t border-gray-200 divide-y divide-gray-200 bg-gray-50 sm:divide-y-0 sm:divide-x',
-            listStyles,
-          )}
-        >
-          {cardList?.map((item) => (
-            <div
-              key={item.label}
-              className="px-6 py-5 text-sm font-medium text-center"
-            >
-              <span className="text-gray-900">{item.value}</span>{' '}
-              <span className="text-gray-600">{item.label}</span>
-            </div>
-          ))}
-        </div>
+      {footerList && (
+        <CardFooterList
+          list={footerList}
+          classNames={{
+            main: 'bg-gray-50 border-t border-gray-200',
+          }}
+        />
       )}
     </div>
   )
 }
 
 UserHeaderCard.defaultProps = {
-  cardList: [],
+  footerList: [],
   cardTopText: 'Welcome back,',
   buttonText: 'View profile',
   buttonVariant: 'outline',
@@ -103,7 +87,7 @@ UserHeaderCard.propTypes = {
     imageSrc: PropTypes.string,
     link: PropTypes.string,
   }).isRequired,
-  cardList: PropTypes.arrayOf(
+  footerList: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
       value: PropTypes.string,
