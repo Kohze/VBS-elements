@@ -1,0 +1,65 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
+import { ContactCard } from '@/components/application-ui/cards'
+
+<Meta title="Application UI/Cards/ContactCard" component={ContactCard} />
+
+export const Template = (args) => (
+  <div className="max-w-lg mx-auto">
+    <ContactCard {...args} />
+  </div>
+)
+
+export const user = {
+  name: 'Jane Cooper',
+  title: 'Regional Paradigm Technician',
+  role: 'Admin',
+  email: 'janecooper@example.com',
+  phone: '+1-202-555-0170',
+  imageSrc:
+    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+}
+
+# ContactCard
+
+ContactCard is a card that displays user basic information.
+
+## Import
+
+```js
+import { ContactCard } from '@/components/application-ui/cards'
+```
+
+## Default
+
+To use the ContactCard, simply import the component and pass the user object as a prop. User object should have the following properties: `name`, `title`, `role`, `email`, `phone`, `imageSrc`.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      user,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Avatar on the top
+
+<Canvas>
+  <Story
+    name="Vertical"
+    args={{
+      user,
+      avatarPosition: 'top',
+      avatarSize: '4xl',
+      tagVariant: 'danger',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={ContactCard} />

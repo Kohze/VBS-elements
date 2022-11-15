@@ -40,14 +40,14 @@ const EmptyCard = ({
   return (
     <div
       className={twMerge(
-        'overflow-hidden',
+        'overflow-hidden px-4 py-5',
         roundedSizes[roundSize],
         shadowSizes[shadowSize],
         className,
         additonalStyles,
       )}
     >
-      <div className="px-4 py-5 sm:p-6">{children}</div>
+      {children}
     </div>
   )
 }

@@ -3,6 +3,8 @@ import { css } from '@emotion/css'
 import { twMerge } from 'tailwind-merge'
 import { Icon } from '@/components/application-ui/elements'
 import PropTypes from 'prop-types'
+import NextLink from 'next/link'
+import { v4 as uuidv4 } from 'uuid'
 
 const CardFooterList = ({ list, classNames }) => {
   const listStyles = css`
@@ -20,30 +22,34 @@ const CardFooterList = ({ list, classNames }) => {
       )}
     >
       {list?.map((item) => (
-        <div
-          key={item.label}
-          className={twMerge(
-            'flex items-center justify-center px-6 py-5 text-sm font-medium',
-            classNames?.item,
-          )}
-        >
-          {item.iconName && (
-            <Icon
-              className={twMerge('mr-2', classNames?.icon)}
-              iconName={item.iconName}
-            />
-          )}
-          {item.value && (
-            <span className={twMerge('mr-1 text-gray-900', classNames?.value)}>
-              {item.value}
-            </span>
-          )}
-          {item.label && (
-            <span className={twMerge('text-gray-600', classNames?.label)}>
-              {item.label}
-            </span>
-          )}
-        </div>
+        <NextLink href={item?.href || ''} key={uuidv4()}>
+          <a
+            className={twMerge(
+              'flex items-center justify-center px-6 py-5 text-sm font-medium',
+              item?.href ? 'cursor-pointer' : 'cursor-default',
+              classNames?.item,
+            )}
+          >
+            {item.iconName && (
+              <Icon
+                className={twMerge('mr-2', classNames?.icon)}
+                iconName={item.iconName}
+              />
+            )}
+            {item.value && (
+              <span
+                className={twMerge('mr-1 text-gray-900', classNames?.value)}
+              >
+                {item.value}
+              </span>
+            )}
+            {item.label && (
+              <span className={twMerge('text-gray-600', classNames?.label)}>
+                {item.label}
+              </span>
+            )}
+          </a>
+        </NextLink>
       ))}
     </div>
   ) : null

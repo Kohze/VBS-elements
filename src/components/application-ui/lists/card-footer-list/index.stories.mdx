@@ -29,6 +29,12 @@ export const listWithIcon = [
   { label: 'Personal days left', iconName: 'bookmark' },
 ]
 
+export const listWithLink = [
+  { label: 'Vacation days left', value: 12, href: 'https://google.com' },
+  { label: 'Sick days left', value: 4, href: 'https://google.com' },
+  { label: 'Personal days left', value: 2, href: 'https://google.com' },
+]
+
 export const Template = (args) => <CardFooterList {...args} />
 
 # Card Footer List
@@ -61,6 +67,22 @@ import { CardFooterList } from '@/components/application-ui/lists'
     name="With Icon"
     args={{
       list: listWithIcon,
+      classNames: {
+        icon: 'text-blue-500',
+      },
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Link
+
+<Canvas>
+  <Story
+    name="With Link"
+    args={{
+      list: listWithLink,
     }}
   >
     {Template.bind({})}

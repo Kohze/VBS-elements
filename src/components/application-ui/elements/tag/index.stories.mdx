@@ -59,6 +59,16 @@ If you want to add an icon, you can use the `iconName` prop.
   </Story>
 </Canvas>
 
+## Only Text
+
+If you want to display only text, you can use the `onlyText` prop.
+
+<Canvas>
+  <Story name="Only Text" args={{ text: 'Only Text', onlyText: true }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
 ## Variants
 
 Variants are used to highlight the importance of the tag. The default variant is `outline`. The other variants are `secondary`, `success`, `danger`, `warning`, `info`, `outline`, `light`, and `dark`.
@@ -89,6 +99,7 @@ There are 3 sizes available: `sm`, `md`, and `lg`. The default size is `md`.
   <Story name="Sizes">
     {(args) => (
       <div className="flex flex-wrap gap-2 items-center">
+        <Tag text="XSmall" size="xs" {...args} />
         <Tag text="Small" size="sm" {...args} />
         <Tag text="Medium" size="md" {...args} />
         <Tag text="Large" size="lg" {...args} />

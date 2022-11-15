@@ -5,6 +5,7 @@ import { Icon } from '@/components/application-ui/elements'
 import NextLink from 'next/link'
 
 const sizes = {
+  xs: 'text-xs px-1',
   sm: 'text-xs px-2.5 py-0.5',
   md: 'text-sm px-3 py-0.5',
   lg: 'text-base px-4 py-1',
@@ -31,6 +32,7 @@ const kinds = {
 const Tag = ({
   text,
   href,
+  onlyText,
   iconName,
   iconColor,
   textColor,
@@ -55,6 +57,11 @@ const Tag = ({
     if (iconName) {
       return <Icon iconName={iconName} size="sm" className="flex-shrink-0" />
     }
+
+    if (onlyText) {
+      return null
+    }
+
     return (
       <svg
         className="-ml-0.5 mr-1.5 h-2 w-2"
@@ -71,6 +78,7 @@ const Tag = ({
       <a
         className={twMerge(
           mainStyle,
+          !href && 'cursor-default',
           variants[variant],
           sizes[size],
           kinds[kind],
