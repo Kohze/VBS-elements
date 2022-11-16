@@ -16,13 +16,21 @@ const StripeUserCard = ({ user, avatarSize, avatarKind, classNames }) => {
         />
       </div>
       <div className="flex-1 min-w-0">
-        <NextLink href={user.href || ''}>
-          <a className="focus:outline-none">
+        {user?.href ? (
+          <NextLink href={user.href || ''}>
+            <a className="focus:outline-none">
+              <span className="absolute inset-0" aria-hidden="true" />
+              <p className="text-sm font-medium text-gray-900">{user.name}</p>
+              <p className="text-sm text-gray-500 truncate">{user.role}</p>
+            </a>
+          </NextLink>
+        ) : (
+          <>
             <span className="absolute inset-0" aria-hidden="true" />
             <p className="text-sm font-medium text-gray-900">{user.name}</p>
             <p className="text-sm text-gray-500 truncate">{user.role}</p>
-          </a>
-        </NextLink>
+          </>
+        )}
       </div>
     </EmptyCard>
   )
@@ -34,7 +42,7 @@ StripeUserCard.propTypes = {
     name: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
     role: PropTypes.string,
-  }).isRequired,
+  }),
   avatarSize: PropTypes.oneOf([
     'xs',
     'sm',
