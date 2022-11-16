@@ -120,6 +120,7 @@ const ContactCard = ({
         <CardFooterList
           list={footerInfo}
           classNames={{
+            main: 'bg-white border-t border-gray-200',
             icon: twMerge('text-gray-400', classNames?.footerListIcon),
             item: twMerge('text-gray-400', classNames?.footerListItem),
           }}

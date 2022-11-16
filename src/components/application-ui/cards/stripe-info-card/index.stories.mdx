@@ -1,0 +1,70 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
+import { StripeInfoCard } from '@/components/application-ui/cards'
+
+<Meta
+  title="Application UI/Cards/Stripe Info Card"
+  component={StripeInfoCard}
+/>
+
+export const Template = (args) => <StripeInfoCard {...args} />
+
+export const TemplateDropdown = (args) => (
+  <div className="h-40">
+    <StripeInfoCard {...args} />
+  </div>
+)
+
+export const elements = [
+  { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+  { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+  { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+]
+
+# StripeInfoCard
+
+Stripe Info Card is a card that displays small information. Also displays abbriviations of the name with background color.
+
+## Default
+
+You can pass `name`, `href`, `description` and `bgColor` properties. `name` property is required. Default `bgColor` is `bg-gray-600` from tailwind. You can use hex color codes for `bgColor` property.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      name: 'Graph API',
+      href: '#',
+      description: '16 Members',
+      bgColor: '#0a66e6',
+      elements: [],
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## With Elements
+
+If you want to use dropdown, you can pass in an array of elements. Check the elements object for an example. You can also change dropdown variant with `dropdownVariant` property and dropdown size with `dropdownSize` property. Check dropdown component for more information.
+
+<Canvas>
+  <Story
+    name="With Elements"
+    args={{
+      name: 'Graph API',
+      href: '#',
+      description: '16 Members',
+      elements: [
+        { text: 'Link 1', iconName: 'academic-cap', href: '#' },
+        { text: 'Link 2', iconName: 'adjustments-vertical', href: '#' },
+        { text: 'Link 3', iconName: 'arrow-up-tray', href: '#' },
+      ],
+    }}
+  >
+    {TemplateDropdown.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={StripeInfoCard} />

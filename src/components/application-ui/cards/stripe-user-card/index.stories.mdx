@@ -1,0 +1,45 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
+import { StripeUserCard } from '@/components/application-ui/cards'
+
+<Meta
+  title="Application UI/Cards/Stripe User Card"
+  component={StripeUserCard}
+/>
+
+export const Template = (args) => <StripeUserCard {...args} />
+
+export const user = {
+  name: 'Leslie Alexander',
+  email: 'leslie.alexander@example.com',
+  role: 'Co-Founder / CEO',
+  href: '#',
+  imageSrc:
+    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+}
+
+# StripeUserCard
+
+Stripe User Card is a card that displays the user's `name`, `email`, `role`, `href` and `imageSrc`. `name` and `href` are required props.
+
+## Import
+
+```js
+import { StripeUserCard } from '@/components/application-ui/cards'
+```
+
+## Default
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      user,
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={StripeUserCard} />
