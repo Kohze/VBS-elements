@@ -1,0 +1,51 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
+import { InfoLinkCard } from '@/components/application-ui/cards'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
+
+<Meta
+  title="Application UI/Cards/Info Link Card"
+  component={InfoLinkCard}
+  argTypes={{
+    iconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => <InfoLinkCard {...args} />
+
+# Info Link Card
+
+Info link card is a card that displays basic information about a product or service with a link.
+
+## Import
+
+```js
+import { InfoLinkCard } from '@/components/application-ui/cards'
+```
+
+## Default
+
+To use the default info link card, simply import the component and pass in the required props `title`, `description`, `iconName` and `link`. You can customize the card with using props. See the [reference table](#reference) for a list of props.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: 'Info Link Card',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc.',
+      iconName: 'home',
+      href: '/',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={InfoLinkCard} />

@@ -18,6 +18,7 @@ const Icon = ({
   width,
   height,
   size,
+  variant,
   className,
   ...props
 }) => {
@@ -39,7 +40,6 @@ const Icon = ({
 
 Icon.defaultProps = {
   iconType: 'solid',
-  className: 'flex',
   size: 'md',
 }
 
