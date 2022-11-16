@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,8 +10,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: colors.trueGray,
-        slate: colors.blueGray,
         rose: colors.rose,
         sky: colors.sky,
         teal: colors.teal,
