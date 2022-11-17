@@ -1,0 +1,40 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
+import { SimpleImageCard } from '@/components/application-ui/cards'
+
+<Meta
+  title="Application UI/Cards/Simple Image Card"
+  component={SimpleImageCard}
+/>
+
+export const Template = (args) => (
+  <div className="w-1/2 mx-auto">
+    <SimpleImageCard {...args} />
+  </div>
+)
+
+# Simple Image Card
+
+Simple Image Card is a card that displays an image and simple information.
+
+## Import
+
+```js
+import { SimpleImageCard } from '@/components/application-ui/cards'
+```
+
+## Default
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      imageSrc:
+        'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
+      title: 'Tree in the forest',
+      description: 'lorem ipsum dolor sit amet',
+      subtitle: '2 MB',
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
