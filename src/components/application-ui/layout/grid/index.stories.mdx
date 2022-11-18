@@ -1,0 +1,136 @@
+import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
+import { Grid } from '@/components/application-ui/layout'
+import viewportAddon from '@/assets/storybook/viewport-addon.png'
+
+<Meta title="Application UI/Layout/Grid" component={Grid} />
+
+export const Template = (args) => (
+  <Grid {...args}>
+    <div className="bg-slate-400 flex items-center justify-center py-10">1</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">2</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">3</div>
+  </Grid>
+)
+
+export const TemplateThreeCols = (args) => (
+  <Grid {...args}>
+    <div className="bg-slate-400 flex items-center justify-center py-10">1</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">2</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">3</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">4</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">5</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">6</div>
+  </Grid>
+)
+
+export const TemplateFourCols = (args) => (
+  <Grid {...args}>
+    <div className="bg-slate-400 flex items-center justify-center py-10">1</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">2</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">3</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">4</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">5</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">6</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">7</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">8</div>
+  </Grid>
+)
+
+export const TemplateFiveCols = (args) => (
+  <Grid {...args}>
+    <div className="bg-slate-400 flex items-center justify-center py-10">1</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">2</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">3</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">4</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">5</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">6</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">7</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">8</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">9</div>
+    <div className="bg-slate-400 flex items-center justify-center py-10">
+      10
+    </div>
+  </Grid>
+)
+
+# Grid
+
+The Grid component is a grid system that allows you to easily create a grid layout.
+
+For interact with the component, you can use the controls and see the results with viewport addon. You can see the viewport addon in the panel. Indicated in screenshot below.
+
+<p>
+  <img src={viewportAddon} alt="Viewport addon" />
+</p>
+
+## Usage
+
+You can use cards, divs, or any other element as `children` of the Grid component. There are props `columns`, `columnsSm`, `columnsMd`, `columnsLg` and `columnsXl` to change the number of columns for each breakpoint. There are also some ready gap sizes to use with the `gap` prop. Check reference for more details.
+
+For more customization, you can use the tailwind classes to change the grid layout. Check the [Tailwind CSS Grid](https://tailwindcss.com/docs/grid-template-columns) for more details.
+
+## Default
+
+Default grid is 1 column for all breakpoints.
+
+<Canvas>
+  <Story name="Default">{Template.bind({})}</Story>
+</Canvas>
+
+## Examples
+
+<br />
+
+### 3 columns
+
+Three columns desktop, two columns tablet, one column mobile.
+
+<Canvas>
+  <Story
+    name="Three columns example"
+    args={{
+      columns: 1,
+      columnsMd: 2,
+      columnsLg: 3,
+    }}
+  >
+    {TemplateThreeCols.bind()}
+  </Story>
+</Canvas>
+
+### 4 columns
+
+Four columns desktop and two columns mobile
+
+<Canvas>
+  <Story
+    name="Four columns example"
+    args={{
+      columns: 2,
+      columnsLg: 4,
+    }}
+  >
+    {TemplateFourCols.bind({})}
+  </Story>
+</Canvas>
+
+### 5 columns
+
+Five columns desktop, two columns on tablet, and one column on mobile
+
+<Canvas>
+  <Story
+    name="Five columns example"
+    args={{
+      columns: 1,
+      columnsMd: 2,
+      columnsLg: 5,
+    }}
+  >
+    {TemplateFiveCols.bind({})}
+  </Story>
+</Canvas>
+
+## Reference
+
+<ArgsTable of={Grid} />
