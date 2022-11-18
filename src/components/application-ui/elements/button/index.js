@@ -113,7 +113,7 @@ const Button = ({
   const renderButton = () => {
     if (href) {
       return (
-        <NextLink href={href}>
+        <NextLink legacyBehavior href={href}>
           <a
             className={twMerge(
               mainStyle,

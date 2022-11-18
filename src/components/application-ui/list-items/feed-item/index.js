@@ -64,7 +64,7 @@ const FeedItem = ({
       <div className="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
         <div className="text-sm text-gray-500">
           {text}{' '}
-          <NextLink href={person.href}>
+          <NextLink legacyBehavior href={person.href}>
             <a className="text-sm font-medium text-gray-900">{person.name}</a>
           </NextLink>
         </div>

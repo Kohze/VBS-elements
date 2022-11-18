@@ -77,7 +77,7 @@ const InfoLinkCard = ({
           className={twMerge('text-lg font-medium', classNames?.title)}
           style={{ color: titleColor }}
         >
-          <NextLink href={href}>
+          <NextLink legacyBehavior href={href}>
             <a className="focus:outline-none">
               <span className="absolute inset-0" aria-hidden="true" />
               {title}

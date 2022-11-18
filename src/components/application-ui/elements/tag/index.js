@@ -74,7 +74,7 @@ const Tag = ({
   }
 
   return (
-    <NextLink href={href || ''}>
+    <NextLink legacyBehavior href={href || ''}>
       <a
         className={twMerge(
           mainStyle,

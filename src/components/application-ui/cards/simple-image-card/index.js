@@ -34,7 +34,7 @@ const SimpleImageCard = ({
           layout="fill"
         />
         {href && (
-          <NextLink href={href}>
+          <NextLink legacyBehavior href={href}>
             <a className="absolute inset-0 focus:outline-none">
               <span className="sr-only">View details for {title}</span>
             </a>

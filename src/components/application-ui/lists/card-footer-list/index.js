@@ -22,7 +22,7 @@ const CardFooterList = ({ list, classNames }) => {
       )}
     >
       {list?.map((item) => (
-        <NextLink href={item?.href || ''} key={uuidv4()}>
+        <NextLink legacyBehavior href={item?.href || ''} key={uuidv4()}>
           <a
             className={twMerge(
               'flex items-center justify-center px-6 py-5 text-sm font-medium',

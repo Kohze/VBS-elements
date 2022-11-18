@@ -67,7 +67,12 @@ const Tab = ({
             aria-label="Tabs"
           >
             {tabs.map((tab, i) => (
-              <NextLink href={tab.href} key={uuidv4()} shallow={shallowLink}>
+              <NextLink
+                legacyBehavior
+                href={tab.href}
+                key={uuidv4()}
+                shallow={shallowLink}
+              >
                 <a
                   key={tab.name}
                   href={tab.href}

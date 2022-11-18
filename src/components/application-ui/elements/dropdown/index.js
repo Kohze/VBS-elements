@@ -43,7 +43,7 @@ const Dropdown = ({
       return (
         <Menu.Item key={index}>
           {({ active }) => (
-            <NextLink href={el.href || '#'}>
+            <NextLink legacyBehavior href={el.href || '#'}>
               <a
                 className={twMerge(
                   'group flex items-center px-4 py-2 text-sm',

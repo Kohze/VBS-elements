@@ -76,7 +76,7 @@ const Breadcrumb = ({
                   <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
                 </svg>
               )}
-              <NextLink href={page.href}>
+              <NextLink legacyBehavior href={page.href}>
                 <a
                   className={twMerge(
                     'ml-4 text-sm font-medium text-gray-400 hover:text-gray-600',
