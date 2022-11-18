@@ -63,6 +63,7 @@ const InfoLinkCard = ({
       >
         <Icon
           iconName={iconName}
+          iconType="outline"
           className={twMerge(
             'rounded-lg inline-flex p-3',
             iconSizes[iconSize],

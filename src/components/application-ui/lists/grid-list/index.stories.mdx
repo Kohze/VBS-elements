@@ -1,1 +1,265 @@
-import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
+import { Meta, Canvas, ArgsTable, Story, Preview } from '@storybook/addon-docs'
+import { twMerge } from 'tailwind-merge'
+import { Grid } from '@/components/application-ui/layout'
+import { GridList } from '@/components/application-ui/lists'
+import {
+  ContactCard,
+  StripeInfoCard,
+  InfoLinkCard,
+  StripeUserCard,
+} from '@/components/application-ui/cards'
+
+<Meta title="Application UI/Lists/Grid List" component={GridList} />
+
+export const contactUsers = [
+  {
+    id: 1,
+    name: 'Jane Cooper',
+    title: 'Regional Paradigm Technician',
+    role: 'Admin',
+    email: 'janecooper@example.com',
+    phone: '+1-202-555-0170',
+    href: '#',
+    imageSrc:
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+  },
+  {
+    id: 2,
+    name: 'Cody Fisher',
+    title: 'Product Directives Officer',
+    role: 'Owner',
+    email: '',
+    phone: '+1-202-555-0170',
+    href: '#',
+    imageSrc:
+      'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+  },
+  {
+    id: 3,
+    name: 'Esther Howard',
+    title: 'Forward Response Facilitator',
+    role: 'Member',
+    email: '',
+    phone: '+1-202-555-0170',
+    href: '#',
+    imageSrc:
+      'https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+  },
+  {
+    id: 4,
+    name: 'Jenny Wilson',
+    title: 'Human Research Architect',
+    role: 'Member',
+    email: '',
+    phone: '+1-202-555-0170',
+    href: '#',
+    imageSrc:
+      'https://images.unsplash.com/photo-1498551172505-8ee7ad69f235?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+  },
+  {
+    id: 5,
+    name: 'Kristin Watson',
+    title: 'Principal Implementation Officer',
+    role: 'Member',
+    email: '',
+    phone: '+1-202-555-0170',
+    href: '#',
+    imageSrc:
+      'https://images.unsplash.com/photo-1532417344469-368f9ae6d187?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+  },
+  {
+    id: 6,
+    name: 'Ted Fox',
+    title: 'National Usability Technician',
+    role: 'Member',
+    email: '',
+    phone: '+1-202-555-0170',
+    href: '#',
+    imageSrc:
+      'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+  },
+]
+
+export const simpleInfos = [
+  {
+    name: 'Graph API',
+    href: '/',
+    description: '16 Members',
+    bgColor: '#FBBF24',
+  },
+  {
+    name: 'Component Design',
+    href: '/',
+    description: '8 Members',
+    bgColor: '#EA9A7F',
+  },
+  {
+    name: 'Templates',
+    href: '/',
+    description: '4 Members',
+    bgColor: '#2563EB',
+  },
+  {
+    name: 'React Components',
+    href: '/',
+    description: '2 Members',
+    bgColor: '#AA136F',
+  },
+]
+
+export const infoLinkItems = [
+  {
+    title: 'Info Link Card',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc.',
+    iconName: 'home',
+    iconVariant: 'teal',
+    href: '/',
+  },
+  {
+    title: 'Info Link Card',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc.',
+    iconName: 'calendar-days',
+    iconVariant: 'rose',
+    href: '/',
+  },
+  {
+    title: 'Info Link Card',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc.',
+    iconName: 'users',
+    iconVariant: 'indigo',
+    href: '/',
+  },
+  {
+    title: 'Info Link Card',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc.',
+    iconName: 'chart-bar',
+    iconVariant: 'cyan',
+    href: '/',
+  },
+  {
+    title: 'Info Link Card',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc.',
+    iconName: 'square-2-stack',
+    iconVariant: 'amber',
+    href: '/',
+  },
+  {
+    title: 'Info Link Card',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc. Sed euismod, nisl vel tincidunt luctus, nunc elit lacinia nunc, eget aliquam massa nisl eget nunc.',
+    iconName: 'video-camera',
+    iconVariant: 'sky',
+    href: '/',
+  },
+]
+
+export function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
+# Grid List
+
+This is not a component, this is just show how to use the Grid component with the various components.
+
+## Contact Cards Grid List
+
+Usage Grid with ContactCard component. Check the ContactCard component for more details about the props [here](/docs/application-ui-cards-contact-card--default-story).
+
+### Horizontal
+
+<Preview>
+  <div className="p-4 bg-slate-50">
+    <Grid columnsLg={3} columnsSm={2}>
+      {contactUsers.map((user) => (
+        <ContactCard key={user.id} user={user} avatarSize="md" />
+      ))}
+    </Grid>
+  </div>
+</Preview>
+
+### Vertical
+
+<Preview>
+  <div className="p-4 bg-slate-50">
+    <Grid columnsLg={4} columnsSm={2}>
+      {contactUsers.map((user) => (
+        <ContactCard
+          key={user.id}
+          user={user}
+          avatarPosition="top"
+          avatarSize="3xl"
+        />
+      ))}
+    </Grid>
+  </div>
+</Preview>
+
+## Stripe Info Cards Grid List
+
+Usage Grid with StripeInfoCard component. Check the StripeInfoCard component for more details about the props [here](/docs/application-ui-cards-stripe-info-card--default-story).
+
+<Preview>
+  <div className="p-4 bg-slate-50">
+    <Grid columnsLg={4} columnsSm={2}>
+      {simpleInfos.map((info) => (
+        <StripeInfoCard key={info.id} {...info} />
+      ))}
+    </Grid>
+  </div>
+</Preview>
+
+## Stripe User Cards Grid List
+
+Usage Grid with StripeUserCard component. Check the StripeUserCard component for more details about the props [here](/docs/application-ui-cards-stripe-user-card--default-story).
+
+<Preview>
+  <div className="p-4 bg-slate-50">
+    <Grid columnsSm={2}>
+      {contactUsers.map((user) => (
+        <StripeUserCard key={user.id} user={user} />
+      ))}
+    </Grid>
+  </div>
+</Preview>
+
+## Info Link Cards Grid List With Shared Borders
+
+Usage Grid with InfoLinkCard component. Check the InfoLinkCard component for more details about the props [here](/docs/application-ui-cards-info-link-card--default-story).
+
+For merging css classes, we use the twMerge function from the tailwind-merge package. To use it;
+
+```js
+import { twMerge } from '@tailwindcssinjs/tailwind-merge'`
+```
+
+<Preview>
+  <div className="py-4 px-12 bg-slate-200">
+    <Grid columnsSm={2} gap="px">
+      {infoLinkItems.map((item, actionIdx) => (
+        <InfoLinkCard
+          key={item.id}
+          {...item}
+          iconSize="md"
+          classNames={{
+            main: twMerge(
+              'rounded-none border-none hover:border-none',
+              actionIdx === 0
+                ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
+                : '',
+              actionIdx === 1 ? 'sm:rounded-tr-lg' : '',
+              actionIdx === infoLinkItems.length - 2 ? 'sm:rounded-bl-lg' : '',
+              actionIdx === infoLinkItems.length - 1
+                ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
+                : '',
+            ),
+          }}
+        />
+      ))}
+    </Grid>
+  </div>
+</Preview>

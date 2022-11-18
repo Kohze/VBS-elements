@@ -9,7 +9,6 @@ const ContactCard = ({
   avatarSize,
   avatarPosition,
   avatarKind,
-  tagVariant,
   classNames,
 }) => {
   const footerInfo = [
@@ -25,7 +24,7 @@ const ContactCard = ({
     return (
       <div
         className={twMerge(
-          'flex flex-1 gap-4 p-8 text-center',
+          'flex flex-1 gap-4 p-8 text-center bg-white',
           avatarPosition === 'top' && 'flex-col',
           avatarPosition === 'bottom' && 'flex-col-reverse',
         )}
@@ -57,7 +56,7 @@ const ContactCard = ({
             <dd className="mt-3">
               <Tag
                 text={user?.role}
-                variant={tagVariant}
+                variant={user?.tagVariant || 'success'}
                 size="xs"
                 onlyText
                 className={twMerge('border-none', classNames?.tag)}
@@ -73,7 +72,7 @@ const ContactCard = ({
     return (
       <div
         className={twMerge(
-          'flex items-center justify-between w-full p-6 gap-6',
+          'flex items-center justify-between w-full p-6 gap-6 bg-white',
           avatarPosition === 'right' && 'flex-row',
           avatarPosition === 'left' && 'flex-row-reverse',
         )}
@@ -85,7 +84,7 @@ const ContactCard = ({
             </h3>
             <Tag
               text={user?.role}
-              variant={tagVariant}
+              variant={user?.tagVariant || 'success'}
               size="xs"
               onlyText
               className={twMerge('border-none', classNames?.tag)}
@@ -133,7 +132,6 @@ const ContactCard = ({
 ContactCard.defaultProps = {
   avatarSize: '2xl',
   avatarPosition: 'right',
-  tagVariant: 'success',
 }
 
 ContactCard.propTypes = {
@@ -144,6 +142,17 @@ ContactCard.propTypes = {
     email: PropTypes.string,
     phone: PropTypes.string,
     imageSrc: PropTypes.string,
+    tagVariant: PropTypes.oneOf([
+      'primary',
+      'secondary',
+      'success',
+      'danger',
+      'warning',
+      'info',
+      'light',
+      'dark',
+      'outline',
+    ]),
   }).isRequired,
   avatarSize: PropTypes.oneOf([
     'xs',
@@ -157,16 +166,6 @@ ContactCard.propTypes = {
   ]),
   avatarPosition: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
   avatarKind: PropTypes.oneOf(['circular', 'rounded', 'square']),
-  tagVariant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-  ]),
   classNames: PropTypes.shape({
     card: PropTypes.string,
     name: PropTypes.string,

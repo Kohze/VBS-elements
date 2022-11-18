@@ -1,4 +1,4 @@
-const GridList = ({ children }) => {
+const GridList = () => {
   return null
 }
 

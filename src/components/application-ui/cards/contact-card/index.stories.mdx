@@ -31,7 +31,9 @@ import { ContactCard } from '@/components/application-ui/cards'
 
 ## Default
 
-To use the ContactCard, simply import the component and pass the user object as a prop. User object should have the following properties: `name`, `title`, `role`, `email`, `phone`, `imageSrc`.
+To use the ContactCard, simply import the component and pass the `user` object as a prop. User object should have the following properties: `name`, `title`, `role`, `email`, `phone`, `imageSrc` and `tagVariant`.
+
+For `tagVariant` color, you can use one of the following: `primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`, `outline`.
 
 <Canvas>
   <Story
@@ -50,10 +52,12 @@ To use the ContactCard, simply import the component and pass the user object as 
   <Story
     name="Vertical"
     args={{
-      user,
+      user: {
+        ...user,
+        tagVariant: 'danger',
+      },
       avatarPosition: 'top',
       avatarSize: '4xl',
-      tagVariant: 'danger',
     }}
   >
     {Template.bind({})}

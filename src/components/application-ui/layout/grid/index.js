@@ -68,6 +68,8 @@ const gridColumnsLg = {
 }
 
 const gridGap = {
+  none: 'gap-0',
+  px: 'gap-px',
   xs: 'gap-1',
   sm: 'gap-2',
   md: 'gap-3',
