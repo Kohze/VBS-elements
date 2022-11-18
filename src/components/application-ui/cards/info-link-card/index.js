@@ -1,7 +1,7 @@
 import { twMerge } from 'tailwind-merge'
 import PropTypes from 'prop-types'
-import NextLink from 'next/link'
 import { Icon } from '@/components/application-ui/elements'
+import NextLink from 'next/link'
 
 const iconVariants = {
   teal: 'text-teal-700 bg-teal-50',

@@ -2,6 +2,9 @@
 const path = require('path')
 
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
   reactStrictMode: true,
   swcMinify: true,
   images: {

@@ -1,4 +1,4 @@
-import 'tailwindcss/tailwind.css'
+import './styles.css'
 import * as NextImage from 'next/image'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 import tailwindColors from '@/constants/colors.json'
