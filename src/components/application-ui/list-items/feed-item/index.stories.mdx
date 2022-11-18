@@ -1,7 +1,19 @@
 import { Meta, Canvas, ArgsTable, Story } from '@storybook/addon-docs'
 import { FeedItem } from '@/components/application-ui/list-items'
+import heroIconsNames from '@/assets/icons/hero-icons/names'
 
-<Meta title="Application UI/List Items/Feed Item" component={FeedItem} />
+<Meta
+  title="Application UI/List Items/Feed Item"
+  component={FeedItem}
+  argTypes={{
+    iconName: {
+      control: {
+        type: 'select',
+        options: heroIconsNames,
+      },
+    },
+  }}
+/>
 
 export const Template = (args) => <FeedItem {...args} />
 

@@ -1,6 +1,4 @@
 'use client'
-import { SimpleImageCard } from '@/components/application-ui/cards'
-import Image from 'next/image'
 import React from 'react'
 
 const Page = () => {
